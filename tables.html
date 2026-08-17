@@ -58,7 +58,7 @@ h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,7.2
 .barhead{justify-content:space-between}
 #panel{max-height:0;overflow:hidden;opacity:0;
   transition:max-height .34s cubic-bezier(.4,0,.2,1),opacity .22s,padding .34s}
-#panel.open{max-height:420px;opacity:1;padding-top:4px}
+#panel.open{max-height:720px;opacity:1;padding-top:12px}
 #gear{appearance:none;display:inline-flex;align-items:center;gap:8px;
   border:1.5px solid var(--ink);background:transparent;color:var(--ink);
   border-radius:999px;padding:8px 15px 8px 12px;cursor:pointer;
@@ -257,7 +257,7 @@ a{color:#7d4a1e}
 </div>
 
 <div class="controls">
-  <div class="inner barhead" style="padding-top:6px">
+  <div class="inner barhead">
     <span id="summary"></span>
     <button type="button" id="gear" class="open" aria-expanded="true" aria-controls="panel">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
@@ -267,7 +267,8 @@ a{color:#7d4a1e}
       Type tools
     </button>
   </div>
-  <div class="inner" style="margin-top:10px">
+  <div id="panel" class="open">
+  <div class="inner">
     <span class="lbl">Stock</span>
     <div class="toggle" id="cw">
       <button data-cw="bone" class="on">Bone</button>
@@ -318,7 +319,6 @@ a{color:#7d4a1e}
     <button type="button" class="xbtn" id="swap">Swap</button>
     <span class="typenote" id="typenote"></span>
   </div>
-  <div id="panel" class="open">
   <div class="inner" style="margin-top:11px">
     <span class="lbl">Number</span>
     <div class="sl"><input type="range" id="sNum" min="0.7" max="1.85" step="0.02" value="1.22"><output id="oNum">1.22×</output></div>
