@@ -1,0 +1,99 @@
+/**
+ * Suite typefaces from the invite + save-the-date (Figma Wedding file).
+ *
+ * Invite: Instrument Serif (names / “Our Wedding”) + Roboto Mono (details)
+ * Save the date: Helvetica Neue LT Std Black (“save / the / date”) + thin Neue for footer
+ *
+ * Instrument Serif + Roboto Mono ship here (OFL). Helvetica Neue LT Std is licensed —
+ * we only reference fonts already installed on this machine via local().
+ * Web fallbacks: Archivo Black / Inter.
+ */
+
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('./InstrumentSerif-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('./InstrumentSerif-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('./RobotoMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('./RobotoMono-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Helvetica Neue LT Std — installed desktop fonts only */
+@font-face {
+  font-family: 'Helvetica Neue LT Std';
+  src:
+    local('Helvetica Neue LT Std 95 Black'),
+    local('HelveticaNeueLT Std Blk'),
+    local('HelveticaNeueLTStd-Blk');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Neue LT Std';
+  src:
+    local('Helvetica Neue LT Std 75 Bold'),
+    local('HelveticaNeueLT Std Bd'),
+    local('HelveticaNeueLTStd-Bd');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Neue LT Std';
+  src:
+    local('Helvetica Neue LT Std 55 Roman'),
+    local('HelveticaNeueLT Std Roman'),
+    local('HelveticaNeueLTStd-Roman');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Neue LT Std';
+  src:
+    local('Helvetica Neue LT Std 45 Light'),
+    local('HelveticaNeueLT Std Lt'),
+    local('HelveticaNeueLTStd-Lt');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Neue LT Std';
+  src:
+    local('Helvetica Neue LT Std 35 Thin'),
+    local('HelveticaNeueLT Std Th'),
+    local('HelveticaNeueLTStd-Th');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-invite-serif: 'Instrument Serif', 'Times New Roman', serif;
+  --font-invite-mono: 'Roboto Mono', ui-monospace, monospace;
+  --font-std-black: 'Helvetica Neue LT Std', 'Helvetica Neue', 'Archivo Black', Impact, sans-serif;
+  --font-std-thin: 'Helvetica Neue LT Std', 'Helvetica Neue', Inter, Helvetica, Arial, sans-serif;
+}

@@ -1,0 +1,50 @@
+A1 · Crooked Prints — Canva handoff
+Allison + Skylar table numbers · 5 × 7 in portrait
+
+WHAT TO UPLOAD
+  A1-crooked-prints-5x7.png   tracing layer (300 dpi, actual size)
+  A1-crooked-prints-5x7.pdf   same card as a PDF
+  photos/allison.jpg          left / top print
+  photos/skylar.jpg           right / bottom print
+
+START A FILE
+  1. Canva → Create a design → Custom size → 5 in × 7 in, portrait
+  2. Share → her email → Can edit
+  3. Upload the PNG. Place it full-bleed, lock it, drop opacity to ~30%.
+     This is only a tracing layer. Delete it when the live type and photos match.
+  4. Duplicate the page for each table / age.
+
+MATCH THE CARD
+  Background          #E7E3DA   (bone — same as the invite)
+  Type                #1E1D1A   (ink)
+  Photo mats          #FFFFFF   with a soft drop shadow
+
+  04
+    Font              Instrument Serif  (Canva: search Instrument, or use Playfair Display / Bodoni)
+    Size              about 176 pt on a 5×7  (big — it should be the largest thing)
+    Place             top right, a little down from the edge
+
+  WHEN WE WERE
+    Font              Roboto Mono
+    Size              about 19 pt
+    Case              ALL CAPS
+    Tracking          ~200  (very open)
+    Place             top left
+
+  ALLISON & SKYLAR
+    Font              Roboto Mono
+    Size              about 17 pt
+    Case              ALL CAPS
+    Tracking          ~120
+    Place             bottom left
+
+  PHOTOS
+    Two squares with a thick white Polaroid border
+    Top-left print:   Allison, tilt about −6.5°
+    Bottom-right:     Skylar, tilt about +4.5°, overlapping the first
+    Crop toward faces / the upper third
+    Do not put type on the photos
+
+SHARE
+  Keep one Canva file. Duplicate the page, change the number and the two photos.
+  Name pages “Table 04”, “Table 05”, etc.

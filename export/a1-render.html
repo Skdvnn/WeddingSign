@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>A1 · Crooked Prints · 5×7</title>
+<link rel="stylesheet" href="../assets/fonts/suite.css">
+<style>
+@page { size: 5in 7in; margin: 0; }
+html, body { margin: 0; padding: 0; background: #E7E3DA; }
+:root {
+  --nmfont: var(--font-invite-serif);
+  --detfont: var(--font-invite-mono);
+  --nmwt: 400;
+  --nmtrk: -.006em;
+  --nmscale: 1;
+  --numscale: 1.22;
+  --labscale: 1.28;
+  --detwt: 400;
+  --dettrk: .2em;
+  --dettrk2: .12em;
+  --ph-a: url("../assets/photos/allison.jpg");
+  --ph-b: url("../assets/photos/skylar.jpg");
+}
+.frame {
+  width: 1500px;
+  height: 2100px;
+  container-type: inline-size;
+  container-name: card;
+  position: relative;
+  background: #E7E3DA;
+  color: #1E1D1A;
+  overflow: hidden;
+}
+@media print {
+  .frame { width: 5in; height: 7in; }
+}
+.k {
+  font-family: var(--detfont);
+  font-weight: var(--detwt);
+  font-size: calc(4.15cqi * var(--labscale));
+  letter-spacing: var(--dettrk);
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+.num-lg {
+  font-family: var(--nmfont);
+  font-weight: var(--nmwt);
+  letter-spacing: var(--nmtrk);
+  font-size: calc(40cqi * var(--nmscale) * var(--numscale));
+  line-height: .74;
+}
+.pair {
+  font-family: var(--detfont);
+  font-weight: var(--detwt);
+  font-size: calc(3.7cqi * var(--labscale));
+  letter-spacing: var(--dettrk2);
+  text-transform: uppercase;
+}
+.ph {
+  background-position: center 24%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 0;
+}
+.ph-a { background-image: var(--ph-a); }
+.ph-b { background-image: var(--ph-b); }
+.print {
+  background: #fff;
+  padding: 1.45cqi;
+  box-shadow: 0 .55cqi 1.7cqi rgba(30,29,26,.15);
+  display: flex;
+  transform: rotate(var(--tilt, 0deg));
+  transform-origin: center center;
+}
+.print .ph { flex: 1; width: 100%; height: 100%; min-height: 0; min-width: 0; }
+</style>
+<body>
+<div class="frame">
+  <div class="k" style="position:absolute;top:6.5%;left:7%">When we were</div>
+  <div class="num-lg" style="position:absolute;top:4.5%;right:6%">04</div>
+  <div class="print" style="position:absolute;top:22%;left:8%;width:52%;height:42%;--tilt:-6.5deg">
+    <div class="ph ph-a"></div>
+  </div>
+  <div class="print" style="position:absolute;top:38%;right:7%;width:50%;height:40%;--tilt:4.5deg">
+    <div class="ph ph-b"></div>
+  </div>
+  <div class="pair" style="position:absolute;left:7%;bottom:6%">Allison &amp; Skylar</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" role="img" aria-label="Registration marks">
+  <g stroke="currentColor" stroke-width="1.1" vector-effect="non-scaling-stroke">
+    <path d="M0 5 V-5 M-5 0 H5"/>
+    <path d="M100 5 V-5 M95 0 H105"/>
+    <path d="M0 105 V95 M-5 100 H5"/>
+    <path d="M100 105 V95 M95 100 H105"/>
+  </g>
+</svg>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>S2 · Display Stack · PNG export</title>
+<link rel="stylesheet" href="../assets/fonts/suite.css">
+<style>
+html, body { margin: 0; padding: 0; background: #111; }
+:root {
+  --nmfont: var(--font-invite-serif);
+  --accfont: var(--font-invite-serif);
+  --detfont: var(--font-invite-mono);
+  --nmwt: 400;
+  --nmtrk: -.006em;
+  --nmscale: 1.14;
+  --detwt: 400;
+  --dettrk: .2em;
+  --dettrk2: .13em;
+}
+.frame {
+  width: 1600px;
+  height: 2400px;
+  position: relative;
+  overflow: hidden;
+  background: #BFA52B;
+  color: #1E1D1A;
+}
+.sign {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 8% 6.5%;
+  box-sizing: border-box;
+}
+.spacer { flex: 1; }
+.k {
+  font-family: var(--detfont);
+  font-weight: var(--detwt);
+  font-size: calc(18px * var(--nmscale));
+  letter-spacing: var(--dettrk);
+  line-height: 1.7;
+  text-transform: uppercase;
+  text-align: center;
+}
+.det {
+  font-family: var(--detfont);
+  font-weight: var(--detwt);
+  font-size: calc(17px * var(--nmscale));
+  letter-spacing: var(--dettrk2);
+  line-height: 1.95;
+  text-transform: uppercase;
+  text-align: center;
+}
+.nm {
+  font-family: var(--nmfont);
+  font-weight: var(--nmwt);
+  letter-spacing: var(--nmtrk);
+  font-size: calc(168px * var(--nmscale));
+  line-height: .96;
+  text-align: center;
+}
+.acc {
+  font-family: var(--accfont);
+  font-style: italic;
+  font-size: calc(132px * var(--nmscale));
+  line-height: 1;
+  margin: .04em 0;
+  text-align: center;
+}
+.stack { text-align: center; }
+</style>
+<body>
+<div class="frame" id="sign">
+  <div class="sign">
+    <div class="k">WELCOME TO THE WEDDING OF</div>
+    <div class="spacer"></div>
+    <div class="stack">
+      <div class="nm">Allison</div>
+      <div class="acc">&amp;</div>
+      <div class="nm">Skylar</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="det">SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN, WALNUT CREEK</div>
+  </div>
+</div>
+</body>
+</html>

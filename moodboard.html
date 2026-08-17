@@ -1,0 +1,447 @@
+<meta charset="utf-8">
+<title>Wedding Sign — Moodboard &amp; Layouts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bebas+Neue&family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=DM+Serif+Display:ital@0;1&family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Yellowtail&family=Inter:wght@300..800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --mustard:#C4A939;
+  --mustard-deep:#A88F26;
+  --lemon:#E9E63C;
+  --ink:#16130B;
+  --cream:#EFE9DC;
+  --terracotta:#C7492A;
+  --clay:#C0651F;
+  --blush:#DE7264;
+  --wood:#C9A97C;
+  --wood-dk:#B08F62;
+  --page:#F4F1EA;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--page); color:#1b1710;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 90px}
+
+/* ---------- masthead ---------- */
+header{padding:64px 0 34px;border-bottom:2px solid var(--ink)}
+h1{
+  font-family:Anton,Impact,sans-serif; font-weight:400;
+  font-size:clamp(38px,7vw,80px); line-height:.92; letter-spacing:-.01em;
+  margin:0 0 16px; text-transform:uppercase;
+}
+.sub{font-size:17px;line-height:1.55;max-width:640px;color:#4a4335;margin:0}
+.swatchrow{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.sw{width:74px}
+.sw i{display:block;height:52px;border-radius:5px;border:1px solid rgba(0,0,0,.16)}
+.sw span{display:block;font:600 10px/1.5 "Space Mono",monospace;margin-top:6px;color:#6a6152;letter-spacing:.02em}
+
+/* ---------- controls ---------- */
+.controls{
+  position:sticky;top:0;z-index:20;background:rgba(244,241,234,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,0,0,.14);
+  padding:14px 0;margin-bottom:44px;
+}
+.controls .inner{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.lbl{font:700 10px/1 "Space Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#6a6152}
+.toggle{display:flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden}
+.toggle button{
+  appearance:none;border:0;background:transparent;cursor:pointer;
+  font:700 11px/1 "Space Mono",monospace;letter-spacing:.09em;text-transform:uppercase;
+  padding:11px 17px;color:var(--ink);
+}
+.toggle button.on{background:var(--ink);color:var(--page)}
+.namefield{
+  font:600 13px/1 Inter,sans-serif;padding:10px 13px;border:1.5px solid rgba(0,0,0,.28);
+  border-radius:7px;background:#fff;width:118px;
+}
+.hint{font-size:12px;color:#8a8271;font-style:italic}
+
+/* ---------- sections ---------- */
+h2{
+  font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;
+  font-size:clamp(22px,3vw,32px);letter-spacing:.01em;margin:70px 0 6px;
+}
+h2:first-of-type{margin-top:0}
+.secnote{font-size:15px;color:#5c5546;max-width:700px;margin:0 0 30px;line-height:1.6}
+
+/* ---------- grid of signs ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:38px 30px}
+.card{}
+.frame{
+  aspect-ratio:2/3;border-radius:3px;overflow:hidden;position:relative;
+  box-shadow:0 2px 4px rgba(0,0,0,.10),0 14px 34px rgba(0,0,0,.13);
+  display:flex;
+}
+.sign{flex:1;position:relative;display:flex;flex-direction:column;padding:8.5% 8%;}
+.meta{margin-top:14px}
+.meta h3{font:700 14px/1.3 Inter,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
+.meta p{font-size:12.5px;line-height:1.55;color:#6e6656;margin:0}
+.tag{
+  display:inline-block;font:700 9px/1 "Space Mono",monospace;letter-spacing:.12em;
+  text-transform:uppercase;padding:5px 8px;border-radius:4px;margin:8px 6px 0 0;
+  background:rgba(0,0,0,.07);color:#5c5546;
+}
+.tag.easy{background:#D6E8CF;color:#33582a}
+.tag.med{background:#F3E4C4;color:#6d5312}
+.tag.hard{background:#F2D5CE;color:#7d2f1c}
+
+/* ---------- ground treatments ---------- */
+.g-mustard{background:var(--mustard)}
+.g-lemon{background:var(--lemon)}
+.g-cream{background:var(--cream)}
+.g-wood{
+  background:
+    repeating-linear-gradient(96deg,rgba(120,84,42,.09) 0 2px,rgba(0,0,0,0) 2px 13px),
+    repeating-linear-gradient(91deg,rgba(255,255,255,.10) 0 1px,rgba(0,0,0,0) 1px 27px),
+    linear-gradient(163deg,#D8BC92,#C09665 65%,#CDAA7C);
+}
+.g-gradmustard{background:linear-gradient(178deg,#D8C55E,#C4A939 55%,#B39528)}
+
+/* type helpers */
+.k{font:700 clamp(8px,1.35vw,12px)/1.5 "Space Mono",monospace;letter-spacing:.19em;text-transform:uppercase}
+.spacer{flex:1}
+.foot{font:700 clamp(8px,1.25vw,11px)/1.75 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+.foot em{font-family:"Instrument Serif",serif;font-style:italic;text-transform:none;letter-spacing:.01em;font-size:1.15em;font-weight:400}
+
+/* ---------- guide / notes ---------- */
+.notes{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:34px 36px;margin-top:16px}
+.notes h4{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;font-size:18px;margin:26px 0 10px;letter-spacing:.01em}
+.notes h4:first-child{margin-top:0}
+.notes ul{margin:0;padding-left:19px}
+.notes li{font-size:14.5px;line-height:1.72;margin-bottom:7px;color:#33301f}
+.notes code{font:600 12.5px/1 "Space Mono",monospace;background:#f0ece2;padding:2.5px 6px;border-radius:4px}
+table{border-collapse:collapse;width:100%;margin-top:8px}
+th,td{text-align:left;padding:9px 12px 9px 0;border-bottom:1px solid rgba(0,0,0,.11);font-size:14px;vertical-align:top}
+th{font:700 10px/1.4 "Space Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:#6a6152}
+
+.srcs{margin-top:14px}
+.srcs a{color:#8a3d1f;text-decoration:none;border-bottom:1px solid rgba(138,61,31,.35)}
+.srcs a:hover{border-bottom-color:#8a3d1f}
+.srcs li{font-size:14px;line-height:1.75;margin-bottom:4px}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid rgba(0,0,0,.16);font-size:12.5px;color:#8a8271}
+[contenteditable]{outline:none}
+[contenteditable]:focus{background:rgba(255,255,255,.28);border-radius:3px}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Wedding Sign<br>Moodboard &amp; Layouts</h1>
+  <p class="sub">Earlier exploration board. The rebuilt Allison + Skylar directions (with copyable SVG lettering and graphics) live on the <a href="index.html">welcome sign page</a>. Flip colorways with the toggle and type real names to see them at size.</p>
+  <div class="swatchrow">
+    <div class="sw"><i style="background:#C4A939"></i><span>C4A939</span></div>
+    <div class="sw"><i style="background:#16130B"></i><span>16130B</span></div>
+    <div class="sw"><i style="background:#C9A97C"></i><span>C9A97C</span></div>
+    <div class="sw"><i style="background:#EFE9DC"></i><span>EFE9DC</span></div>
+    <div class="sw"><i style="background:#C7492A"></i><span>C7492A</span></div>
+    <div class="sw"><i style="background:#E9E63C"></i><span>E9E63C</span></div>
+  </div>
+</header>
+</div>
+
+<div class="controls">
+  <div class="inner">
+    <span class="lbl">Colorway</span>
+    <div class="toggle" id="cw">
+      <button data-cw="a" class="on">Mustard ground</button>
+      <button data-cw="b">Mustard lettering</button>
+    </div>
+    <span class="lbl" style="margin-left:8px">Names</span>
+    <input class="namefield" id="n1" value="Sofia">
+    <input class="namefield" id="n2" value="Joseph">
+    <input class="namefield" id="n3" value="August 5th, 2027" style="width:168px">
+    <input class="namefield" id="n4" value="Rhode Island" style="width:148px">
+    <span class="hint">edits apply to every layout</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<h2>The eight directions</h2>
+<p class="secnote">Ordered roughly easiest → hardest to paint by hand. The green/amber/red chip on each tells you what you're signing up for with a brush.</p>
+
+<div class="grid" id="grid">
+
+  <!-- 1 — STACKED CONDENSED -->
+  <div class="card">
+    <div class="frame"><div class="sign" data-ground>
+      <div class="k" data-fg>Welcome to the wedding of</div>
+      <div class="spacer"></div>
+      <div style="font-family:Anton,sans-serif;font-size:clamp(34px,7.4vw,62px);line-height:.86;text-transform:uppercase;letter-spacing:-.012em" data-fg>
+        <span class="N1">Sofia</span><br><span style="font-family:'Instrument Serif',serif;font-style:italic;text-transform:lowercase;font-size:.5em;letter-spacing:0">and</span><br><span class="N2">Joseph</span>
+      </div>
+      <div class="spacer"></div>
+      <div class="foot" data-fg><span class="N3">August 5th, 2027</span><br><em class="N4">Rhode Island</em></div>
+    </div></div>
+    <div class="meta"><h3>01 · Stacked Condensed</h3>
+      <p>The workhorse. One heavy condensed face, names stacked flush-left, an italic serif "and" as the only contrast. Reads from 40 feet.</p>
+      <span class="tag easy">Easiest to paint</span><span class="tag">Anton</span>
+    </div>
+  </div>
+
+  <!-- 2 — ULTRA CONDENSED BLOCK -->
+  <div class="card">
+    <div class="frame"><div class="sign" data-ground>
+      <div class="k" data-fg>Welcome to the wedding of</div>
+      <div class="spacer"></div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(46px,10.6vw,92px);line-height:.79;letter-spacing:.005em" data-fg>
+        <span class="N1">Sofia</span><br>
+        <span style="display:inline-block;border-bottom:.09em solid currentColor;padding-bottom:.02em;font-size:.62em">&amp;</span><br>
+        <span class="N2">Joseph</span>
+      </div>
+      <div class="spacer" style="flex:1.5"></div>
+      <div class="foot" data-fg><span class="N3">August 5th, 2027</span><br><span class="N4">Rhode Island</span></div>
+    </div></div>
+    <div class="meta"><h3>02 · Ultra-Condensed Block</h3>
+      <p>Tall and narrow so long names still fit. The underlined ampersand does the decorative work so nothing else has to.</p>
+      <span class="tag easy">Easiest to paint</span><span class="tag">Bebas Neue</span>
+    </div>
+  </div>
+
+  <!-- 3 — OVERLAP GEOMETRIC -->
+  <div class="card">
+    <div class="frame"><div class="sign" data-ground>
+      <div class="k" style="font-size:clamp(7px,1.15vw,10px)" data-fg>Welcome to the wedding of</div>
+      <div class="spacer" style="flex:1.4"></div>
+      <div style="font-family:'Archivo Black',sans-serif;font-size:clamp(27px,5.7vw,49px);line-height:.95;text-transform:uppercase;letter-spacing:-.028em" data-fg>
+        <div class="N1">Sofia</div>
+        <div style="margin-left:.7em;margin-top:-.16em">
+          <span style="font-family:Yellowtail,cursive;text-transform:lowercase;font-size:.66em;letter-spacing:0;opacity:.5;margin-right:.12em">and</span><span class="N2">Joseph</span>
+        </div>
+      </div>
+      <div class="spacer" style="flex:1.7"></div>
+      <div class="foot" data-fg><span class="N3">August 5th, 2027</span><br><em class="N4">Rhode Island</em></div>
+    </div></div>
+    <div class="meta"><h3>03 · Overlap Geometric</h3>
+      <p>Fat geometric caps, second name indented and tucked up under the first, with a faded script "and" nested into the gap. Very current.</p>
+      <span class="tag easy">Easiest to paint</span><span class="tag">Archivo Black</span>
+    </div>
+  </div>
+
+  <!-- 4 — DIAGONAL STAGGER / ROTATED -->
+  <div class="card">
+    <div class="frame"><div class="sign" data-ground>
+      <div style="display:flex;justify-content:space-between" class="k" data-fg><span>Welcome to</span><span>the wedding of</span></div>
+      <div style="position:relative;flex:1;margin-top:6%">
+        <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:clamp(21px,4.4vw,38px);letter-spacing:.02em" data-fg>
+          <div class="N1" style="position:absolute;top:12%;left:9%">Sofia</div>
+          <div style="position:absolute;top:40%;left:26%;font-size:.82em">and</div>
+          <div class="N2" style="position:absolute;top:35%;right:2%;writing-mode:vertical-rl">Joseph</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-end;gap:10px">
+        <svg viewBox="0 0 40 46" style="width:16%;flex:none" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" data-fg>
+          <path d="M4 4h13l-3.5 15a3 3 0 0 1-6 0L4 4Z"/><path d="M10.5 22v18M5 41h11"/>
+          <path d="M23 8h13l-3.5 15a3 3 0 0 1-6 0L23 8Z"/><path d="M29.5 26v17M24 44h11"/>
+        </svg>
+        <div class="foot" data-fg style="padding-bottom:2px"><span class="N3">August 5th, 2027</span><br><span class="N4">Rhode Island</span></div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>04 · Diagonal Stagger</h3>
+      <p>Your yellow reference, rebuilt. Monospace caps scattered on a diagonal with one name turned 90°. Playful; needs a confident grid underneath.</p>
+      <span class="tag med">Medium</span><span class="tag">Space Mono</span>
+    </div>
+  </div>
+
+  <!-- 5 — ARCH -->
+  <div class="card">
+    <div class="frame"><div class="sign" data-ground style="padding:7% 6%">
+      <div class="k" style="text-align:center" data-fg>Welcome</div>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;margin:2% 0">
+        <svg viewBox="0 0 300 340" style="width:100%" data-fg>
+          <path d="M40 330 L40 150 A110 110 0 0 1 260 150 L260 330 Z" fill="none" stroke="currentColor" stroke-width="4"/>
+          <path id="arcp" d="M62 172 A88 88 0 0 1 238 172" fill="none"/>
+          <text font-family="Oswald,sans-serif" font-weight="600" font-size="27" letter-spacing="3.4" fill="currentColor">
+            <textPath href="#arcp" startOffset="50%" text-anchor="middle" class="N1U">SOFIA</textPath>
+          </text>
+          <text x="150" y="228" text-anchor="middle" font-family="Instrument Serif,serif" font-style="italic" font-size="30" fill="currentColor">and</text>
+          <text x="150" y="278" text-anchor="middle" font-family="Oswald,sans-serif" font-weight="600" font-size="30" letter-spacing="3.4" fill="currentColor" class="N2U">JOSEPH</text>
+        </svg>
+      </div>
+      <div class="foot" style="text-align:center" data-fg><span class="N3">August 5th, 2027</span> · <span class="N4">Rhode Island</span></div>
+    </div></div>
+    <div class="meta"><h3>05 · Arch</h3>
+      <p>The 2026 signage shape. A painted arch outline with the first name curved along it. Works beautifully as a cut wood panel too, not just painted.</p>
+      <span class="tag med">Medium</span><span class="tag">Oswald</span>
+    </div>
+  </div>
+
+  <!-- 6 — GIANT AMPERSAND -->
+  <div class="card">
+    <div class="frame"><div class="sign" data-ground style="overflow:hidden">
+      <div class="k" data-fg>Welcome to the wedding of</div>
+      <div style="position:relative;flex:1;display:flex;align-items:center">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bodoni Moda',serif;font-weight:700;font-style:italic;font-size:clamp(150px,31vw,270px);line-height:.7;opacity:.19" data-fg>&amp;</div>
+        <div style="position:relative;font-family:Oswald,sans-serif;font-weight:600;font-size:clamp(22px,4.6vw,40px);line-height:1.18;text-transform:uppercase;letter-spacing:.05em;text-align:center;width:100%" data-fg>
+          <div class="N1">Sofia</div><div class="N2">Joseph</div>
+        </div>
+      </div>
+      <div class="foot" style="text-align:center" data-fg><span class="N3">August 5th, 2027</span><br><em class="N4">Rhode Island</em></div>
+    </div></div>
+    <div class="meta"><h3>06 · Ghost Ampersand</h3>
+      <p>An oversized italic ampersand bled off the panel at low opacity, names sitting on top. On wood you'd paint it as a lighter tint of the same mustard.</p>
+      <span class="tag med">Medium</span><span class="tag">Bodoni + Oswald</span>
+    </div>
+  </div>
+
+  <!-- 7 — SWISS RULE GRID -->
+  <div class="card">
+    <div class="frame"><div class="sign" data-ground>
+      <div style="border-bottom:2px solid currentColor;padding-bottom:7px;display:flex;justify-content:space-between" class="k" data-fg><span>Welcome</span><span>No. 01</span></div>
+      <div class="spacer"></div>
+      <div style="font-family:'DM Serif Display',serif;font-size:clamp(31px,6.6vw,56px);line-height:.98;letter-spacing:-.015em" data-fg>
+        <div class="N1">Sofia</div>
+        <div style="font-style:italic;font-size:.44em;margin:.16em 0 .1em">and</div>
+        <div class="N2">Joseph</div>
+      </div>
+      <div class="spacer"></div>
+      <div style="border-top:2px solid currentColor;padding-top:8px;display:flex;justify-content:space-between;gap:8px" class="foot" data-fg>
+        <span class="N3">August 5th, 2027</span><span class="N4">Rhode Island</span>
+      </div>
+    </div></div>
+    <div class="meta"><h3>07 · Ruled Editorial</h3>
+      <p>Two hairline rules top and bottom turn the panel into a page. The rules are the easiest part to paint and do most of the heavy lifting.</p>
+      <span class="tag med">Medium</span><span class="tag">DM Serif Display</span>
+    </div>
+  </div>
+
+  <!-- 8 — DIDONE STACK -->
+  <div class="card">
+    <div class="frame"><div class="sign" data-ground style="padding:9% 7%">
+      <div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(15px,2.9vw,25px);text-align:center;line-height:1.2" data-fg>Welcome to the Wedding of</div>
+      <div class="spacer"></div>
+      <div style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(28px,5.9vw,50px);line-height:1.0;text-align:center" data-fg>
+        <div class="N1">Sofia</div>
+        <div style="font-style:italic;font-size:.5em;margin:.14em 0">and</div>
+        <div class="N2">Joseph</div>
+      </div>
+      <div class="spacer" style="flex:1.3"></div>
+      <div style="text-align:center;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(11px,2.1vw,18px);line-height:1.5" data-fg>
+        <span class="N4">Rhode Island</span><br>
+        <span class="foot" style="font-style:normal"><span class="N3">August 5th, 2027</span></span>
+      </div>
+    </div></div>
+    <div class="meta"><h3>08 · High-Contrast Stack</h3>
+      <p>The dressiest of the eight. Thick-to-thin strokes are gorgeous printed but genuinely hard to keep clean with a brush — see the note below.</p>
+      <span class="tag hard">Hardest to paint</span><span class="tag">Playfair Display</span>
+    </div>
+  </div>
+
+</div>
+
+<h2>Painting it on wood</h2>
+<p class="secnote">The part that actually determines whether this looks great or homemade. Written for a hand-painted panel, not a vinyl decal.</p>
+
+<div class="notes">
+  <h4>Pick your typeface for the brush, not the screen</h4>
+  <ul>
+    <li><strong>Monoline / uniform-stroke faces are forgiving.</strong> Anton, Bebas Neue, Archivo Black, Oswald and Space Mono hold a near-constant stroke width, so a wobble of a millimetre disappears. These are directions 01–04.</li>
+    <li><strong>High-contrast serifs are unforgiving.</strong> Playfair and Bodoni swing from a fat stem to a hairline. Hairlines on wood grain skip, break up, and read as sloppy rather than delicate. If you love direction 08, paint the thick strokes with a flat brush and pull the hairlines with a <em>signwriter's liner brush</em> or a Posca PC-1MR, not the same brush.</li>
+    <li><strong>Cap-height sanity check:</strong> for a sign read at ~20 feet, letters want to be at least <code>2 in</code> tall; at 40 feet, <code>4 in</code>. Your main names should be the only thing that passes that test — everything else is intentionally small.</li>
+  </ul>
+
+  <h4>Mustard ground vs. mustard lettering</h4>
+  <table>
+    <tr><th>&nbsp;</th><th>Mustard ground, dark type</th><th>Raw wood, mustard type</th></tr>
+    <tr><td><strong>Coverage</strong></td><td>2–3 rolled coats to kill the grain, then letters. More paint, more drying time.</td><td>One clear coat, then letters. Much faster.</td></tr>
+    <tr><td><strong>Contrast</strong></td><td>Excellent. Near-black on <code>#C4A939</code> is a very high ratio — reads across a lawn.</td><td>Weak. Mustard on tan wood is low contrast and will muddy in shade or at dusk.</td></tr>
+    <tr><td><strong>Mistakes</strong></td><td>Easy — touch out with the mustard, it's opaque.</td><td>Hard — you can't touch out over bare wood without a visible patch.</td></tr>
+    <tr><td><strong>Best for</strong></td><td>Any of the eight. This is the safer bet.</td><td>Only 01–03, where the letters are fat enough to survive low contrast.</td></tr>
+  </table>
+  <ul style="margin-top:12px">
+    <li><strong>The compromise, if you want the wood to show:</strong> paint a mustard <em>panel</em> — a large rectangle or arch inset a few inches from the edges — and leave a raw wood border around it. You get the grain and the contrast. Direction 05 is built for exactly this.</li>
+  </ul>
+
+  <h4>Getting the letters onto the board</h4>
+  <ul>
+    <li><strong>Projector (best results):</strong> export your chosen layout as a PDF at the real panel size, throw it on the board from a cheap projector in a dark room, trace with a hard pencil. Straight, square, no distortion.</li>
+    <li><strong>Print-and-transfer:</strong> tile the layout across letter-size sheets, tape into position, and either rub graphite on the back of the print or run a chalk-covered transfer sheet under it.</li>
+    <li><strong>Do not freehand the baseline.</strong> Snap a chalk line or run low-tack tape for every baseline before you draw a single letter. Crooked baselines are the single most common tell.</li>
+  </ul>
+
+  <h4>Paint &amp; finish</h4>
+  <ul>
+    <li>Sand to 220, then <strong>prime</strong> — bare wood drinks paint unevenly and mustard is a weak-pigment colour that will go blotchy without it.</li>
+    <li>Acrylic craft or sign enamel over latex. Two thin coats on the lettering beats one thick one; thick coats leave a ridge that catches light and shows every wobble.</li>
+    <li>Seal with a <strong>matte or satin</strong> topcoat. Gloss on a big flat panel throws glare and every photo of it will have a hotspot in the middle.</li>
+    <li>If it's outdoors: exterior-grade sealer, and back-brace the panel. A 24×36 board left in the sun will cup.</li>
+    <li><strong>Do a test board.</strong> Same wood, same primer, one word in the real typeface at the real size. Twenty minutes now saves the whole panel later.</li>
+  </ul>
+
+  <h4>Common sizes</h4>
+  <ul>
+    <li><code>18 × 24 in</code> — small, works on an easel beside a door.</li>
+    <li><code>24 × 36 in</code> — the standard welcome-sign size and what these layouts are proportioned for (5:7 is close).</li>
+    <li><code>30 × 40 in</code> or larger — statement piece; needs a heavier easel and a second pair of hands.</li>
+  </ul>
+</div>
+
+<h2>Where the vibe is coming from</h2>
+<p class="secnote">Background reading on the trend these references sit inside, plus sources for fonts and ready-made templates if you'd rather buy than paint.</p>
+<div class="notes srcs">
+  <h4>Trend context</h4>
+  <ul>
+    <li><a href="https://thewed.com/magazine/major-wedding-stationery-signage-trends-for-2026">THE WED — 10 Major Wedding Stationery &amp; Signage Trends for 2026</a> — typography-as-hero, sculptural lettering, off-centre and vertical layouts.</li>
+    <li><a href="https://www.pureinvitation.co.uk/news/wedding-signage-trends-for-2025-26/">Pure Invitation — Wedding Signage Trends 2025–26</a> — bold colour play, arches and organic shapes, multi-panel displays.</li>
+    <li><a href="https://thewed.com/magazine/find-your-wedding-font-match">THE WED — 35 Typography Ideas for Your Stationery Suite</a> — useful for matching the sign to invites and menus.</li>
+  </ul>
+  <h4>Typefaces used above (all free on Google Fonts)</h4>
+  <ul>
+    <li><a href="https://fonts.google.com/specimen/Anton">Anton</a> · <a href="https://fonts.google.com/specimen/Bebas+Neue">Bebas Neue</a> · <a href="https://fonts.google.com/specimen/Archivo+Black">Archivo Black</a> · <a href="https://fonts.google.com/specimen/Oswald">Oswald</a> — the paintable ones.</li>
+    <li><a href="https://fonts.google.com/specimen/DM+Serif+Display">DM Serif Display</a> · <a href="https://fonts.google.com/specimen/Instrument+Serif">Instrument Serif</a> · <a href="https://fonts.google.com/specimen/Playfair+Display">Playfair Display</a> · <a href="https://fonts.google.com/specimen/Bodoni+Moda">Bodoni Moda</a> — the serifs.</li>
+    <li><a href="https://fonts.google.com/specimen/Space+Mono">Space Mono</a> · <a href="https://fonts.google.com/specimen/Yellowtail">Yellowtail</a> — the mono and the script.</li>
+  </ul>
+  <h4>Browse more / buy a template</h4>
+  <ul>
+    <li><a href="https://www.etsy.com/market/wedding_welcome_sign_template">Etsy — wedding welcome sign templates</a> (editable, then print or project)</li>
+    <li><a href="https://www.pinterest.com/ideas/painted-wood-wedding-signs/901635305660/">Pinterest — painted wood wedding signs</a></li>
+    <li><a href="https://chicceremony.com/wedding-welcome-sign-ideas/">Chic Ceremony — 25 wedding welcome sign ideas</a></li>
+    <li><a href="https://www.canva.com/posters/templates/typographic/">Canva — typographic poster templates</a> (good starting frames to retype)</li>
+  </ul>
+</div>
+
+<footer>Layouts are original and free to use. Colours sampled from your swatch (<code>#C4A939</code>) and reference images. Type names into the bar at the top to preview at size, then print this page to PDF for the projector.</footer>
+</div>
+
+<script>
+(function(){
+  // ---- colorway ----
+  var A = {ground:'g-mustard', fg:'#16130B'};                 // mustard panel, dark type
+  var B = {ground:'g-wood',    fg:'#8A6F14'};                 // raw wood, mustard type (darkened for legibility)
+  function apply(cw){
+    var c = cw === 'a' ? A : B;
+    document.querySelectorAll('[data-ground]').forEach(function(el){
+      el.classList.remove('g-mustard','g-wood','g-cream','g-lemon','g-gradmustard');
+      el.classList.add(c.ground);
+    });
+    document.querySelectorAll('[data-fg]').forEach(function(el){ el.style.color = c.fg; });
+  }
+  document.querySelectorAll('#cw button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#cw button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      apply(b.dataset.cw);
+    });
+  });
+  apply('a');
+
+  // ---- live names ----
+  function bind(inputId, cls, upperCls){
+    var inp = document.getElementById(inputId);
+    function set(){
+      document.querySelectorAll('.'+cls).forEach(function(n){ n.textContent = inp.value; });
+      if(upperCls){
+        document.querySelectorAll('.'+upperCls).forEach(function(n){ n.textContent = inp.value.toUpperCase(); });
+      }
+    }
+    inp.addEventListener('input', set); set();
+  }
+  bind('n1','N1','N1U');
+  bind('n2','N2','N2U');
+  bind('n3','N3');
+  bind('n4','N4');
+})();
+</script>

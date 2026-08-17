@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" data-fav-key="wedding-table-favorites-v1">
+<meta charset="utf-8">
+<title>Allison + Skylar — Table Numbers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Instrument+Serif:ital@0;1&family=DM+Serif+Display:ital@0;1&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Inter:ital,wght@0,100..900;1,100..900&family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts/suite.css">
+
+<style>
+:root{
+  --bone:#E7E3DA;
+  --ink:#1E1D1A;
+  --ink-soft:#4A4842;
+  --mustard:#BFA52B;
+  --page:#F2EFE8;
+  --ph-a:url("assets/photos/allison.jpg");
+  --ph-b:url("assets/photos/skylar.jpg");
+  --nmfont:var(--font-invite-serif);
+  --accfont:var(--font-invite-serif);
+  --detfont:var(--font-invite-mono);
+  --nmwt:400;
+  --nmtrk:-.006em;
+  --nmscale:1;
+  --numscale:1.22;
+  --labscale:1.28;
+  --detwt:400;
+  --dettrk:.2em;
+  --dettrk2:.12em;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1220px;margin:0 auto;padding:0 30px 100px}
+
+header{padding:66px 0 36px;border-bottom:1.5px solid var(--ink)}
+h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,7.2vw,76px);
+   line-height:1.0;letter-spacing:-.008em;margin:0 0 18px}
+.sub{font-size:16.5px;line-height:1.6;max-width:720px;color:var(--ink-soft);margin:0}
+.navlinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+.navlinks a{font:600 12px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;border-bottom:1.5px solid rgba(0,0,0,.25);padding-bottom:2px}
+.navlinks a:hover{border-color:var(--ink)}
+
+.suite{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:16px;margin-top:30px}
+.suitecard{border:1px solid rgba(0,0,0,.14);border-radius:7px;padding:15px 16px;background:#fbf9f5}
+.suitecard b{display:block;font:700 9.5px/1 'Roboto Mono',monospace;letter-spacing:.15em;
+  text-transform:uppercase;color:#8b8577;margin-bottom:9px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{width:30px;height:30px;border-radius:4px;border:1px solid rgba(0,0,0,.14)}
+.suite-thumbs{display:flex;gap:8px}
+.suite-thumbs img{height:72px;width:auto;border-radius:3px;border:1px solid rgba(0,0,0,.12)}
+
+.controls{position:sticky;top:0;z-index:30;background:rgba(242,239,232,.96);
+  backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.13);padding:10px 0 14px;margin-bottom:40px}
+.controls .inner{max-width:1220px;margin:0 auto;padding:0 30px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.barhead{justify-content:space-between}
+#panel{max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .34s cubic-bezier(.4,0,.2,1),opacity .22s,padding .34s}
+#panel.open{max-height:420px;opacity:1;padding-top:4px}
+#gear{appearance:none;display:inline-flex;align-items:center;gap:8px;
+  border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+  border-radius:999px;padding:8px 15px 8px 12px;cursor:pointer;
+  font:600 10.5px/1 'Roboto Mono',monospace;letter-spacing:.11em;text-transform:uppercase}
+#gear:hover,#gear.open{background:var(--ink);color:var(--page)}
+#gear svg{width:14px;height:14px;flex:none;transition:transform .35s}
+#gear.open svg{transform:rotate(60deg)}
+.lbl{font:700 9.5px/1 'Roboto Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#8b8577}
+.toggle{display:flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden}
+.toggle button{appearance:none;border:0;background:transparent;cursor:pointer;
+  font:500 10.5px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
+  padding:11px 15px;color:var(--ink)}
+.toggle button.on{background:var(--ink);color:var(--page)}
+#textEditRow[hidden]{display:none !important}
+#pieceText{width:min(280px,70vw)}
+input.f,select.f{font:500 12.5px/1 Inter,sans-serif;padding:10px 12px;border:1.5px solid rgba(0,0,0,.25);
+  border-radius:6px;background:#fff}
+select.f{cursor:pointer;max-width:200px}
+#summary{font:400 12.5px/1.4 Inter,sans-serif;color:#6e6858}
+#summary b{font-weight:600;color:var(--ink)}
+#summary .dot{opacity:.4;margin:0 6px}
+.swatchdot{display:inline-block;width:11px;height:11px;border-radius:50%;
+  border:1px solid rgba(0,0,0,.22);vertical-align:-1px;margin-right:5px}
+.warn{display:none;align-items:center;gap:7px;font:500 11.5px/1.4 Inter,sans-serif;
+  color:#7d2f1c;background:#F6DFD8;border:1px solid #E0B4A8;border-radius:6px;
+  padding:8px 11px}
+.warn.show{display:flex}
+.xbtn,.filebtn{appearance:none;border:1.5px solid rgba(0,0,0,.28);background:#fff;color:var(--ink);
+  border-radius:6px;padding:8px 11px;cursor:pointer;
+  font:500 10px/1 'Roboto Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.xbtn:hover,.filebtn:hover{border-color:var(--ink);background:var(--ink);color:var(--page)}
+.filebtn input{display:none}
+.check{display:flex;align-items:center;gap:7px;font:500 12px/1 Inter,sans-serif;color:var(--ink-soft)}
+.typenote{font:400 12px/1.45 Inter,sans-serif;color:#6e6858;font-style:italic}
+.typenote b{font-style:normal;font-weight:600;color:var(--ink)}
+
+h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(27px,3.7vw,41px);
+   margin:78px 0 7px;letter-spacing:-.006em;scroll-margin-top:170px}
+h2:first-of-type{margin-top:0}
+.secnote{font-size:15px;color:var(--ink-soft);max-width:760px;margin:0 0 32px;line-height:1.62}
+
+.refsrow{display:flex;gap:10px;overflow:auto;padding-bottom:8px;margin:0 0 28px}
+.refsrow img{height:132px;width:auto;border-radius:2px;box-shadow:0 8px 20px rgba(0,0,0,.12);
+  border:1px solid rgba(0,0,0,.08)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:44px 32px}
+
+.frame{
+  aspect-ratio:5/7;border-radius:2px;overflow:hidden;position:relative;display:flex;
+  box-shadow:0 1px 2px rgba(0,0,0,.10),0 16px 38px rgba(0,0,0,.14);
+  container-type:inline-size;container-name:card;background:#fff;
+}
+.sign{flex:1;position:relative;display:flex;flex-direction:column;padding:7.5% 8%;min-height:0;min-width:0}
+.spacer{flex:1}
+.meta{margin-top:15px}
+.meta h3{font:600 14.5px/1.3 Inter,sans-serif;margin:0 0 5px;letter-spacing:-.012em}
+.meta p{font-size:12.8px;line-height:1.58;color:#6e6858;margin:0}
+.tag{display:inline-block;font:600 9px/1 'Roboto Mono',monospace;letter-spacing:.11em;
+  text-transform:uppercase;padding:5px 8px;border-radius:4px;margin:9px 6px 0 0;
+  background:rgba(0,0,0,.06);color:#6e6858}
+.tag.easy{background:#D7E7CF;color:#31562a}
+.tag.star{background:var(--ink);color:var(--page)}
+.printbtn{margin-top:10px}
+
+.meta-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:5px}
+.meta-head h3{margin:0;flex:1}
+.starbtn{appearance:none;border:1.5px solid rgba(0,0,0,.22);background:#fff;color:#8b8577;
+  width:34px;height:34px;border-radius:8px;cursor:pointer;flex:none;
+  display:inline-flex;align-items:center;justify-content:center;padding:0}
+.starbtn svg{width:16px;height:16px;display:block}
+.starbtn:hover{border-color:var(--ink);color:var(--ink)}
+.starbtn.on{background:var(--ink);border-color:var(--ink);color:var(--page)}
+.starbtn .star-fill{display:none}
+.starbtn.on .star-outline{display:none}
+.starbtn.on .star-fill{display:block}
+.layout-card.is-fav .frame{outline:2px solid var(--ink);outline-offset:3px}
+
+.nm{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk)}
+.acc{font-family:var(--accfont);font-style:italic}
+.k{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(4.15cqi * var(--labscale,1));letter-spacing:var(--dettrk);line-height:1.55;text-transform:uppercase}
+.det{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(3.4cqi * var(--labscale,1));letter-spacing:var(--dettrk2);line-height:1.7;text-transform:uppercase}
+.num,.num-pad,.num-raw,.num-roman{
+  font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);
+  font-size:calc(36cqi * var(--nmscale,1) * var(--numscale,1));line-height:.78;
+}
+.num-word{font-family:var(--nmfont);font-style:italic;font-size:calc(16cqi * var(--nmscale,1) * var(--labscale,1));line-height:.9}
+.head,.head-u{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);font-size:calc(6.2cqi * var(--nmscale,1) * var(--labscale,1));line-height:1.15}
+.pair,.pair-plus{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(3.7cqi * var(--labscale,1));letter-spacing:var(--dettrk2);text-transform:uppercase}
+.sans{font-family:var(--font-std-thin),Inter,sans-serif;font-weight:400;letter-spacing:.04em;text-transform:none}
+
+.diptych{display:grid;grid-template-columns:1fr 1fr;gap:2.6%;flex:1;min-height:0}
+.diptych.flush{gap:0}
+.ph{background-position:center 24%;background-size:cover;background-repeat:no-repeat;min-height:0}
+.ph-a{background-image:var(--ph-a)}
+.ph-b{background-image:var(--ph-b)}
+.print{background:#fff;padding:1.45cqi;box-shadow:0 .55cqi 1.7cqi rgba(30,29,26,.15);
+  display:flex;--dx:0cqi;--dy:0cqi;--pscale:1;
+  transform:translate(var(--dx),var(--dy)) rotate(var(--tilt,0deg)) scale(var(--pscale,1));
+  transform-origin:center center}
+.print .ph{flex:1;width:100%;height:100%;min-height:0;min-width:0}
+.print.pola{padding:1.4cqi 1.4cqi 6.5cqi}
+.num-lg{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);
+  font-size:calc(40cqi * var(--nmscale,1) * var(--numscale,1));line-height:.74}
+.sl{display:flex;align-items:center;gap:8px}
+.sl input[type=range]{-webkit-appearance:none;appearance:none;width:110px;height:4px;border-radius:2px;
+  background:rgba(0,0,0,.2);outline:none;cursor:pointer}
+.sl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;
+  background:var(--ink);cursor:pointer;border:0}
+.sl output{font:500 11px/1 'Roboto Mono',monospace;color:#6e6858;min-width:48px;text-align:right}
+.has-pt,.has-pt .nm,.has-pt .pair-plus,.has-pt .k,.has-pt .pair,.has-pt .head,.has-pt .head-u{
+  font-size:calc(var(--pt) * 100cqi / 360) !important}
+.has-trk,.has-trk .nm,.has-trk .pair-plus,.has-trk .k,.has-trk .pair,.has-trk .head,.has-trk .head-u{
+  letter-spacing:var(--trk) !important}
+.move{--dx:0cqi;--dy:0cqi;--tilt:0deg;--pscale:1;
+  transform:translate(var(--dx),var(--dy)) rotate(var(--tilt)) scale(var(--pscale));
+  transform-origin:center center}
+body.moving .move{cursor:grab;user-select:none;touch-action:none}
+body.moving .move:active,body.moving .move.dragging{cursor:grabbing;z-index:5}
+body.moving .move.selected{z-index:6}
+body.moving .sign{user-select:none}
+body.moving .frame:has(.selected){overflow:visible}
+.selbox{position:absolute;box-sizing:border-box;pointer-events:none;z-index:12;
+  border:1.5px solid var(--ink);box-shadow:0 0 0 1px #fff}
+.selbox .h{position:absolute;width:9px;height:9px;background:#fff;border:1.5px solid var(--ink);
+  pointer-events:auto;box-sizing:border-box}
+.selbox .h.nw{top:-5px;left:-5px;cursor:nwse-resize}
+.selbox .h.ne{top:-5px;right:-5px;cursor:nesw-resize}
+.selbox .h.sw{bottom:-5px;left:-5px;cursor:nesw-resize}
+.selbox .h.se{bottom:-5px;right:-5px;cursor:nwse-resize}
+.nudgehint{font:400 12px/1.4 Inter,sans-serif;color:#8b8577}
+.rule{height:1px;background:currentColor;width:100%}
+.sign.abs{padding:0}
+.sign svg text,.sign svg textPath{font-family:var(--nmfont),'Instrument Serif',serif;fill:currentColor}
+.sign svg textPath.head-u{font-size:5.6cqi;letter-spacing:.2em}
+
+.notes{background:#fbf9f5;border:1.5px solid var(--ink);border-radius:9px;padding:34px 36px}
+.notes h4{font-family:'Playfair Display',serif;font-weight:600;font-size:19px;margin:28px 0 11px}
+.notes h4:first-child{margin-top:0}
+.notes ul{margin:0;padding-left:19px}
+.notes li{font-size:14.5px;line-height:1.74;margin-bottom:8px}
+.notes code{font:500 12.5px/1 'Roboto Mono',monospace;background:#ece7dc;padding:3px 6px;border-radius:4px}
+footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
+  font-size:12.5px;color:#8b8577;line-height:1.7}
+a{color:#7d4a1e}
+
+@media print{
+  header,.controls,.meta,.navlinks,footer,.notes,h2,.secnote,.refsrow,.suite,.warn,.printbtn,.starbtn,.selbox,#gear{
+    display:none !important}
+  body{background:#fff}
+  .wrap{max-width:none;padding:0;margin:0}
+  .grid{display:block}
+  .frame{box-shadow:none;border-radius:0;overflow:hidden !important}
+  body.print-card .grid > div{display:none !important}
+  body.print-card .grid > div:has(.print-me){display:block !important}
+  body.print-card .frame.print-me{
+    position:fixed;inset:0;width:5in;height:7in;aspect-ratio:auto;
+    box-shadow:none;border-radius:0}
+}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Allison + Skylar<br>Table Numbers — When We Were</h1>
+  <p class="sub">Same suite as the invite and the mustard welcome sign, now at <b>5 × 7 in</b>. The table number is the age — two childhood photos, one headline, the names. Upload real pictures, flip through the layouts, star the ones that belong on the tables.</p>
+  <div class="navlinks">
+    <a href="index.html">Welcome sign</a>
+    <a href="#favorites-heading">Favorites</a>
+    <a href="moodboard.html">Moodboard</a>
+  </div>
+
+  <div class="suite">
+    <div class="suitecard"><b>The suite</b>
+      <div class="suite-thumbs">
+        <img src="assets/suite/invite.png" alt="Invite">
+        <img src="assets/suite/save-the-date.png" alt="Save the date">
+      </div>
+    </div>
+    <div class="suitecard"><b>Instrument Serif</b>
+      <div style="font-family:var(--font-invite-serif);font-size:30px;line-height:1.05">When we were</div>
+    </div>
+    <div class="suitecard"><b>Roboto Mono</b>
+      <div class="det" style="font-size:10px;letter-spacing:.14em">ALLISON + SKYLAR</div>
+      <div class="det" style="font-size:10px;letter-spacing:.14em">5 × 7 IN · TABLE = AGE</div>
+    </div>
+    <div class="suitecard"><b>Stock</b>
+      <div class="chips" style="margin-top:4px">
+        <i class="chip" style="background:#E7E3DA" title="bone"></i>
+        <i class="chip" style="background:#FAF8F4" title="white"></i>
+        <i class="chip" style="background:#BFA52B" title="mustard"></i>
+        <i class="chip" style="background:#1E1D1A" title="ink"></i>
+      </div>
+      <div style="font:500 11px/1.5 'Roboto Mono',monospace;color:#6e6858;margin-top:10px">Bone matches the invite</div>
+    </div>
+  </div>
+</header>
+</div>
+
+<div class="controls">
+  <div class="inner barhead" style="padding-top:6px">
+    <span id="summary"></span>
+    <button type="button" id="gear" class="open" aria-expanded="true" aria-controls="panel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"></path>
+      </svg>
+      Type tools
+    </button>
+  </div>
+  <div class="inner" style="margin-top:10px">
+    <span class="lbl">Stock</span>
+    <div class="toggle" id="cw">
+      <button data-cw="bone" class="on">Bone</button>
+      <button data-cw="white">White</button>
+      <button data-cw="mustard">Mustard</button>
+      <button data-cw="ink">Ink</button>
+    </div>
+    <span class="lbl" style="margin-left:6px">Type</span>
+    <div class="toggle" id="tc">
+      <button data-tc="ink" class="on">Black</button>
+      <button data-tc="white">Bone</button>
+      <button data-tc="mustard">Mustard</button>
+    </div>
+    <div class="warn" id="warn"><b>Low contrast</b><span id="warntxt"></span></div>
+  </div>
+  <div class="inner" style="margin-top:11px">
+    <span class="lbl">Table</span>
+    <input class="f" id="tnum" type="number" min="1" max="20" value="4" style="width:64px">
+    <label class="check"><input type="checkbox" id="pad" checked> 04</label>
+    <span class="lbl" style="margin-left:8px">Headline</span>
+    <input class="f" id="headline" value="When we were" style="width:148px">
+    <span class="lbl">Names</span>
+    <input class="f" id="n1" value="Allison" style="width:98px">
+    <input class="f" id="n2" value="Skylar" style="width:98px">
+  </div>
+  <div class="inner" style="margin-top:11px">
+    <span class="lbl">Name face</span>
+    <select class="f" id="nf">
+      <optgroup label="Your suite">
+        <option value="instrument" selected>Instrument Serif (invite)</option>
+        <option value="helveticablack">Helvetica Neue Black (STD)</option>
+      </optgroup>
+      <option value="playfair">Playfair Display</option>
+      <option value="bodoni">Bodoni Moda</option>
+      <option value="dmserif">DM Serif Display</option>
+      <option value="ebgaramond">EB Garamond</option>
+    </select>
+    <span class="lbl">Detail face</span>
+    <select class="f" id="df">
+      <option value="robotomono" selected>Roboto Mono (invite)</option>
+      <option value="helveticathin">Helvetica Neue Thin (STD)</option>
+      <option value="serifcaps">Serif, letterspaced</option>
+      <option value="inter">Inter</option>
+    </select>
+    <span class="lbl">Photos</span>
+    <label class="filebtn">Allison <input type="file" id="photoA" accept="image/*"></label>
+    <label class="filebtn">Skylar <input type="file" id="photoB" accept="image/*"></label>
+    <button type="button" class="xbtn" id="swap">Swap</button>
+    <span class="typenote" id="typenote"></span>
+  </div>
+  <div id="panel" class="open">
+  <div class="inner" style="margin-top:11px">
+    <span class="lbl">Number</span>
+    <div class="sl"><input type="range" id="sNum" min="0.7" max="1.85" step="0.02" value="1.22"><output id="oNum">1.22×</output></div>
+    <span class="lbl">Labels</span>
+    <div class="sl"><input type="range" id="sLab" min="0.7" max="1.85" step="0.02" value="1.28"><output id="oLab">1.28×</output></div>
+    <span class="lbl">Size</span>
+    <div class="sl"><input type="range" id="sPiece" min="0" max="26" step="1" value="8" disabled><output id="oPiece">—</output></div>
+    <label class="check"><input type="checkbox" id="moveOn" checked> Move pieces</label>
+    <button type="button" class="xbtn" id="undoBtn" title="⌘Z">Undo</button>
+    <button type="button" class="xbtn" id="redoBtn" title="⌘⇧Z">Redo</button>
+    <button type="button" class="xbtn" id="resetMove">Reset places</button>
+    <span class="nudgehint">Click a piece for a box. Double-click type to edit it. Tracking is in em. ⌘Z undoes.</span>
+  </div>
+  <div class="inner" id="textEditRow" hidden style="margin-top:11px">
+    <span class="lbl">Copy</span>
+    <input class="f" id="pieceText" type="text" placeholder="Select a line of type" disabled>
+    <span class="lbl">Case</span>
+    <div class="toggle" id="caseToggle">
+      <button type="button" data-case="as">As typed</button>
+      <button type="button" data-case="upper">All caps</button>
+      <button type="button" data-case="title">Title</button>
+      <button type="button" data-case="sentence">Sentence</button>
+      <button type="button" data-case="lower">Lower</button>
+    </div>
+    <span class="lbl">Tracking</span>
+    <div class="sl"><input type="range" id="sTrk" min="-0.10" max="0.40" step="0.005" value="0" disabled><output id="oTrk">—</output></div>
+  </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="favorites-section">
+  <h2 id="favorites-heading">Favorites</h2>
+  <p class="secnote" id="favorites-empty">Star a layout and it moves here. This is the shortlist to print from.</p>
+  <div class="grid" id="favorites-grid" style="display:none"></div>
+</section>
+
+<h2>The ones with something</h2>
+<p class="secnote">You were right about the last set — too much type on the pictures, numbers you couldn’t read from a chair, faces cropped into mush. These two already worked. The rest of the page is only variations of them: <b>big numeral on the stock</b>, <b>faces in the clear</b>, <b>nothing written on a photograph</b>.</p>
+<div class="refsrow">
+  <img src="assets/refs/centered-stack.png" alt="Centered stack sketch">
+  <img src="assets/refs/arched-header.png" alt="Arched header sketch">
+  <img src="assets/refs/split-masthead.png" alt="Split masthead sketch">
+  <img src="assets/refs/mixed-type.png" alt="Mixed type sketch">
+  <img src="assets/refs/table-mark.png" alt="Table mark sketch">
+  <img src="assets/refs/formal-caps.png" alt="Formal caps sketch">
+</div>
+
+<div class="grid" id="shortlist-grid" data-home-grid="sketches">
+
+  <div>
+    <div class="frame"><div class="sign abs" data-g>
+      <div class="k" data-fg style="position:absolute;top:6.5%;left:7%">When we were</div>
+      <div class="num-lg num" data-fg style="position:absolute;top:4.5%;right:6%">04</div>
+      <div class="print" style="position:absolute;top:22%;left:8%;width:52%;height:42%;--tilt:-6.5deg">
+        <div class="ph ph-a"></div>
+      </div>
+      <div class="print" style="position:absolute;top:38%;right:7%;width:50%;height:40%;--tilt:4.5deg">
+        <div class="ph ph-b"></div>
+      </div>
+      <div class="pair" data-fg data-upper="1" style="position:absolute;left:7%;bottom:6%">Allison &amp; Skylar</div>
+    </div></div>
+    <div class="meta"><h3>A1 · Crooked Prints</h3>
+      <p>The one you flagged. Two prints dropped on the card, type in the margins, 04 large enough to read standing up. Faces stay in the open.</p>
+      <span class="tag star">You picked this</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g style="flex-direction:row;padding:7% 6.5%;gap:5%">
+      <div style="flex:none;display:flex;align-items:stretch;gap:8px">
+        <div class="k" data-fg style="writing-mode:vertical-rl;--tilt:180deg">When we were</div>
+        <div style="width:1.5px;background:currentColor" data-fg></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;min-width:0;gap:3.5%">
+        <div class="num-lg num" data-fg>04</div>
+        <div class="ph ph-a" style="flex:1.15"></div>
+        <div class="ph ph-b" style="flex:1.15"></div>
+        <div class="pair" data-fg data-upper="1">Allison &amp; Skylar</div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>A2 · Spine Rule</h3>
+      <p>The other one. A single hairline, a big age, two full-width pictures. Nothing on the photos. The number is the first thing you see.</p>
+      <span class="tag star">You picked this</span></div>
+  </div>
+
+</div>
+
+<h2>Same family</h2>
+<p class="secnote">Not new ideas — just the two above, turned a few degrees. If one of these is quieter or louder in a way you like, star it. If it starts getting clever, ignore it.</p>
+
+<div class="grid" id="suite-grid" data-home-grid="suite">
+
+  <div>
+    <div class="frame"><div class="sign abs" data-g>
+      <div class="k" data-fg style="position:absolute;top:6.5%;left:7%">When we were</div>
+      <div class="num-lg num" data-fg style="position:absolute;top:4.5%;right:6%">04</div>
+      <div class="print" style="position:absolute;top:24%;left:9%;width:48%;height:50%;--tilt:-3deg">
+        <div class="ph ph-a"></div>
+      </div>
+      <div class="print" style="position:absolute;top:28%;right:8%;width:48%;height:50%;--tilt:2.5deg">
+        <div class="ph ph-b"></div>
+      </div>
+      <div class="pair" data-fg data-upper="1" style="position:absolute;left:7%;bottom:6%">Allison &amp; Skylar</div>
+    </div></div>
+    <div class="meta"><h3>B1 · Side-by-side Prints</h3>
+      <p>Crooked Prints, calmed down. Two prints next to each other, barely tilted, so both faces read at once.</p>
+      <span class="tag">From A1</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign abs" data-g>
+      <div class="num-lg num" data-fg style="position:absolute;top:5%;left:7%;right:7%;text-align:center">04</div>
+      <div class="k" data-fg style="position:absolute;top:22%;left:0;right:0;text-align:center">When we were</div>
+      <div class="print" style="position:absolute;top:32%;left:10%;width:46%;height:50%;--tilt:-5deg">
+        <div class="ph ph-a"></div>
+      </div>
+      <div class="print" style="position:absolute;top:36%;right:9%;width:46%;height:50%;--tilt:4deg">
+        <div class="ph ph-b"></div>
+      </div>
+      <div class="pair" data-fg data-upper="1" style="position:absolute;left:0;right:0;bottom:6%;text-align:center">Allison &amp; Skylar</div>
+    </div></div>
+    <div class="meta"><h3>B2 · Centered Prints</h3>
+      <p>04 dead-center on top, prints below. The Etsy “When We Were” card, except the pictures are objects, not a flush grid.</p>
+      <span class="tag">From A1</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g style="padding:7% 8%">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:5%">
+        <div class="k" data-fg style="padding-bottom:8%">When we were</div>
+        <div class="num-lg num-raw" data-fg>4</div>
+      </div>
+      <div style="flex:1;display:flex;gap:4%;min-height:0">
+        <div class="print" style="flex:1;display:flex"><div class="ph ph-a"></div></div>
+        <div class="print" style="flex:1;display:flex"><div class="ph ph-b"></div></div>
+      </div>
+      <div class="pair" data-fg data-upper="1" style="margin-top:5%">Allison &amp; Skylar</div>
+    </div></div>
+    <div class="meta"><h3>B3 · Split Masthead</h3>
+      <p>Your original sketch, with print mats and a number that actually carries. Headline left, age right, faces in two clear windows.</p>
+      <span class="tag">Your sketch</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g style="padding:7% 8%;align-items:center">
+      <div class="k" data-fg>When we were</div>
+      <div class="num-lg num" data-fg style="margin:2% 0 5%">04</div>
+      <div style="display:flex;gap:4%;width:100%;flex:1;min-height:0">
+        <div class="print" style="flex:1;display:flex"><div class="ph ph-a"></div></div>
+        <div class="print" style="flex:1;display:flex"><div class="ph ph-b"></div></div>
+      </div>
+      <div class="pair" data-fg data-upper="1" style="margin-top:5%">Allison &amp; Skylar</div>
+    </div></div>
+    <div class="meta"><h3>B4 · Stacked Classic</h3>
+      <p>The honest commercial layout: headline, huge age, two pictures, names. No tilt. If A1 is too cute, this is the one that just works.</p>
+      <span class="tag">Etsy default</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g style="flex-direction:row;padding:7% 6.5%;gap:5%">
+      <div style="flex:1.15;display:flex;flex-direction:column;gap:4%;min-width:0">
+        <div class="print" style="flex:1;display:flex"><div class="ph ph-a"></div></div>
+        <div class="print" style="flex:1;display:flex"><div class="ph ph-b"></div></div>
+      </div>
+      <div style="flex:none;width:34%;display:flex;flex-direction:column;justify-content:space-between">
+        <div class="k" data-fg>When we were</div>
+        <div class="num-lg num-raw" data-fg style="font-size:calc(32cqi * var(--nmscale,1) * var(--numscale,1))">4</div>
+        <div class="pair" data-fg data-upper="1" style="writing-mode:vertical-rl;--tilt:180deg;align-self:flex-end">Allison &amp; Skylar</div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B5 · Photos Left</h3>
+      <p>Spine Rule flipped: pictures take the wide column so the faces get bigger. Number still large, still on the stock.</p>
+      <span class="tag">From A2</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g style="padding:7% 8%">
+      <div class="num-lg num" data-fg style="text-align:center">04</div>
+      <div class="rule" data-fg style="margin:4% 0 5%"></div>
+      <div class="ph ph-a" style="flex:1;margin-bottom:3%"></div>
+      <div class="ph ph-b" style="flex:1"></div>
+      <div style="display:flex;justify-content:space-between;margin-top:5%">
+        <span class="k" data-fg>When we were</span>
+        <span class="pair" data-fg data-upper="1">Allison &amp; Skylar</span>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B6 · Number, Then Pictures</h3>
+      <p>04 as a header, a rule, then two full-width frames. Faces as large as a 5×7 will allow. Type only in the footer.</p>
+      <span class="tag">From A2</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g style="padding:7% 8%">
+      <div class="k" data-fg style="text-align:center">Table</div>
+      <div class="num-lg num-raw" data-fg style="text-align:center;margin:1% 0 5%">4</div>
+      <div style="display:flex;gap:3.5%;flex:1;min-height:0">
+        <div class="print" style="flex:1;display:flex"><div class="ph ph-a"></div></div>
+        <div class="print" style="flex:1;display:flex"><div class="ph ph-b"></div></div>
+      </div>
+      <div class="pair" data-fg data-upper="1" style="text-align:center;margin-top:5%">Allison &amp; Skylar</div>
+    </div></div>
+    <div class="meta"><h3>B7 · Table Mark</h3>
+      <p>Drops “when we were” and just says table. The pictures still do the conceit. The 4 is the largest number on the page.</p>
+      <span class="tag">Your sketch</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g style="flex-direction:row;padding:6.5% 6%;gap:5%">
+      <div class="move" data-fg style="writing-mode:vertical-rl;--tilt:180deg;flex:none;align-self:stretch">
+        <span class="nm pair-plus" style="font-size:calc(5.8cqi * var(--nmscale,1) * var(--labscale,1));text-transform:none;letter-spacing:var(--nmtrk)">Allison + Skylar</span>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+        <div class="num-lg num" data-fg style="text-align:right">04</div>
+        <div style="flex:1.2"></div>
+        <div style="display:flex;gap:4%;height:38%">
+          <div class="print" style="flex:1;display:flex"><div class="ph ph-a"></div></div>
+          <div class="print" style="flex:1;display:flex"><div class="ph ph-b"></div></div>
+        </div>
+        <div class="k" data-fg style="text-align:right;margin-top:5%">When we were</div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B8 · Invite Field</h3>
+      <p>The invite’s empty field, with the pictures as two small prints at the bottom — not a poster. Number stays huge and high, off the photos.</p>
+      <span class="tag">Invite</span></div>
+  </div>
+
+</div>
+
+<h2>A little further</h2>
+<p class="secnote">Still no type on a face. These just change the print object — polaroid mat, a right-hand spine, a single stacked pair.</p>
+
+<div class="grid" id="rest-grid" data-home-grid="rest">
+
+  <div>
+    <div class="frame"><div class="sign abs" data-g>
+      <div class="k" data-fg style="position:absolute;top:6.5%;left:7%">When we were</div>
+      <div class="num-lg num" data-fg style="position:absolute;top:4.5%;right:6%">04</div>
+      <div class="print pola" style="position:absolute;top:23%;left:8%;width:50%;height:52%;--tilt:-5deg">
+        <div class="ph ph-a"></div>
+      </div>
+      <div class="print pola" style="position:absolute;top:30%;right:7%;width:50%;height:52%;--tilt:3.5deg">
+        <div class="ph ph-b"></div>
+      </div>
+      <div class="pair" data-fg data-upper="1" style="position:absolute;left:7%;bottom:6%">Allison &amp; Skylar</div>
+    </div></div>
+    <div class="meta"><h3>C1 · Polaroids</h3>
+      <p>A1 with a thicker bottom mat, so they read as prints sitting on the table. Same large 04.</p>
+      <span class="tag">From A1</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g style="flex-direction:row;padding:7% 6.5%;gap:5%">
+      <div style="flex:1;display:flex;flex-direction:column;min-width:0;gap:3.5%">
+        <div class="num-lg num" data-fg>04</div>
+        <div class="ph ph-a" style="flex:1.15"></div>
+        <div class="ph ph-b" style="flex:1.15"></div>
+        <div class="pair" data-fg data-upper="1">Allison &amp; Skylar</div>
+      </div>
+      <div style="flex:none;display:flex;align-items:stretch;gap:8px">
+        <div style="width:1.5px;background:currentColor" data-fg></div>
+        <div class="k" data-fg style="writing-mode:vertical-rl">When we were</div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>C2 · Spine, Other Side</h3>
+      <p>A2 with the rule on the right. Only try this if the left-hand spine felt backwards.</p>
+      <span class="tag">From A2</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign abs" data-g>
+      <div class="print" style="position:absolute;top:24%;left:14%;width:58%;height:54%;--tilt:-4deg;z-index:1">
+        <div class="ph ph-a"></div>
+      </div>
+      <div class="print" style="position:absolute;top:30%;left:28%;width:58%;height:54%;--tilt:3deg">
+        <div class="ph ph-b"></div>
+      </div>
+      <div class="k" data-fg style="position:absolute;top:6.5%;left:7%">When we were</div>
+      <div class="num-lg num" data-fg style="position:absolute;top:4%;right:6%">04</div>
+      <div class="pair" data-fg data-upper="1" style="position:absolute;left:7%;bottom:6%">Allison &amp; Skylar</div>
+    </div></div>
+    <div class="meta"><h3>C3 · Stacked Prints</h3>
+      <p>Two prints in a pile, not a grid. The top face is fully visible; the one underneath peeks. Number stays in the corner, large.</p>
+      <span class="tag">From A1</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g style="padding:0">
+      <div style="padding:7% 8% 5%;text-align:center">
+        <div class="k" data-fg>When we were</div>
+        <div class="num-lg num" data-fg style="margin-top:2%">04</div>
+      </div>
+      <div class="ph ph-a" style="flex:1"></div>
+      <div class="ph ph-b" style="flex:1"></div>
+      <div class="pair" data-fg data-upper="1" style="text-align:center;padding:4% 8% 6%">Allison &amp; Skylar</div>
+    </div></div>
+    <div class="meta"><h3>C4 · Full-width Faces</h3>
+      <p>No mats, no tilt. Each of you gets the full width of the card. Biggest faces in the set. Type only above and below.</p>
+      <span class="tag">From A2</span></div>
+  </div>
+
+</div>
+
+<h2>Printing them</h2>
+<p class="secnote">These are paper, not paint — the welcome-sign constraints don’t apply. The constraint is matching the stationery that’s already in people’s houses.</p>
+<div class="notes">
+  <h4>Stock</h4>
+  <ul>
+    <li><strong>Bone / cream cardstock</strong> is the honest match to the invite. If you can get close to <code>#E7E3DA</code>, use it. White will look like a different suite sitting on the table.</li>
+    <li><strong>5 × 7 in, portrait.</strong> Each card’s Print 5×7 button sends one layout to the printer at actual size. In the print dialog: paper size 5×7 (or A5 cropped), no margins, scale 100%.</li>
+    <li>Print a single test on the real stock before the set. Photos shift warmer on cream; black type does not.</li>
+  </ul>
+  <h4>Photos</h4>
+  <ul>
+    <li>Upload a pair per age. The sample pictures are from the sketches so you can judge layout — replace them before you print.</li>
+    <li>Crop generously. Every layout uses <code>cover</code>, so faces near the edge will get clipped. Give the eyes some air.</li>
+    <li>Scan at 300&nbsp;dpi or better. A 5×7 photo slot is roughly 2.2 × 3.2 in; that’s only ~660 × 960 px at print, but start from the full scan.</li>
+  </ul>
+  <h4>What ties this to the rest of the wedding</h4>
+  <ul>
+    <li><strong>The number sits on the stock, never on a photograph.</strong> Guests find the table from the numeral. They look at the pictures second.</li>
+    <li><strong>Faces stay in the clear.</strong> Crops are pulled toward the upper third of each scan. If a face is getting clipped, swap the photo — don’t put type on it to “fix” it.</li>
+    <li>A1 and A2 are the ones you already liked. Everything else is a quieter or louder version of those two.</li>
+  </ul>
+  <h4>Fonts (same suite as the welcome sign)</h4>
+  <ul>
+    <li><strong>Instrument Serif</strong> for the display lines — “When we were,” the age numeral, guest names if you add place cards. It’s the invite face; don’t swap to Bodoni / Didot just because the screen looks fancy — those hairlines fall apart at print size the same way they would on the mustard board.</li>
+    <li><strong>Roboto Mono</strong> for the small caps / pair line (<code>ALLISON + SKYLAR</code>), tracked wide (<code>~0.12–0.2em</code>). That wide mono is half of why the suite feels intentional.</li>
+    <li>If you lock the welcome to <strong>S2 · Display Stack</strong> (mustard + Instrument stack + italic <code>&amp;</code>), keep the cards on <strong>bone</strong> stock, not mustard — the painted A-frame can shout colour; the table cards should whisper the same type on paper.</li>
+    <li>Escape hatch if Instrument’s hairlines look thin on a test print: <b>DM Serif Display</b> (same silhouette, thicker strokes). Keep Roboto Mono for details either way.</li>
+  </ul>
+</div>
+
+<footer>
+  5 × 7 in · table number = age · Instrument Serif + Roboto Mono from the invite.<br>
+  Sample photos are from the sketches — upload yours before printing.
+</footer>
+</div>
+
+<script src="js/tables.js"></script>
+<script src="js/favorites.js"></script>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1200" width="2400" height="1200" role="img" aria-label="Name letterforms template">
+  <!--
+    Editable lettering SVG for vinyl / stencil shops.
+    Open in Illustrator or Inkscape � Type � Create Outlines (or Path � Object to Path)
+    before cutting. Swap the font-family to match your Name face dropdown.
+  -->
+  <style>
+    .nm {
+      font-family: 'Instrument Serif', 'Times New Roman', serif;
+      font-weight: 400;
+      font-size: 280px;
+      letter-spacing: -0.006em;
+      fill: #1E1D1A;
+    }
+    .det {
+      font-family: 'Roboto Mono', 'Courier New', monospace;
+      font-weight: 400;
+      font-size: 42px;
+      letter-spacing: 0.2em;
+      fill: #1E1D1A;
+    }
+    .k {
+      font-family: 'Roboto Mono', 'Courier New', monospace;
+      font-weight: 400;
+      font-size: 36px;
+      letter-spacing: 0.2em;
+      fill: #1E1D1A;
+    }
+  </style>
+  <rect width="2400" height="1200" fill="#E2D3B4"/>
+  <text class="k" x="120" y="120">WELCOME TO THE WEDDING OF</text>
+  <text class="nm" x="120" y="480">Allison</text>
+  <text class="nm" x="120" y="780">+ Skylar</text>
+  <text class="det" x="120" y="1040">SEPTEMBER 12, 2026 � RUTH BANCROFT GARDEN</text>
+</svg>

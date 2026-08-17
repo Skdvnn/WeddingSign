@@ -1,0 +1,1587 @@
+<meta charset="utf-8">
+<title>Allison + Skylar — Welcome Sign Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Instrument+Serif:ital@0;1&family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&family=Inter:ital,wght@0,100..900;1,100..900&family=Archivo:ital,wght@0,100..900;1,100..900&family=Anton&family=Archivo+Black&family=Syne:wght@400..800&family=Bebas+Neue&family=Oswald:wght@200..700&family=Space+Grotesk:wght@300..700&family=Jost:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts/suite.css">
+
+<style>
+:root{
+  /* sampled from the invite + save the date */
+  --bone:#E7E3DA;
+  --bone-dk:#DCD7CC;
+  --ink:#1E1D1A;
+  --ink-soft:#4A4842;
+  --sky:#A9C6DC;
+  --denim:#3F587A;
+  --denim-dk:#2C3E58;
+  --oat:#EFEAE0;
+  --mustard:#C4A939;
+  --mustard-dk:#9C8321;
+  --page:#F2EFE8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1220px;margin:0 auto;padding:0 30px 100px}
+
+/* ============ birch plywood ============ */
+/* pale, smooth, low-contrast vertical figure — sanded ply, not rustic barnwood */
+.g-birch{
+  background-color:#E2D3B4;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='420'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62 0.004' numOctaves='4' seed='23'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.07'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='840'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.009 0.0008' numOctaves='2' seed='5'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.09'/%3E%3C/svg%3E"),
+    linear-gradient(101deg,#E7D9BD 0%,#DFCFAE 40%,#E5D6B8 62%,#DCCBA8 100%);
+  background-size:300px 420px, 600px 840px, 100% 100%;
+  background-blend-mode:multiply, multiply, normal;
+}
+.g-bone{background:linear-gradient(180deg,#EAE6DE,#E4E0D6)}
+.g-mustard{background:linear-gradient(179deg,#CBB147,#C4A939 55%,#B79C2C)}
+.g-flat{}
+.g-blush{background:linear-gradient(178deg,#F5EAE3,#F0E2D9 55%,#EADBD1)}
+.g-ink{background:linear-gradient(179deg,#26251F,#1E1D1A 55%,#171612)}
+.g-denim{background:linear-gradient(179deg,#48628A,#3F587A 55%,#334969)}
+/* stained birch — same grain, darker tone */
+.g-stain{
+  background-color:#8A6A43;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='420'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62 0.004' numOctaves='4' seed='23'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.16'/%3E%3C/svg%3E"),
+    linear-gradient(101deg,#95744B 0%,#82633C 40%,#8E6E45 66%,#7C5D38 100%);
+  background-size:300px 420px, 100% 100%;
+}
+
+/* contrast warning badge */
+.warn{display:none;align-items:center;gap:7px;font:500 11.5px/1.4 Inter,sans-serif;
+  color:#7d2f1c;background:#F6DFD8;border:1px solid #E0B4A8;border-radius:6px;
+  padding:8px 11px;margin-left:4px}
+.warn.show{display:flex}
+.warn b{font-weight:700}
+
+/* ============ masthead ============ */
+header{padding:66px 0 36px;border-bottom:1.5px solid var(--ink)}
+h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,7.2vw,76px);
+   line-height:1.0;letter-spacing:-.008em;margin:0 0 18px}
+.sub{font-size:16.5px;line-height:1.6;max-width:660px;color:var(--ink-soft);margin:0}
+.mono{font-family:'Roboto Mono',monospace}
+
+/* suite strip */
+.suite{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:16px;margin-top:30px}
+.suitecard{border:1px solid rgba(0,0,0,.14);border-radius:7px;padding:15px 16px;background:#fbf9f5}
+.suitecard b{display:block;font:700 9.5px/1 'Roboto Mono',monospace;letter-spacing:.15em;
+  text-transform:uppercase;color:#8b8577;margin-bottom:9px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{width:30px;height:30px;border-radius:4px;border:1px solid rgba(0,0,0,.14)}
+
+/* ============ controls ============ */
+.controls{position:sticky;top:0;z-index:30;background:rgba(242,239,232,.96);
+  backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.13);padding:10px 0;margin-bottom:40px}
+.controls .inner{max-width:1220px;margin:0 auto;padding:0 30px;display:flex;gap:13px;align-items:center;flex-wrap:wrap}
+
+/* collapsible panel */
+#panel{max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .34s cubic-bezier(.4,0,.2,1),opacity .22s,padding .34s}
+#panel.open{max-height:640px;opacity:1;padding-top:12px}
+.barhead{cursor:default;justify-content:space-between}
+#gear{appearance:none;display:inline-flex;align-items:center;gap:8px;
+  border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+  border-radius:999px;padding:8px 15px 8px 12px;cursor:pointer;
+  font:600 10.5px/1 'Roboto Mono',monospace;letter-spacing:.11em;text-transform:uppercase}
+#gear:hover{background:var(--ink);color:var(--page)}
+#gear.open{background:var(--ink);color:var(--page)}
+#gear svg{width:14px;height:14px;flex:none;transition:transform .35s}
+#gear.open svg{transform:rotate(60deg)}
+#summary{font:400 12.5px/1.4 Inter,sans-serif;color:#6e6858}
+#summary b{font-weight:600;color:var(--ink)}
+#summary .dot{opacity:.4;margin:0 6px}
+.swatchdot{display:inline-block;width:11px;height:11px;border-radius:50%;
+  border:1px solid rgba(0,0,0,.22);vertical-align:-1px;margin-right:5px}
+.lbl{font:700 9.5px/1 'Roboto Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#8b8577}
+.toggle{display:flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden}
+.toggle button{appearance:none;border:0;background:transparent;cursor:pointer;
+  font:500 10.5px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
+  padding:11px 15px;color:var(--ink)}
+.toggle button.on{background:var(--ink);color:var(--page)}
+.toggle.dis{opacity:.32;pointer-events:none}
+input.f{font:500 12.5px/1 Inter,sans-serif;padding:10px 12px;border:1.5px solid rgba(0,0,0,.25);
+  border-radius:6px;background:#fff}
+
+/* ============ sections ============ */
+h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(27px,3.7vw,41px);
+   margin:78px 0 7px;letter-spacing:-.006em}
+h2:first-of-type{margin-top:0}
+.secnote{font-size:15px;color:var(--ink-soft);max-width:720px;margin:0 0 32px;line-height:1.62}
+
+/* ============ sign grid ============ */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:44px 32px}
+.frame{aspect-ratio:2/3;border-radius:2px;overflow:hidden;position:relative;display:flex;
+  box-shadow:0 1px 2px rgba(0,0,0,.10),0 16px 38px rgba(0,0,0,.14)}
+.frame::after{content:'';position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 60px rgba(90,70,35,.055)}
+.sign{flex:1;position:relative;display:flex;flex-direction:column;padding:8% 7.5%}
+.spacer{flex:1}
+.meta{margin-top:15px}
+.meta h3{font:600 14.5px/1.3 Inter,sans-serif;margin:0 0 5px;letter-spacing:-.012em}
+.meta p{font-size:12.8px;line-height:1.58;color:#6e6858;margin:0}
+.tag{display:inline-block;font:600 9px/1 'Roboto Mono',monospace;letter-spacing:.11em;
+  text-transform:uppercase;padding:5px 8px;border-radius:4px;margin:9px 6px 0 0;
+  background:rgba(0,0,0,.06);color:#6e6858}
+.tag.easy{background:#D7E7CF;color:#31562a}
+.tag.med{background:#F2E4C3;color:#6b5111}
+.tag.hard{background:#F1D5CD;color:#7a2e1b}
+.tag.star{background:var(--ink);color:var(--page)}
+
+/* type helpers — driven by the toggles */
+.k{font-family:var(--detfont,'Roboto Mono',monospace);font-weight:var(--detwt,400);
+   font-size:clamp(7px,1.22vw,10.5px);letter-spacing:var(--dettrk,.2em);line-height:1.7}
+.det{font-family:var(--detfont,'Roboto Mono',monospace);font-weight:var(--detwt,400);
+   font-size:clamp(7px,1.18vw,10px);letter-spacing:var(--dettrk2,.13em);line-height:1.95}
+.nm{font-family:var(--nmfont,'Instrument Serif',serif);
+    font-weight:var(--nmwt,400);letter-spacing:var(--nmtrk,-.006em)}
+/* accents follow the name face unless it's a sans */
+.acc{font-family:var(--accfont,'Instrument Serif',serif);font-style:italic}
+/* true justification — letters pushed to both margins */
+.jrow{display:flex;justify-content:space-between;width:100%;letter-spacing:0!important}
+
+select.f{font:500 12.5px/1 Inter,sans-serif;padding:9px 10px;border:1.5px solid rgba(0,0,0,.25);
+  border-radius:6px;background:#fff;cursor:pointer;max-width:186px}
+.typenote{font:400 12px/1.45 Inter,sans-serif;color:#6e6858;max-width:330px;font-style:italic}
+.typenote b{font-style:normal;font-weight:600;color:var(--ink)}
+
+/* sliders */
+.sl{display:flex;align-items:center;gap:9px}
+.sl input[type=range]{
+  -webkit-appearance:none;appearance:none;width:118px;height:4px;border-radius:2px;
+  background:rgba(0,0,0,.2);outline:none;cursor:pointer}
+.sl input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:15px;height:15px;border-radius:50%;
+  background:var(--ink);cursor:pointer;border:0}
+.sl input[type=range]::-moz-range-thumb{
+  width:15px;height:15px;border-radius:50%;background:var(--ink);cursor:pointer;border:0}
+.sl input[type=range]:disabled{opacity:.3;cursor:not-allowed}
+.sl output{font:500 11px/1 'Roboto Mono',monospace;color:#6e6858;min-width:38px;text-align:right}
+.reset{appearance:none;border:1.5px solid rgba(0,0,0,.25);background:#fff;border-radius:6px;
+  font:500 11px/1 'Roboto Mono',monospace;letter-spacing:.05em;text-transform:uppercase;
+  padding:9px 11px;cursor:pointer;color:var(--ink)}
+.reset:hover{border-color:var(--ink)}
+.fixedw{font:400 11px/1.4 Inter,sans-serif;color:#a08c4a;font-style:italic}
+.chiprow{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.mchip{width:27px;height:27px;border-radius:5px;border:1px solid rgba(0,0,0,.22);
+  padding:0;cursor:pointer;transition:transform .12s;position:relative}
+.mchip:hover{transform:scale(1.16);border-color:var(--ink)}
+.mchip.mine{border:2px solid var(--ink)}
+
+/* ============ notes ============ */
+.notes{background:#fbf9f5;border:1.5px solid var(--ink);border-radius:9px;padding:34px 36px}
+.notes h4{font-family:'Playfair Display',serif;font-weight:600;font-size:19px;margin:28px 0 11px}
+.notes h4:first-child{margin-top:0}
+.notes ul{margin:0;padding-left:19px}
+.notes li{font-size:14.5px;line-height:1.74;margin-bottom:8px}
+.notes code{font:500 12.5px/1 'Roboto Mono',monospace;background:#ece7dc;padding:3px 6px;border-radius:4px}
+table{border-collapse:collapse;width:100%;margin-top:6px}
+th,td{text-align:left;padding:10px 14px 10px 0;border-bottom:1px solid rgba(0,0,0,.1);
+  font-size:14px;vertical-align:top;line-height:1.55}
+th{font:600 9.5px/1.4 'Roboto Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#8b8577}
+a{color:#7d4a1e}
+footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
+  font-size:12.5px;color:#8b8577;line-height:1.7}
+
+/* ============ SVG export ============ */
+.export-bar{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;align-items:center}
+.xbtn{appearance:none;border:1.5px solid rgba(0,0,0,.28);background:#fff;color:var(--ink);
+  border-radius:6px;padding:7px 10px;cursor:pointer;
+  font:500 10px/1 'Roboto Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.xbtn:hover{border-color:var(--ink);background:var(--ink);color:var(--page)}
+.xbtn.primary{border-color:var(--ink);background:var(--ink);color:var(--page);padding:9px 12px}
+.xbtn.primary:hover{opacity:.88}
+.assets{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px;margin:8px 0 20px}
+.asset-card{border:1.5px solid rgba(0,0,0,.14);border-radius:9px;padding:18px 16px 14px;background:#fbf9f5}
+.asset-card .preview{height:120px;display:flex;align-items:center;justify-content:center;
+  color:var(--ink);margin-bottom:12px;border-radius:6px;background:var(--bone)}
+.asset-card .preview svg{max-width:78%;max-height:92px;display:block}
+.asset-card h3{font:600 14px/1.3 Inter,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
+.asset-card p{font-size:12.5px;line-height:1.5;color:#6e6858;margin:0 0 12px}
+.asset-actions{display:flex;gap:6px;flex-wrap:wrap}
+#svg-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(12px);
+  background:var(--ink);color:var(--page);padding:11px 16px;border-radius:8px;
+  font:500 13px/1.3 Inter,sans-serif;opacity:0;pointer-events:none;z-index:100;
+  transition:opacity .2s,transform .2s;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+#svg-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.navlinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+.navlinks a{font:600 12px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;border-bottom:1.5px solid rgba(0,0,0,.25);padding-bottom:2px}
+.navlinks a:hover{border-color:var(--ink)}
+#export-global{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-left:auto}
+
+/* ============ favorites / star ============ */
+.meta-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:5px}
+.meta-head h3{margin:0;flex:1}
+.starbtn{appearance:none;border:1.5px solid rgba(0,0,0,.22);background:#fff;color:#8b8577;
+  width:34px;height:34px;border-radius:8px;cursor:pointer;flex:none;
+  display:inline-flex;align-items:center;justify-content:center;padding:0;
+  transition:background .15s,color .15s,border-color .15s,transform .12s}
+.starbtn svg{width:16px;height:16px;display:block}
+.starbtn:hover{border-color:var(--ink);color:var(--ink);transform:scale(1.06)}
+.starbtn.on{background:var(--ink);border-color:var(--ink);color:var(--page)}
+.starbtn .star-fill{display:none}
+.starbtn.on .star-outline{display:none}
+.starbtn.on .star-fill{display:block}
+#favorites-section{display:block}
+#favorites-section h2{color:var(--ink)}
+#favorites-empty{font:400 13.5px/1.5 Inter,sans-serif;color:#8b8577;font-style:italic;margin:0 0 8px}
+.layout-card.is-fav .frame{outline:2px solid var(--ink);outline-offset:3px}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Allison + Skylar<br>Welcome Sign — Eight Directions</h1>
+  <p class="sub">Ground is locked: solid mustard (<code>#BFA52B</code>) — the panel’s already painted. Toggle lettering colour below, pick a layout, and export SVGs for vinyl / stencil. Boards are <b>2×3&nbsp;ft</b> (24&nbsp;×&nbsp;36&nbsp;in). Read the A-frame note at the bottom; height changes where the type should sit.</p>
+  <div class="navlinks">
+    <a href="#favorites-heading">Favorites</a>
+    <a href="tables.html">Table numbers</a>
+    <a href="export/s2-display-stack.png" download>S2 Display Stack PNG</a>
+    <a href="#svg-assets">SVG assets</a>
+    <a href="moodboard.html">Moodboard</a>
+    <a href="assets/svg/agave.svg" download>Download agave.svg</a>
+    <a href="assets/svg/letterforms-template.svg" download>Download letterforms template</a>
+  </div>
+
+  <div class="suite">
+    <div class="suitecard"><b>Decided — ground</b>
+      <div class="chips" style="margin-top:4px">
+        <i class="chip" style="background:#BFA52B;width:42px;height:42px" title="mustard #BFA52B"></i>
+      </div>
+      <div style="font:500 11px/1.5 'Roboto Mono',monospace;color:#6e6858;margin-top:10px">Mustard · lettering TBD</div>
+    </div>
+    <div class="suitecard"><b>Instrument Serif — names</b>
+      <div style="font-family:var(--font-invite-serif);font-size:30px;line-height:1.05">Our Wedding</div>
+    </div>
+    <div class="suitecard"><b>Mono — details</b>
+      <div class="det" style="font-size:10px">SEPTEMBER 12, 2026</div>
+      <div class="det" style="font-size:10px">RUTH BANCROFT GARDEN</div>
+    </div>
+    <div class="suitecard"><b>Panel</b>
+      <div style="font:500 13px/1.45 Inter,sans-serif;color:var(--ink-soft)">24 × 36 in (2×3 ft) · ¾ in birch · solid mustard</div>
+    </div>
+  </div>
+</header>
+</div>
+
+<!-- Hidden locks so existing layout JS / multi-tone bands still resolve -->
+<input type="hidden" id="pA" value="#BFA52B">
+<input type="hidden" id="pB" value="#D0C82F">
+<input type="hidden" id="sWash" value="1">
+<span id="oWash" hidden></span>
+<span id="hA" hidden>#BFA52B</span>
+<span id="hB" hidden>#D0C82F</span>
+<span id="washhint" hidden></span>
+<div id="cw" hidden><button data-cw="mustA" class="on"></button></div>
+<div id="wa" hidden><button data-wa="0" class="on"></button></div>
+<div id="pr" hidden><button data-pr="1" class="on"></button></div>
+<div id="mustards" hidden></div>
+<div id="slot" hidden><button data-slot="A" class="on"></button></div>
+
+<div class="controls">
+  <div class="inner barhead">
+    <span id="summary"></span>
+    <button type="button" id="gear" class="open" aria-expanded="true" aria-controls="panel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"></path>
+      </svg>
+      Type tools
+    </button>
+  </div>
+  <div id="panel" class="open">
+  <div class="inner">
+    <span class="lbl">Lettering</span>
+    <div class="toggle" id="tc">
+      <button data-tc="ink" class="on">Black</button>
+      <button data-tc="white">White</button>
+      <button data-tc="mustB">Mustard B</button>
+      <button data-tc="rust">Rust</button>
+    </div>
+    <div class="warn" id="warn"><b>Low contrast</b><span id="warntxt"></span></div>
+
+    <span class="lbl" style="margin-left:10px">Names</span>
+    <input class="f" id="n1" value="Allison" style="width:98px">
+    <input class="f" id="n2" value="Skylar" style="width:98px">
+
+    <span class="lbl" style="margin-left:10px">Name face</span>
+    <select class="f" id="nf">
+      <optgroup label="Your suite">
+        <option value="instrument" selected>Instrument Serif (invite)</option>
+        <option value="helveticablack">Helvetica Neue Black (STD)</option>
+      </optgroup>
+      <optgroup label="Nearest neighbours">
+        <option value="playfair">Playfair Display</option>
+        <option value="bodoni">Bodoni Moda</option>
+        <option value="archivoblack">Archivo Black (web stand-in)</option>
+      </optgroup>
+      <optgroup label="Sturdier / easier to paint">
+        <option value="dmserif">DM Serif Display</option>
+        <option value="ebgaramond">EB Garamond</option>
+        <option value="libre">Libre Baskerville</option>
+      </optgroup>
+      <optgroup label="Sans — condensed / heavy">
+        <option value="bebas">Bebas Neue</option>
+        <option value="anton">Anton</option>
+      </optgroup>
+    </select>
+
+    <span class="lbl" style="margin-left:6px">Detail face</span>
+    <select class="f" id="df">
+      <optgroup label="Your suite">
+        <option value="robotomono" selected>Roboto Mono (invite)</option>
+        <option value="helveticathin">Helvetica Neue Thin (STD)</option>
+      </optgroup>
+      <option value="spacemono">Space Mono</option>
+      <option value="plexmono">IBM Plex Mono</option>
+      <option value="serifcaps">Serif, letterspaced</option>
+    </select>
+  </div>
+  <div class="inner" style="margin-top:11px">
+    <span class="lbl">Size</span>
+    <div class="sl"><input type="range" id="sSize" min="0.55" max="1.9" step="0.02" value="1.14"><output id="oSize">1.14×</output></div>
+
+    <span class="lbl" style="margin-left:6px">Weight</span>
+    <div class="sl"><input type="range" id="sWeight" min="400" max="400" step="25" value="400"><output id="oWeight">400</output></div>
+
+    <span class="lbl" style="margin-left:6px">Tracking</span>
+    <div class="sl"><input type="range" id="sTrack" min="-0.12" max="0.40" step="0.004" value="-0.006"><output id="oTrack">-.006</output></div>
+
+    <button class="reset" id="reset">Reset</button>
+    <span class="fixedw" id="fixedw"></span>
+    <div class="typenote" id="typenote" style="margin-left:8px"></div>
+  </div>
+  <div class="inner" style="margin-top:11px" id="export-global">
+    <span class="lbl">Export SVG</span>
+    <button type="button" class="xbtn" data-x="copy-letters">Copy lettering</button>
+    <button type="button" class="xbtn" data-x="dl-letters">↓ Lettering</button>
+    <button type="button" class="xbtn" data-x="dl-agave">↓ Agave</button>
+    <button type="button" class="xbtn" data-x="dl-champagne">↓ Champagne</button>
+    <button type="button" class="xbtn" data-x="dl-reg">↓ Reg. marks</button>
+  </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<h2 id="svg-assets">SVG assets</h2>
+<p class="secnote">Graphics and lettering as copyable / downloadable SVGs — for vinyl stencil shops, Illustrator, or a vinyl cutter. Lettering exports as editable <code>&lt;text&gt;</code>; open in Illustrator and use <b>Type → Create Outlines</b> before cutting. Each layout below also has its own export bar.</p>
+
+<div class="assets">
+  <div class="asset-card" data-svg-name="agave" data-svg-src="assets/svg/agave.svg">
+    <div class="preview" data-svg-preview>
+      <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+        <path d="M50 90C40.8 88.9 29.3 75.9 14 56C34.7 70.1 48.4 80.9 50 90Z"/>
+        <path d="M50 90C40.1 82.8 32.7 59.8 24 26C41.3 56.2 52.1 78.0 50 90Z"/>
+        <path d="M50 90C41.9 78.6 39.9 49.6 39 8C49.1 48.4 54.8 76.8 50 90Z"/>
+        <path d="M50 90C43 76.8 45 46 50 2C55 46 57 76.8 50 90Z"/>
+        <path d="M50 90C58.1 78.6 60.1 49.6 61 8C50.9 48.4 45.2 76.8 50 90Z"/>
+        <path d="M50 90C59.9 82.8 67.3 59.8 76 26C58.7 56.2 47.9 78.0 50 90Z"/>
+        <path d="M50 90C59.2 88.9 70.7 75.9 86 56C65.3 70.1 51.6 80.9 50 90Z"/>
+      </svg>
+    </div>
+    <h3>Agave</h3>
+    <p>Solid block-print botanical from S1 / S6. One flat stamp — no hairlines.</p>
+    <div class="asset-actions">
+      <button type="button" class="xbtn" data-action="copy">Copy SVG</button>
+      <button type="button" class="xbtn primary" data-action="download">Download</button>
+      <a class="xbtn" href="assets/svg/agave.svg" download style="text-decoration:none;display:inline-flex;align-items:center">File</a>
+    </div>
+  </div>
+
+  <div class="asset-card" data-svg-name="champagne" data-svg-src="assets/svg/champagne.svg">
+    <div class="preview" data-svg-preview>
+      <svg viewBox="0 0 40 46" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 4h13l-3.5 15a3 3 0 0 1-6 0L4 4Z"/><path d="M10.5 22v18M5 41h11"/>
+        <path d="M23 8h13l-3.5 15a3 3 0 0 1-6 0L23 8Z"/><path d="M29.5 26v17M24 44h11"/>
+      </svg>
+    </div>
+    <h3>Champagne flutes</h3>
+    <p>Stroke graphic from S4. Scales cleanly; keep stroke weight when resizing.</p>
+    <div class="asset-actions">
+      <button type="button" class="xbtn" data-action="copy">Copy SVG</button>
+      <button type="button" class="xbtn primary" data-action="download">Download</button>
+      <a class="xbtn" href="assets/svg/champagne.svg" download style="text-decoration:none;display:inline-flex;align-items:center">File</a>
+    </div>
+  </div>
+
+  <div class="asset-card" data-svg-name="registration-marks" data-svg-src="assets/svg/registration-marks.svg">
+    <div class="preview" data-svg-preview>
+      <svg viewBox="-8 -8 116 116" fill="none" aria-hidden="true">
+        <g stroke="currentColor" stroke-width="1.4">
+          <path d="M0 5 V-5 M-5 0 H5"/>
+          <path d="M100 5 V-5 M95 0 H105"/>
+          <path d="M0 105 V95 M-5 100 H5"/>
+          <path d="M100 105 V95 M95 100 H105"/>
+        </g>
+      </svg>
+    </div>
+    <h3>Registration marks</h3>
+    <p>Four corner crosshairs from layout 02. Four short strokes to paint or cut.</p>
+    <div class="asset-actions">
+      <button type="button" class="xbtn" data-action="copy">Copy SVG</button>
+      <button type="button" class="xbtn primary" data-action="download">Download</button>
+      <a class="xbtn" href="assets/svg/registration-marks.svg" download style="text-decoration:none;display:inline-flex;align-items:center">File</a>
+    </div>
+  </div>
+
+  <div class="asset-card" data-svg-name="letterforms" data-svg-src="assets/svg/letterforms-template.svg">
+    <div class="preview" data-svg-preview style="flex-direction:column;gap:6px;font-family:'Instrument Serif',serif;color:var(--ink)">
+      <span style="font:400 11px/1 'Roboto Mono',monospace;letter-spacing:.18em">WELCOME</span>
+      <span style="font-size:34px;line-height:1">Allison</span>
+      <span style="font-size:28px;line-height:1;font-style:italic">+ Skylar</span>
+    </div>
+    <h3>Name lettering</h3>
+    <p>Editable text SVG with current names &amp; faces. Create Outlines before vinyl cut.</p>
+    <div class="asset-actions">
+      <button type="button" class="xbtn" data-action="copy-letters-card">Copy SVG</button>
+      <button type="button" class="xbtn primary" data-action="dl-letters-card">Download</button>
+      <a class="xbtn" href="assets/svg/letterforms-template.svg" download style="text-decoration:none;display:inline-flex;align-items:center">Template</a>
+    </div>
+  </div>
+</div>
+
+<section id="favorites-section" aria-label="Favorites">
+  <h2 id="favorites-heading">Favorites</h2>
+  <p class="secnote">Starred layouts land here so you can compare the ones you’re actually considering. Star again to send one back. Saved in this browser.</p>
+  <p id="favorites-empty">No favorites yet — hit the star on any layout below.</p>
+  <div class="grid" id="favorites-grid"></div>
+</section>
+
+<h2 id="shortlist-heading">Shortlist</h2>
+<p class="secnote">The five you picked, plus variants. Star favorites to pin them up top. Under each layout: <b>↓ Send to Etsy (outlined)</b> is the file for the vinyl cutter (lettering only, board already painted). <b>↓ Editable backup</b> is optional if they need to tweak type.</p>
+
+<div class="grid" id="shortlist-grid" data-home="shortlist">
+
+<!-- S1 -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:7.5% 7%">
+    <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer" style="flex:.7"></div>
+    <div class="nm" style="font-size:calc(clamp(25px,5.2vw,45px)*var(--nmscale,1));line-height:1.05" data-fg>
+      <span class="N1">Allison</span><br>+ <span class="N2">Skylar</span></div>
+    <div class="spacer"></div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px">
+      <svg viewBox="0 0 100 100" style="width:31%;flex:none" fill="currentColor" data-fgs>
+        <path d="M50 90C40.8 88.9 29.3 75.9 14 56C34.7 70.1 48.4 80.9 50 90Z"/>
+        <path d="M50 90C40.1 82.8 32.7 59.8 24 26C41.3 56.2 52.1 78.0 50 90Z"/>
+        <path d="M50 90C41.9 78.6 39.9 49.6 39 8C49.1 48.4 54.8 76.8 50 90Z"/>
+        <path d="M50 90C43 76.8 45 46 50 2C55 46 57 76.8 50 90Z"/>
+        <path d="M50 90C58.1 78.6 60.1 49.6 61 8C50.9 48.4 45.2 76.8 50 90Z"/>
+        <path d="M50 90C59.9 82.8 67.3 59.8 76 26C58.7 56.2 47.9 78.0 50 90Z"/>
+        <path d="M50 90C59.2 88.9 70.7 75.9 86 56C65.3 70.1 51.6 80.9 50 90Z"/></svg>
+      <div class="det" style="text-align:right" data-fg>SEPTEMBER 12, 2026 AT 5 PM<br>RUTH BANCROFT GARDEN<br>WALNUT CREEK, CA</div>
+    </div>
+  </div></div>
+  <div class="meta"><h3>S1 · Agave</h3>
+    <p>Flush-left names, botanical mark bottom-left, details right-aligned against it. The mark earns its place — Ruth Bancroft is a dry garden.</p>
+    <span class="tag star">Shortlisted</span><span class="tag med">Medium</span></div>
+</div>
+
+<!-- S1b — no plant, bigger names -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:7.5% 7%">
+    <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer" style="flex:.55"></div>
+    <div class="nm" style="font-size:calc(clamp(34px,7.2vw,62px)*var(--nmscale,1));line-height:1.02" data-fg>
+      <span class="N1">Allison</span><br>+ <span class="N2">Skylar</span></div>
+    <div class="spacer"></div>
+    <div class="det" style="text-align:right" data-fg>SEPTEMBER 12, 2026 AT 5 PM<br>RUTH BANCROFT GARDEN<br>WALNUT CREEK, CA</div>
+  </div></div>
+  <div class="meta"><h3>S1b · Type Only</h3>
+    <p>Same flush-left skeleton as S1, agave dropped, names stepped up. Cleaner for vinyl — nothing to cut but letterforms — and the names carry the panel from further away.</p>
+    <span class="tag star">Iteration</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- S2 -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 6.5%">
+    <div class="k" style="text-align:center" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer"></div>
+    <div style="text-align:center" data-fg>
+      <div class="nm N1" style="font-size:calc(clamp(30px,6.4vw,56px)*var(--nmscale,1));line-height:.96">Allison</div>
+      <div class="acc" style="font-size:calc(clamp(24px,5vw,44px)*var(--nmscale,1));line-height:1;margin:.04em 0">&amp;</div>
+      <div class="nm N2" style="font-size:calc(clamp(30px,6.4vw,56px)*var(--nmscale,1));line-height:.96">Skylar</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="det" style="text-align:center" data-fg>SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN, WALNUT CREEK</div>
+  </div></div>
+  <div class="meta"><h3>S2 · Display Stack</h3>
+    <p>Names at maximum size, centred between the welcome line and the details — equal air above and below. Italic ampersand between. The one that reads from furthest away.</p>
+    <p style="margin-top:8px"><b>Fonts:</b> names + italic <code>&amp;</code> in <b>Instrument Serif</b> (invite face); welcome / date / venue in <b>Roboto Mono</b> at wide tracking (<code>~0.13–0.2em</code>). Ground is locked mustard <code>#BFA52B</code>, lettering black. Same pairing as the invite — keep it here so the sign doesn’t drift into a different suite.</p>
+    <p style="margin-top:8px"><b>Table cards:</b> carry the same faces onto the 5×7s — Instrument Serif for “When we were” / the age numeral, Roboto Mono for the pair line. Prefer bone stock (<code>#E7E3DA</code>) over mustard for place cards so they match the invite paper, not the painted board. <a href="tables.html">Open table numbers →</a> · <a href="export/s2-display-stack.png" download>Download this layout PNG</a></p>
+    <span class="tag star">Shortlisted</span><span class="tag easy">Easy in sans</span></div>
+</div>
+
+<!-- S3 -->
+<div>
+  <div class="frame"><div class="sign" data-g>
+    <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer" style="flex:1.4"></div>
+    <div class="nm" style="font-size:calc(clamp(27px,5.8vw,50px)*var(--nmscale,1));line-height:.98" data-fg>
+      <div class="N1">Allison</div>
+      <div style="margin-left:.9em;margin-top:-.12em">
+        <span class="acc" style="font-size:.62em">and</span><span class="N2">Skylar</span></div>
+    </div>
+    <div class="spacer" style="flex:1.7"></div>
+    <div class="det" data-fg>SEPTEMBER 12, 2026<br>WALNUT CREEK, CA</div>
+  </div></div>
+  <div class="meta"><h3>S3 · Overlap</h3>
+    <p>Second name indented and tucked up under the first, italic "and" nested in the gap the indent opens — solid ink, same cut as the names (vinyl can't do opacity).</p>
+    <span class="tag star">Shortlisted</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- S4 -->
+<div>
+  <div class="frame"><div class="sign" data-g>
+    <div style="display:flex;justify-content:space-between" class="k" data-fg><span>WELCOME TO</span><span>THE WEDDING OF</span></div>
+    <div style="position:relative;flex:1;margin-top:6%" data-fg>
+      <div class="nm N1" style="position:absolute;top:10%;left:6%;font-size:calc(clamp(22px,4.7vw,41px)*var(--nmscale,1))">Allison</div>
+      <div class="acc" style="position:absolute;top:38%;left:26%;font-size:calc(clamp(17px,3.6vw,31px)*var(--nmscale,1))">and</div>
+      <div class="nm N2" style="position:absolute;top:33%;right:1%;writing-mode:vertical-rl;font-size:calc(clamp(22px,4.7vw,41px)*var(--nmscale,1))">Skylar</div>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:11px">
+      <svg viewBox="0 0 40 46" style="width:15%;flex:none" fill="none" stroke="currentColor"
+           stroke-width="2.1" stroke-linecap="round" data-fgs>
+        <path d="M4 4h13l-3.5 15a3 3 0 0 1-6 0L4 4Z"/><path d="M10.5 22v18M5 41h11"/>
+        <path d="M23 8h13l-3.5 15a3 3 0 0 1-6 0L23 8Z"/><path d="M29.5 26v17M24 44h11"/></svg>
+      <div class="det" data-fg style="padding-bottom:2px">SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN</div>
+    </div>
+  </div></div>
+  <div class="meta"><h3>S4 · Diagonal Stagger</h3>
+    <p>Names scattered on a diagonal with the second turned 90°. Loosest thing here — needs a confident grid underneath.</p>
+    <span class="tag star">Shortlisted</span><span class="tag med">Medium</span></div>
+</div>
+
+<!-- S5 -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 7.5%">
+    <div class="k" style="border-bottom:1px solid currentColor;padding-bottom:11px" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer" style="flex:.95"></div>
+    <div class="nm" style="text-align:center;font-size:calc(clamp(32px,6.8vw,58px)*var(--nmscale,1));line-height:.96" data-fg>
+      <div class="N1">Allison</div>
+      <div class="acc" style="font-size:.42em;margin:.2em 0 .14em">and</div>
+      <div class="N2">Skylar</div>
+    </div>
+    <div class="spacer" style="flex:.95"></div>
+    <div style="border-top:1px solid currentColor;padding-top:11px;display:flex;justify-content:space-between;gap:8px" class="det" data-fg>
+      <span>09.12.2026</span><span>WALNUT CREEK, CA</span></div>
+  </div></div>
+  <div class="meta"><h3>S5 · Ruled Editorial</h3>
+    <p>Thin rules top and bottom. Welcome as one left-aligned line; names centred between. Hairline weight — easier on vinyl than a fat bar.</p>
+    <span class="tag star">Shortlisted</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- S6 -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 7%">
+    <div class="k" style="text-align:center" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer" style="flex:.8"></div>
+    <div class="nm" style="text-align:center;font-size:calc(clamp(24px,5.1vw,44px)*var(--nmscale,1));line-height:1.04" data-fg>
+      <span class="N1">Allison</span> <span class="acc" style="font-size:.72em">+</span> <span class="N2">Skylar</span></div>
+    <div class="spacer" style="flex:.7"></div>
+    <div style="display:flex;justify-content:center">
+      <svg viewBox="0 0 100 100" style="width:36%" fill="currentColor" data-fgs>
+        <path d="M50 90C40.8 88.9 29.3 75.9 14 56C34.7 70.1 48.4 80.9 50 90Z"/>
+        <path d="M50 90C40.1 82.8 32.7 59.8 24 26C41.3 56.2 52.1 78.0 50 90Z"/>
+        <path d="M50 90C41.9 78.6 39.9 49.6 39 8C49.1 48.4 54.8 76.8 50 90Z"/>
+        <path d="M50 90C43 76.8 45 46 50 2C55 46 57 76.8 50 90Z"/>
+        <path d="M50 90C58.1 78.6 60.1 49.6 61 8C50.9 48.4 45.2 76.8 50 90Z"/>
+        <path d="M50 90C59.9 82.8 67.3 59.8 76 26C58.7 56.2 47.9 78.0 50 90Z"/>
+        <path d="M50 90C59.2 88.9 70.7 75.9 86 56C65.3 70.1 51.6 80.9 50 90Z"/></svg>
+    </div>
+    <div class="det" style="text-align:center;margin-top:4%" data-fg>AGAVE AMERICANA</div>
+    <div class="spacer"></div>
+    <div style="height:1.5px;background:currentColor;margin-bottom:5%" data-fg></div>
+    <div class="det" style="text-align:center" data-fg>SEPTEMBER 12, 2026 &middot; RUTH BANCROFT GARDEN</div>
+  </div></div>
+  <div class="meta"><h3>S6 · Specimen</h3>
+    <p>Laid out like a botanical plate — solid block-print agave, centred, with its Latin name set small underneath in mono. Ruth Bancroft is a collection garden where every plant carries a label, so the joke lands. Stamp as one flat shape; no hairlines to keep clean.</p>
+    <span class="tag">Variant of S1</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- S7 -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:7.5% 7%">
+    <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer" style="flex:.9"></div>
+    <div class="nm" style="font-size:calc(clamp(26px,5.5vw,47px)*var(--nmscale,1));line-height:1.05" data-fg>
+      <span class="N1">Allison</span><br>+ <span class="N2">Skylar</span></div>
+    <div class="spacer"></div>
+    <div class="det" data-fg style="margin-bottom:7%">SEPTEMBER 12, 2026 AT FIVE<br>RUTH BANCROFT GARDEN</div>
+    <div class="det" style="letter-spacing:.14em" data-fg>RUTH BANCROFT GARDEN &middot; WALNUT CREEK, CA</div>
+    <div class="jrow nm" data-j="09.12.26" style="margin-top:4%;line-height:.92;
+                font-size:calc(clamp(26px,5.6vw,48px)*var(--nmscale,1))" data-fg></div>
+  </div></div>
+  <div class="meta"><h3>S7 · Date as Anchor</h3>
+    <p>Same skeleton as S1, but the date takes the plant's job — set large and justified across the full width, holding the bottom of the panel down. Gives you the weight without another motif, and it's the one piece of information a guest actually photographs.</p>
+    <span class="tag">Variant of S1</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- S8 -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 6.5%">
+    <div class="k" style="text-align:center" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer"></div>
+    <div style="text-align:center" data-fg>
+      <div class="nm N1" style="font-size:calc(clamp(33px,7vw,61px)*var(--nmscale,1));line-height:.94">Allison</div>
+      <div style="height:2px;background:currentColor;width:34%;margin:6% auto"></div>
+      <div class="nm N2" style="font-size:calc(clamp(33px,7vw,61px)*var(--nmscale,1));line-height:.94">Skylar</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="det" style="text-align:center" data-fg>SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN</div>
+  </div></div>
+  <div class="meta"><h3>S8 · Stack, Ruled</h3>
+    <p>The ampersand swapped for a short centred rule. Lets both names run bigger, and removes the one glyph that fights you when the name face is a sans.</p>
+    <span class="tag">Variant of S2</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- S9 -->
+<div>
+  <div class="frame"><div class="sign" data-g>
+    <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer" style="flex:1.2"></div>
+    <div class="nm" style="font-size:calc(clamp(28px,6vw,52px)*var(--nmscale,1));line-height:.94" data-fg>
+      <div><span class="N1">Allison</span><span class="acc" style="font-size:.5em;margin-left:.24em">and</span></div>
+      <div style="margin-left:1.7em;margin-top:.06em" class="N2">Skylar</div>
+    </div>
+    <div class="spacer" style="flex:1.9"></div>
+    <div class="det" data-fg>SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN, WALNUT CREEK</div>
+  </div></div>
+  <div class="meta"><h3>S9 · Deep Overlap</h3>
+    <p>The "and" moved up to trail the first name instead of nesting below it, and the indent pushed much further. Reads more like a line of running text that's been broken, less like two stacked labels.</p>
+    <span class="tag">Variant of S3</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- S10 -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 7%">
+    <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:9%;padding:7% 0" data-fg>
+      <div class="nm N1" style="writing-mode:vertical-rl;font-size:calc(clamp(23px,4.9vw,42px)*var(--nmscale,1))">Allison</div>
+      <div class="acc" style="writing-mode:vertical-rl;font-size:calc(clamp(15px,3.2vw,27px)*var(--nmscale,1));align-self:flex-start;margin-top:14%">and</div>
+      <div class="nm N2" style="writing-mode:vertical-rl;font-size:calc(clamp(23px,4.9vw,42px)*var(--nmscale,1));align-self:flex-end">Skylar</div>
+    </div>
+    <div class="det" style="text-align:right" data-fg>SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN</div>
+  </div></div>
+  <div class="meta"><h3>S10 · Rotated Pair</h3>
+    <p>Both names vertical, offset against each other, "and" hanging between at the top. Same rotation move as your invite spine but doubled — and a tall narrow panel is exactly where this fits.</p>
+    <span class="tag">Variant of S4</span><span class="tag med">Medium</span></div>
+</div>
+
+<!-- S11 -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 7.5%">
+    <div class="k" style="border-bottom:1px solid currentColor;padding-bottom:10px" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer" style="flex:.85"></div>
+    <div class="nm N1" style="text-align:center;font-size:calc(clamp(30px,6.4vw,55px)*var(--nmscale,1));line-height:.96" data-fg>Allison</div>
+    <div style="height:1px;background:currentColor;margin:5% auto;width:42%" data-fg></div>
+    <div class="nm N2" style="text-align:center;font-size:calc(clamp(30px,6.4vw,55px)*var(--nmscale,1));line-height:.96" data-fg>Skylar</div>
+    <div class="spacer"></div>
+    <div style="border-top:1px solid currentColor;padding-top:10px;text-align:center" class="det" data-fg>RUTH BANCROFT GARDEN · WALNUT CREEK, CA</div>
+  </div></div>
+  <div class="meta"><h3>S11 · Triple Rule</h3>
+    <p>Variant of S5 with a short centred rule between the names. Welcome stays one left-aligned line; hairlines throughout.</p>
+    <span class="tag">Variant of S5</span><span class="tag easy">Easy</span></div>
+</div>
+
+</div>
+
+<h2>Everything else</h2>
+<p class="secnote">The rest of the set, with the five you shortlisted lifted out above. 17–20 are multi-tone — colour blocked across the whole panel rather than just the type, which is what actually reads from distance. Star any of these into Favorites too.</p>
+
+<div class="grid" id="rest-grid" data-home="rest">
+
+<!-- 01 — SUITE SIBLING -->
+<div>
+  <div class="frame"><div class="sign" data-g style="flex-direction:row;padding:7% 6.5%">
+    <div data-fg style="writing-mode:vertical-rl;transform:rotate(180deg);flex:none;padding-right:5%">
+      <span class="nm" style="font-size:calc(clamp(19px,3.9vw,34px)*var(--nmscale,1))"><span class="N1">Allison</span> + <span class="N2">Skylar</span></span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:flex-end;text-align:right">
+      <div class="spacer" style="flex:2.4"></div>
+      <div class="nm" style="font-size:calc(clamp(23px,4.7vw,41px)*var(--nmscale,1));line-height:1.05" data-fg>Welcome</div>
+      <div class="det" style="margin-top:12px" data-fg>
+        SEPTEMBER 12, 2026 AT 5 PM<br>
+        RUTH BANCROFT GARDEN<br>
+        WALNUT CREEK, CA<br>
+        DINNER + DANCING TO FOLLOW
+      </div>
+      <div class="spacer" style="flex:.5"></div>
+    </div>
+  </div></div>
+  <div class="meta"><h3>01 · Suite Sibling</h3>
+    <p>Your invite with the photo removed. Rotated names up the left edge, everything else pushed to the bottom-right corner, enormous empty field in between. Nobody will have to be told these go together.</p>
+    <span class="tag star">Closest to your suite</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- 02 — THE PLUS -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:9% 8%">
+    <div style="position:relative;flex:1;display:flex;flex-direction:column;justify-content:center" data-fg>
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible" data-fgs>
+        <g stroke="currentColor" stroke-width="1.1" vector-effect="non-scaling-stroke">
+          <path d="M0 5 V-5 M-5 0 H5"/>
+          <path d="M100 5 V-5 M95 0 H105"/>
+          <path d="M0 105 V95 M-5 100 H5"/>
+          <path d="M100 105 V95 M95 100 H105"/>
+        </g>
+      </svg>
+      <div class="k" style="text-align:center;margin-bottom:9%" data-fg>WELCOME TO THE WEDDING OF</div>
+      <div class="nm" style="text-align:center;line-height:1.06;
+                  font-size:calc(clamp(24px,5.1vw,44px)*var(--nmscale,1))" data-fg>
+        <span class="N1">Allison</span> <span class="acc" style="font-size:.72em">+</span> <span class="N2">Skylar</span>
+      </div>
+      <div class="det" style="text-align:center;margin-top:9%" data-fg>SEPTEMBER 12, 2026 &middot; FIVE O&rsquo;CLOCK</div>
+    </div>
+    <div class="det" style="text-align:center;margin-top:auto;padding-top:9%" data-fg>RUTH BANCROFT GARDEN, WALNUT CREEK</div>
+  </div></div>
+  <div class="meta"><h3>02 · Registration Marks</h3>
+    <p>Four small crosshairs at the corners, exactly like the registration marks on a print sheet, bracketing the names. Same <code style="font:500 12px/1 'Roboto Mono',monospace">+</code> motif you sign both existing pieces with, but at mark scale rather than architectural scale — so it reads as a printer's mark instead of a crucifix. Four short strokes to paint.</p>
+    <span class="tag star">Uses your mark</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- 03 — THROWN CORNERS -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:6.5% 6%;position:relative">
+    <div style="position:absolute;inset:6.5% 6%" data-fg>
+      <div class="nm" style="position:absolute;left:-.03em;top:0;line-height:.88;
+                  font-size:calc(clamp(30px,6.5vw,56px)*var(--nmscale,1))">welcome</div>
+      <div class="det" style="position:absolute;right:0;top:17%;text-align:right">TO THE</div>
+      <div class="nm" style="position:absolute;right:-.02em;top:24%;line-height:.88;
+                  font-size:calc(clamp(24px,5.2vw,45px)*var(--nmscale,1))">wedding</div>
+      <div class="det" style="position:absolute;left:14%;top:44%">OF</div>
+      <div class="nm N1" style="position:absolute;left:0;top:52%;line-height:.9;
+                  font-size:calc(clamp(26px,5.6vw,48px)*var(--nmscale,1))">Allison</div>
+      <div class="acc" style="position:absolute;left:46%;top:68%;
+                  font-size:calc(clamp(17px,3.6vw,31px)*var(--nmscale,1))">+</div>
+      <div class="nm N2" style="position:absolute;right:0;top:73%;line-height:.9;
+                  font-size:calc(clamp(26px,5.6vw,48px)*var(--nmscale,1))">Skylar</div>
+      <div class="det" style="position:absolute;left:0;bottom:0">09.12.2026</div>
+      <div class="det" style="position:absolute;right:0;bottom:0;text-align:right">WALNUT CREEK, CA</div>
+    </div>
+  </div></div>
+  <div class="meta"><h3>03 · Scattered Words</h3>
+    <p>Every word whole, none of them aligned to each other. The phrase steps down the panel left-right-left-right at four different sizes, so the eye walks it rather than reading a block. Your save-the-date's energy without chopping anything in half.</p>
+    <span class="tag med">Medium</span><span class="tag">Follows name face</span></div>
+</div>
+
+<!-- 04 — SPINE RULE -->
+<div>
+  <div class="frame"><div class="sign" data-g style="flex-direction:row;padding:8% 7%;gap:6%">
+    <div style="flex:none;display:flex;align-items:center;gap:9px">
+      <div class="k" style="writing-mode:vertical-rl;transform:rotate(180deg)" data-fg>WELCOME TO THE WEDDING OF</div>
+      <div style="width:1.5px;align-self:stretch;background:currentColor" data-fg></div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div class="nm" style="font-size:calc(clamp(26px,5.4vw,47px)*var(--nmscale,1));line-height:1.02" data-fg>
+        <span class="N1">Allison</span><br>
+        <span class="acc" style="font-size:.66em">and</span><br>
+        <span class="N2">Skylar</span>
+      </div>
+      <div class="det" style="margin-top:16%" data-fg>SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN</div>
+    </div>
+  </div></div>
+  <div class="meta"><h3>04 · Spine Rule</h3>
+    <p>A single hairline rule running the full height, with the header rotated to sit against it like a book spine. The rule is one taped straight line and it organises everything else for free.</p>
+    <span class="tag easy">Easy</span></div>
+</div>
+
+
+<!-- 06 — DIPTYCH -->
+<div>
+  <div class="frame" style="flex-direction:column">
+    <div class="sign" data-g style="flex:1.5;padding:9% 7.5% 6%">
+      <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+      <div class="spacer"></div>
+      <div class="nm" style="font-size:calc(clamp(24px,5vw,43px)*var(--nmscale,1));line-height:1.06" data-fg>
+        <span class="N1">Allison</span><br><span style="font-style:italic">+</span> <span class="N2">Skylar</span>
+      </div>
+    </div>
+    <div data-inv style="flex:1;background:var(--ink);color:var(--bone);padding:7% 7.5%;display:flex;flex-direction:column;justify-content:center">
+      <div class="det" style="letter-spacing:.16em">
+        SEPTEMBER 12, 2026<br>FIVE O&rsquo;CLOCK<br>RUTH BANCROFT GARDEN<br>WALNUT CREEK, CALIFORNIA<br><br>
+        DINNER + DANCING TO FOLLOW
+      </div>
+    </div>
+  </div>
+  <div class="meta"><h3>06 · Diptych</h3>
+    <p>Panel split roughly two-thirds / one-third, bottom block painted solid ink with the details reversed out in bone. Reads well in low light, which matters for a 5&nbsp;PM September ceremony that'll run into dusk.</p>
+    <span class="tag med">Medium</span></div>
+</div>
+
+<!-- 07 — LEDGER -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:7% 7.5%">
+    <div class="nm" style="font-size:calc(clamp(25px,5.3vw,46px)*var(--nmscale,1));line-height:1;text-align:center" data-fg>
+      <span class="N1">Allison</span> <span class="acc" style="font-size:.72em">+</span> <span class="N2">Skylar</span>
+    </div>
+    <div class="det" style="text-align:center;margin-top:7px" data-fg>SEPTEMBER 12, 2026 &middot; RUTH BANCROFT GARDEN</div>
+    <div style="height:2px;background:currentColor;margin:6.5% 0 0" data-fg></div>
+    <div class="det" data-fg style="flex:1;display:flex;flex-direction:column;justify-content:space-around;
+                font-size:clamp(8px,1.42vw,12px);letter-spacing:.1em">
+      <div style="display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid currentColor;padding:3.2% 0"><span>5:00</span><span>CEREMONY</span></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid currentColor;padding:3.2% 0"><span>5:45</span><span>COCKTAILS</span></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid currentColor;padding:3.2% 0"><span>6:45</span><span>SEATING</span></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid currentColor;padding:3.2% 0"><span>7:00</span><span>DINNER</span></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid currentColor;padding:3.2% 0"><span>8:30</span><span>TOASTS</span></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid currentColor;padding:3.2% 0"><span>9:00</span><span>DANCING</span></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;padding:3.2% 0"><span>11:00</span><span>LAST CALL</span></div>
+    </div>
+    <div style="height:2px;background:currentColor;margin-bottom:4%" data-fg></div>
+    <div class="det" style="text-align:center" data-fg>DINNER + DANCING TO FOLLOW</div>
+  </div></div>
+  <div class="meta"><h3>07 · Ledger</h3>
+    <p>Now filling the panel — seven entries with hairline rules between, distributed to the full height so there's no dead field. Earns its keep as the order of the day, which solves the "where do we go now" problem an easel sign usually creates. Best fit of the twenty for a low A-frame, since it's read up close.</p>
+    <span class="tag star">Most useful</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- 08 — DISPLAY STACK -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 6.5%">
+    <div class="k" style="text-align:center" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer"></div>
+    <div style="text-align:center" data-fg>
+      <div class="nm N1" style="font-size:calc(clamp(30px,6.4vw,56px)*var(--nmscale,1));line-height:.96">Allison</div>
+      <div class="acc" style="font-size:clamp(24px,5vw,44px);line-height:1;margin:.04em 0">&amp;</div>
+      <div class="nm N2" style="font-size:calc(clamp(30px,6.4vw,56px)*var(--nmscale,1));line-height:.96">Skylar</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="det" style="text-align:center" data-fg>
+      SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN, WALNUT CREEK
+    </div>
+  </div></div>
+  <div class="meta"><h3>08 · Display Stack</h3>
+    <p>Names at maximum size, centred, italic ampersand between. The most traditional of the eight and the one that reads from furthest away — but the hairlines in Playfair are the hardest thing here to paint without them going ratty.</p>
+    <span class="tag hard">Hardest</span></div>
+</div>
+
+<!-- 09 — UNDERLINED AMPERSAND -->
+<div>
+  <div class="frame"><div class="sign" data-g>
+    <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer"></div>
+    <div class="nm" style="font-size:calc(clamp(38px,8.4vw,74px)*var(--nmscale,1));line-height:.82" data-fg>
+      <span class="N1">Allison</span><br>
+      <span style="display:inline-block;border-bottom:.075em solid currentColor;padding-bottom:.02em;font-size:.6em">&amp;</span><br>
+      <span class="N2">Skylar</span>
+    </div>
+    <div class="spacer" style="flex:1.5"></div>
+    <div class="det" data-fg>SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN</div>
+  </div></div>
+  <div class="meta"><h3>09 · Underlined Ampersand</h3>
+    <p>Names at maximum scale, stacked tight with an underlined ampersand doing the only decorative work. Best of the sixteen at pure distance-reading — try it with a condensed face.</p>
+    <span class="tag easy">Easy</span></div>
+</div>
+
+<!-- 10 — OVERLAP -->
+<div>
+  <div class="frame"><div class="sign" data-g>
+    <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer" style="flex:1.4"></div>
+    <div class="nm" style="font-size:calc(clamp(27px,5.8vw,50px)*var(--nmscale,1));line-height:.98" data-fg>
+      <div class="N1">Allison</div>
+      <div style="margin-left:.9em;margin-top:-.12em">
+        <span class="acc" style="font-size:.62em;margin-right:.14em">and</span><span class="N2">Skylar</span>
+      </div>
+    </div>
+    <div class="spacer" style="flex:1.7"></div>
+    <div class="det" data-fg>SEPTEMBER 12, 2026<br>WALNUT CREEK, CA</div>
+  </div></div>
+  <div class="meta"><h3>10 · Overlap</h3>
+    <p>Second name indented and tucked up under the first, with an italic "and" nested into the gap. Solid ink throughout — one vinyl colour.</p>
+    <span class="tag easy">Easy</span></div>
+</div>
+
+<!-- 11 — DIAGONAL STAGGER -->
+<div>
+  <div class="frame"><div class="sign" data-g>
+    <div style="display:flex;justify-content:space-between" class="k" data-fg><span>WELCOME TO</span><span>THE WEDDING OF</span></div>
+    <div style="position:relative;flex:1;margin-top:6%" data-fg>
+      <div class="nm N1" style="position:absolute;top:10%;left:6%;font-size:calc(clamp(22px,4.7vw,41px)*var(--nmscale,1))">Allison</div>
+      <div class="acc" style="position:absolute;top:38%;left:26%;font-size:calc(clamp(17px,3.6vw,31px)*var(--nmscale,1))">and</div>
+      <div class="nm N2" style="position:absolute;top:33%;right:1%;writing-mode:vertical-rl;font-size:calc(clamp(22px,4.7vw,41px)*var(--nmscale,1))">Skylar</div>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:11px">
+      <svg viewBox="0 0 40 46" style="width:15%;flex:none" fill="none" stroke="currentColor"
+           stroke-width="2.1" stroke-linecap="round" data-fgs>
+        <path d="M4 4h13l-3.5 15a3 3 0 0 1-6 0L4 4Z"/><path d="M10.5 22v18M5 41h11"/>
+        <path d="M23 8h13l-3.5 15a3 3 0 0 1-6 0L23 8Z"/><path d="M29.5 26v17M24 44h11"/>
+      </svg>
+      <div class="det" data-fg style="padding-bottom:2px">SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN</div>
+    </div>
+  </div></div>
+  <div class="meta"><h3>11 · Diagonal Stagger</h3>
+    <p>The original yellow reference, rebuilt in your palette — names scattered on a diagonal with one turned 90°, coupes in the corner. Playful, and the loosest thing here. Needs a confident grid underneath to not look accidental.</p>
+    <span class="tag med">Medium</span></div>
+</div>
+
+<!-- 12 — JUSTIFIED BLOCK -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 7%">
+    <div class="jrow det" data-j="WELCOMETOTHEWEDDINGOF" style="font-size:clamp(7px,1.15vw,10px)" data-fg></div>
+    <div style="height:1.5px;background:currentColor;margin:5% 0 7%" data-fg></div>
+    <div class="spacer" style="flex:.4"></div>
+    <div class="jrow nm" data-jn="1" style="line-height:.94;
+                font-size:calc(clamp(20px,4.3vw,37px)*var(--nmscale,1))" data-fg></div>
+    <div class="jrow nm" data-jn="2" style="line-height:.94;margin-top:3%;
+                font-size:calc(clamp(20px,4.3vw,37px)*var(--nmscale,1))" data-fg></div>
+    <div class="spacer"></div>
+    <div style="height:1.5px;background:currentColor;margin-bottom:5%" data-fg></div>
+    <div class="jrow det" data-j="09.12.2026" style="font-size:clamp(7px,1.2vw,10px)" data-fg></div>
+  </div></div>
+  <div class="meta"><h3>12 · Justified Block</h3>
+    <p>Every line stretched to the exact same measure, edge to edge, letterspacing doing the work. Swiss poster logic — the panel width becomes the grid and nothing is centred or ragged. Deceptively easy to paint: it's just letters sitting on four baselines, and the even margins hide small errors.</p>
+    <span class="tag star">Least predictable</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- 13 — SOLID AMPERSAND (was ghost; vinyl is one opaque cut) -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 6.5%">
+    <div class="k" style="text-align:center" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer"></div>
+    <div style="text-align:center" data-fg>
+      <div class="nm N1" style="font-size:calc(clamp(30px,6.4vw,56px)*var(--nmscale,1));line-height:.96">Allison</div>
+      <div class="acc" style="font-size:calc(clamp(26px,5.4vw,48px)*var(--nmscale,1));line-height:1;margin:.06em 0">&amp;</div>
+      <div class="nm N2" style="font-size:calc(clamp(30px,6.4vw,56px)*var(--nmscale,1));line-height:.96">Skylar</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="det" style="text-align:center" data-fg>SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN</div>
+  </div></div>
+  <div class="meta"><h3>13 · Solid Ampersand</h3>
+    <p>Was a low-opacity ghost &amp; behind the names — dropped for vinyl. Centred stack, solid ink only. One colour, one cut.</p>
+    <span class="tag easy">Easy</span><span class="tag">Vinyl-safe</span></div>
+</div>
+
+<!-- 14 — RULED EDITORIAL -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 7.5%">
+    <div class="k" style="border-bottom:1px solid currentColor;padding-bottom:11px" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer" style="flex:.95"></div>
+    <div class="nm" style="text-align:center;font-size:calc(clamp(32px,6.8vw,58px)*var(--nmscale,1));line-height:.96" data-fg>
+      <div class="N1">Allison</div>
+      <div class="acc" style="font-size:.42em;margin:.2em 0 .14em">and</div>
+      <div class="N2">Skylar</div>
+    </div>
+    <div class="spacer" style="flex:.95"></div>
+    <div style="border-top:1px solid currentColor;padding-top:11px;display:flex;justify-content:space-between;gap:8px" class="det" data-fg>
+      <span>09.12.2026</span><span>WALNUT CREEK, CA</span>
+    </div>
+  </div></div>
+  <div class="meta"><h3>14 · Ruled Editorial</h3>
+    <p>Same as S5 — one welcome line, thin rules, centred names. Built for a single solid vinyl colour.</p>
+    <span class="tag easy">Easy</span></div>
+</div>
+
+<!-- 15 — VERTICAL SPLIT -->
+<div>
+  <div class="frame" style="flex-direction:row">
+    <div class="sign" data-g style="flex:1;padding:9% 7%;justify-content:flex-end">
+      <div class="nm N1" style="font-size:calc(clamp(21px,4.4vw,38px)*var(--nmscale,1));line-height:1.02" data-fg>Allison</div>
+      <div class="det" style="margin-top:14px" data-fg>SEPTEMBER 12<br>2026</div>
+    </div>
+    <div data-inv style="flex:1;background:var(--ink);color:var(--bone);padding:9% 7%;display:flex;flex-direction:column;justify-content:flex-end">
+      <div class="nm N2" style="font-size:calc(clamp(21px,4.4vw,38px)*var(--nmscale,1));line-height:1.02">Skylar</div>
+      <div class="det" style="margin-top:14px">RUTH BANCROFT<br>GARDEN</div>
+    </div>
+    <div class="k" style="position:absolute;top:7%;left:0;right:0;text-align:center" data-fg>WELCOME TO THE WEDDING OF</div>
+  </div>
+  <div class="meta"><h3>15 · Vertical Split</h3>
+    <p>Panel halved down the middle, one name per side, colours reversed. On a bifold this is the one that could genuinely straddle the two hinged panels — one name per board.</p>
+    <span class="tag med">Medium</span><span class="tag">Suits the bifold</span></div>
+</div>
+
+<!-- 16 — BLEED CROP -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 0;overflow:hidden">
+    <div class="k" style="text-align:center;padding:0 7%" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer"></div>
+    <div class="nm" style="font-size:calc(clamp(44px,9.6vw,84px)*var(--nmscale,1));line-height:.88;
+                white-space:nowrap;text-align:center" data-fg>
+      <div class="N1" style="margin-left:-6%">Allison</div>
+      <div class="N2" style="margin-right:-6%">Skylar</div>
+    </div>
+    <div class="spacer" style="flex:1.4"></div>
+    <div class="det" style="text-align:center;padding:0 7%" data-fg>09.12.2026 &middot; WALNUT CREEK, CALIFORNIA</div>
+  </div></div>
+  <div class="meta"><h3>16 · Bleed Crop</h3>
+    <p>Names set large enough to run off both edges, deliberately cropped. Confident and very current — but you lose legibility of the letterforms at the margins, so it only works if the names are short and familiar.</p>
+    <span class="tag med">Medium</span></div>
+</div>
+
+<!-- 17 — FIELD BLOCK -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:0">
+    <div style="padding:8% 7.5% 0" class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer"></div>
+    <div data-band style="padding:8% 7.5%;background:#5E4266;color:#F0E2D9">
+      <div class="nm" style="font-size:calc(clamp(26px,5.6vw,48px)*var(--nmscale,1));line-height:1.02">
+        <span class="N1">Allison</span><br><span class="acc" style="font-size:.62em">+</span> <span class="N2">Skylar</span>
+      </div>
+    </div>
+    <div class="spacer" style="flex:.55"></div>
+    <div style="padding:0 7.5% 8%" class="det" data-fg>SEPTEMBER 12, 2026 &middot; RUTH BANCROFT GARDEN</div>
+  </div></div>
+  <div class="meta"><h3>17 · Field Block</h3>
+    <p>A solid colour band running edge to edge with the names reversed out of it, floating in a washed panel. The block is one taped rectangle and a roller — genuinely the easiest multi-tone move here, and the highest impact.</p>
+    <span class="tag star">Best multi-tone</span><span class="tag easy">Easy</span></div>
+</div>
+
+<!-- 18 — HORIZON -->
+<div>
+  <div class="frame" style="flex-direction:column">
+    <div class="sign" data-g style="flex:1.15;padding:9% 7.5% 0">
+      <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+      <div class="spacer"></div>
+      <div class="nm N1" data-fg style="font-size:calc(clamp(28px,6vw,52px)*var(--nmscale,1));line-height:.9;margin-bottom:-.14em">Allison</div>
+    </div>
+    <div data-band style="flex:1;background:#C0592B;color:#F6EFE6;padding:0 7.5% 9%;display:flex;flex-direction:column">
+      <div class="nm N2" style="font-size:calc(clamp(28px,6vw,52px)*var(--nmscale,1));line-height:.9;margin-top:.1em">Skylar</div>
+      <div class="spacer"></div>
+      <div class="det">SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN, WALNUT CREEK</div>
+    </div>
+  </div>
+  <div class="meta"><h3>18 · Horizon</h3>
+    <p>One hard horizontal edge across the panel, one name above it and one below, each in the opposite colour. The names sit tight to the line so it reads as a single split word rather than two stacked ones.</p>
+    <span class="tag easy">Easy</span></div>
+</div>
+
+<!-- 19 — POLYCHROME STACK -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:8% 7%">
+    <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+    <div class="spacer"></div>
+    <div class="nm" style="font-size:calc(clamp(27px,5.8vw,50px)*var(--nmscale,1));line-height:1">
+      <div class="N1" data-c1>Allison</div>
+      <div class="acc" style="font-size:.6em" data-c2>and</div>
+      <div class="N2" data-c3>Skylar</div>
+    </div>
+    <div class="spacer" style="flex:1.4"></div>
+    <div class="det" data-fg>SEPTEMBER 12, 2026<br>RUTH BANCROFT GARDEN</div>
+  </div></div>
+  <div class="meta"><h3>19 · Two Mustards</h3>
+    <p>Your deeper jar on the first name, black on the "and", the brighter jar on the second. The only layout here that gives you an actual reason to own both paints — and the two curries sitting a line apart is a much subtler flex than introducing a third colour.</p>
+    <span class="tag med">Medium</span><span class="tag">Uses both jars</span></div>
+</div>
+
+<!-- 20 — DIAGONAL BAND -->
+<div>
+  <div class="frame"><div class="sign" data-g style="padding:0;overflow:hidden">
+    <div style="position:absolute;inset:0;clip-path:polygon(0 46%,100% 20%,100% 62%,0 88%)" data-band-bg></div>
+    <div style="position:relative;flex:1;display:flex;flex-direction:column;padding:8.5% 7.5%">
+      <div class="k" data-fg>WELCOME TO THE WEDDING OF</div>
+      <div class="spacer" style="flex:1.15"></div>
+      <div style="transform:rotate(-8.2deg);transform-origin:left center" data-band-fg>
+        <div class="nm" style="font-size:calc(clamp(23px,4.9vw,42px)*var(--nmscale,1));line-height:1.04">
+          <span class="N1">Allison</span> <span class="acc" style="font-size:.72em">+</span> <span class="N2">Skylar</span>
+        </div>
+        <div class="det" style="margin-top:6px">SEPTEMBER 12, 2026</div>
+      </div>
+      <div class="spacer" style="flex:1.35"></div>
+      <div class="det" style="text-align:right" data-fg>RUTH BANCROFT GARDEN<br>WALNUT CREEK, CA</div>
+    </div>
+  </div></div>
+  <div class="meta"><h3>20 · Diagonal Band</h3>
+    <p>A colour band cutting across the panel on a shallow angle with the names riding it. Same multi-tone logic as 17 and 18, but the tilt makes it read as motion rather than furniture. Two chalk lines and tape — the angle is no harder to mask than a horizontal.</p>
+    <span class="tag med">Medium</span></div>
+</div>
+
+</div>
+
+<h2>Ground &amp; lettering</h2>
+<p class="secnote"><strong>Decided:</strong> solid mustard <code>#BFA52B</code> with black lettering. The panel is already painted — the notes below are kept for reference only.</p>
+
+<div class="notes">
+  <h4 style="margin-top:0">What the reception photo settles</h4>
+  <ul>
+    <li>Black bentwood chairs, blush linen, mustard napkins. <strong>Black lettering is now the obvious call</strong> — it's already the strongest colour in the room, and the sign matching the chairs ties the whole thing together.</li>
+    <li>Your napkin is almost exactly <strong>Paint A</strong> (<code>#BFA52B</code>). Paint B (<code>#D0C82F</code>) is brighter and greener — closer to the chartreuse in that first poster you sent than to anything at the reception. Worth deciding whether you want the sign to <em>match</em> the napkins or deliberately sit a step brighter than them.</li>
+    <li><strong>Blush linen</strong> is now a ground option. It's warmer and pinker than the bone in your stationery — using it makes the sign a reception object rather than a stationery object. Both are defensible; bone ties to the invite, blush ties to the tables.</li>
+    <li>Mustard lettering on blush is about 3.6:1 — <strong>too low.</strong> If you want mustard type, put it on birch and keep it fat.</li>
+  </ul>
+
+  <table>
+    <tr><th>Ground</th><th>Black type</th><th>White type</th><th>Notes</th></tr>
+    <tr><td><strong>Blush linen</strong> <code>#F0E2D9</code></td><td>≈14:1 — excellent</td><td>≈1.1:1 — unusable</td><td>Matches the tablecloths. Warmest of the light grounds.</td></tr>
+    <tr><td><strong>Paint A</strong> <code>#BFA52B</code></td><td>≈7.5:1 — good</td><td>≈1.9:1 — no</td><td>The napkin colour. Safest of the two mustards.</td></tr>
+    <tr><td><strong>Paint B</strong> <code>#D0C82F</code></td><td>≈10:1 — excellent</td><td>≈1.5:1 — no</td><td>Brighter, greener, louder. Reads from much further away.</td></tr>
+    <tr><td><strong>Raw birch</strong> <code>#E2D3B4</code></td><td>≈13:1 — excellent</td><td>≈1.1:1 — unusable</td><td>Best-looking, least forgiving. No touching out over bare wood.</td></tr>
+    <tr><td><strong>Bone</strong> <code>#E7E3DA</code></td><td>≈13:1 — excellent</td><td>≈1.1:1 — unusable</td><td>Exact match to your invite stock. Safest option.</td></tr>
+    <tr><td><strong>Mustard</strong> <code>#C4A939</code></td><td>≈8:1 — good</td><td>≈1.8:1 — no</td><td>Loud. Introduces a colour the suite doesn't currently have.</td></tr>
+    <tr><td><strong>Stained ply</strong> <code>#8A6A43</code></td><td>≈3.9:1 — marginal</td><td>≈3.7:1 — marginal</td><td>The awkward middle. Both directions are weak; avoid unless the letters are very fat.</td></tr>
+    <tr><td><strong>Ink</strong> <code>#1E1D1A</code></td><td>—</td><td>≈14:1 — excellent</td><td>Dramatic and reads best after sunset. Shows dust and fingerprints.</td></tr>
+    <tr><td><strong>Denim</strong> <code>#3F587A</code></td><td>≈2.4:1 — no</td><td>≈6:1 — good</td><td>Pulled from his jacket in your photos. White on denim is the one strong reversed-out option that's already in your palette.</td></tr>
+  </table>
+  <ul style="margin-top:14px">
+    <li><strong>Short version:</strong> black on birch or bone if you want it to feel like the suite; white on denim or ink if you want the sign to be the moment. Skip the stain.</li>
+    <li><strong>White lettering is harder to paint than black.</strong> White is a weak-covering pigment — it takes three thin coats over a dark ground to stop looking grey and streaky, and every ragged edge shows more than it does in black. Budget extra time, or use a white paint pen for details and a brush only for the big serif.</li>
+  </ul>
+
+  <h4>The compromise worth considering</h4>
+  <ul>
+    <li>Paint a <strong>bone or mustard field inset a few inches from the edges</strong>, leaving a raw birch border. You get the plywood — which is genuinely the nicest material here — plus a forgiving surface to letter on. Directions 02, 05, 07 and 08 all take an inset field without changing the layout.</li>
+    <li><strong>Leave the ply edge exposed.</strong> Birch ply's laminated edge is the best thing about it. Don't band it, don't paint it, just sand and seal it.</li>
+  </ul>
+
+  <h4>Painting on smooth ply, specifically</h4>
+  <ul>
+    <li>Birch face veneer is thin. <strong>Sand 180 then 220, no coarser</strong> — go heavier and you'll cut through to the glue line, which shows as a grey patch you can't fix.</li>
+    <li>Bare birch drinks unevenly and will blotch. One coat of dewaxed shellac or clear sanding sealer before any lettering, sanded back lightly with 320.</li>
+    <li>Because the surface is smooth, <strong>a paint pen is viable here</strong> in a way it isn't on rough wood. Posca PC-1M / PC-3M for the mono details, brush for the big serif. Test on an offcut — some pens bleed into sealed birch.</li>
+    <li>Two thin coats on lettering, not one thick. Thick edges catch raking light and every photo picks it up.</li>
+    <li><strong>Matte or satin topcoat only.</strong> Gloss on a large flat panel means a hotspot in the middle of every photo.</li>
+  </ul>
+
+  <h4>Getting the lettering on — don't buy a projector</h4>
+  <table>
+    <tr><th>Method</th><th>Cost</th><th>Effort</th><th>Result</th></tr>
+    <tr><td><strong>Cut vinyl stencil</strong><br><span style="color:#8b8577">Etsy or a local sign shop</span></td><td>$30–60</td><td>Low</td><td><strong>Best.</strong> Crisp enough for thin serifs, and it's still hand-painted.</td></tr>
+    <tr><td><strong>Cut vinyl lettering</strong><br><span style="color:#8b8577">the letters themselves, no painting</span></td><td>$25–50</td><td>Lowest</td><td>Flawless, but it's vinyl on wood — no paint texture, and edges can lift in heat.</td></tr>
+    <tr><td><strong>Print &amp; graphite transfer</strong></td><td>~$0</td><td>High — 1–2 hrs</td><td>Fine outline, but you still cut every edge freehand with a brush.</td></tr>
+    <tr><td><strong>Projector</strong></td><td>$60–90</td><td>Medium</td><td>Solves placement, not the hard part. Skip it.</td></tr>
+    <tr><td><strong>Cricut / Silhouette</strong></td><td>Free if you own one</td><td>High — 24 in needs tiling from a 12 in mat</td><td>Same as bought vinyl if you're patient with seams.</td></tr>
+  </table>
+
+  <h4>Why the stencil wins</h4>
+  <ul>
+    <li>A projector only gives you an accurate <em>outline</em>. Knowing where the letters go was never the difficulty — cutting a clean edge on a 3&nbsp;mm hairline with a brush is. A stencil removes that problem entirely, which matters most for Instrument Serif.</li>
+    <li><strong>Send a vector PDF or SVG, not a screenshot.</strong> Print this page to PDF at panel size and name the font — Instrument Serif is free on Google Fonts, so any shop can set it.</li>
+    <li><strong>Ask for the counters on transfer tape.</strong> The holes in A, o, e and S are loose islands in a stencil. A good supplier positions them for you; if they don't, you're placing them by eye and it will show.</li>
+    <li><strong>Seal the stencil edge with the ground colour first.</strong> Lay the stencil, brush a thin coat of the <em>background</em> colour over all the edges, let it dry, then apply the lettering colour. Any bleed is background-on-background and invisible. This single step is the difference between crisp and fuzzy.</li>
+    <li><strong>Dab, don't stroke.</strong> Foam pouncer or stencil brush held vertical, tapped. A loaded brush dragged sideways forces paint under the edge. Two thin coats.</li>
+    <li><strong>Peel while slightly soft,</strong> shallow angle, back on itself. Cured paint tears along the line.</li>
+    <li><strong>Test the adhesive on an offcut.</strong> On raw or washed ply vinyl can lift wood fibres when pulled. On primed or sealed ground it's fine. Going raw-birch, ask for low-tack stencil vinyl and burnish gently.</li>
+  </ul>
+
+  <h4>Either way</h4>
+  <ul>
+    <li><strong>Chalk-line or tape every baseline</strong> before anything goes down. Crooked baselines are the one mistake that reads as amateur from across a garden.</li>
+    <li>Cap-height check: at ~20&nbsp;ft letters want <code>2 in</code> minimum, at ~40&nbsp;ft <code>4 in</code>. Only the names should pass that — the mono details are meant to be read up close.</li>
+    <li>Ruth Bancroft is outdoors and Walnut Creek in September gets hot. <strong>Back-brace the panel</strong> or 3/4&nbsp;in ply will still cup in an afternoon of direct sun.</li>
+  </ul>
+
+  <h4>Type notes</h4>
+  <ul>
+    <li>The <strong>Name face</strong> and <strong>Detail face</strong> dropdowns swap the typography across all layouts. Suite defaults: <b>Instrument Serif</b> + <b>Roboto Mono</b> (invite), plus <b>Helvetica Neue LT Std Black / Thin</b> (save the date — local install). Other options are free on Google Fonts; Archivo Black stands in for Helvetica on the web.</li>
+    <li>The default is <a href="https://fonts.google.com/specimen/Instrument+Serif">Instrument Serif</a> — your actual invite face. It's compact and runs small optically, so every layout here is sized up 14% for it; swapping to any other face rescales automatically so the comparison stays honest.</li>
+    <li><strong>S2 · Display Stack</strong> is the clearest read of that pairing: Instrument Serif names + italic <code>&amp;</code>, Roboto Mono details. PNG export: <a href="export/s2-display-stack.png" download>s2-display-stack.png</a>. For place / table cards, keep the same faces on bone stock — see <a href="tables.html">table numbers</a>.</li>
+    <li><a href="https://fonts.google.com/specimen/DM+Serif+Display">DM Serif Display</a> is the escape hatch: same silhouette as Instrument, noticeably thicker hairlines. If the test board tells you Instrument's thin strokes are a fight at 3&nbsp;in tall, this is the swap that keeps the look.</li>
+    <li>The mono reads as <a href="https://fonts.google.com/specimen/Roboto+Mono">Roboto Mono</a> with heavy letterspacing (<code>0.13em</code>–<code>0.2em</code>). Whatever detail face you land on, <strong>keep the tracking wide</strong> — it's a big part of why the suite feels considered rather than default.</li>
+    <li><strong>The one to notice:</strong> <a href="https://fonts.google.com/specimen/EB+Garamond">EB Garamond</a> is the sleeper pick. Old-style proportions, near-even stroke weight, so it reads as traditional and formal while being one of the most forgiving faces here to paint. Cormorant looks similar on screen and is the opposite — far too fine.</li>
+    <li>The heavy grotesque on your save-the-date is Helvetica-family; <a href="https://fonts.google.com/specimen/Inter">Inter</a> Bold at tight tracking is the free stand-in, used in direction 03. That one stays fixed regardless of the dropdowns, since it's deliberately quoting the STD.</li>
+    <li><strong>Stroke contrast is the whole game for hand-painting.</strong> Bodoni and Cormorant swing from a fat stem to a hairline — on a brush, the hairlines break up and read as sloppy rather than delicate. Anton, Archivo and EB Garamond hold a near-constant width, so a millimetre of wobble vanishes.</li>
+  </ul>
+</div>
+
+<h2>Building the A-frame</h2>
+<p class="secnote">Two 3/4&nbsp;in birch project panels, <b>24×36&nbsp;in (2×3&nbsp;ft)</b>, hinged at the top into a sandwich board. Written for the tools you already have: rollers, brushes, hinges, circular saw.</p>
+
+<div class="notes">
+  <h4 style="margin-top:0">Read this one first — it changes the layout</h4>
+  <ul>
+    <li>A 36&nbsp;in A-frame leans back about 15°, so your top edge lands near <strong>35&nbsp;in off the ground</strong>. Adult eye level is roughly 60&nbsp;in. <strong>Guests will be looking down at this sign, not at it.</strong></li>
+    <li>That inverts the usual hierarchy. Anything in the bottom third sits at knee height and effectively won't be read — so the fine mono details in layouts 01, 05 and 08 need to move <em>up</em>, not stay at the base.</li>
+    <li><strong>Two fixes, pick one.</strong> Either compress the whole composition into the top two-thirds and leave the bottom third empty, or set the frame on a low riser / crate to lift it 12–18&nbsp;in. The riser is less work and looks deliberate.</li>
+    <li>Layout <strong>07 (Ledger)</strong> is the exception — it's meant to be read up close at walking pace, so knee-height detail is fine. It's the best fit for an A-frame of the eight.</li>
+  </ul>
+
+  <h4>You get two faces — use them</h4>
+  <ul>
+    <li>A sandwich board has two outward faces. Front: the welcome (01, 02, 03 or 05). Back: the order of the day (07), or directions — <em>ceremony this way / bar inside</em>. Same type system, no extra sign to build.</li>
+    <li>Paint both faces even if the back stays blank. An unfinished face will absorb moisture at a different rate than the finished one and <strong>the panel will cup toward the sealed side.</strong> This is the single most common failure on a home-built board.</li>
+  </ul>
+
+  <h4>Cut &amp; prep</h4>
+  <ul>
+    <li><strong>Check the panels are actually square</strong> before anything else — measure both diagonals, they should match within 1/16&nbsp;in. Pre-cut project panels often aren't. Trim with the circular saw against a clamped straightedge if needed.</li>
+    <li>Circular saw on birch ply tears out on the <em>up</em> side of the blade. Cut with the good face <strong>down</strong>, use a fine-tooth (40T+) plywood blade, and score the cut line with a utility knife first. A strip of painter's tape along the line also helps.</li>
+    <li>Sand faces 150 → 180 → 220. <strong>Don't go coarser than 150</strong> — birch face veneer is thin and you'll cut through to the glue line, which shows as a grey patch that no amount of paint hides.</li>
+    <li><strong>Ease every edge and corner</strong> with 220 wrapped on a block. Sharp ply edges hold no paint and will chip the first time it's loaded into a car.</li>
+    <li>Ply edges drink paint like a straw. Hit all four edges of both panels with thinned primer or wood filler first, sand flat, then prime again. Skipping this is why home-built signs have fuzzy edges.</li>
+  </ul>
+
+  <h4>Paint</h4>
+  <ul>
+    <li><strong>Use a high-density foam roller, not a nap roller.</strong> Nap leaves orange-peel texture on smooth ply; 4&nbsp;in foam gives you a near-sprayed finish. Save the brushes for lettering and edges.</li>
+    <li>Order: prime both faces and all edges → sand 320 → two thin ground coats, sanding lightly between → transfer the layout → letter → topcoat.</li>
+    <li>Roll in one direction, then finish with a single light pass in the other ("laying off") before it tacks. Don't rework a roller mark once it's starting to set — you'll tear it.</li>
+    <li>If you're leaving raw birch: dewaxed shellac or clear sanding sealer instead of primer, sanded back with 320. Bare birch blotches badly without it.</li>
+    <li><strong>Matte or satin topcoat only.</strong> Gloss on two large flat panels means a hotspot in the middle of every photo, and this thing will be photographed a lot.</li>
+  </ul>
+
+  <h4>Washing the wood</h4>
+  <ul>
+    <li><strong>What it is:</strong> paint thinned far enough that it stains rather than covers, so the birch figure reads straight through the colour. It's the single best-looking option on ply — you get colour <em>and</em> the material, instead of choosing.</li>
+    <li><strong>The mix:</strong> roughly <code>1 part paint : 3–4 parts water</code> for acrylic or latex. Start thinner than you think and build. Each coat roughly doubles the depth, and you cannot take it back off.</li>
+    <li><strong>Seal the wood FIRST or the wash will blotch.</strong> This is the opposite of normal painting instinct and it's the step people skip. Bare birch has hard and soft grain that drink at wildly different rates. One coat of dilute shellac (a "washcoat"), sanded back with 320, evens the absorption. Skip it and you get a leopard-print panel.</li>
+    <li><strong>Apply with a rag or a wide brush, not a roller.</strong> Long strokes running the full length of the panel in one pass, following the grain direction. Wipe back with a clean cloth while wet to control depth.</li>
+    <li><strong>Never stop mid-panel.</strong> A wash shows every lap mark where wet meets dry. Work fast, keep a wet edge, do the whole face in one go.</li>
+    <li><strong>Both faces, same number of coats.</strong> Water-based wash raises grain and swells the veneer — unbalanced and the panel cups. Sand very lightly with 320 after the first coat once the raised grain dries.</li>
+    <li><strong>Lettering over a wash is harder,</strong> because the surface is now more absorbent than a sealed painted ground. Seal over the dried wash with matte clear before you letter, or the paint will feather into the grain.</li>
+    <li><strong>Test the strength on an offcut.</strong> The wash slider in the toggles is a preview, not a recipe — dilution to on-panel depth is not linear, and wet always looks darker than dry.</li>
+  </ul>
+
+  <h4>Multi-tone panels (17–20)</h4>
+  <ul>
+    <li><strong>Tape line quality is the whole job.</strong> Use good tape, burnish the edge down hard with a fingernail or a card, then <strong>seal the tape edge with a thin coat of the base colour first</strong>. That coat bleeds under the tape instead of your accent, so the accent line comes out surgical.</li>
+    <li>Pull tape while the paint is still slightly soft, at a shallow angle back on itself. Fully cured paint tears along the line.</li>
+    <li>Blocks and bands are easier than they look and read far stronger from distance than coloured type does — a solid field is visible at eighty feet, letterforms aren't.</li>
+    <li>For the arch (20), a pencil on a string pinned at the centre gives you a clean semicircle. Tape the two verticals, freehand nothing.</li>
+    <li><strong>The block wants to be the curry.</strong> Your reception palette is black, blush and mustard — a colour block in anything outside that reads as an import. The bands in 17, 18 and 20 default to whichever mustard isn't the current ground.</li>
+    <li><strong>Three colours is the ceiling</strong>, and you're better at two. Birch or blush ground, curry block, black type. That's the whole thing.</li>
+  </ul>
+
+  <h4>Lettering</h4>
+  <ul>
+    <li><strong>Project it.</strong> Print this page to PDF, project onto the panel in a dark room, trace with a hard (2H) pencil. Ten minutes, perfectly square, no distortion. Every other transfer method is worse.</li>
+    <li><strong>Chalk-line or tape every baseline</strong> before you draw a letter. Crooked baselines are the one mistake that reads as amateur from thirty feet.</li>
+    <li>Two thin coats on the letters, not one thick. Thick edges leave a ridge that catches raking light and shows every wobble in photos.</li>
+    <li>Because sealed birch is smooth, <strong>paint pens actually work here</strong> — Posca PC-1M/PC-3M for the mono details, brush for the big serif. Test on an offcut; some pens feather on sealed ply.</li>
+    <li><strong>Do a test board.</strong> An offcut, same prep, one word at full size in Instrument Serif. Twenty minutes now tells you whether those hairlines are going to fight you before you've committed the real panel.</li>
+  </ul>
+
+  <h4>Hinging</h4>
+  <ul>
+    <li><strong>Use a continuous (piano) hinge, not butt hinges</strong> — 24&nbsp;in to match the panel width. It spreads the load across the whole top edge and stops the frame racking side to side, which a pair of butt hinges won't.</li>
+    <li>Mount it <strong>surface-mounted across the two outer faces at the top edge</strong>, not into the 3/4&nbsp;in edge itself. Screws into plywood edge-grain strip out. Surface-mounting also means the panels close face-to-face, protecting your artwork in transit.</li>
+    <li>Screws no longer than <code>5/8 in</code> into 3/4&nbsp;in stock. <strong>Pilot-drill every hole</strong> — birch ply splits, and there is no fixing a split at the hinge line.</li>
+    <li>Hinge <em>after</em> the topcoat has cured, not before. Mask the hinge footprint if you want paint-free metal-to-wood contact.</li>
+    <li><strong>Fit a spreader.</strong> Light chain or a nylon strap between eye screws on the inner faces, about 8&nbsp;in up from the bottom. Set it so the feet sit 20–24&nbsp;in apart — roughly a 35° spread. Without it the frame will slowly splay on grass and eventually do the splits.</li>
+  </ul>
+
+  <h4>Outdoors at Ruth Bancroft</h4>
+  <ul>
+    <li>Weight: two 3/4&nbsp;in birch panels at 24&nbsp;×&nbsp;36 come to roughly <strong>31&nbsp;lb total</strong>. Heavy to carry, but that mass is what keeps it upright — don't be tempted into thinner stock.</li>
+    <li>It's still a 12&nbsp;sq&nbsp;ft sail. Walnut Creek gets an afternoon breeze in September; drop a sandbag or two bricks inside the A where nobody sees them.</li>
+    <li><strong>Seal the bottom edges twice.</strong> They'll sit on irrigated ground and wick moisture straight up into the plies. This is how the bottom inch of a sign goes black.</li>
+    <li>Exterior-grade topcoat, and don't set it out days early. September sun on a dark painted panel gets hot enough to move the wood.</li>
+    <li>Glue a strip of scrap or rubber feet along each bottom edge to widen the footprint on soft ground and keep the ply off wet soil.</li>
+  </ul>
+
+  <h4>Rough sequence</h4>
+  <table>
+    <tr><th>Day</th><th>Do</th><th>Why</th></tr>
+    <tr><td><strong>1</strong></td><td>Square, cut, sand, ease edges, seal edges, prime both faces.</td><td>Primer needs overnight before sanding back.</td></tr>
+    <tr><td><strong>2</strong></td><td>Sand 320, two ground coats both faces. Test board in parallel.</td><td>Test board dries while the panels do.</td></tr>
+    <tr><td><strong>3</strong></td><td>Project and trace the layout. Letter it.</td><td>Don't rush this one — it's the whole job.</td></tr>
+    <tr><td><strong>4</strong></td><td>Touch up, topcoat both faces.</td><td>Full cure before hardware.</td></tr>
+    <tr><td><strong>5+</strong></td><td>Hinge, fit the spreader chain, add feet. Stand it up outside and look at it from thirty feet.</td><td>Cure time is real — give it several days before the event.</td></tr>
+  </table>
+</div>
+
+<footer>
+  Ground locked to mustard. Lettering colour still open — toggle in the bar. Export SVGs from each card.<br>
+  Print to PDF at 2:3 for projecting onto a 24&nbsp;×&nbsp;36&nbsp;in (2×3&nbsp;ft) board.
+</footer>
+</div>
+
+<script>
+(function(){
+  // ground swatches (approx mid-tone of each painted/raw surface)
+  var pA = document.getElementById('pA'), pB = document.getElementById('pB');
+  function paintA(){ return pA.value; }
+  function paintB(){ return pB.value; }
+
+  var PLUM = '#5E4266', RUST = '#C0592B', BIRCHHEX = '#E2D3B4';
+  // Grain rendered as a MULTIPLY layer: mostly white with dark streaks, so it darkens
+  // the soft grain and leaves the hard grain alone — which is what a stain actually does.
+  function grainURL(slope, intercept, fx, fy, seed){
+    return "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='480'%3E" +
+      "%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='" + fx + " " + fy +
+      "' numOctaves='4' seed='" + seed + "'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E" +
+      "%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='" + slope + "' intercept='" + intercept + "'/%3E" +
+      "%3CfeFuncG type='linear' slope='" + slope + "' intercept='" + intercept + "'/%3E" +
+      "%3CfeFuncB type='linear' slope='" + slope + "' intercept='" + intercept + "'/%3E%3C/feComponentTransfer%3E" +
+      "%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E\")";
+  }
+
+  var G = {
+    birch:  {cls:'g-birch',   hex:BIRCHHEX,  name:'raw birch'},
+    bone:   {cls:'g-bone',    hex:'#E7E3DA', name:'bone',       tint:1},
+    blush:  {cls:'g-blush',   hex:'#F0E2D9', name:'blush linen',tint:1},
+    mustA:  {cls:'g-flat',    get:paintA,    name:'mustard A', tint:1},
+    mustB:  {cls:'g-flat',    get:paintB,    name:'mustard B', tint:1},
+    plum:   {cls:'g-flat',    hex:PLUM,      name:'plum',      tint:1},
+    rust:   {cls:'g-flat',    hex:RUST,      name:'rust',      tint:1},
+    ink:    {cls:'g-ink',     hex:'#1E1D1A', name:'ink',       tint:1},
+    denim:  {cls:'g-denim',   hex:'#3F587A', name:'denim',     tint:1}
+  };
+  var T = {
+    ink:  {hex:'#1E1D1A', name:'black'},
+    white:{hex:'#F4F1EA', name:'white'},
+    mustA:{get:paintA, name:'mustard A'},
+    mustB:{get:paintB, name:'mustard B'},
+    plum: {hex:PLUM,   name:'plum'},
+    rust: {hex:RUST,   name:'rust'}
+  };
+  function gHex(k){ var g = G[k]; return g.get ? g.get() : g.hex; }
+  function tHex(k){ var t = T[k]; return t.get ? t.get() : t.hex; }
+
+  function rgba(h,a){ return 'rgba('+parseInt(h.substr(1,2),16)+','+parseInt(h.substr(3,2),16)+','+parseInt(h.substr(5,2),16)+','+a+')'; }
+  function scale(h,f){
+    return '#'+[1,3,5].map(function(i){
+      var v = Math.min(255, Math.round(parseInt(h.substr(i,2),16)*f));
+      return ('0'+v.toString(16)).slice(-2);
+    }).join('');
+  }
+  // what the eye actually sees when a translucent coat sits over a substrate
+  function blend(h,a,sub){
+    sub = sub || BIRCHHEX;
+    function mix(i){ return Math.round(parseInt(h.substr(i,2),16)*a + parseInt(sub.substr(i,2),16)*(1-a)); }
+    return '#'+[mix(1),mix(3),mix(5)].map(function(v){return ('0'+v.toString(16)).slice(-2)}).join('');
+  }
+
+  var ALL = 'g-birch g-bone g-blush g-mustard g-flat g-stain g-ink g-denim'.split(' ');
+  var ground = 'mustA', text = 'ink', wash = 0;
+  var sWash = document.getElementById('sWash');
+
+  // WCAG relative luminance + contrast ratio
+  function lum(hex){
+    var c = [1,3,5].map(function(i){
+      var v = parseInt(hex.substr(i,2),16)/255;
+      return v <= 0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4);
+    });
+    return 0.2126*c[0] + 0.7152*c[1] + 0.0722*c[2];
+  }
+  function ratio(a,b){
+    var l1 = lum(a), l2 = lum(b);
+    return ((Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05));
+  }
+
+  function apply(){
+    // Locked: solid mustard ground (panel already painted). Lettering colour is still free.
+    ground = 'mustA';
+    wash = 0;
+    var g = G[ground], gh = gHex(ground), fg = tHex(text);
+
+    document.querySelectorAll('[data-g]').forEach(function(el){
+      ALL.forEach(function(c){ el.classList.remove(c); });
+      el.style.background = '';
+      el.style.backgroundImage = '';
+      el.style.backgroundBlendMode = '';
+      el.style.backgroundSize = '';
+      el.classList.add(g.cls);
+      if (g.get || g.cls === 'g-flat') el.style.background = gh;
+    });
+    document.querySelectorAll('[data-g],[data-fg],[data-fgs]').forEach(function(el){ el.style.color = fg; });
+    document.querySelectorAll('[data-inv]').forEach(function(el){
+      el.style.background = fg; el.style.color = gh;
+    });
+
+    function notGround(pref){
+      for (var i=0;i<pref.length;i++){ if (ratio(pref[i], gh) > 2.0) return pref[i]; }
+      return '#1E1D1A';
+    }
+    var band   = notGround(['#1E1D1A', paintB(), RUST]);
+    var onBand = ratio(band, '#F4F1EA') > ratio(band, '#1E1D1A') ? '#F4F1EA' : '#1E1D1A';
+    document.querySelectorAll('[data-band]').forEach(function(el){
+      el.style.background = band; el.style.color = onBand;
+    });
+    document.querySelectorAll('[data-band-bg]').forEach(function(el){ el.style.background = band; });
+    document.querySelectorAll('[data-band-fg]').forEach(function(el){ el.style.color = onBand; });
+    document.querySelectorAll('[data-c1]').forEach(function(e){ e.style.color = fg; });
+    document.querySelectorAll('[data-c2]').forEach(function(e){ e.style.color = fg; });
+    document.querySelectorAll('[data-c3]').forEach(function(e){ e.style.color = paintB(); });
+
+    var r = ratio(gh, fg);
+    var w = document.getElementById('warn'), t = document.getElementById('warntxt');
+    if (r < 4.5){
+      w.classList.add('show');
+      t.textContent = T[text].name.charAt(0).toUpperCase() + T[text].name.slice(1) +
+        ' on mustard is ' + r.toFixed(1) + ':1 — will muddy at distance or at dusk.';
+    } else {
+      w.classList.remove('show');
+    }
+    summarise();
+  }
+
+  function summarise(){
+    var face = document.getElementById('nf');
+    var fg2 = tHex(text);
+    document.getElementById('summary').innerHTML =
+      '<span class="swatchdot" style="background:#BFA52B"></span><b>Mustard</b> locked' +
+      '<span class="dot">·</span><span class="swatchdot" style="background:' + fg2 + '"></span><b>' + T[text].name + '</b> lettering' +
+      '<span class="dot">·</span><b>' + face.options[face.selectedIndex].text + '</b>';
+  }
+
+  document.querySelectorAll('#tc button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#tc button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on'); text = b.dataset.tc; apply();
+    });
+  });
+  document.getElementById('nf').addEventListener('change', summarise);
+  apply();
+
+  // ---------- typeface swapping ----------
+  // s = optical size multiplier, so faces stay visually matched when swapped
+  var NF = {
+    instrument:  {f:"var(--font-invite-serif)",     wt:400, trk:'-.006em', s:1.14, acc:"var(--font-invite-serif)", d:'med',  n:'<b>Your invite face.</b> Compact and high-contrast, so it needs to run larger than it looks — sizes here are tuned up 14% for it.'},
+    helveticablack:{f:"var(--font-std-black)",      wt:900, trk:'-.02em',  s:0.88, acc:"var(--font-invite-serif)", d:'low',  n:'<b>Your save-the-date display face</b> (Helvetica Neue LT Std 95 Black). Needs Helvetica Neue LT Std installed locally; falls back to Archivo Black on the web.'},
+    playfair:    {f:"'Playfair Display',serif",     wt:500, trk:'-.014em', s:1.00, acc:"'Playfair Display',serif", d:'high', n:'The nearest common substitute. Rounder and wider than Instrument — softer, slightly less sharp.'},
+    bodoni:      {f:"'Bodoni Moda',serif",          wt:500, trk:'-.008em', s:1.02, acc:"'Bodoni Moda',serif",      d:'high', n:'Pushes Instrument’s contrast further. Gorgeous printed, brutal with a brush — hairlines will skip.'},
+    dmserif:     {f:"'DM Serif Display',serif",     wt:400, trk:'-.018em', s:1.00, acc:"'DM Serif Display',serif", d:'med',  n:'Same silhouette, thicker hairlines. The obvious swap if painting Instrument turns out to be a fight.'},
+    ebgaramond:  {f:"'EB Garamond',serif",          wt:500, trk:'-.004em', s:1.06, acc:"'EB Garamond',serif",      d:'low',  n:'Old-style and near-even stroke. Reads formal, paints easily — the sleeper pick.'},
+    libre:       {f:"'Libre Baskerville',serif",    wt:400, trk:'-.006em', s:0.92, acc:"'Libre Baskerville',serif",d:'med',  n:'Bookish and sturdy. Wide, so long names need more room than Instrument.'},
+    cormorant:   {f:"'Cormorant Garamond',serif",   wt:500, trk:'0em',     s:1.16, acc:"'Cormorant Garamond',serif",d:'high',n:'Even finer than Instrument. Too delicate for a garden sign unless the names are enormous.'},
+    fraunces:    {f:"'Fraunces',serif",             wt:500, trk:'-.016em', s:1.00, acc:"'Fraunces',serif",         d:'med',  n:'Soft, slightly odd serifs. Adds warmth without leaving the serif world.'},
+    frauncessoft:{f:"'Fraunces',serif",             wt:600, trk:'-.022em', s:0.98, acc:"'Fraunces',serif",         d:'low',  n:'Heavier Fraunces — the wonky terminals read as hand-lettered, which hides brush wobble.'},
+    inter:       {f:"Inter,sans-serif",             wt:600, trk:'-.028em', s:0.90, acc:"var(--font-invite-serif)", d:'low',  n:'Neutral grotesque stand-in when Helvetica Neue isn’t available.'},
+    archivo:     {f:"Archivo,sans-serif",           wt:700, trk:'-.02em',  s:1.00, acc:"var(--font-invite-serif)", d:'low',  n:'Workhorse grotesque. Slightly narrow, so long names fit. Uniform stroke, very forgiving.'},
+    dmsans:      {f:"'DM Sans',sans-serif",         wt:600, trk:'-.03em',  s:0.92, acc:"var(--font-invite-serif)", d:'low',  n:'Softer, rounder grotesque. Friendlier than Inter without being cute.'},
+    jost:        {f:"Jost,sans-serif",              wt:500, trk:'-.005em', s:0.96, acc:"var(--font-invite-serif)", d:'low',  n:'Futura-adjacent geometric. Circular bowls are surprisingly hard to paint freehand — project this one.'},
+    outfit:      {f:"Outfit,sans-serif",            wt:500, trk:'-.02em',  s:0.94, acc:"var(--font-invite-serif)", d:'low',  n:'Clean geometric with an even stroke. The most neutral option here.'},
+    spacegrotesk:{f:"'Space Grotesk',sans-serif",   wt:600, trk:'-.03em',  s:0.94, acc:"var(--font-invite-serif)", d:'low',  n:'Contemporary grotesque with odd, squared details. Reads design-literate rather than wedding-traditional.'},
+    bebas:       {f:"'Bebas Neue',sans-serif",      wt:400, trk:'.005em',  s:0.98, acc:"var(--font-invite-serif)", d:'low',  n:'Tall, narrow, caps-only. Best of all sixteen faces at fitting long names at large size.'},
+    oswald:      {f:"Oswald,sans-serif",            wt:500, trk:'.005em',  s:0.98, acc:"var(--font-invite-serif)", d:'low',  n:'Condensed with a little more warmth than Bebas, and it has lowercase.'},
+    anton:       {f:"Anton,sans-serif",             wt:400, trk:'-.008em', s:0.92, acc:"var(--font-invite-serif)", d:'low',  n:'Heaviest condensed here. Uniform stroke — the single easiest face to paint well.'},
+    archivoblack:{f:"'Archivo Black',sans-serif",   wt:400, trk:'-.03em',  s:0.90, acc:"var(--font-invite-serif)", d:'low',  n:'Web stand-in for Helvetica Neue Black when the LT Std fonts aren’t installed.'},
+    syne:        {f:"Syne,sans-serif",              wt:700, trk:'-.01em',  s:0.95, acc:"var(--font-invite-serif)", d:'med',  n:'Contemporary and deliberately strange. Distinctive, furthest from your existing pieces.'}
+  };
+  var DF = {
+    robotomono:   {f:"var(--font-invite-mono)", wt:400, t1:'.2em',  t2:'.13em', n:'your invite detail face'},
+    helveticathin:{f:"var(--font-std-thin)",    wt:100, t1:'.08em', t2:'.06em', n:'STD footer — Helvetica Neue Thin (falls back to Inter)'},
+    spacemono:    {f:"'Space Mono',monospace",  wt:400, t1:'.19em', t2:'.12em', n:'quirkier, more typewriter'},
+    plexmono:     {f:"'IBM Plex Mono',monospace",wt:400,t1:'.2em',  t2:'.13em', n:'softer, slightly warmer'},
+    inter:        {f:"Inter,sans-serif",        wt:500, t1:'.22em', t2:'.15em', n:'cleaner, less technical'},
+    archivosans:  {f:"Archivo,sans-serif",      wt:500, t1:'.22em', t2:'.15em', n:'neutral grotesque'},
+    serifcaps:    {f:"'EB Garamond',serif",     wt:500, t1:'.24em', t2:'.17em', n:'traditional, matches a serif name face'}
+  };
+  var DIFF = {
+    low:  ['#31562a','Easy to paint'],
+    med:  ['#6b5111','Moderate'],
+    high: ['#7a2e1b','Hard to paint by hand']
+  };
+
+  // weight range actually available per face — single-weight faces can't be scrubbed
+  var WR = {
+    instrument:[400,400], helveticablack:[900,900],
+    playfair:[400,900], bodoni:[400,900], dmserif:[400,400],
+    ebgaramond:[400,800], libre:[400,700], cormorant:[300,700],
+    fraunces:[100,900], frauncessoft:[100,900],
+    inter:[100,900], archivo:[100,900], dmsans:[100,1000], jost:[100,900],
+    outfit:[100,900], spacegrotesk:[300,700], bebas:[400,400], oswald:[200,700],
+    anton:[400,400], archivoblack:[400,400], syne:[400,800]
+  };
+
+  var sSize  = document.getElementById('sSize'),  oSize  = document.getElementById('oSize');
+  var sWt    = document.getElementById('sWeight'),oWt    = document.getElementById('oWeight');
+  var sTrk   = document.getElementById('sTrack'), oTrk   = document.getElementById('oTrack');
+
+  function pushVars(){
+    var r = document.documentElement.style;
+    r.setProperty('--nmscale', sSize.value);
+    r.setProperty('--nmwt',    sWt.value);
+    r.setProperty('--nmtrk',   sTrk.value + 'em');
+    oSize.textContent = (+sSize.value).toFixed(2) + '×';
+    oWt.textContent   = sWt.value;
+    var t = (+sTrk.value).toFixed(3).replace(/^(-?)0\./, '$1.');
+    oTrk.textContent  = t;
+  }
+  [sSize, sWt, sTrk].forEach(function(s){ s.addEventListener('input', pushVars); });
+
+  function syncSliders(key, n){
+    var w = WR[key] || [400,400];
+    sSize.value = n.s;
+    sTrk.value  = parseFloat(n.trk);
+    sWt.min = w[0]; sWt.max = w[1];
+    sWt.value = Math.min(Math.max(n.wt, w[0]), w[1]);
+    var single = (w[0] === w[1]);
+    sWt.disabled = single;
+    document.getElementById('fixedw').textContent =
+      single ? 'single weight only' : 'weights ' + w[0] + '–' + w[1];
+    pushVars();
+  }
+
+  function applyType(resetSliders){
+    var key = document.getElementById('nf').value;
+    var n = NF[key];
+    var d = DF[document.getElementById('df').value];
+    var r = document.documentElement.style;
+    r.setProperty('--nmfont', n.f);
+    r.setProperty('--accfont',n.acc);
+    r.setProperty('--detfont',d.f);
+    r.setProperty('--detwt',  String(d.wt));
+    r.setProperty('--dettrk', d.t1);
+    r.setProperty('--dettrk2',d.t2);
+    if (resetSliders !== false) syncSliders(key, n); else pushVars();
+    var dd = DIFF[n.d];
+    document.getElementById('typenote').innerHTML =
+      '<b style="color:'+dd[0]+'">'+dd[1]+'.</b> ' + n.n + ' Details: ' + d.n + '.';
+  }
+  document.getElementById('nf').addEventListener('change', function(){ applyType(true); });
+  document.getElementById('df').addEventListener('change', function(){ applyType(false); });
+  document.getElementById('reset').addEventListener('click', function(){ applyType(true); });
+  applyType(true);
+
+  var gear = document.getElementById('gear');
+  var panel = document.getElementById('panel');
+  if (gear && panel) {
+    gear.addEventListener('click', function () {
+      var on = panel.classList.toggle('open');
+      gear.classList.toggle('open', on);
+      gear.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+  }
+
+  function bind(id, cls){
+    var i = document.getElementById(id);
+    function set(){
+      document.querySelectorAll('.'+cls).forEach(function(n){
+        var up = n.textContent === n.textContent.toUpperCase() && n.textContent.length > 1;
+        n.textContent = up ? i.value.toUpperCase() : i.value;
+      });
+    }
+    // capture original casing once
+    document.querySelectorAll('.'+cls).forEach(function(n){
+      n.dataset.upper = (n.textContent === n.textContent.toUpperCase()) ? '1' : '0';
+    });
+    function set2(){
+      document.querySelectorAll('.'+cls).forEach(function(n){
+        n.textContent = n.dataset.upper === '1' ? i.value.toUpperCase() : i.value;
+      });
+    }
+    i.addEventListener('input', set2); set2();
+  }
+  function justifyAll(){
+    document.querySelectorAll('.jrow').forEach(function(el){
+      var src = el.dataset.j;
+      if (el.dataset.jn === '1') src = document.getElementById('n1').value.toUpperCase();
+      if (el.dataset.jn === '2') src = document.getElementById('n2').value.toUpperCase();
+      el.innerHTML = (src||'').split('').map(function(c){
+        return '<span>' + (c === ' ' ? '&nbsp;' : c) + '</span>';
+      }).join('');
+    });
+  }
+  document.getElementById('n1').addEventListener('input', justifyAll);
+  document.getElementById('n2').addEventListener('input', justifyAll);
+  justifyAll();
+
+  bind('n1','N1'); bind('n2','N2');
+})();
+</script>
+<script src="js/opentype.min.js"></script>
+<script src="js/export-svg.js"></script>
+<script src="js/favorites.js"></script>
+<script>
+(function(){
+  // Wire the letterforms asset card to live lettering export
+  document.querySelectorAll('[data-action="copy-letters-card"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var g = document.getElementById('export-global');
+      var t = g && g.querySelector('[data-x="copy-letters"]');
+      if (t) t.click();
+    });
+  });
+  document.querySelectorAll('[data-action="dl-letters-card"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var g = document.getElementById('export-global');
+      var t = g && g.querySelector('[data-x="dl-letters"]');
+      if (t) t.click();
+    });
+  });
+})();
+</script>
