@@ -8,12 +8,50 @@
     document.documentElement.getAttribute('data-fav-key') ||
     'wedding-sign-favorites-v1';
 
+  var ALIASES = {
+    'c1-hanging-caps': 'longrows',
+    'c2-s2-ledger': 's2',
+    'c3-spine-letters': 'spine',
+    'c4-invite-field': 'invite',
+    'c5-last-name-ledger': 'band',
+    'c6-letter-rules': 'alpha',
+    'c7-wide-open': 'across',
+    'c8-the-ledger': 'river',
+    'c9-three-ledgers': 'twoup',
+    'c10-split-letters': 'alpha',
+    'c10-the-ages': 'ages',
+    'c11-the-ages': 'ages',
+    'c11-dot-leaders': 'crooked',
+    'c12-dot-leaders': 'crooked',
+    'c12-directory-lettered': 'spineRight',
+    'c13-directory-lettered': 'spineRight',
+    'c13-lettered-ledger': 'stamp',
+    'c14-index-ledger': 'stamp',
+    'c14-three-across': 'stamp',
+    'c14-lettered-ledger': 'stamp',
+    'c14-quiet-ages': 'whisper',
+    'c15-directory': 'band',
+    'c16-quiet-ages': 'whisper',
+    'split': 'alpha',
+    'pills': 'band'
+  };
+
   function slug(s) {
     return String(s || '')
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-|-$/g, '')
       .slice(0, 64);
+  }
+
+  function cardId(card) {
+    var sign = card.querySelector('[data-layout]');
+    var layout = sign && sign.getAttribute('data-layout');
+    if (layout) return layout;
+    var preset = card.getAttribute('data-fav-id');
+    if (preset) return preset;
+    var h3 = card.querySelector('h3');
+    return slug(h3 && h3.textContent);
   }
 
   function loadFavs() {
@@ -100,16 +138,28 @@
 
   function syncFromStorage() {
     var favs = loadFavs();
-    var favSet = {};
-    favs.forEach(function (id) { favSet[id] = true; });
-
-    // Move starred into favorites in saved order
     var byId = {};
+    var bySlug = {};
     document.querySelectorAll('.layout-card').forEach(function (card) {
-      byId[card.getAttribute('data-layout-id')] = card;
+      var id = card.getAttribute('data-layout-id');
+      byId[id] = card;
+      var h3 = card.querySelector('h3');
+      if (h3) bySlug[slug(h3.textContent)] = id;
     });
 
+    var resolved = [];
     favs.forEach(function (id) {
+      var next = id;
+      if (!byId[next] && ALIASES[next]) next = ALIASES[next];
+      if (!byId[next] && bySlug[id]) next = bySlug[id];
+      if (byId[next] && resolved.indexOf(next) === -1) resolved.push(next);
+    });
+    if (resolved.join('\0') !== favs.join('\0')) saveFavs(resolved);
+
+    var favSet = {};
+    resolved.forEach(function (id) { favSet[id] = true; });
+
+    resolved.forEach(function (id) {
       if (byId[id]) moveToFavorites(byId[id]);
     });
 
@@ -158,7 +208,7 @@
     var h3 = meta.querySelector('h3');
     if (!h3) return;
 
-    var id = slug(h3.textContent);
+    var id = cardId(card);
     card.setAttribute('data-layout-id', id);
 
     if (meta.querySelector('.starbtn')) return;

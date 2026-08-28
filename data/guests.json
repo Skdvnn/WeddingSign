@@ -1,0 +1,763 @@
+{
+  "source": "data/rsvp-export.xlsx",
+  "attending": 84,
+  "parties": 46,
+  "guests": [
+    {
+      "id": "hayley-adams",
+      "first": "Hayley",
+      "last": "Adams",
+      "name": "Hayley Adams",
+      "diet": "",
+      "party": "p1",
+      "partyLabel": "Hayley Adams & Patrick Smith"
+    },
+    {
+      "id": "patrick-smith",
+      "first": "Patrick",
+      "last": "Smith",
+      "name": "Patrick Smith",
+      "diet": "",
+      "party": "p1",
+      "partyLabel": "Hayley Adams & Patrick Smith"
+    },
+    {
+      "id": "aidan-atman",
+      "first": "Aidan",
+      "last": "Atman",
+      "name": "Aidan Atman",
+      "diet": "",
+      "party": "p2",
+      "partyLabel": "Aidan Atman & Katia Pontillo"
+    },
+    {
+      "id": "katia-pontillo",
+      "first": "Katia",
+      "last": "Pontillo",
+      "name": "Katia Pontillo",
+      "diet": "",
+      "party": "p2",
+      "partyLabel": "Aidan Atman & Katia Pontillo"
+    },
+    {
+      "id": "cynthia-bennett",
+      "first": "Cynthia",
+      "last": "Bennett",
+      "name": "Cynthia Bennett",
+      "diet": "No restrictions. I am sure everything will be absolutely delicious!",
+      "party": "p3",
+      "partyLabel": "Cynthia Bennett"
+    },
+    {
+      "id": "cindy",
+      "first": "Cindy",
+      "last": "",
+      "name": "Cindy",
+      "diet": "",
+      "party": "p46",
+      "partyLabel": "Cindy"
+    },
+    {
+      "id": "justin-chen",
+      "first": "Justin",
+      "last": "Chen",
+      "name": "Justin Chen",
+      "diet": "Aly is vegetarian and has an egg allergy",
+      "party": "p4",
+      "partyLabel": "Justin Chen & Aly Henneberry"
+    },
+    {
+      "id": "aly-henneberry",
+      "first": "Aly",
+      "last": "Henneberry",
+      "name": "Aly Henneberry",
+      "diet": "Aly is vegetarian and has an egg allergy",
+      "party": "p4",
+      "partyLabel": "Justin Chen & Aly Henneberry"
+    },
+    {
+      "id": "ray-crockett",
+      "first": "Ray",
+      "last": "Crockett",
+      "name": "Ray Crockett",
+      "diet": "",
+      "party": "p5",
+      "partyLabel": "Ray Crockett & Ahyoung An"
+    },
+    {
+      "id": "ahyoung-an",
+      "first": "Ahyoung",
+      "last": "An",
+      "name": "Ahyoung An",
+      "diet": "",
+      "party": "p5",
+      "partyLabel": "Ray Crockett & Ahyoung An"
+    },
+    {
+      "id": "paige-cross",
+      "first": "Paige",
+      "last": "Cross",
+      "name": "Paige Cross",
+      "diet": "",
+      "party": "p6",
+      "partyLabel": "Paige Cross"
+    },
+    {
+      "id": "waylon-cross",
+      "first": "Waylon",
+      "last": "Cross",
+      "name": "Waylon Cross",
+      "diet": "",
+      "party": "p7",
+      "partyLabel": "Waylon Cross"
+    },
+    {
+      "id": "peter-cross",
+      "first": "Peter",
+      "last": "Cross",
+      "name": "Peter Cross",
+      "diet": "",
+      "party": "p8",
+      "partyLabel": "Peter Cross & Vicki Moore Cross"
+    },
+    {
+      "id": "vicki-moore-cross",
+      "first": "Vicki",
+      "last": "Moore Cross",
+      "name": "Vicki Moore Cross",
+      "diet": "",
+      "party": "p8",
+      "partyLabel": "Peter Cross & Vicki Moore Cross"
+    },
+    {
+      "id": "kathy-cross-brown",
+      "first": "Kathy",
+      "last": "Cross Brown",
+      "name": "Kathy Cross Brown",
+      "diet": "",
+      "party": "p9",
+      "partyLabel": "Kathy Cross Brown"
+    },
+    {
+      "id": "arthur-dann",
+      "first": "Arthur",
+      "last": "Dann",
+      "name": "Arthur Dann",
+      "diet": "",
+      "party": "p10",
+      "partyLabel": "Arthur & Jeffrey Dann"
+    },
+    {
+      "id": "jeffrey-dann",
+      "first": "Jeffrey",
+      "last": "Dann",
+      "name": "Jeffrey Dann",
+      "diet": "",
+      "party": "p10",
+      "partyLabel": "Arthur & Jeffrey Dann"
+    },
+    {
+      "id": "nikki-denamur",
+      "first": "Nikki",
+      "last": "Denamur",
+      "name": "Nikki Denamur",
+      "diet": "Nico is vegetarian",
+      "party": "p11",
+      "partyLabel": "Nikki Denamur & Nico Carballal"
+    },
+    {
+      "id": "nico-carballal",
+      "first": "Nico",
+      "last": "Carballal",
+      "name": "Nico Carballal",
+      "diet": "Nico is vegetarian",
+      "party": "p11",
+      "partyLabel": "Nikki Denamur & Nico Carballal"
+    },
+    {
+      "id": "rainya-dann",
+      "first": "Rainya",
+      "last": "Dann",
+      "name": "Rainya Dann",
+      "diet": "",
+      "party": "p12",
+      "partyLabel": "Rainya Dann & Christopher Hobbs"
+    },
+    {
+      "id": "christopher-hobbs",
+      "first": "Christopher",
+      "last": "Hobbs",
+      "name": "Christopher Hobbs",
+      "diet": "",
+      "party": "p12",
+      "partyLabel": "Rainya Dann & Christopher Hobbs"
+    },
+    {
+      "id": "narayan-deziel",
+      "first": "Narayan",
+      "last": "Deziel",
+      "name": "Narayan Deziel",
+      "diet": "",
+      "party": "p13",
+      "partyLabel": "Narayan Deziel & Nikki Elkin"
+    },
+    {
+      "id": "nikki-elkin",
+      "first": "Nikki",
+      "last": "Elkin",
+      "name": "Nikki Elkin",
+      "diet": "",
+      "party": "p13",
+      "partyLabel": "Narayan Deziel & Nikki Elkin"
+    },
+    {
+      "id": "ben-smallson-jackson",
+      "first": "Ben",
+      "last": "Smallson Jackson",
+      "name": "Ben Smallson Jackson",
+      "diet": "",
+      "party": "p14",
+      "partyLabel": "Ben Smallson Jackson & Isabelle Faller"
+    },
+    {
+      "id": "isabelle-faller",
+      "first": "Isabelle",
+      "last": "Faller",
+      "name": "Isabelle Faller",
+      "diet": "",
+      "party": "p14",
+      "partyLabel": "Ben Smallson Jackson & Isabelle Faller"
+    },
+    {
+      "id": "alicia-fong",
+      "first": "Alicia",
+      "last": "Fong",
+      "name": "Alicia Fong",
+      "diet": "Gluten free",
+      "party": "p15",
+      "partyLabel": "Alicia Fong & Andrew Champagne"
+    },
+    {
+      "id": "andrew-champagne",
+      "first": "Andrew",
+      "last": "Champagne",
+      "name": "Andrew Champagne",
+      "diet": "Gluten free",
+      "party": "p15",
+      "partyLabel": "Alicia Fong & Andrew Champagne"
+    },
+    {
+      "id": "bill-fong",
+      "first": "Bill",
+      "last": "Fong",
+      "name": "Bill Fong",
+      "diet": "No beef (Lucy and Termia)",
+      "party": "p16",
+      "partyLabel": "Bill Fong, Lucy Yuen & Termia Yuen"
+    },
+    {
+      "id": "lucy-yuen",
+      "first": "Lucy",
+      "last": "Yuen",
+      "name": "Lucy Yuen",
+      "diet": "No beef (Lucy and Termia)",
+      "party": "p16",
+      "partyLabel": "Bill Fong, Lucy Yuen & Termia Yuen"
+    },
+    {
+      "id": "termia-yuen",
+      "first": "Termia Yuen",
+      "last": "",
+      "name": "Termia Yuen",
+      "diet": "No beef (Lucy and Termia)",
+      "party": "p16",
+      "partyLabel": "Bill Fong, Lucy Yuen & Termia Yuen"
+    },
+    {
+      "id": "kelly-fong",
+      "first": "Kelly",
+      "last": "Fong",
+      "name": "Kelly Fong",
+      "diet": "Diet of Lychee martini",
+      "party": "p17",
+      "partyLabel": "Kelly Fong & Sam Yamauchi"
+    },
+    {
+      "id": "sam-yamauchi",
+      "first": "Sam",
+      "last": "Yamauchi",
+      "name": "Sam Yamauchi",
+      "diet": "Diet of Lychee martini",
+      "party": "p17",
+      "partyLabel": "Kelly Fong & Sam Yamauchi"
+    },
+    {
+      "id": "tom-hin",
+      "first": "Tom",
+      "last": "Hin",
+      "name": "Tom Hin",
+      "diet": "",
+      "party": "p18",
+      "partyLabel": "Tom, Zoey, Edwin & Ashley Hin"
+    },
+    {
+      "id": "zoey-hin",
+      "first": "Zoey",
+      "last": "Hin",
+      "name": "Zoey Hin",
+      "diet": "",
+      "party": "p18",
+      "partyLabel": "Tom, Zoey, Edwin & Ashley Hin"
+    },
+    {
+      "id": "edwin-hin",
+      "first": "Edwin",
+      "last": "Hin",
+      "name": "Edwin Hin",
+      "diet": "",
+      "party": "p18",
+      "partyLabel": "Tom, Zoey, Edwin & Ashley Hin"
+    },
+    {
+      "id": "ashley-hin",
+      "first": "Ashley",
+      "last": "Hin",
+      "name": "Ashley Hin",
+      "diet": "",
+      "party": "p18",
+      "partyLabel": "Tom, Zoey, Edwin & Ashley Hin"
+    },
+    {
+      "id": "ally-feiss",
+      "first": "Ally",
+      "last": "Feiss",
+      "name": "Ally Feiss",
+      "diet": "",
+      "party": "p19",
+      "partyLabel": "Ally Feiss & Theo Curie"
+    },
+    {
+      "id": "theo-curie",
+      "first": "Theo",
+      "last": "Curie",
+      "name": "Theo Curie",
+      "diet": "",
+      "party": "p19",
+      "partyLabel": "Ally Feiss & Theo Curie"
+    },
+    {
+      "id": "allison-fong",
+      "first": "Allison",
+      "last": "Fong",
+      "name": "Allison Fong",
+      "diet": "",
+      "party": "p20",
+      "partyLabel": "Allison Fong & Skylar Dann"
+    },
+    {
+      "id": "skylar-dann",
+      "first": "Skylar",
+      "last": "Dann",
+      "name": "Skylar Dann",
+      "diet": "",
+      "party": "p20",
+      "partyLabel": "Allison Fong & Skylar Dann"
+    },
+    {
+      "id": "kathy-fong",
+      "first": "Kathy",
+      "last": "Fong",
+      "name": "Kathy Fong",
+      "diet": "",
+      "party": "p21",
+      "partyLabel": "Kathy Fong & Carmen Fung"
+    },
+    {
+      "id": "carmen-fung",
+      "first": "Carmen",
+      "last": "Fung",
+      "name": "Carmen Fung",
+      "diet": "",
+      "party": "p21",
+      "partyLabel": "Kathy Fong & Carmen Fung"
+    },
+    {
+      "id": "lisa-fong",
+      "first": "Lisa",
+      "last": "Fong",
+      "name": "Lisa Fong",
+      "diet": "",
+      "party": "p22",
+      "partyLabel": "Lisa Fong"
+    },
+    {
+      "id": "bruno-lopez",
+      "first": "Bruno",
+      "last": "Lopez",
+      "name": "Bruno Lopez",
+      "diet": "",
+      "party": "p23",
+      "partyLabel": "Bruno Lopez & Simon Fong"
+    },
+    {
+      "id": "simon-fong",
+      "first": "Simon",
+      "last": "Fong",
+      "name": "Simon Fong",
+      "diet": "",
+      "party": "p23",
+      "partyLabel": "Bruno Lopez & Simon Fong"
+    },
+    {
+      "id": "shuang-yan-kuang",
+      "first": "Shuang Yan",
+      "last": "Kuang",
+      "name": "Shuang Yan Kuang",
+      "diet": "",
+      "party": "p24",
+      "partyLabel": "Shuang Yan Kuang & Timothy Fong"
+    },
+    {
+      "id": "timothy-fong",
+      "first": "Timothy",
+      "last": "Fong",
+      "name": "Timothy Fong",
+      "diet": "",
+      "party": "p24",
+      "partyLabel": "Shuang Yan Kuang & Timothy Fong"
+    },
+    {
+      "id": "jon-ganey",
+      "first": "Jon",
+      "last": "Ganey",
+      "name": "Jon Ganey",
+      "diet": "",
+      "party": "p25",
+      "partyLabel": "Jon Ganey & Mallory Wang"
+    },
+    {
+      "id": "mallory-wang",
+      "first": "Mallory",
+      "last": "Wang",
+      "name": "Mallory Wang",
+      "diet": "",
+      "party": "p25",
+      "partyLabel": "Jon Ganey & Mallory Wang"
+    },
+    {
+      "id": "gala-hofmann",
+      "first": "Gala",
+      "last": "Hofmann",
+      "name": "Gala Hofmann",
+      "diet": "",
+      "party": "p26",
+      "partyLabel": "Gala Hofmann"
+    },
+    {
+      "id": "xingyi-kuang",
+      "first": "Xingyi",
+      "last": "Kuang",
+      "name": "Xingyi Kuang",
+      "diet": "",
+      "party": "p27",
+      "partyLabel": "Xingyi Kuang & Huolin Huang"
+    },
+    {
+      "id": "huolin-huang",
+      "first": "Huolin",
+      "last": "Huang",
+      "name": "Huolin Huang",
+      "diet": "",
+      "party": "p27",
+      "partyLabel": "Xingyi Kuang & Huolin Huang"
+    },
+    {
+      "id": "kimi-jayasari",
+      "first": "Kimi",
+      "last": "Jayasari",
+      "name": "Kimi Jayasari",
+      "diet": "Kimi is vegetarian, Rahul is pescatarian",
+      "party": "p28",
+      "partyLabel": "Kimi Jayasari & Rahul Rangnekar"
+    },
+    {
+      "id": "rahul-rangnekar",
+      "first": "Rahul",
+      "last": "Rangnekar",
+      "name": "Rahul Rangnekar",
+      "diet": "Kimi is vegetarian, Rahul is pescatarian",
+      "party": "p28",
+      "partyLabel": "Kimi Jayasari & Rahul Rangnekar"
+    },
+    {
+      "id": "can-chao-kuang",
+      "first": "Can Chao",
+      "last": "Kuang",
+      "name": "Can Chao Kuang",
+      "diet": "",
+      "party": "p29",
+      "partyLabel": "Can Chao Kuang & Yan Zhen Li"
+    },
+    {
+      "id": "yan-zhen-li",
+      "first": "Yan Zhen",
+      "last": "Li",
+      "name": "Yan Zhen Li",
+      "diet": "",
+      "party": "p29",
+      "partyLabel": "Can Chao Kuang & Yan Zhen Li"
+    },
+    {
+      "id": "shirang-li",
+      "first": "Shirang",
+      "last": "Li",
+      "name": "Shirang Li",
+      "diet": "",
+      "party": "p30",
+      "partyLabel": "Shirang & Elaine Li"
+    },
+    {
+      "id": "elaine-li",
+      "first": "Elaine",
+      "last": "Li",
+      "name": "Elaine Li",
+      "diet": "",
+      "party": "p30",
+      "partyLabel": "Shirang & Elaine Li"
+    },
+    {
+      "id": "victoria-larett",
+      "first": "Victoria",
+      "last": "Larett",
+      "name": "Victoria Larett",
+      "diet": "",
+      "party": "p31",
+      "partyLabel": "Victoria & Tori Larett"
+    },
+    {
+      "id": "tori-larett",
+      "first": "Tori",
+      "last": "Larett",
+      "name": "Tori Larett",
+      "diet": "",
+      "party": "p31",
+      "partyLabel": "Victoria & Tori Larett"
+    },
+    {
+      "id": "shuang-liu-kuang",
+      "first": "Shuang Liu",
+      "last": "Kuang",
+      "name": "Shuang Liu Kuang",
+      "diet": "",
+      "party": "p32",
+      "partyLabel": "Shuang Liu Kuang"
+    },
+    {
+      "id": "sharon-lee",
+      "first": "Sharon",
+      "last": "Lee",
+      "name": "Sharon Lee",
+      "diet": "",
+      "party": "p33",
+      "partyLabel": "Sharon Lee & Jeffrey Sun"
+    },
+    {
+      "id": "jeffrey-sun",
+      "first": "Jeffrey",
+      "last": "Sun",
+      "name": "Jeffrey Sun",
+      "diet": "",
+      "party": "p33",
+      "partyLabel": "Sharon Lee & Jeffrey Sun"
+    },
+    {
+      "id": "victoria-leonard",
+      "first": "Victoria",
+      "last": "Leonard",
+      "name": "Victoria Leonard",
+      "diet": "",
+      "party": "p34",
+      "partyLabel": "Victoria Leonard"
+    },
+    {
+      "id": "jamie-liu",
+      "first": "Jamie",
+      "last": "Liu",
+      "name": "Jamie Liu",
+      "diet": "",
+      "party": "p35",
+      "partyLabel": "Jamie Liu"
+    },
+    {
+      "id": "jacqueline-nguyen",
+      "first": "Jacqueline",
+      "last": "Nguyen",
+      "name": "Jacqueline Nguyen",
+      "diet": "",
+      "party": "p36",
+      "partyLabel": "Jacqueline Nguyen & Guan Li"
+    },
+    {
+      "id": "guan-li",
+      "first": "Guan",
+      "last": "Li",
+      "name": "Guan Li",
+      "diet": "",
+      "party": "p36",
+      "partyLabel": "Jacqueline Nguyen & Guan Li"
+    },
+    {
+      "id": "olivia-olmos",
+      "first": "Olivia",
+      "last": "Olmos",
+      "name": "Olivia Olmos",
+      "diet": "",
+      "party": "p37",
+      "partyLabel": "Olivia Olmos & Brianna Ortega"
+    },
+    {
+      "id": "brianna-ortega",
+      "first": "Brianna",
+      "last": "Ortega",
+      "name": "Brianna Ortega",
+      "diet": "",
+      "party": "p37",
+      "partyLabel": "Olivia Olmos & Brianna Ortega"
+    },
+    {
+      "id": "sean-callahan",
+      "first": "Sean",
+      "last": "Callahan",
+      "name": "Sean Callahan",
+      "diet": "",
+      "party": "p38",
+      "partyLabel": "Sean Callahan"
+    },
+    {
+      "id": "sabrina-ortiz",
+      "first": "Sabrina",
+      "last": "Ortiz",
+      "name": "Sabrina Ortiz",
+      "diet": "",
+      "party": "p39",
+      "partyLabel": "Sabrina Ortiz & Diana Plitt"
+    },
+    {
+      "id": "diana-plitt",
+      "first": "Diana",
+      "last": "Plitt",
+      "name": "Diana Plitt",
+      "diet": "",
+      "party": "p39",
+      "partyLabel": "Sabrina Ortiz & Diana Plitt"
+    },
+    {
+      "id": "chung-tsor-fong",
+      "first": "Chung",
+      "last": "Tsor Fong",
+      "name": "Chung Tsor Fong",
+      "diet": "",
+      "party": "p40",
+      "partyLabel": "Chung Tsor Fong & Fong Tai Fong"
+    },
+    {
+      "id": "fong-tai-fong",
+      "first": "Fong",
+      "last": "Tai Fong",
+      "name": "Fong Tai Fong",
+      "diet": "",
+      "party": "p40",
+      "partyLabel": "Chung Tsor Fong & Fong Tai Fong"
+    },
+    {
+      "id": "skye-sakashita",
+      "first": "Skye",
+      "last": "Sakashita",
+      "name": "Skye Sakashita",
+      "diet": "",
+      "party": "p41",
+      "partyLabel": "Skye Sakashita & Cameron Kato"
+    },
+    {
+      "id": "cameron-kato",
+      "first": "Cameron",
+      "last": "Kato",
+      "name": "Cameron Kato",
+      "diet": "",
+      "party": "p41",
+      "partyLabel": "Skye Sakashita & Cameron Kato"
+    },
+    {
+      "id": "sabrina-schaefer",
+      "first": "Sabrina",
+      "last": "Schaefer",
+      "name": "Sabrina Schaefer",
+      "diet": "",
+      "party": "p42",
+      "partyLabel": "Sabrina Schaefer & Zach Fiston"
+    },
+    {
+      "id": "zach-fiston",
+      "first": "Zach",
+      "last": "Fiston",
+      "name": "Zach Fiston",
+      "diet": "",
+      "party": "p42",
+      "partyLabel": "Sabrina Schaefer & Zach Fiston"
+    },
+    {
+      "id": "keerthi-sundaramurthy",
+      "first": "Keerthi",
+      "last": "Sundaramurthy",
+      "name": "Keerthi Sundaramurthy",
+      "diet": "",
+      "party": "p43",
+      "partyLabel": "Keerthi Sundaramurthy & Murugan Gunasekaran"
+    },
+    {
+      "id": "murugan-gunasekaran",
+      "first": "Murugan",
+      "last": "Gunasekaran",
+      "name": "Murugan Gunasekaran",
+      "diet": "",
+      "party": "p43",
+      "partyLabel": "Keerthi Sundaramurthy & Murugan Gunasekaran"
+    },
+    {
+      "id": "naomi-willow",
+      "first": "Naomi",
+      "last": "Willow",
+      "name": "Naomi Willow",
+      "diet": "We are both vegan!",
+      "party": "p44",
+      "partyLabel": "Naomi Willow & Will Winograd"
+    },
+    {
+      "id": "will-winograd",
+      "first": "Will",
+      "last": "Winograd",
+      "name": "Will Winograd",
+      "diet": "We are both vegan!",
+      "party": "p44",
+      "partyLabel": "Naomi Willow & Will Winograd"
+    },
+    {
+      "id": "henry-xu",
+      "first": "Henry",
+      "last": "Xu",
+      "name": "Henry Xu",
+      "diet": "",
+      "party": "p45",
+      "partyLabel": "Henry Xu & Rebecca Zheng"
+    },
+    {
+      "id": "rebecca-zheng",
+      "first": "Rebecca",
+      "last": "Zheng",
+      "name": "Rebecca Zheng",
+      "diet": "",
+      "party": "p45",
+      "partyLabel": "Henry Xu & Rebecca Zheng"
+    }
+  ]
+}

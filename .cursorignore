@@ -1,4 +1,4 @@
-.vercel
 .playwright-cli/
+.vercel/
 .metadata_never_index
-.vscode/
+.git/objects/

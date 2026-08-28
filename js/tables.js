@@ -105,8 +105,15 @@
   }
 
   function applyType() {
-    var n = NF[document.getElementById('nf').value] || NF.instrument;
-    var d = DF[document.getElementById('df').value] || DF.robotomono;
+    var nfEl = document.getElementById('nf');
+    var dfEl = document.getElementById('df');
+    if (!nfEl || !dfEl) return;
+    if (window.WeddingFonts) {
+      window.WeddingFonts.ensure(nfEl.value);
+      window.WeddingFonts.ensure(dfEl.value);
+    }
+    var n = NF[nfEl.value] || NF.instrument;
+    var d = DF[dfEl.value] || DF.robotomono;
     var r = document.documentElement.style;
     r.setProperty('--nmfont', n.f);
     r.setProperty('--accfont', n.acc);
@@ -511,7 +518,9 @@
       oPiece.textContent = sc.toFixed(2) + '×';
     }
 
+    var overlayRaf = 0;
     function placeOverlay() {
+      overlayRaf = 0;
       if (!selected || !moveOn || !moveOn.checked) {
         overlay.hidden = true;
         if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
@@ -527,6 +536,10 @@
       overlay.style.width = Math.max(8, r.width) + 'px';
       overlay.style.height = Math.max(8, r.height) + 'px';
       overlay.hidden = false;
+    }
+    function placeOverlaySoon() {
+      if (overlayRaf) return;
+      overlayRaf = requestAnimationFrame(placeOverlay);
     }
 
     function readMovers() {
@@ -881,7 +894,7 @@
           drag.el.style.setProperty('--pscale', ns.toFixed(3));
         }
         syncPieceSlider();
-        placeOverlay();
+        placeOverlaySoon();
         return;
       }
       var nx = drag.dx + (e.clientX - drag.x) / drag.unit;
@@ -889,7 +902,7 @@
       if (Math.abs(e.clientX - drag.x) > 2 || Math.abs(e.clientY - drag.y) > 2) drag.dirty = true;
       drag.el.style.setProperty('--dx', nx.toFixed(2) + 'cqi');
       drag.el.style.setProperty('--dy', ny.toFixed(2) + 'cqi');
-      placeOverlay();
+      placeOverlaySoon();
     });
 
     function endDrag() {
@@ -919,8 +932,8 @@
       if (e.key === 'Escape') deselect();
     });
 
-    window.addEventListener('resize', placeOverlay);
-    window.addEventListener('scroll', placeOverlay, true);
+    window.addEventListener('resize', placeOverlaySoon);
+    window.addEventListener('scroll', placeOverlaySoon, { capture: true, passive: true });
 
     snapshot();
   }

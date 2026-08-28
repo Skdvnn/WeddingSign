@@ -11,8 +11,12 @@ python3 -m http.server 8765
 
 Then visit [http://localhost:8765](http://localhost:8765).
 
+The room is also saved in `data/seating-state.json`, so a new browser or host does not start empty. Edits still live in that browser until you **Save layout** or **Download JSON**. The GitHub repo is private — guest names stay off the public internet.
+
 - **Welcome sign directions:** `index.html`
 - **Table numbers (5 × 7 in):** `tables.html`
+- **Our seating (working room):** `plan.html`
+- **Seating chart (24 × 36 in poster):** `seating.html`
 - **Earlier moodboard:** `moodboard.html`
 
 Name / detail face pickers include the suite fonts (Instrument Serif, Roboto Mono, Helvetica Neue Black / Thin via local install) plus the earlier Google Fonts options. See `assets/fonts/suite.css`.
@@ -20,6 +24,8 @@ Name / detail face pickers include the suite fonts (Instrument Serif, Roboto Mon
 ## Table numbers
 
 Open `tables.html` for 5 × 7 in “When we were [age]” cards. Twenty layouts: the six sketches you made, then translations of the invite / save-the-date / welcome sign, then further experiments. Upload childhood photos, star a shortlist, print a card at actual size.
+
+Open `plan.html` to lay people on the three longs — drag parties, same last names recruit, print the working room. Open `seating.html` for the guest poster: <b>A–Z by last name</b>, sign number on the right. The 5×7 number is still the age. Attending only (83); one name per line, A–Z. Star one, then **JPEG for Walgreens** (24 × 36 at ~200 dpi) for the photo lab, or **PNG for Figma** at 1728 × 2592 for mocks.
 
 ## SVG export
 

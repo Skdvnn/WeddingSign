@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Allison + Skylar — Our seating</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts/suite.css">
+
+<style>
+:root{
+  --bone:#E7E3DA;
+  --ink:#1E1D1A;
+  --ink-soft:#4A4842;
+  --mustard:#BFA52B;
+  --page:#F2EFE8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px 80px}
+header{padding:56px 0 28px;border-bottom:1.5px solid var(--ink)}
+h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,6.4vw,68px);
+   line-height:1.0;letter-spacing:-.008em;margin:0 0 16px}
+.sub{font-size:16.5px;line-height:1.6;max-width:720px;color:var(--ink-soft);margin:0}
+.navlinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+.navlinks a{font:600 12px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;border-bottom:1.5px solid rgba(0,0,0,.25);padding-bottom:2px}
+.navlinks a:hover{border-color:var(--ink)}
+a{color:#7d4a1e}
+
+.xbtn{appearance:none;border:1.5px solid rgba(0,0,0,.28);background:#fff;color:var(--ink);
+  border-radius:6px;padding:8px 11px;cursor:pointer;
+  font:500 10px/1 'Roboto Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.xbtn:hover{border-color:var(--ink);background:var(--ink);color:var(--page)}
+input.f{font:500 12.5px/1.4 Inter,sans-serif;padding:10px 12px;border:1.5px solid rgba(0,0,0,.25);
+  border-radius:6px;background:#fff}
+
+.assign{margin:36px 0 0;padding:0;border:0;background:transparent}
+.assign h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,4vw,40px);margin:0 0 8px}
+.assign .kicker{font:700 10px/1 'Roboto Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#8b8577;margin:0 0 10px}
+.assign .subline{font-size:15px;color:var(--ink-soft);margin:0;line-height:1.55;max-width:760px}
+.assign h4{font:700 10px/1 'Roboto Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#8b8577;margin:0 0 8px}
+.planner-top{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:6px}
+.planner-stats{font:500 14px/1.4 Inter,sans-serif;color:#6e6858}
+.planner-stats b{font-weight:600;color:var(--ink)}
+.planner-stats .over{color:#7d2f1c}
+.planner-stats .dot{opacity:.4;margin:0 7px}
+.planner-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0 18px}
+.planner-tools input.f{min-width:240px;flex:1}
+.planner-tools select.f{min-width:220px;flex:1;max-width:320px;cursor:pointer}
+.planner-layouts{margin-top:-8px}
+.chips-g{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:flex-start}
+.gchip{appearance:none;border:1px solid rgba(0,0,0,.18);background:#fff;color:var(--ink);
+  border-radius:8px;padding:7px 11px;cursor:grab;touch-action:none;
+  font:500 12.5px/1 Inter,sans-serif}
+.gchip:hover{border-color:var(--ink)}
+.gchip.host{box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:600}
+.gchip.dragging{opacity:.35}
+.gchip-ghost{position:fixed;z-index:200;pointer-events:none;margin:0;cursor:grabbing;
+  box-shadow:0 10px 28px rgba(30,29,26,.18)}
+.gchip.miss,.pair.miss,.party-group.miss{opacity:.22}
+.pair{display:inline-flex;flex-direction:column;align-items:stretch;vertical-align:top}
+.pair .gchip{width:100%;text-align:center}
+.pair-link{display:block;width:2px;height:7px;margin:0 auto;background:currentColor;opacity:.22}
+.pair.along{flex-direction:row;align-items:center}
+.pair.along .pair-link{width:8px;height:2px;margin:0}
+.pair.along .gchip{width:auto}
+.party-group{display:inline-flex;flex-wrap:wrap;gap:4px;padding:5px;border:1px dashed rgba(0,0,0,.18);
+  border-radius:10px;vertical-align:top}
+#unassigned{min-height:52px;padding:10px;border:1.5px dashed rgba(0,0,0,.22);border-radius:8px;background:#fff}
+
+.seatmap{display:flex;flex-direction:column;gap:6px;margin-top:2px;position:relative;z-index:1}
+.seat-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.seat-board{height:8px;border-radius:2px;background:currentColor;opacity:.16;pointer-events:none}
+.chair{appearance:none;border:1px dashed rgba(0,0,0,.22);background:#fbf9f5;color:var(--ink);
+  border-radius:8px;width:100%;min-height:44px;padding:5px 4px;cursor:pointer;touch-action:none;
+  font:500 11px/1.2 Inter,sans-serif;text-align:center;user-select:none;position:relative;z-index:2;
+  white-space:normal;overflow-wrap:break-word;word-break:normal;outline:none}
+.chair:focus,.chair:focus-visible,.gchip:focus,.gchip:focus-visible,.psign-move:focus{outline:none}
+.chair.empty{color:transparent}
+.chair.filled{border-style:solid;border-color:rgba(0,0,0,.18);background:#fff;cursor:pointer;color:var(--ink)}
+.chair.host{box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:600}
+.psign.us{background:#F4F1EA}
+.chair.dragging{opacity:.35}
+.chair-ghost{position:fixed;z-index:200;pointer-events:none;margin:0;cursor:grabbing;
+  box-shadow:0 10px 28px rgba(30,29,26,.18)}
+.seat-overflow{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+
+.along-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+.along-head h4{margin:0}
+.along-head span{font:500 11px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8b8577}
+.planner-longs{display:flex;flex-direction:column;gap:26px;margin-top:22px}
+.planner-plank{display:grid;grid-template-columns:repeat(5,1fr);border:1.5px solid var(--ink);background:#fff;align-items:stretch;overflow:visible}
+.psign{border:0;border-radius:0;border-right:1px solid rgba(0,0,0,.12);min-height:0;
+  padding:12px 12px 14px;cursor:pointer;background:#fff;overflow:visible}
+.psign:last-child{border-right:0}
+.psign-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;user-select:none;gap:8px}
+.psign-num{font-family:'Instrument Serif',serif;font-size:28px;font-weight:400;cursor:default;line-height:1}
+.psign-top-meta{display:flex;align-items:center;gap:8px;flex:none}
+.psign-top-meta span{font:600 10px/1 'Roboto Mono',monospace;color:#8b8577}
+.psign-move{appearance:none;border:0;background:transparent;color:inherit;
+  width:18px;height:22px;padding:0;cursor:grab;touch-action:none;
+  display:flex;align-items:center;justify-content:center;gap:3px;flex:none;opacity:.32}
+.psign-move:hover{opacity:.7}
+.psign-move:active{cursor:grabbing;opacity:.9}
+.psign-move i{display:block;width:1.5px;height:11px;border-radius:1px;background:currentColor}
+.psign.dragging{opacity:.4}
+.psign-ghost{position:fixed;z-index:200;pointer-events:none;margin:0;cursor:grabbing;
+  background:#fff;border:1.5px solid var(--ink);padding:8px 12px;font-family:'Instrument Serif',serif;
+  font-size:20px;box-shadow:0 10px 28px rgba(30,29,26,.18)}
+.psign .gchip{margin:3px 3px 0 0}
+.psign.packed{background:#F6DFD8}
+.psign.packed .psign-top-meta > span{color:#7d2f1c}
+.psign.empty{background:#fbf9f5}
+@media (max-width:900px){.planner-plank{grid-template-columns:1fr 1fr}.psign:nth-child(2n){border-right:0}}
+
+footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
+  font-size:12.5px;color:#8b8577;line-height:1.7}
+
+@media print{
+  header .navlinks,footer,.planner-tools{display:none !important}
+  body{background:#fff}
+  .wrap{max-width:none;padding:16px}
+  .psign{min-height:0;break-inside:avoid}
+  .chair.empty{border-style:dashed}
+  .chair.filled{border-style:solid}
+}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="kicker" style="font:700 10px/1 'Roboto Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#8b8577;margin:0 0 12px">Just for us</p>
+  <h1>Our seating</h1>
+  <p class="sub">The working room — not the guest poster. Three long tables, fifteen signs. Couples sit across from each other. You two sit together on this side, in the middle, with closest family. The printed chart is A–Z, one name per line.</p>
+  <div class="navlinks">
+    <a href="seating.html">Guest posters</a>
+    <a href="tables.html">Table numbers</a>
+    <a href="index.html">Welcome sign</a>
+  </div>
+</header>
+
+<section class="assign" id="assign">
+  <div class="planner-top">
+    <div>
+      <h3>The three longs</h3>
+      <p class="subline">Click a name, then click the chair they should sit in. Or drag them. The two bars at the top right swap a whole sign.</p>
+    </div>
+    <div class="planner-stats" id="planner-stats"></div>
+  </div>
+  <div class="planner-tools">
+    <input class="f" id="planner-q" type="search" placeholder="Find a name" autocomplete="off">
+    <button type="button" class="xbtn" id="refill">Reset placeholders</button>
+    <button type="button" class="xbtn" id="clear-room">Clear the room</button>
+    <button type="button" class="xbtn" id="print-room">Print our room</button>
+  </div>
+  <div class="planner-tools planner-layouts">
+    <button type="button" class="xbtn" id="save-layout">Save layout</button>
+    <select class="f" id="layout-pick" aria-label="Saved layouts"></select>
+    <button type="button" class="xbtn" id="load-layout">Load</button>
+    <button type="button" class="xbtn" id="delete-layout">Delete</button>
+    <button type="button" class="xbtn" id="download-layout">Download JSON</button>
+    <button type="button" class="xbtn" id="import-layout-btn">Open JSON</button>
+    <input id="import-layout" type="file" accept="application/json" hidden>
+  </div>
+  <div>
+    <h4>Not seated · <span id="unassigned-count">0</span></h4>
+    <div class="chips-g" id="unassigned"></div>
+  </div>
+  <div id="assigned-tables"></div>
+</section>
+
+<footer>
+  Working seating · three longs · 15 signs · not the 24×36 guest poster.
+</footer>
+</div>
+
+<script src="js/fonts.js"></script>
+<script src="js/seating.js?v=seats4"></script>
