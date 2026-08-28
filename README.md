@@ -11,7 +11,7 @@ python3 -m http.server 8765
 
 Then visit [http://localhost:8765](http://localhost:8765).
 
-The room is also saved in `data/seating-state.json`, so a new browser or host does not start empty. Edits still live in that browser until you **Save layout** or **Download JSON**. The GitHub repo is private — guest names stay off the public internet.
+Private backup: [github.com/Skdvnn/WeddingSign](https://github.com/Skdvnn/WeddingSign). The room is also in `data/seating-state.json`, so a new browser or host does not start empty. Edits still live in that browser until you **Save layout** or **Download JSON**. Guest names stay off the public internet.
 
 - **Welcome sign directions:** `index.html`
 - **Table numbers (5 × 7 in):** `tables.html`
