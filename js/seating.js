@@ -17,7 +17,9 @@
   var LAYOUT_KEY = 'wedding-seating-layouts-v1';
   var WIPED_KEY = 'wedding-seating-wiped-v1';
   var LAST_SAVED_ID = 'keep:Last saved';
-  var SEED_REV = 'friday-2134-art';
+  var FRIDAY_ID = 'keep:Friday night';
+  var FRIDAY_KEY = 'wedding-seating-friday-v1';
+  var SEED_REV = 'friday-2134-lock';
   var SEED_REV_KEY = 'wedding-seating-seed-rev-v1';
   var HEAD_SLOTS = [
     ['arthur-dann', 7, 3],
@@ -158,8 +160,48 @@
   }
 
   function isPinnedLayout(x) {
-    return !!(x && (x.id === LAST_SAVED_ID || x.id === 'keep:Working copy' ||
-      x.name === 'Last saved' || x.name === 'Working copy'));
+    return !!(x && (x.id === LAST_SAVED_ID || x.id === FRIDAY_ID || x.id === 'keep:Working copy' ||
+      x.name === 'Last saved' || x.name === 'Friday night' || x.name === 'Working copy'));
+  }
+
+  function isFridayNight(data) {
+    var a = data && data.assign;
+    var p = data && data.place;
+    return !!(a && a['skylar-dann'] === 3 && a['allison-fong'] === 3 && a.jim === 9 &&
+      (!p || p['arthur-dann'] === 2));
+  }
+
+  function loadFridayBackup() {
+    try {
+      var raw = localStorage.getItem(FRIDAY_KEY);
+      var item = raw ? JSON.parse(raw) : null;
+      if (item && isFridayNight(item)) return item;
+    } catch (e) {}
+    var named = findNamedLayout('Friday night', FRIDAY_ID);
+    return named && isFridayNight(named) ? named : null;
+  }
+
+  function pinFridayNight(data) {
+    var src = data && data.assign ? data : { assign: assign, place: place };
+    if (!isFridayNight(src)) return loadFridayBackup();
+    var prev = loadFridayBackup();
+    if (prev && prev.place && prev.place['arthur-dann'] === 2) return prev;
+    var item = {
+      id: FRIDAY_ID,
+      name: 'Friday night',
+      at: src.savedAt || src.at || 1787977848400,
+      locked: true,
+      assign: cloneMap(src.assign),
+      place: cloneMap(src.place || {})
+    };
+    try { localStorage.setItem(FRIDAY_KEY, JSON.stringify(item)); } catch (e) {}
+    var list = loadLayouts().filter(function (x) {
+      return x.id !== FRIDAY_ID && x.name !== 'Friday night';
+    });
+    list.unshift(item);
+    writeLayouts(list);
+    touchLayoutOption(FRIDAY_ID, item.name, item.at);
+    return item;
   }
 
   function findNamedLayout(name, id) {
@@ -282,6 +324,7 @@
     place = cloneMap(data.place || {});
     applyPlaces();
     persistAssign();
+    pinFridayNight(data);
     pinLastSaved(data.savedAt || data.at);
     return seatedCount() >= 40;
   }
@@ -324,7 +367,7 @@
       } else rest.push(x);
     });
     pinned.sort(function (a, b) {
-      var order = { 'Last saved': 0, 'Working copy': 1 };
+      var order = { 'Friday night': 0, 'Last saved': 1, 'Working copy': 2 };
       return (order[a.name] != null ? order[a.name] : 2) - (order[b.name] != null ? order[b.name] : 2);
     });
     var extra = Math.max(0, 24 - pinned.length);
@@ -336,7 +379,7 @@
     var sel = document.getElementById('layout-pick');
     if (!sel) return;
     var list = loadLayouts();
-    var rank = { 'Last saved': 0, 'Working copy': 1, 'Last session': 2 };
+    var rank = { 'Friday night': 0, 'Last saved': 1, 'Working copy': 2, 'Last session': 3 };
     list.sort(function (a, b) {
       var ra = rank.hasOwnProperty(a.name) ? rank[a.name] : 10;
       var rb = rank.hasOwnProperty(b.name) ? rank[b.name] : 10;
@@ -445,8 +488,9 @@
         var item = findLayout(sel.value);
         if (!item) return;
         if (item.id === LAST_SAVED_ID || item.name === 'Last saved' ||
+            item.id === FRIDAY_ID || item.name === 'Friday night' ||
             item.id === 'keep:Working copy' || item.name === 'Working copy') {
-          window.alert('That copy stays so the last saved room can come back after a reload.');
+          window.alert('That copy stays so the room can come back after a reload.');
           return;
         }
         if (!window.confirm('Delete “' + item.name + '”?')) return;
@@ -2835,13 +2879,16 @@
   document.addEventListener('pointerup', dropPersonDrag);
 
   function bestStoredLayout() {
+    var friday = loadFridayBackup();
+    if (friday) return friday;
     var rank = {
-      'Last saved': 0,
-      'Working copy': 1,
-      'Last session': 2,
-      'Before reset': 3,
-      'Before load': 4,
-      'Before clear': 5
+      'Friday night': 0,
+      'Last saved': 1,
+      'Working copy': 2,
+      'Last session': 3,
+      'Before reset': 4,
+      'Before load': 5,
+      'Before clear': 6
     };
     var list = loadLayouts().filter(function (x) { return layoutSeated(x) > 0; });
     list.sort(function (a, b) {
@@ -2856,7 +2903,8 @@
   }
 
   function restoreSavedRoom() {
-    var pick = bestStoredLayout();
+    var friday = loadFridayBackup();
+    var pick = friday || bestStoredLayout();
     if (wasWiped() && pick) {
       assign = cloneMap(pick.assign);
       place = cloneMap(pick.place || {});
@@ -2877,6 +2925,7 @@
   function startPlanner(keepSeed) {
     if (!keepSeed) restoreSavedRoom();
     if (seatedCount() < 1) applyPlaceholders();
+    pinFridayNight({ assign: assign, place: place, savedAt: 1787977848400 });
     seedWorkingLayout();
     fillLayoutPick();
     renderAssign();
@@ -2891,24 +2940,25 @@
     try { localStorage.setItem(SEED_REV_KEY, SEED_REV); } catch (e) {}
   }
 
-  function isFridayNight(data) {
-    var a = data && data.assign;
-    return !!(a && a['skylar-dann'] === 3 && a['allison-fong'] === 3 && a.jim === 9);
-  }
-
   function loadOfficialSeed(done) {
     fetch('data/seating-state.json?v=' + SEED_REV)
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (seed) {
-        if (seed && isFridayNight(seed)) {
-          clearWiped();
-          applySeedData(seed);
-          writeWorking(seed.savedAt || seed.at);
-          markSeedRev();
+        if (!seed || !isFridayNight(seed)) {
+          done(false);
+          return;
+        }
+        pinFridayNight(seed);
+        markSeedRev();
+        var already = isFridayNight({ assign: assign, place: place }) && !wasWiped() && seatedCount() >= 40;
+        if (already) {
           done(true);
           return;
         }
-        done(false);
+        clearWiped();
+        applySeedData(seed);
+        writeWorking(seed.savedAt || seed.at);
+        done(true);
       })
       .catch(function () { done(false); });
   }
