@@ -17,7 +17,7 @@
   var LAYOUT_KEY = 'wedding-seating-layouts-v1';
   var WIPED_KEY = 'wedding-seating-wiped-v1';
   var LAST_SAVED_ID = 'keep:Last saved';
-  var SEED_REV = 'night-2026-08-28';
+  var SEED_REV = 'friday-2134';
   var SEED_REV_KEY = 'wedding-seating-seed-rev-v1';
   var HEAD_SLOTS = [
     ['arthur-dann', 7, 3],
@@ -2874,8 +2874,8 @@
     return true;
   }
 
-  function startPlanner() {
-    restoreSavedRoom();
+  function startPlanner(keepSeed) {
+    if (!keepSeed) restoreSavedRoom();
     if (seatedCount() < 1) applyPlaceholders();
     seedWorkingLayout();
     fillLayoutPick();
@@ -2891,15 +2891,26 @@
     try { localStorage.setItem(SEED_REV_KEY, SEED_REV); } catch (e) {}
   }
 
+  function isFridayNight(data) {
+    var a = data && data.assign;
+    return !!(a && a['skylar-dann'] === 3 && a['allison-fong'] === 3 && a.jim === 9);
+  }
+
   function loadOfficialSeed(done) {
-    fetch('data/seating-state.json')
+    fetch('data/seating-state.json?v=' + SEED_REV)
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (seed) {
-        if (seed) applySeedData(seed);
-        markSeedRev();
-        done();
+        if (seed && isFridayNight(seed)) {
+          clearWiped();
+          applySeedData(seed);
+          writeWorking();
+          markSeedRev();
+          done(true);
+          return;
+        }
+        done(false);
       })
-      .catch(done);
+      .catch(function () { done(false); });
   }
 
   fetch('data/guests.json')
