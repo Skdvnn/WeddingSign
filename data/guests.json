@@ -1,7 +1,7 @@
 {
   "source": "data/rsvp-export.xlsx",
-  "attending": 84,
-  "parties": 46,
+  "attending": 86,
+  "parties": 47,
   "guests": [
     {
       "id": "hayley-adams",
@@ -758,6 +758,24 @@
       "diet": "",
       "party": "p45",
       "partyLabel": "Henry Xu & Rebecca Zheng"
+    },
+    {
+      "id": "jim",
+      "first": "Jim",
+      "last": "",
+      "name": "Jim",
+      "diet": "",
+      "party": "p47",
+      "partyLabel": "Jim & Wife (TBD)"
+    },
+    {
+      "id": "jim-wife",
+      "first": "Wife",
+      "last": "",
+      "name": "Wife",
+      "diet": "",
+      "party": "p47",
+      "partyLabel": "Jim & Wife (TBD)"
     }
   ]
 }
