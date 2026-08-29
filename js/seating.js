@@ -17,7 +17,7 @@
   var LAYOUT_KEY = 'wedding-seating-layouts-v1';
   var WIPED_KEY = 'wedding-seating-wiped-v1';
   var LAST_SAVED_ID = 'keep:Last saved';
-  var SEED_REV = 'friday-2134-dates';
+  var SEED_REV = 'friday-2134-art';
   var SEED_REV_KEY = 'wedding-seating-seed-rev-v1';
   var HEAD_SLOTS = [
     ['arthur-dann', 7, 3],
