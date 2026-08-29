@@ -17,7 +17,7 @@
   var LAYOUT_KEY = 'wedding-seating-layouts-v1';
   var WIPED_KEY = 'wedding-seating-wiped-v1';
   var LAST_SAVED_ID = 'keep:Last saved';
-  var SEED_REV = 'friday-2134';
+  var SEED_REV = 'friday-2134-dates';
   var SEED_REV_KEY = 'wedding-seating-seed-rev-v1';
   var HEAD_SLOTS = [
     ['arthur-dann', 7, 3],
@@ -178,13 +178,13 @@
     else fillLayoutPick();
   }
 
-  function pinLastSaved() {
+  function pinLastSaved(at) {
     if (wasWiped()) return;
     var n = roomCount();
     if (n < 1) return;
     var prev = findNamedLayout('Last saved', LAST_SAVED_ID);
     if (prev && layoutSeated(prev) > n) return;
-    var item = snapshotRoom('Last saved', LAST_SAVED_ID);
+    var item = snapshotRoom('Last saved', LAST_SAVED_ID, at);
     var list = loadLayouts().filter(function (x) {
       return x.id !== LAST_SAVED_ID && x.name !== 'Last saved';
     });
@@ -194,7 +194,7 @@
     return item;
   }
 
-  function writeWorking() {
+  function writeWorking(at) {
     var n = roomCount();
     var prev = findNamedLayout('Working copy', 'keep:Working copy');
     if (n < 1 && prev && layoutSeated(prev) > 0) {
@@ -202,7 +202,7 @@
       return prev;
     }
     var id = 'keep:Working copy';
-    var item = snapshotRoom('Working copy', id);
+    var item = snapshotRoom('Working copy', id, at);
     var list = loadLayouts();
     var found = false;
     list = list.map(function (x) {
@@ -215,7 +215,7 @@
     if (!found) list.unshift(item);
     writeLayouts(list);
     touchLayoutOption(id, item.name, item.at);
-    pinLastSaved();
+    pinLastSaved(at);
     markSaved(item.at);
     return item;
   }
@@ -282,7 +282,7 @@
     place = cloneMap(data.place || {});
     applyPlaces();
     persistAssign();
-    pinLastSaved();
+    pinLastSaved(data.savedAt || data.at);
     return seatedCount() >= 40;
   }
 
@@ -361,11 +361,11 @@
     if (cur && list.some(function (item) { return item.id === cur; })) sel.value = cur;
   }
 
-  function snapshotRoom(name, id) {
+  function snapshotRoom(name, id, at) {
     return {
       id: id || String(Date.now()),
       name: name,
-      at: Date.now(),
+      at: at || Date.now(),
       assign: cloneMap(assign),
       place: cloneMap(place)
     };
@@ -2903,7 +2903,7 @@
         if (seed && isFridayNight(seed)) {
           clearWiped();
           applySeedData(seed);
-          writeWorking();
+          writeWorking(seed.savedAt || seed.at);
           markSeedRev();
           done(true);
           return;
