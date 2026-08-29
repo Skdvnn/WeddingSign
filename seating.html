@@ -152,6 +152,7 @@ textarea.f{min-height:140px;height:auto;padding:10px 11px;resize:vertical}
 .planner-tools select.f{min-width:200px;flex:1;max-width:300px;cursor:pointer}
 .planner-tools .hint{width:100%;margin:2px 0 0}
 .planner-layouts{margin-top:-6px}
+.layout-saved{font:500 12px/1.3 Inter,sans-serif;color:var(--ui-muted)}
 .along-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
 .along-head h4{margin:0}
 .along-head span{font:500 12px/1 Inter,sans-serif;color:var(--ui-muted)}
@@ -730,6 +731,7 @@ body.lb-open{overflow:hidden}
     <button type="button" class="xbtn" id="download-layout">Download JSON</button>
     <button type="button" class="xbtn" id="import-layout-btn">Open JSON</button>
     <input id="import-layout" type="file" accept="application/json" hidden>
+    <span class="layout-saved" id="layout-saved">Saves as you work</span>
   </div>
   <div>
     <h4>Not seated · <span id="unassigned-count">0</span></h4>
@@ -913,5 +915,5 @@ body.lb-open{overflow:hidden}
 </div>
 
 <script src="js/fonts.js"></script>
-<script src="js/seating.js?v=seats4"></script>
+<script src="js/seating.js?v=seats8"></script>
 <script src="js/favorites.js"></script>

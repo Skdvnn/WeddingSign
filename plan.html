@@ -51,6 +51,7 @@ input.f{font:500 12.5px/1.4 Inter,sans-serif;padding:10px 12px;border:1.5px soli
 .planner-tools input.f{min-width:240px;flex:1}
 .planner-tools select.f{min-width:220px;flex:1;max-width:320px;cursor:pointer}
 .planner-layouts{margin-top:-8px}
+.layout-saved{font:500 12px/1.3 Inter,sans-serif;color:#8b8577}
 .chips-g{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:flex-start}
 .gchip{appearance:none;border:1px solid rgba(0,0,0,.18);background:#fff;color:var(--ink);
   border-radius:8px;padding:7px 11px;cursor:grab;touch-action:none;
@@ -163,6 +164,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     <button type="button" class="xbtn" id="download-layout">Download JSON</button>
     <button type="button" class="xbtn" id="import-layout-btn">Open JSON</button>
     <input id="import-layout" type="file" accept="application/json" hidden>
+    <span class="layout-saved" id="layout-saved">Saves as you work</span>
   </div>
   <div>
     <h4>Not seated · <span id="unassigned-count">0</span></h4>
@@ -177,4 +179,4 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 </div>
 
 <script src="js/fonts.js"></script>
-<script src="js/seating.js?v=seats4"></script>
+<script src="js/seating.js?v=seats8"></script>

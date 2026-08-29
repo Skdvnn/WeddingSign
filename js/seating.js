@@ -15,6 +15,10 @@
   var SIGN_CAP = 6;
   var PLACE_KEY = 'wedding-seating-place-v1';
   var LAYOUT_KEY = 'wedding-seating-layouts-v1';
+  var WIPED_KEY = 'wedding-seating-wiped-v1';
+  var LAST_SAVED_ID = 'keep:Last saved';
+  var SEED_REV = 'night-2026-08-28';
+  var SEED_REV_KEY = 'wedding-seating-seed-rev-v1';
   var HEAD_SLOTS = [
     ['arthur-dann', 7, 3],
     ['rainya-dann', 7, 4],
@@ -124,9 +128,124 @@
     }
   }
 
-  function saveAssign() {
+  var workTimer = 0;
+
+  function persistAssign() {
     try { localStorage.setItem(ASSIGN_KEY, JSON.stringify(assign)); } catch (e) {}
     savePlace();
+  }
+
+  function wasWiped() {
+    try { return localStorage.getItem(WIPED_KEY) === '1'; } catch (e) { return false; }
+  }
+
+  function markWiped() {
+    try { localStorage.setItem(WIPED_KEY, '1'); } catch (e) {}
+  }
+
+  function clearWiped() {
+    try { localStorage.removeItem(WIPED_KEY); } catch (e) {}
+  }
+
+  function roomCount() {
+    var n = 0;
+    Object.keys(assign).forEach(function (id) { if (assign[id]) n += 1; });
+    return n;
+  }
+
+  function layoutSeated(item) {
+    return item && item.assign ? Object.keys(item.assign).length : 0;
+  }
+
+  function isPinnedLayout(x) {
+    return !!(x && (x.id === LAST_SAVED_ID || x.id === 'keep:Working copy' ||
+      x.name === 'Last saved' || x.name === 'Working copy'));
+  }
+
+  function findNamedLayout(name, id) {
+    return loadLayouts().filter(function (x) {
+      return (id && x.id === id) || x.name === name;
+    })[0];
+  }
+
+  function touchLayoutOption(id, name, at) {
+    var sel = document.getElementById('layout-pick');
+    if (!sel) return;
+    var opt = Array.prototype.filter.call(sel.options, function (o) {
+      return o.value === id;
+    })[0];
+    if (opt) opt.textContent = name + (at ? ' · ' + layoutWhen(at) : '');
+    else fillLayoutPick();
+  }
+
+  function pinLastSaved() {
+    if (wasWiped()) return;
+    var n = roomCount();
+    if (n < 1) return;
+    var prev = findNamedLayout('Last saved', LAST_SAVED_ID);
+    if (prev && layoutSeated(prev) > n) return;
+    var item = snapshotRoom('Last saved', LAST_SAVED_ID);
+    var list = loadLayouts().filter(function (x) {
+      return x.id !== LAST_SAVED_ID && x.name !== 'Last saved';
+    });
+    list.unshift(item);
+    writeLayouts(list);
+    touchLayoutOption(LAST_SAVED_ID, item.name, item.at);
+    return item;
+  }
+
+  function writeWorking() {
+    var n = roomCount();
+    var prev = findNamedLayout('Working copy', 'keep:Working copy');
+    if (n < 1 && prev && layoutSeated(prev) > 0) {
+      markSaved(prev.at);
+      return prev;
+    }
+    var id = 'keep:Working copy';
+    var item = snapshotRoom('Working copy', id);
+    var list = loadLayouts();
+    var found = false;
+    list = list.map(function (x) {
+      if (x.id === id || x.name === 'Working copy') {
+        found = true;
+        return item;
+      }
+      return x;
+    });
+    if (!found) list.unshift(item);
+    writeLayouts(list);
+    touchLayoutOption(id, item.name, item.at);
+    pinLastSaved();
+    markSaved(item.at);
+    return item;
+  }
+
+  function rememberWorking(flush) {
+    if (wasWiped()) return;
+    if (flush) {
+      if (workTimer) {
+        clearTimeout(workTimer);
+        workTimer = 0;
+      }
+      writeWorking();
+      return;
+    }
+    if (workTimer) clearTimeout(workTimer);
+    workTimer = setTimeout(function () {
+      workTimer = 0;
+      writeWorking();
+    }, 400);
+  }
+
+  function markSaved(at) {
+    var el = document.getElementById('layout-saved');
+    if (!el) return;
+    el.textContent = 'Saved as you work · ' + layoutWhen(at || Date.now());
+  }
+
+  function saveAssign(flush) {
+    persistAssign();
+    rememberWorking(flush === true);
   }
 
   function loadPlace() {
@@ -162,7 +281,8 @@
     assign = cloneMap(data.assign);
     place = cloneMap(data.place || {});
     applyPlaces();
-    saveAssign();
+    persistAssign();
+    pinLastSaved();
     return seatedCount() >= 40;
   }
 
@@ -191,13 +311,38 @@
   }
 
   function writeLayouts(list) {
-    try { localStorage.setItem(LAYOUT_KEY, JSON.stringify(list.slice(0, 24))); } catch (e) {}
+    var pinned = [];
+    var rest = [];
+    var seen = {};
+    (list || []).forEach(function (x) {
+      if (!x) return;
+      if (isPinnedLayout(x)) {
+        var key = x.id || x.name;
+        if (seen[key]) return;
+        seen[key] = true;
+        pinned.push(x);
+      } else rest.push(x);
+    });
+    pinned.sort(function (a, b) {
+      var order = { 'Last saved': 0, 'Working copy': 1 };
+      return (order[a.name] != null ? order[a.name] : 2) - (order[b.name] != null ? order[b.name] : 2);
+    });
+    var extra = Math.max(0, 24 - pinned.length);
+    var out = pinned.concat(rest.slice(0, extra));
+    try { localStorage.setItem(LAYOUT_KEY, JSON.stringify(out)); } catch (e) {}
   }
 
   function fillLayoutPick() {
     var sel = document.getElementById('layout-pick');
     if (!sel) return;
     var list = loadLayouts();
+    var rank = { 'Last saved': 0, 'Working copy': 1, 'Last session': 2 };
+    list.sort(function (a, b) {
+      var ra = rank.hasOwnProperty(a.name) ? rank[a.name] : 10;
+      var rb = rank.hasOwnProperty(b.name) ? rank[b.name] : 10;
+      if (ra !== rb) return ra - rb;
+      return (b.at || 0) - (a.at || 0);
+    });
     var cur = sel.value;
     sel.innerHTML = '';
     if (!list.length) {
@@ -239,10 +384,11 @@
 
   function applyLayout(item) {
     if (!item || !item.assign) return;
+    clearWiped();
     assign = cloneMap(item.assign);
     place = cloneMap(item.place);
     applyPlaces();
-    saveAssign();
+    saveAssign(true);
     renderAssign();
     renderAllSoon();
   }
@@ -252,8 +398,14 @@
   }
 
   function seedWorkingLayout() {
-    if (loadLayouts().length) return;
-    upsertLayout('Working copy');
+    var work = loadLayouts().filter(function (x) {
+      return x.id === 'keep:Working copy' || x.name === 'Working copy';
+    })[0];
+    if (work) {
+      markSaved(work.at);
+      return;
+    }
+    writeWorking();
   }
 
   function wireLayouts() {
@@ -292,6 +444,11 @@
         if (!sel || !sel.value) return;
         var item = findLayout(sel.value);
         if (!item) return;
+        if (item.id === LAST_SAVED_ID || item.name === 'Last saved' ||
+            item.id === 'keep:Working copy' || item.name === 'Working copy') {
+          window.alert('That copy stays so the last saved room can come back after a reload.');
+          return;
+        }
         if (!window.confirm('Delete “' + item.name + '”?')) return;
         writeLayouts(loadLayouts().filter(function (x) { return x.id !== item.id; }));
         fillLayoutPick();
@@ -815,7 +972,7 @@
     reuniteParties(locked);
     drainOverflow(locked);
     seatAllChairs(locked);
-    saveAssign();
+    persistAssign();
   }
 
   function partyId(g) {
@@ -905,6 +1062,7 @@
   }
 
   function setParty(pid, n) {
+    clearWiped();
     partyMembers(pid).forEach(function (g) {
       if (!n) {
         delete assign[g.id];
@@ -918,6 +1076,7 @@
   }
 
   function seatWithKin(pid, n) {
+    clearWiped();
     var p = uniqueParties().filter(function (x) { return x.id === pid; })[0];
     if (!p || !n) {
       setParty(pid, n);
@@ -952,6 +1111,7 @@
   }
 
   function seatPartyAt(pid, n, start, leadId) {
+    clearWiped();
     var p = uniqueParties().filter(function (x) { return x.id === pid; })[0];
     if (!p || !n) {
       setParty(pid, n);
@@ -988,6 +1148,7 @@
   }
 
   function swapSigns(a, b) {
+    clearWiped();
     a = parseInt(a, 10);
     b = parseInt(b, 10);
     if (!a || !b || a === b) return;
@@ -1002,6 +1163,7 @@
   }
 
   function moveGuest(id, n, s) {
+    clearWiped();
     var g = guests.filter(function (x) { return x.id === id; })[0];
     if (!g) return;
     if (!n) {
@@ -2624,6 +2786,8 @@
   if (refill) {
     refill.addEventListener('click', function () {
       upsertLayout('Before reset');
+      pinLastSaved();
+      markWiped();
       applyPlaceholders();
       renderAssign();
       renderAll();
@@ -2633,9 +2797,11 @@
   if (clearRoom) {
     clearRoom.addEventListener('click', function () {
       upsertLayout('Before clear');
+      pinLastSaved();
+      markWiped();
       assign = {};
       place = {};
-      saveAssign();
+      persistAssign();
       renderAssign();
       renderAll();
     });
@@ -2657,23 +2823,83 @@
   if (find) find.addEventListener('input', filterChips);
   wireLayouts();
 
-  window.addEventListener('pagehide', function () {
-    saveAssign();
+  function flushSession() {
+    persistAssign();
+    if (wasWiped() || roomCount() < 1) return;
+    rememberWorking(true);
     upsertLayout('Last session');
-  });
-  window.addEventListener('beforeunload', function () {
-    saveAssign();
-    upsertLayout('Last session');
-  });
+  }
+  window.addEventListener('pagehide', flushSession);
+  window.addEventListener('beforeunload', flushSession);
   document.addEventListener('pointermove', tickPersonDrag);
   document.addEventListener('pointerup', dropPersonDrag);
 
+  function bestStoredLayout() {
+    var rank = {
+      'Last saved': 0,
+      'Working copy': 1,
+      'Last session': 2,
+      'Before reset': 3,
+      'Before load': 4,
+      'Before clear': 5
+    };
+    var list = loadLayouts().filter(function (x) { return layoutSeated(x) > 0; });
+    list.sort(function (a, b) {
+      var ra = rank.hasOwnProperty(a.name) ? rank[a.name] : 10;
+      var rb = rank.hasOwnProperty(b.name) ? rank[b.name] : 10;
+      if (ra !== rb) return ra - rb;
+      var diff = layoutSeated(b) - layoutSeated(a);
+      if (diff) return diff;
+      return (b.at || 0) - (a.at || 0);
+    });
+    return list[0] || null;
+  }
+
+  function restoreSavedRoom() {
+    var pick = bestStoredLayout();
+    if (wasWiped() && pick) {
+      assign = cloneMap(pick.assign);
+      place = cloneMap(pick.place || {});
+      applyPlaces();
+      persistAssign();
+      clearWiped();
+      return true;
+    }
+    if (seatedCount() > 0) return false;
+    if (!pick) return false;
+    assign = cloneMap(pick.assign);
+    place = cloneMap(pick.place || {});
+    applyPlaces();
+    persistAssign();
+    return true;
+  }
+
   function startPlanner() {
-    if (seatedCount() < 40) applyPlaceholders();
+    restoreSavedRoom();
+    if (seatedCount() < 1) applyPlaceholders();
     seedWorkingLayout();
     fillLayoutPick();
     renderAssign();
     renderAll();
+  }
+
+  function seedRev() {
+    try { return localStorage.getItem(SEED_REV_KEY) || ''; } catch (e) { return ''; }
+  }
+
+  function markSeedRev() {
+    try { localStorage.setItem(SEED_REV_KEY, SEED_REV); } catch (e) {}
+  }
+
+  function loadOfficialSeed(done) {
+    fetch('data/seating-state.json')
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (seed) {
+        if (seed) applySeedData(seed);
+        markSeedRev();
+        done();
+      })
+      .catch(done);
   }
 
   fetch('data/guests.json')
@@ -2681,17 +2907,16 @@
     .then(function (data) {
       guests = (data && data.guests) || [];
       applyPlaces();
+      if (seedRev() !== SEED_REV) {
+        loadOfficialSeed(startPlanner);
+        return;
+      }
+      restoreSavedRoom();
       if (seatedCount() >= 40) {
         startPlanner();
         return;
       }
-      fetch('data/seating-state.json')
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (seed) {
-          if (seed) applySeedData(seed);
-          startPlanner();
-        })
-        .catch(startPlanner);
+      loadOfficialSeed(startPlanner);
     })
     .catch(function () {
       var note = document.getElementById('rsvpnote');
