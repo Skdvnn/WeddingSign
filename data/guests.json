@@ -761,21 +761,21 @@
     },
     {
       "id": "jim",
-      "first": "Jim",
-      "last": "",
-      "name": "Jim",
+      "first": "Chung Jim",
+      "last": "Huang",
+      "name": "Chung Jim Huang",
       "diet": "",
       "party": "p47",
-      "partyLabel": "Jim & Wife (TBD)"
+      "partyLabel": "Chung Jim Huang & Yu Xi Huang"
     },
     {
       "id": "jim-wife",
-      "first": "Wife",
-      "last": "",
-      "name": "Wife",
+      "first": "Yu Xi",
+      "last": "Huang",
+      "name": "Yu Xi Huang",
       "diet": "",
       "party": "p47",
-      "partyLabel": "Jim & Wife (TBD)"
+      "partyLabel": "Chung Jim Huang & Yu Xi Huang"
     }
   ]
 }
