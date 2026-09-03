@@ -208,10 +208,18 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   font:500 13px/1.3 Inter,sans-serif;opacity:0;pointer-events:none;z-index:100;
   transition:opacity .2s,transform .2s;box-shadow:0 8px 24px rgba(0,0,0,.18)}
 #svg-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.navlinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+.navlinks{display:flex;flex-wrap:wrap;width:max-content;max-width:100%;margin-top:20px;
+  border:1.5px solid var(--ink);border-radius:8px;overflow:hidden;background:#fff}
 .navlinks a{font:600 12px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ink);text-decoration:none;border-bottom:1.5px solid rgba(0,0,0,.25);padding-bottom:2px}
-.navlinks a:hover{border-color:var(--ink)}
+  color:var(--ink);text-decoration:none;padding:13px 18px;border-right:1.5px solid var(--ink)}
+.navlinks a:last-child{border-right:0}
+.navlinks a:hover{background:rgba(30,29,26,.06)}
+.navlinks a[aria-current="page"]{background:var(--ink);color:var(--page)}
+.navlinks a[aria-current="page"]:hover{background:var(--ink);color:var(--page)}
+.pagetools{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+.pagetools a{font:600 11px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
+  color:inherit;text-decoration:none;border-bottom:1.5px solid rgba(0,0,0,.2);padding-bottom:2px}
+.pagetools a:hover{border-color:var(--ink);color:var(--ink)}
 #export-global{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-left:auto}
 
 /* ============ favorites / star ============ */
@@ -237,18 +245,12 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 <header>
   <h1>Allison + Skylar<br>Welcome Sign — Eight Directions</h1>
   <p class="sub">Ground is locked: solid mustard (<code>#BFA52B</code>) — the panel’s already painted. Toggle lettering colour below, pick a layout, and export SVGs for vinyl / stencil. Boards are <b>2×3&nbsp;ft</b> (24&nbsp;×&nbsp;36&nbsp;in). Read the A-frame note at the bottom; height changes where the type should sit.</p>
-  <div class="navlinks">
-    <a href="#favorites-heading">Favorites</a>
+  <nav class="navlinks" aria-label="Primary">
+    <a href="index.html" aria-current="page">Welcome sign</a>
+    <a href="plan.html">Seating</a>
     <a href="tables.html">Table numbers</a>
     <a href="bar.html">Bar menu</a>
-    <a href="plan.html">Our seating</a>
-    <a href="seating.html">Seating chart</a>
-    <a href="s2-display-stack.png" download>S2 Display Stack PNG</a>
-    <a href="#svg-assets">SVG assets</a>
-    <a href="moodboard.html">Moodboard</a>
-    <a href="assets/svg/agave.svg" download>Download agave.svg</a>
-    <a href="assets/svg/letterforms-template.svg" download>Download letterforms template</a>
-  </div>
+  </nav>
 
   <div class="suite">
     <div class="suitecard"><b>Decided — ground</b>
@@ -1279,6 +1281,14 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 <footer>
   Ground locked to mustard. Lettering colour still open — toggle in the bar. Export SVGs from each card.<br>
   Print to PDF at 2:3 for projecting onto a 24&nbsp;×&nbsp;36&nbsp;in (2×3&nbsp;ft) board.
+  <div class="pagetools">
+    <a href="#favorites-heading">Favorites</a>
+    <a href="#svg-assets">SVG assets</a>
+    <a href="moodboard.html">Moodboard</a>
+    <a href="s2-display-stack.png" download>S2 Display Stack PNG</a>
+    <a href="assets/svg/agave.svg" download>Download agave.svg</a>
+    <a href="assets/svg/letterforms-template.svg" download>Download letterforms template</a>
+  </div>
 </footer>
 </div>
 

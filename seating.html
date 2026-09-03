@@ -59,10 +59,14 @@ header{padding:64px 0 40px;border-bottom:1px solid var(--ui-border)}
 h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,7.2vw,76px);
    line-height:1.0;letter-spacing:-.008em;margin:0 0 16px}
 .sub{font-size:16px;line-height:1.62;max-width:640px;color:var(--ink-soft);margin:0}
-.navlinks{display:flex;gap:20px;flex-wrap:wrap;margin-top:22px}
-.navlinks a{font:500 13px/1 Inter,sans-serif;color:var(--ink);text-decoration:none;
-  opacity:.55;padding-bottom:2px;border-bottom:1px solid transparent}
-.navlinks a:hover{opacity:1;border-color:var(--ink)}
+.navlinks{display:flex;flex-wrap:wrap;width:max-content;max-width:100%;margin-top:20px;
+  border:1.5px solid var(--ink);border-radius:8px;overflow:hidden;background:#fff}
+.navlinks a{font:600 12px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;padding:13px 18px;border-right:1.5px solid var(--ink);opacity:1}
+.navlinks a:last-child{border-right:0}
+.navlinks a:hover{background:rgba(30,29,26,.06)}
+.navlinks a[aria-current="page"]{background:var(--ink);color:var(--page)}
+.navlinks a[aria-current="page"]:hover{background:var(--ink);color:var(--page)}
 
 .suite{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:28px}
 .suitecard{border:1px solid var(--ui-border);border-radius:var(--ui-radius);
@@ -564,14 +568,12 @@ body.lb-open{overflow:hidden}
 <header>
   <h1>Allison + Skylar<br>Seating Chart</h1>
   <p class="sub">Same suite as the invite, S2, and the 5×7s. Guests find themselves <b>A–Z</b>, one name per line, then the sign number. The room is still three long tables and fifteen 5×7s — that’s what 04 means. Lay people out in <a href="plan.html">Our seating</a>, then star a chart and print 24×36.</p>
-  <div class="navlinks">
-    <a href="plan.html">Our seating</a>
+  <nav class="navlinks" aria-label="Primary">
     <a href="index.html">Welcome sign</a>
+    <a href="plan.html" aria-current="page">Seating</a>
     <a href="tables.html">Table numbers</a>
     <a href="bar.html">Bar menu</a>
-    <a href="#favorites-heading">Favorites</a>
-    <a href="moodboard.html">Moodboard</a>
-  </div>
+  </nav>
   <div class="suite">
     <div class="suitecard"><b>The rule</b>
       <div style="font:400 13.5px/1.5 Inter,sans-serif;color:var(--ink-soft)">A–Z, one name per line, then the sign. Guests find themselves from the path without knowing the room first.</div>

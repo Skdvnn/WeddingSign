@@ -38,10 +38,14 @@ header{padding:66px 0 36px;border-bottom:1.5px solid var(--ink)}
 h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,7.2vw,76px);
    line-height:1.0;letter-spacing:-.008em;margin:0 0 18px}
 .sub{font-size:16.5px;line-height:1.6;max-width:720px;color:var(--ink-soft);margin:0}
-.navlinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+.navlinks{display:flex;flex-wrap:wrap;width:max-content;max-width:100%;margin-top:20px;
+  border:1.5px solid var(--ink);border-radius:8px;overflow:hidden;background:#fff}
 .navlinks a{font:600 12px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ink);text-decoration:none;border-bottom:1.5px solid rgba(0,0,0,.25);padding-bottom:2px}
-.navlinks a:hover{border-color:var(--ink)}
+  color:var(--ink);text-decoration:none;padding:13px 18px;border-right:1.5px solid var(--ink)}
+.navlinks a:last-child{border-right:0}
+.navlinks a:hover{background:rgba(30,29,26,.06)}
+.navlinks a[aria-current="page"]{background:var(--ink);color:var(--page)}
+.navlinks a[aria-current="page"]:hover{background:var(--ink);color:var(--page)}
 
 .suite{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:16px;margin-top:30px}
 .suitecard{border:1px solid rgba(0,0,0,.14);border-radius:7px;padding:15px 16px;background:#fbf9f5}
@@ -225,14 +229,12 @@ a{color:#7d4a1e}
 <header>
   <h1>Allison + Skylar<br>Table Numbers — When We Were</h1>
   <p class="sub">Same suite as the invite and the mustard welcome sign, now at <b>5 × 7 in</b>. The table number is the age — two childhood photos, one headline, the names. Upload real pictures, flip through the layouts, star the ones that belong on the tables.</p>
-  <div class="navlinks">
+  <nav class="navlinks" aria-label="Primary">
     <a href="index.html">Welcome sign</a>
+    <a href="plan.html">Seating</a>
+    <a href="tables.html" aria-current="page">Table numbers</a>
     <a href="bar.html">Bar menu</a>
-    <a href="plan.html">Our seating</a>
-    <a href="seating.html">Seating chart</a>
-    <a href="#favorites-heading">Favorites</a>
-    <a href="moodboard.html">Moodboard</a>
-  </div>
+  </nav>
 
   <div class="suite">
     <div class="suitecard"><b>The suite</b>
