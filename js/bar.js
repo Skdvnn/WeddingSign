@@ -127,7 +127,7 @@
   function applyColor() {
     var gh = G[ground].hex, fg = T[text].hex;
     var accent = ground === 'mustard' ? T.ink.hex : '#BFA52B';
-    var pillFg = ground === 'mustard' ? G.bone.hex : T.ink.hex;
+    var bandFg = ground === 'mustard' ? G.bone.hex : T.ink.hex;
     document.documentElement.style.setProperty('--accent', accent);
     document.querySelectorAll('[data-g]').forEach(function (el) {
       el.style.background = gh;
@@ -135,9 +135,12 @@
     });
     document.querySelectorAll('[data-fg]').forEach(function (el) { el.style.color = fg; });
     document.querySelectorAll('[data-fgs]').forEach(function (el) { el.style.color = fg; });
-    document.querySelectorAll('.tag-pill').forEach(function (el) {
+    document.querySelectorAll('[data-band]').forEach(function (el) {
       el.style.background = accent;
-      el.style.color = pillFg;
+      el.style.color = bandFg;
+    });
+    document.querySelectorAll('.tag-mark').forEach(function (el) {
+      el.style.color = accent;
     });
     document.querySelectorAll('.col-side').forEach(function (el) {
       el.style.borderLeftColor = accent;
@@ -219,8 +222,12 @@
           block.classList.remove('no-tag');
         } else {
           tagEl.textContent = '';
-          tagEl.hidden = true;
           block.classList.add('no-tag');
+          if (tagEl.classList.contains('tag-mark')) {
+            tagEl.removeAttribute('hidden');
+          } else {
+            tagEl.hidden = true;
+          }
         }
       });
       if (ingEl) ingEl.innerHTML = withAmp(d.ingredients);
@@ -403,7 +410,18 @@
     var out = [];
     out.push('<rect width="' + PNG_W + '" height="' + PNG_H + '" fill="' + gh + '"/>');
 
-    frame.querySelectorAll('.rule, .hair, .invite-rule, .spine-rule').forEach(function (el) {
+    frame.querySelectorAll('.mustard-band').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.width < 0.5 || r.height < 0.5) return;
+      var fill = rgbToHex(getComputedStyle(el).backgroundColor) || (ground === 'mustard' ? T.ink.hex : '#BFA52B');
+      out.push(
+        '<rect x="' + ((r.left - root.left) * sx).toFixed(1) + '" y="' + ((r.top - root.top) * sy).toFixed(1) +
+        '" width="' + (r.width * sx).toFixed(1) + '" height="' + (r.height * sy).toFixed(1) +
+        '" fill="' + fill + '"/>'
+      );
+    });
+
+    frame.querySelectorAll('.rule, .hair, .spine-rule, .menu-rule').forEach(function (el) {
       var r = el.getBoundingClientRect();
       if (r.width < 0.5 || r.height < 0.5) return;
       var fill = rgbToHex(getComputedStyle(el).backgroundColor) || fg;
@@ -414,7 +432,20 @@
       );
     });
 
-    frame.querySelectorAll('[data-header], .drink-name, .drink-tag, .drink-ing, .ledger-num, .col-label, .invite-foot, .tag-pill').forEach(function (el) {
+    frame.querySelectorAll('.col-side').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      var cs = getComputedStyle(el);
+      var bw = parsePx(cs.borderLeftWidth);
+      if (bw < 0.5 || r.height < 0.5) return;
+      var fill = rgbToHex(cs.borderLeftColor) || (ground === 'mustard' ? T.ink.hex : '#BFA52B');
+      out.push(
+        '<rect x="' + ((r.left - root.left) * sx).toFixed(1) + '" y="' + ((r.top - root.top) * sy).toFixed(1) +
+        '" width="' + Math.max(2, bw * sx).toFixed(1) + '" height="' + (r.height * sy).toFixed(1) +
+        '" fill="' + fill + '"/>'
+      );
+    });
+
+    frame.querySelectorAll('[data-header], [data-band-sub], .drink-name, .drink-tag, .drink-ing, .ledger-num, .col-label, .menu-foot').forEach(function (el) {
       var cs = getComputedStyle(el);
       if (cs.display === 'none' || cs.visibility === 'hidden' || el.hidden) return;
       var text = (el.innerText || el.textContent || '').replace(/\s+\n/g, '\n').replace(/\n\s+/g, '\n').trim();
