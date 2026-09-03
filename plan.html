@@ -32,6 +32,15 @@ h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,6.4
 .navlinks a:hover{background:rgba(30,29,26,.06)}
 .navlinks a[aria-current="page"]{background:var(--ink);color:var(--page)}
 .navlinks a[aria-current="page"]:hover{background:var(--ink);color:var(--page)}
+@media (max-width:720px){
+  .navlinks{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .navlinks a{border-right:0;border-bottom:1.5px solid var(--ink);padding:14px 8px;text-align:center;
+    min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .navlinks a:nth-child(odd){border-right:1.5px solid var(--ink)}
+  .navlinks a:nth-child(n+3){border-bottom:0}
+  .seat-subnav{max-width:none}
+  .seat-subnav-tabs a{min-height:44px}
+}
 .seat-subnav{margin-top:16px;border:1.5px solid rgba(0,0,0,.14);border-radius:9px;
   padding:16px 16px 14px;background:#fbf9f5;max-width:560px}
 .seat-subnav .kicker{font:700 9.5px/1 'Roboto Mono',monospace;letter-spacing:.14em;
