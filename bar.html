@@ -28,8 +28,8 @@
   --detwt:400;
   --dettrk:.2em;
   --dettrk2:.13em;
-  --stack-hang:calc(var(--dettrk) * -.5 - .06em);
-  --stack-hang-ing:calc((var(--dettrk2) + .04em) * -.5 - .06em);
+  --stack-hang:calc(var(--dettrk) * -1 - .14em);
+  --stack-hang-ing:calc((var(--dettrk2) + .04em) * -1 - .14em);
   --radius:8px;
   --chrome-border:1px solid var(--ink);
 }
@@ -171,21 +171,21 @@ h2:first-of-type{margin-top:0}
 .det{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.72cqi * var(--labscale,1));letter-spacing:var(--dettrk2);line-height:1.55;text-transform:uppercase}
 .drink-name{font-family:var(--nmfont);font-weight:var(--nmwt);
   letter-spacing:calc(var(--nmtrk) - .01em);
-  font-size:calc(7.1cqi * var(--nmscale,1));line-height:1.1;
-  padding-bottom:calc(.16em * var(--stackspace,1));
+  font-size:calc(7.1cqi * var(--nmscale,1));line-height:1.12;
+  padding-bottom:calc(.52em * var(--stackspace,1));
   text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:none}
 .drink-ing{font-family:var(--detfont);font-weight:var(--detwt);
   font-size:calc(2.72cqi * var(--labscale,1));
-  letter-spacing:calc(var(--dettrk2) + .04em);line-height:1.55;text-transform:uppercase;
+  letter-spacing:calc(var(--dettrk2) + .04em);line-height:1.45;text-transform:uppercase;
   margin-top:0;margin-left:var(--stack-hang-ing);max-width:42em}
 .accent-rule{background:var(--accent);height:var(--rulew);width:100%;flex:none}
 .name-rule{background:currentColor;height:var(--rulew);width:22%;flex:none;
-  margin:calc(.28em * var(--stackspace,1)) 0 calc(.18em * var(--stackspace,1))}
+  margin:calc(.32em * var(--stackspace,1)) 0 calc(.22em * var(--stackspace,1))}
 .drink-tag{font-family:var(--detfont);font-weight:var(--detwt);
   font-size:calc(2.35cqi * var(--labscale,1));
-  letter-spacing:var(--dettrk);line-height:1.4;text-transform:uppercase;
+  letter-spacing:var(--dettrk);line-height:1.15;text-transform:uppercase;
   margin-top:0;margin-left:var(--stack-hang);
-  padding:0 0 calc(.42em * var(--stackspace,1));background:none;border:0;border-radius:0}
+  padding:0 0 calc(.72em * var(--stackspace,1));background:none;border:0;border-radius:0}
 .drink.no-tag .drink-tag{display:none}
 .rule,.hair,.spine-rule,.menu-rule,.horizon-rule{background:currentColor;flex:none}
 .rule,.hair,.menu-rule,.horizon-rule{height:var(--rulew);width:100%}
@@ -218,7 +218,7 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="stack"] .k{margin:0}
 [data-layout="stack"] .optical{flex:1;justify-content:center;padding:0}
 [data-layout="stack"] .drink-list{display:flex;flex-direction:column;gap:calc(2.8cqi * var(--stackspace,1))}
-[data-layout="stack"] .drink-name{font-size:calc(8.6cqi * var(--nmscale,1));line-height:1.08}
+[data-layout="stack"] .drink-name{font-size:calc(8.6cqi * var(--nmscale,1));line-height:1.12}
 [data-layout="stack"] .drink-ing{margin-left:auto;margin-right:auto;max-width:34em;font-size:calc(2.45cqi * var(--labscale,1))}
 [data-layout="stack"] .drink-tag{margin-left:0}
 
@@ -386,7 +386,7 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="stackrule"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
 [data-layout="stackrule"] .drink{padding:2.2% 0;border-bottom:var(--rulew) solid currentColor}
 [data-layout="stackrule"] .drink:last-child{border-bottom:0}
-[data-layout="stackrule"] .drink-name{font-size:calc(7.8cqi * var(--nmscale,1));line-height:1.08}
+[data-layout="stackrule"] .drink-name{font-size:calc(7.8cqi * var(--nmscale,1));line-height:1.12}
 [data-layout="stackrule"] .drink-tag{margin-left:0}
 [data-layout="stackrule"] .drink-ing{margin-left:auto;margin-right:auto;max-width:34em}
 
