@@ -156,13 +156,13 @@ h2:first-of-type{margin-top:0}
 .k{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.28cqi * var(--labscale,1));letter-spacing:var(--dettrk);line-height:1.7;text-transform:uppercase}
 .det{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.05cqi * var(--labscale,1));letter-spacing:var(--dettrk2);line-height:1.9;text-transform:uppercase}
 .drink-name{font-family:var(--nmfont);font-weight:var(--nmwt);
-  letter-spacing:calc(var(--nmtrk) - .012em);
-  font-size:calc(10.4cqi * var(--nmscale,1));line-height:.88;
-  text-wrap:balance;overflow-wrap:break-word;hyphens:manual}
+  letter-spacing:calc(var(--nmtrk) - .014em);
+  font-size:calc(11.2cqi * var(--nmscale,1));line-height:.84;
+  text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:none}
 .drink-ing{font-family:var(--detfont);font-weight:var(--detwt);
-  font-size:calc(1.82cqi * var(--labscale,1));
-  letter-spacing:calc(var(--dettrk2) + .05em);line-height:1.7;text-transform:uppercase;
-  margin-top:.55em;max-width:36em}
+  font-size:calc(1.58cqi * var(--labscale,1));
+  letter-spacing:calc(var(--dettrk2) + .06em);line-height:1.55;text-transform:uppercase;
+  margin-top:.42em;max-width:42em}
 .drink-tag{font-family:var(--detfont);font-weight:var(--detwt);
   font-size:calc(1.88cqi * var(--labscale,1));
   letter-spacing:var(--dettrk);line-height:1.55;text-transform:uppercase;
@@ -174,72 +174,73 @@ h2:first-of-type{margin-top:0}
 .mustard-band{background:var(--accent);color:var(--ink);flex:none}
 
 /* B1 · S5 Ruled Editorial — 4-row grid, 1px hairlines, names in the cells */
-[data-layout="ruled"]{padding:8.5% 8% 8%}
-[data-layout="ruled"] .menu-head{border-bottom:1px solid currentColor;padding-bottom:4.6%;margin:0}
-[data-layout="ruled"] .drink-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));min-height:0}
-[data-layout="ruled"] .drink{display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid currentColor;min-width:0}
+[data-layout="ruled"]{padding:8% 7.5% 7.5%}
+[data-layout="ruled"] .menu-head{border-bottom:1px solid currentColor;padding-bottom:3.8%;margin:0}
+[data-layout="ruled"] .drink-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(min-content,1fr));min-height:0}
+[data-layout="ruled"] .drink{display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid currentColor;min-width:0;padding:2.2% 0;overflow:visible}
 [data-layout="ruled"] .drink:last-child{border-bottom:0}
-[data-layout="ruled"] .drink-name{font-size:calc(9.6cqi * var(--nmscale,1));line-height:.88}
-[data-layout="ruled"] .menu-foot{border-top:1px solid currentColor;padding-top:4.2%;display:flex;justify-content:space-between;gap:8px}
+[data-layout="ruled"] .drink-name{font-size:calc(10.6cqi * var(--nmscale,1));line-height:.84}
+[data-layout="ruled"] .menu-foot{border-top:1px solid currentColor;padding-top:3.6%;display:flex;justify-content:space-between;gap:8px}
 
 /* B2 · S2 Display Stack — optically centred cluster, names at display size */
-[data-layout="stack"]{padding:9% 7.5% 8.5%;text-align:center}
-[data-layout="stack"] .optical{padding-bottom:3.2%}
-[data-layout="stack"] .drink-list{display:flex;flex-direction:column;gap:5.6cqi}
-[data-layout="stack"] .drink-name{font-size:calc(11.4cqi * var(--nmscale,1));line-height:.86}
-[data-layout="stack"] .drink-ing{margin-left:auto;margin-right:auto;max-width:28em}
-[data-layout="stack"] .drink-tag{margin-top:.32em}
+[data-layout="stack"]{padding:8.5% 6.5% 8%;text-align:center}
+[data-layout="stack"] .optical{padding-bottom:2.4%}
+[data-layout="stack"] .drink-list{display:flex;flex-direction:column;gap:3.8cqi}
+[data-layout="stack"] .drink-name{font-size:calc(13.2cqi * var(--nmscale,1));line-height:.82}
+[data-layout="stack"] .drink-ing{margin-left:auto;margin-right:auto;max-width:34em}
+[data-layout="stack"] .drink-tag{margin-top:.28em}
 
 /* B3 · S1 Flush — left edge, agave stamp holding the bottom */
-[data-layout="flush"]{padding:8% 8% 7.5% 8%}
-[data-layout="flush"] .optical{padding-bottom:1.5%}
-[data-layout="flush"] .drink-list{display:flex;flex-direction:column;gap:5.2cqi}
-[data-layout="flush"] .drink-name{font-size:calc(10.2cqi * var(--nmscale,1));line-height:.88}
-[data-layout="flush"] .agave-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex:none;padding-top:2%}
-[data-layout="flush"] .agave{width:24%}
+[data-layout="flush"]{padding:7.5% 7% 7%}
+[data-layout="flush"] .k{margin-bottom:2%}
+[data-layout="flush"] .optical{padding-bottom:1%}
+[data-layout="flush"] .drink-list{display:flex;flex-direction:column;gap:3.6cqi}
+[data-layout="flush"] .drink-name{font-size:calc(12.2cqi * var(--nmscale,1));line-height:.84}
+[data-layout="flush"] .agave-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex:none;padding-top:3%}
+[data-layout="flush"] .agave{width:22%}
 
 /* B4 · Two-column — mustard as the one rule */
-[data-layout="columns"]{padding:8.5% 7.5%}
-[data-layout="columns"] .cols{flex:1;display:grid;grid-template-columns:1.22fr .78fr;gap:0 6.5%;min-height:0;padding-top:5.5%}
+[data-layout="columns"]{padding:8% 7%}
+[data-layout="columns"] .cols{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0 7%;min-height:0;padding-top:5%}
 [data-layout="columns"] .col{display:flex;flex-direction:column;min-width:0}
-[data-layout="columns"] .col-main{justify-content:space-between;padding:1% 0 3%}
+[data-layout="columns"] .col-main{justify-content:space-between;padding:1% 0 2%}
 [data-layout="columns"] .col-side{padding-left:8%;border-left:2px solid var(--accent);justify-content:center}
-[data-layout="columns"] .col-label{margin-bottom:7%}
-[data-layout="columns"] .col-main .drink-name{font-size:calc(7.4cqi * var(--nmscale,1));line-height:.9}
-[data-layout="columns"] .col-side .drink-name{font-size:calc(8.2cqi * var(--nmscale,1));line-height:.9}
+[data-layout="columns"] .col-label{margin-bottom:6%}
+[data-layout="columns"] .col-main .drink-name{font-size:calc(7.8cqi * var(--nmscale,1));line-height:.86}
+[data-layout="columns"] .col-side .drink-name{font-size:calc(7.6cqi * var(--nmscale,1));line-height:.86}
 [data-layout="columns"] .drink-ing{max-width:none}
 
 /* B5 · Ledger — mustard as the one block */
 [data-layout="ledger"]{padding:0}
-[data-layout="ledger"] .mustard-band{padding:7.2% 8% 6.2%;text-align:center}
+[data-layout="ledger"] .mustard-band{padding:6.6% 8% 5.6%;text-align:center}
 [data-layout="ledger"] .mustard-band .k{font-size:calc(2.2cqi * var(--labscale,1))}
 [data-layout="ledger"] .mustard-band .det{margin-top:2.2%}
-[data-layout="ledger"] .ledger-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));padding:1.5% 8% 7%;min-height:0}
-[data-layout="ledger"] .ledger-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2% 4.5%;align-items:center;border-bottom:1px solid currentColor;min-width:0}
+[data-layout="ledger"] .ledger-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(min-content,1fr));padding:1% 7.5% 6.5%;min-height:0}
+[data-layout="ledger"] .ledger-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.5% 4%;align-items:center;border-bottom:1px solid currentColor;min-width:0;padding:1.6% 0}
 [data-layout="ledger"] .ledger-row:last-child{border-bottom:0}
 [data-layout="ledger"] .ledger-num{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:calc(var(--nmtrk) - .01em);
-  font-size:calc(8.4cqi * var(--nmscale,1));line-height:.8}
-[data-layout="ledger"] .drink-name{font-size:calc(7.8cqi * var(--nmscale,1));line-height:.9}
-[data-layout="ledger"] .drink-tag{display:block;margin-top:.28em}
+  font-size:calc(9.2cqi * var(--nmscale,1));line-height:.78}
+[data-layout="ledger"] .drink-name{font-size:calc(8.6cqi * var(--nmscale,1));line-height:.86}
+[data-layout="ledger"] .drink-tag{display:block;margin-top:.22em}
 
 /* B6 · Spine — rotated header, 1px rule */
-[data-layout="spine"]{flex-direction:row;padding:8.5% 7%;gap:5%}
-[data-layout="spine"] .spine{flex:none;display:flex;align-items:stretch;gap:9px}
+[data-layout="spine"]{flex-direction:row;padding:8% 6.5%;gap:4.5%}
+[data-layout="spine"] .spine{flex:none;display:flex;align-items:stretch;gap:8px}
 [data-layout="spine"] .spine-rule{width:1px;align-self:stretch}
 [data-layout="spine"] .spine-k{writing-mode:vertical-rl;transform:rotate(180deg);align-self:stretch;
-  font-size:calc(2.55cqi * var(--labscale,1));letter-spacing:.32em}
-[data-layout="spine"] .optical{padding-bottom:2.4%;padding-top:1%}
-[data-layout="spine"] .drink-list{display:flex;flex-direction:column;gap:5.8cqi}
-[data-layout="spine"] .drink-name{font-size:calc(9.2cqi * var(--nmscale,1));line-height:.88}
+  font-size:calc(2.45cqi * var(--labscale,1));letter-spacing:.32em}
+[data-layout="spine"] .optical{padding-bottom:1.6%;padding-top:.5%}
+[data-layout="spine"] .drink-list{display:flex;flex-direction:column;gap:3.8cqi}
+[data-layout="spine"] .drink-name{font-size:calc(11cqi * var(--nmscale,1));line-height:.84}
 
 /* B7 · Tag column — mustard as the one label */
-[data-layout="tags"]{padding:8.5% 7.5% 8%}
-[data-layout="tags"] .drink-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));min-height:0;padding-top:3%}
-[data-layout="tags"] .drink{display:grid;grid-template-columns:22% minmax(0,1fr);gap:3% 4.5%;align-items:center;min-width:0}
+[data-layout="tags"]{padding:8% 7% 7.5%}
+[data-layout="tags"] .drink-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(min-content,1fr));min-height:0;padding-top:2%}
+[data-layout="tags"] .drink{display:grid;grid-template-columns:24% minmax(0,1fr);gap:2% 4%;align-items:center;min-width:0}
 [data-layout="tags"] .drink-tag{display:block;margin:0;text-align:right;color:var(--accent);
-  font-size:calc(1.72cqi * var(--labscale,1));letter-spacing:.16em;line-height:1.45}
+  font-size:calc(1.62cqi * var(--labscale,1));letter-spacing:.18em;line-height:1.4}
 [data-layout="tags"] .drink.no-tag .drink-tag{display:block;visibility:hidden}
-[data-layout="tags"] .drink-name{font-size:calc(8.6cqi * var(--nmscale,1));line-height:.9}
+[data-layout="tags"] .drink-name{font-size:calc(10cqi * var(--nmscale,1));line-height:.86}
 
 .notes{background:#fbf9f5;border:1.5px solid var(--ink);border-radius:9px;padding:34px 36px}
 .notes h4{font-family:'Instrument Serif',serif;font-weight:400;font-size:19px;margin:28px 0 11px}
