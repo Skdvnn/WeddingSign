@@ -96,9 +96,11 @@
       var sName = document.getElementById('sName');
       var sLab = document.getElementById('sLab');
       var sRule = document.getElementById('sRule');
+      var sStack = document.getElementById('sStack');
       if (sName && typeof data.nmscale === 'number') sName.value = String(data.nmscale);
       if (sLab && typeof data.labscale === 'number') sLab.value = String(data.labscale);
       if (sRule && typeof data.rulew === 'number') sRule.value = String(data.rulew);
+      if (sStack && typeof data.stackspace === 'number') sStack.value = String(data.stackspace);
       if (typeof data.picked === 'string' && data.picked) picked = data.picked;
     } catch (e) { /* private mode */ }
   }
@@ -109,6 +111,7 @@
     var sName = document.getElementById('sName');
     var sLab = document.getElementById('sLab');
     var sRule = document.getElementById('sRule');
+    var sStack = document.getElementById('sStack');
     var payload = {
       header: header,
       drinks: drinks.map(cloneDrink),
@@ -119,6 +122,7 @@
       nmscale: sName ? parseFloat(sName.value) : 0.76,
       labscale: sLab ? parseFloat(sLab.value) : 0.9,
       rulew: sRule ? parseFloat(sRule.value) : 1,
+      stackspace: sStack ? parseFloat(sStack.value) : 1,
       picked: picked
     };
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(payload)); } catch (e) {}
@@ -210,6 +214,7 @@
     r.setProperty('--dettrk2', d.t2);
     r.setProperty('--labscale', String(sLab ? parseFloat(sLab.value) : 0.9));
     applyRule();
+    applyStack();
     var oName = document.getElementById('oName');
     var oLab = document.getElementById('oLab');
     if (oName && sName) oName.textContent = parseFloat(sName.value).toFixed(2) + '×';
@@ -229,6 +234,15 @@
     document.querySelectorAll('svg.reg [stroke], svg.reg path, svg.reg line').forEach(function (el) {
       el.setAttribute('stroke-width', String(w));
     });
+  }
+
+  function applyStack() {
+    var sStack = document.getElementById('sStack');
+    var n = sStack ? parseFloat(sStack.value) : 1;
+    if (isNaN(n)) n = 1;
+    document.documentElement.style.setProperty('--stackspace', String(n));
+    var oStack = document.getElementById('oStack');
+    if (oStack && sStack) oStack.textContent = n.toFixed(2) + '×';
   }
 
   function paintDrinks() {
@@ -736,6 +750,8 @@
     if (sLab) sLab.value = '0.90';
     var sRule = document.getElementById('sRule');
     if (sRule) sRule.value = '1';
+    var sStack = document.getElementById('sStack');
+    if (sStack) sStack.value = '1';
     applyType();
     persist();
   }
@@ -748,6 +764,7 @@
   wireEditor();
   wireExport();
   applyRule();
+  applyStack();
   setPicked(cardByLayout(picked) || document.querySelector('#shortlist-grid > div'));
 
   var stickyPdf = document.getElementById('export-pdf');
@@ -796,6 +813,11 @@
   if (sRule) {
     sRule.addEventListener('input', function () { applyRule(); });
     sRule.addEventListener('change', persist);
+  }
+  var sStack = document.getElementById('sStack');
+  if (sStack) {
+    sStack.addEventListener('input', function () { applyStack(); });
+    sStack.addEventListener('change', persist);
   }
   var headerEl = document.getElementById('header');
   if (headerEl) {
