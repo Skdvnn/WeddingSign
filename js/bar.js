@@ -504,7 +504,7 @@
       );
     });
 
-    frame.querySelectorAll('.rule, .hair, .spine-rule, .menu-rule, .horizon-rule').forEach(function (el) {
+    frame.querySelectorAll('.rule, .hair, .spine-rule, .menu-rule, .horizon-rule, .accent-rule, .name-rule').forEach(function (el) {
       var r = el.getBoundingClientRect();
       if (r.width < 0.5 || r.height < 0.5) return;
       var fill = rgbToHex(getComputedStyle(el).backgroundColor) || fg;
