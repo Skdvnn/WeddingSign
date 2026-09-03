@@ -1,5 +1,5 @@
 /**
- * Bar-menu explorer — live copy, suite type, print, PNG, and SVG.
+ * Bar-menu explorer — live copy, suite type, print, PNG, SVG, and PDF.
  */
 (function () {
   'use strict';
@@ -42,8 +42,11 @@
   var header = 'BAR MENU';
   var ground = 'bone';
   var text = 'ink';
+  var picked = 'stack';
   var saveTimer = null;
   var h2cPromise = null;
+  var jspdfPromise = null;
+  var PDF_NAME = 'allison-skylar-bar-menu.pdf';
 
   function cloneDrink(d) {
     return { name: d.name || '', tag: d.tag || '', ingredients: d.ingredients || '' };
@@ -92,8 +95,11 @@
       if (df && data.df && DF[data.df]) df.value = data.df;
       var sName = document.getElementById('sName');
       var sLab = document.getElementById('sLab');
+      var sRule = document.getElementById('sRule');
       if (sName && typeof data.nmscale === 'number') sName.value = String(data.nmscale);
       if (sLab && typeof data.labscale === 'number') sLab.value = String(data.labscale);
+      if (sRule && typeof data.rulew === 'number') sRule.value = String(data.rulew);
+      if (typeof data.picked === 'string' && data.picked) picked = data.picked;
     } catch (e) { /* private mode */ }
   }
 
@@ -102,6 +108,7 @@
     var df = document.getElementById('df');
     var sName = document.getElementById('sName');
     var sLab = document.getElementById('sLab');
+    var sRule = document.getElementById('sRule');
     var payload = {
       header: header,
       drinks: drinks.map(cloneDrink),
@@ -109,8 +116,10 @@
       text: text,
       nf: nf ? nf.value : 'instrument',
       df: df ? df.value : 'robotomono',
-      nmscale: sName ? parseFloat(sName.value) : 1,
-      labscale: sLab ? parseFloat(sLab.value) : 1
+      nmscale: sName ? parseFloat(sName.value) : 0.76,
+      labscale: sLab ? parseFloat(sLab.value) : 0.9,
+      rulew: sRule ? parseFloat(sRule.value) : 1,
+      picked: picked
     };
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(payload)); } catch (e) {}
     var saved = document.getElementById('list-saved');
@@ -144,6 +153,10 @@
     });
     document.querySelectorAll('.col-side').forEach(function (el) {
       el.style.borderLeftColor = accent;
+    });
+    document.querySelectorAll('[data-ink-band]').forEach(function (el) {
+      el.style.background = T.ink.hex;
+      el.style.color = G.bone.hex;
     });
     var r = ratio(gh, fg);
     var w = document.getElementById('warn');
@@ -192,7 +205,8 @@
     r.setProperty('--detwt', String(d.wt));
     r.setProperty('--dettrk', d.t1);
     r.setProperty('--dettrk2', d.t2);
-    r.setProperty('--labscale', String(sLab ? parseFloat(sLab.value) : 1));
+    r.setProperty('--labscale', String(sLab ? parseFloat(sLab.value) : 0.9));
+    applyRule();
     var oName = document.getElementById('oName');
     var oLab = document.getElementById('oLab');
     if (oName && sName) oName.textContent = parseFloat(sName.value).toFixed(2) + '×';
@@ -200,6 +214,18 @@
     var note = document.getElementById('typenote');
     if (note) note.innerHTML = '<b>' + n.n + '</b> Details: ' + d.n + '.';
     summarise();
+  }
+
+  function applyRule() {
+    var sRule = document.getElementById('sRule');
+    var w = sRule ? parseFloat(sRule.value) : 1;
+    if (isNaN(w)) w = 1;
+    document.documentElement.style.setProperty('--rulew', w + 'px');
+    var oRule = document.getElementById('oRule');
+    if (oRule && sRule) oRule.textContent = w.toFixed(1) + 'px';
+    document.querySelectorAll('svg.reg [stroke], svg.reg path, svg.reg line').forEach(function (el) {
+      el.setAttribute('stroke-width', String(w));
+    });
   }
 
   function paintDrinks() {
@@ -320,26 +346,40 @@
     setTimeout(done, 1400);
   }
 
+  function loadScript(src, ok) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = function () {
+        if (ok()) resolve(true);
+        else reject(new Error('script missing'));
+      };
+      s.onerror = function () { reject(new Error('Could not load ' + src)); };
+      document.head.appendChild(s);
+    });
+  }
+
   function loadHtml2Canvas() {
     if (window.html2canvas) return Promise.resolve(window.html2canvas);
     if (h2cPromise) return h2cPromise;
-    h2cPromise = new Promise(function (resolve, reject) {
-      var s = document.createElement('script');
-      s.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
-      s.onload = function () {
-        if (window.html2canvas) resolve(window.html2canvas);
-        else reject(new Error('html2canvas missing'));
-      };
-      s.onerror = function () { reject(new Error('Could not load html2canvas')); };
-      document.head.appendChild(s);
-    });
+    h2cPromise = loadScript(
+      'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js',
+      function () { return !!window.html2canvas; }
+    ).then(function () { return window.html2canvas; });
     return h2cPromise;
   }
 
-  function exportPng(card, frame, btn) {
-    var label = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = 'Making PNG…';
+  function loadJsPdf() {
+    if (window.jspdf && window.jspdf.jsPDF) return Promise.resolve(window.jspdf.jsPDF);
+    if (jspdfPromise) return jspdfPromise;
+    jspdfPromise = loadScript(
+      'https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js',
+      function () { return !!(window.jspdf && window.jspdf.jsPDF); }
+    ).then(function () { return window.jspdf.jsPDF; });
+    return jspdfPromise;
+  }
+
+  function captureFrame(frame) {
     var host = document.createElement('div');
     host.setAttribute('data-export-ignore', '');
     host.style.cssText = 'position:fixed;left:-12000px;top:0;width:' + PNG_W + 'px;height:' + PNG_H + 'px;z-index:-1;background:' + G[ground].hex + ';';
@@ -352,7 +392,7 @@
     clone.style.borderRadius = '0';
     host.appendChild(clone);
     document.body.appendChild(host);
-    document.fonts.ready.then(function () { return loadHtml2Canvas(); })
+    return document.fonts.ready.then(function () { return loadHtml2Canvas(); })
       .then(function (h2c) {
         return h2c(clone, {
           width: PNG_W,
@@ -364,6 +404,20 @@
         });
       })
       .then(function (canvas) {
+        host.remove();
+        return canvas;
+      }, function (err) {
+        host.remove();
+        throw err;
+      });
+  }
+
+  function exportPng(card, frame, btn) {
+    var label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Making PNG…';
+    captureFrame(frame)
+      .then(function (canvas) {
         var a = document.createElement('a');
         a.download = slug(cardName(card)) + '-1545x2000.png';
         a.href = canvas.toDataURL('image/png');
@@ -371,12 +425,41 @@
         toast('PNG saved · 3090 × 4000 (1545 × 2000 at 2×).');
       })
       .catch(function () {
-        toast('PNG failed — use Print this layout → Save as PDF instead.');
+        toast('PNG failed — use Export PDF or Print this layout.');
       })
       .then(function () {
-        host.remove();
         btn.disabled = false;
         btn.textContent = label;
+      });
+  }
+
+  function exportPdf(card, frame, btn) {
+    var label = btn ? btn.textContent : '';
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Making PDF…';
+    }
+    setPicked(card);
+    captureFrame(frame)
+      .then(function (canvas) { return loadJsPdf().then(function (JsPDF) { return { canvas: canvas, JsPDF: JsPDF }; }); })
+      .then(function (pack) {
+        var pdf = new pack.JsPDF({ orientation: 'portrait', unit: 'pt', format: 'letter', compress: true });
+        var pageW = pdf.internal.pageSize.getWidth();
+        var pageH = pdf.internal.pageSize.getHeight();
+        var img = pack.canvas.toDataURL('image/jpeg', 0.93);
+        pdf.addImage(img, 'JPEG', 0, 0, pageW, pageH);
+        pdf.save(PDF_NAME);
+        toast('PDF saved · letter portrait · ' + PDF_NAME);
+      })
+      .catch(function () {
+        toast('PDF failed — Print this layout → Save as PDF.');
+        if (frame) printCard(frame);
+      })
+      .then(function () {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = label;
+        }
       });
   }
 
@@ -410,7 +493,7 @@
     var out = [];
     out.push('<rect width="' + PNG_W + '" height="' + PNG_H + '" fill="' + gh + '"/>');
 
-    frame.querySelectorAll('.mustard-band').forEach(function (el) {
+    frame.querySelectorAll('.mustard-band, [data-ink-band]').forEach(function (el) {
       var r = el.getBoundingClientRect();
       if (r.width < 0.5 || r.height < 0.5) return;
       var fill = rgbToHex(getComputedStyle(el).backgroundColor) || (ground === 'mustard' ? T.ink.hex : '#BFA52B');
@@ -421,7 +504,7 @@
       );
     });
 
-    frame.querySelectorAll('.rule, .hair, .spine-rule, .menu-rule').forEach(function (el) {
+    frame.querySelectorAll('.rule, .hair, .spine-rule, .menu-rule, .horizon-rule').forEach(function (el) {
       var r = el.getBoundingClientRect();
       if (r.width < 0.5 || r.height < 0.5) return;
       var fill = rgbToHex(getComputedStyle(el).backgroundColor) || fg;
@@ -445,7 +528,7 @@
       );
     });
 
-    frame.querySelectorAll('[data-header], [data-band-sub], .drink-name, .drink-tag, .drink-ing, .ledger-num, .col-label, .menu-foot').forEach(function (el) {
+    frame.querySelectorAll('[data-header], [data-band-sub], .drink-name, .drink-tag, .drink-ing, .ledger-num, .col-label, .menu-foot, .field-foot, .horizon-foot, .jrow').forEach(function (el) {
       var cs = getComputedStyle(el);
       if (cs.display === 'none' || cs.visibility === 'hidden' || el.hidden) return;
       var text = (el.innerText || el.textContent || '').replace(/\s+\n/g, '\n').replace(/\n\s+/g, '\n').trim();
@@ -522,6 +605,37 @@
     toast('SVG saved · 1545 × 2000 editable type.');
   }
 
+  function layoutIdOf(card) {
+    var sign = card.querySelector('[data-layout]');
+    return (sign && sign.getAttribute('data-layout')) || '';
+  }
+
+  function cardByLayout(id) {
+    var found = null;
+    document.querySelectorAll('.grid > div, .layout-card').forEach(function (card) {
+      if (layoutIdOf(card) === id) found = card;
+    });
+    return found;
+  }
+
+  function setPicked(card) {
+    if (!card) return;
+    var id = layoutIdOf(card);
+    if (!id) return;
+    picked = id;
+    document.querySelectorAll('.layout-card, .grid > div').forEach(function (el) {
+      el.classList.toggle('is-pick', el === card);
+    });
+    var label = document.getElementById('pdf-target');
+    var h = card.querySelector('.meta h3');
+    if (label && h) label.textContent = h.textContent.replace(/\s+/g, ' ').trim();
+    persist();
+  }
+
+  function pickedCard() {
+    return cardByLayout(picked) || document.querySelector('#favorites-grid .layout-card') || document.querySelector('#shortlist-grid > div');
+  }
+
   function wireExport() {
     document.querySelectorAll('.grid > div').forEach(function (card) {
       var meta = card.querySelector('.meta');
@@ -530,14 +644,14 @@
       var bar = document.createElement('div');
       bar.className = 'export-bar';
       bar.setAttribute('data-export-ignore', '');
-      var print = document.createElement('button');
-      print.type = 'button';
-      print.className = 'xbtn printbtn';
-      print.textContent = 'Print this layout';
-      print.addEventListener('click', function () { printCard(frame); });
+      var pdf = document.createElement('button');
+      pdf.type = 'button';
+      pdf.className = 'xbtn primary';
+      pdf.textContent = 'Export PDF';
+      pdf.addEventListener('click', function () { exportPdf(card, frame, pdf); });
       var png = document.createElement('button');
       png.type = 'button';
-      png.className = 'xbtn primary';
+      png.className = 'xbtn';
       png.textContent = 'PNG';
       png.addEventListener('click', function () { exportPng(card, frame, png); });
       var svg = document.createElement('button');
@@ -545,10 +659,17 @@
       svg.className = 'xbtn';
       svg.textContent = 'SVG';
       svg.addEventListener('click', function () { exportSvg(card, frame); });
+      var print = document.createElement('button');
+      print.type = 'button';
+      print.className = 'xbtn printbtn';
+      print.textContent = 'Print this layout';
+      print.addEventListener('click', function () { printCard(frame); });
+      bar.appendChild(pdf);
       bar.appendChild(png);
       bar.appendChild(svg);
       bar.appendChild(print);
       meta.appendChild(bar);
+      frame.addEventListener('click', function () { setPicked(card); });
     });
   }
 
@@ -584,8 +705,10 @@
     var sLab = document.getElementById('sLab');
     if (nf) nf.value = 'instrument';
     if (df) df.value = 'robotomono';
-    if (sName) sName.value = '1';
-    if (sLab) sLab.value = '1';
+    if (sName) sName.value = '0.76';
+    if (sLab) sLab.value = '0.90';
+    var sRule = document.getElementById('sRule');
+    if (sRule) sRule.value = '1';
     applyType();
     persist();
   }
@@ -597,6 +720,21 @@
   paintDrinks();
   wireEditor();
   wireExport();
+  applyRule();
+  setPicked(cardByLayout(picked) || document.querySelector('#shortlist-grid > div'));
+
+  var stickyPdf = document.getElementById('export-pdf');
+  if (stickyPdf) {
+    stickyPdf.addEventListener('click', function () {
+      var card = pickedCard();
+      var frame = card && card.querySelector('.frame');
+      if (!card || !frame) {
+        toast('Pick a poster, then Export PDF.');
+        return;
+      }
+      exportPdf(card, frame, stickyPdf);
+    });
+  }
 
   document.querySelectorAll('#cw button').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -627,6 +765,11 @@
       el.addEventListener('change', persist);
     }
   });
+  var sRule = document.getElementById('sRule');
+  if (sRule) {
+    sRule.addEventListener('input', function () { applyRule(); });
+    sRule.addEventListener('change', persist);
+  }
   var headerEl = document.getElementById('header');
   if (headerEl) {
     headerEl.addEventListener('input', function () {
