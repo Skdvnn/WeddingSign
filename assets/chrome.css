@@ -1,16 +1,19 @@
-/* Drink-editor tool chrome — cream page, white cards, gray hairlines, ghost buttons.
-   Do not restyle .sign / .frame posters. Load after each page's local CSS. */
+/* Shadcn-style ghost chrome — cream page, white cards, light hairlines, outline controls.
+   Selected state is a quiet wash, never a solid black pill.
+   Do not restyle .sign / .frame / [data-g] poster canvases. Load after each page's local CSS. */
 
 :root{
   --page:#F5F2EA;
   --chrome-card:#fff;
-  --chrome-hair:1px solid rgba(0,0,0,.14);
-  --chrome-ghost:1px solid var(--ink,#1E1D1A);
+  --chrome-hair:1px solid rgba(30,29,26,.10);
+  --chrome-ghost:1px solid rgba(30,29,26,.16);
+  --chrome-ghost-strong:1px solid rgba(30,29,26,.28);
+  --chrome-selected:rgba(30,29,26,.06);
   --chrome-radius:8px;
   --chrome-label:#8b8577;
   --ui-card:#fff;
-  --ui-border:rgba(0,0,0,.14);
-  --ui-border-strong:rgba(0,0,0,.14);
+  --ui-border:rgba(30,29,26,.10);
+  --ui-border-strong:rgba(30,29,26,.16);
   --ui-muted:#8b8577;
   --ui-well:#fff;
   --ui-radius:8px;
@@ -22,23 +25,25 @@ header{border-bottom:var(--chrome-hair)}
 
 .navlinks{
   display:flex;flex-wrap:wrap;width:max-content;max-width:100%;margin-top:20px;
-  border:var(--chrome-ghost);border-radius:var(--chrome-radius);overflow:hidden;background:var(--chrome-card)
+  border:var(--chrome-hair);border-radius:var(--chrome-radius);overflow:hidden;background:var(--chrome-card)
 }
 .navlinks a{
   font:600 11px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
   color:var(--ink,#1E1D1A);text-decoration:none;padding:13px 18px;
-  border-right:var(--chrome-ghost);background:var(--chrome-card);
+  border-right:var(--chrome-hair);background:transparent;
   min-height:44px;display:inline-flex;align-items:center;justify-content:center
 }
 .navlinks a:last-child{border-right:0}
-.navlinks a:hover{background:rgba(30,29,26,.06)}
+.navlinks a:hover{background:var(--chrome-selected);color:var(--ink,#1E1D1A)}
 .navlinks a[aria-current="page"],
-.navlinks a[aria-current="page"]:hover{background:var(--ink,#1E1D1A);color:var(--page)}
+.navlinks a[aria-current="page"]:hover{
+  background:var(--chrome-selected);color:var(--ink,#1E1D1A)
+}
 
 @media (max-width:720px){
   .navlinks{width:100%;display:grid;grid-template-columns:1fr 1fr}
-  .navlinks a{border-right:0;border-bottom:var(--chrome-ghost);padding:14px 8px;text-align:center}
-  .navlinks a:nth-child(odd){border-right:var(--chrome-ghost)}
+  .navlinks a{border-right:0;border-bottom:var(--chrome-hair);padding:14px 8px;text-align:center}
+  .navlinks a:nth-child(odd){border-right:var(--chrome-hair)}
   .navlinks a:nth-child(n+3){border-bottom:0}
 }
 
@@ -52,24 +57,24 @@ header{border-bottom:var(--chrome-hair)}
 }
 .seat-subnav-tabs{
   display:flex;flex-wrap:wrap;width:max-content;max-width:100%;
-  border:var(--chrome-ghost);border-radius:var(--chrome-radius);overflow:hidden;background:var(--chrome-card);gap:0
+  border:var(--chrome-hair);border-radius:var(--chrome-radius);overflow:hidden;background:var(--chrome-card);gap:0
 }
 .seat-subnav-tabs a,
 .seat-subnav-tabs a.chart{
   display:inline-flex;align-items:center;justify-content:center;flex:none;
-  min-height:44px;padding:10px 16px;border:0;border-right:var(--chrome-ghost);border-radius:0;
-  background:var(--chrome-card);color:var(--ink,#1E1D1A);text-decoration:none;
+  min-height:44px;padding:10px 16px;border:0;border-right:var(--chrome-hair);border-radius:0;
+  background:transparent;color:var(--ink,#1E1D1A);text-decoration:none;
   font:600 11px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase
 }
 .seat-subnav-tabs a:last-child,
 .seat-subnav-tabs a.chart:last-child{border-right:0}
 .seat-subnav-tabs a:hover,
-.seat-subnav-tabs a.chart:hover{background:rgba(30,29,26,.06);color:var(--ink,#1E1D1A)}
+.seat-subnav-tabs a.chart:hover{background:var(--chrome-selected);color:var(--ink,#1E1D1A)}
 .seat-subnav-tabs a[aria-current="page"],
 .seat-subnav-tabs a.chart[aria-current="page"],
 .seat-subnav-tabs a[aria-current="page"]:hover,
 .seat-subnav-tabs a.chart[aria-current="page"]:hover{
-  background:var(--ink,#1E1D1A);color:var(--page)
+  background:var(--chrome-selected);color:var(--ink,#1E1D1A)
 }
 .seat-subnav-note{margin:12px 0 0;font:500 13.5px/1.5 Inter,sans-serif;color:var(--ink-soft,#4A4842)}
 @media (max-width:720px){
@@ -133,17 +138,19 @@ header{border-bottom:var(--chrome-hair)}
 #gear:hover,
 #export-pdf:hover,
 .xbtn.primary:hover{
-  background:rgba(30,29,26,.06);
+  background:var(--chrome-selected);
   color:var(--ink,#1E1D1A);
-  border-color:var(--ink,#1E1D1A)
+  border-color:rgba(30,29,26,.28)
 }
-#gear.open{
-  background:var(--ink,#1E1D1A);
-  color:var(--page)
+#gear.open,
+#gear.open:hover{
+  background:var(--chrome-selected);
+  color:var(--ink,#1E1D1A);
+  border:var(--chrome-ghost-strong)
 }
-#gear.open:hover{background:var(--ink,#1E1D1A);color:var(--page)}
 #gear{display:inline-flex;align-items:center;gap:8px}
-#gear svg{width:14px;height:14px;flex:none;opacity:1}
+#gear svg{width:14px;height:14px;flex:none;opacity:.7}
+#gear.open svg{opacity:1}
 
 .toggle{
   display:flex;border:var(--chrome-ghost);border-radius:var(--chrome-radius);
@@ -155,9 +162,10 @@ header{border-bottom:var(--chrome-hair)}
   padding:12px 16px;color:var(--ink,#1E1D1A);min-height:44px;height:auto;border-radius:0;
   box-shadow:none
 }
-.toggle button:hover{background:rgba(30,29,26,.06);color:var(--ink,#1E1D1A)}
-.toggle button.on{
-  background:var(--ink,#1E1D1A);color:var(--page);box-shadow:none
+.toggle button:hover{background:var(--chrome-selected);color:var(--ink,#1E1D1A)}
+.toggle button.on,
+.toggle button.on:hover{
+  background:var(--chrome-selected);color:var(--ink,#1E1D1A);box-shadow:none
 }
 
 input.f,select.f,textarea.f{
@@ -171,7 +179,7 @@ input.f,select.f,textarea.f{
   box-shadow:none
 }
 input.f:focus,select.f:focus,textarea.f:focus{
-  outline:none;border-color:var(--ink,#1E1D1A);box-shadow:none
+  outline:none;border-color:rgba(30,29,26,.32);box-shadow:none
 }
 
 .sl,.ui-slider{
@@ -181,17 +189,19 @@ input.f:focus,select.f:focus,textarea.f:focus{
 .sl input[type=range],
 .ui-slider input[type=range]{
   -webkit-appearance:none;appearance:none;width:120px;flex:1;height:6px;border-radius:999px;
-  background:rgba(0,0,0,.18);outline:none;cursor:pointer
+  background:rgba(30,29,26,.12);outline:none;cursor:pointer
 }
 .sl input[type=range]::-webkit-slider-thumb,
 .ui-slider input[type=range]::-webkit-slider-thumb{
   -webkit-appearance:none;width:22px;height:22px;border-radius:50%;
-  background:var(--ink,#1E1D1A);cursor:pointer;border:0;box-shadow:none
+  background:var(--chrome-card);cursor:pointer;
+  border:var(--chrome-ghost);box-shadow:none
 }
 .sl input[type=range]::-moz-range-thumb,
 .ui-slider input[type=range]::-moz-range-thumb{
   width:22px;height:22px;border-radius:50%;
-  background:var(--ink,#1E1D1A);cursor:pointer;border:0;box-shadow:none
+  background:var(--chrome-card);cursor:pointer;
+  border:var(--chrome-ghost);box-shadow:none
 }
 .sl output,.ui-slider output{
   font:500 11px/1 'Roboto Mono',monospace;color:var(--chrome-label);min-width:52px;text-align:right
@@ -201,7 +211,14 @@ input.f:focus,select.f:focus,textarea.f:focus{
   border:var(--chrome-ghost);background:var(--chrome-card);color:var(--chrome-label);
   border-radius:var(--chrome-radius)
 }
-.starbtn:hover{background:rgba(30,29,26,.06)}
+.starbtn:hover{background:var(--chrome-selected);color:var(--ink,#1E1D1A)}
+.starbtn.on,
+.starbtn.on:hover{
+  background:var(--chrome-selected);border:var(--chrome-ghost-strong);color:var(--ink,#1E1D1A)
+}
+.tag.star{
+  background:var(--chrome-selected);color:var(--ink,#1E1D1A)
+}
 
 .agebar{
   display:flex;flex-wrap:wrap;gap:0;margin-bottom:16px;padding:0;width:max-content;
@@ -212,7 +229,12 @@ input.f:focus,select.f:focus,textarea.f:focus{
   border-radius:0;min-height:44px;height:auto;padding:10px 12px;cursor:pointer;
   font:500 10.5px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase
 }
-.agebar button.on{background:var(--ink,#1E1D1A);color:var(--page);box-shadow:none}
+.agebar button.on,
+.agebar button.on:hover{background:var(--chrome-selected);color:var(--ink,#1E1D1A);box-shadow:none}
+
+.check{
+  background:var(--chrome-card);border:var(--chrome-hair);border-radius:var(--chrome-radius)
+}
 
 @media (max-width:720px){
   .sl,.ui-slider{width:100%;max-width:420px}
