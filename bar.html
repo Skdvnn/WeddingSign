@@ -14,32 +14,36 @@
   --ink:#1E1D1A;
   --ink-soft:#4A4842;
   --mustard:#BFA52B;
-  --page:#F2EFE8;
+  --page:#F5F2EA;
   --accent:#BFA52B;
   --nmfont:var(--font-invite-serif);
   --accfont:var(--font-invite-serif);
   --detfont:var(--font-invite-mono);
   --nmwt:400;
   --nmtrk:-.006em;
-  --nmscale:1;
-  --labscale:1;
+  --nmscale:.76;
+  --labscale:.9;
+  --rulew:1px;
   --detwt:400;
   --dettrk:.2em;
   --dettrk2:.13em;
+  --radius:8px;
+  --chrome-border:1px solid var(--ink);
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--page);color:var(--ink);
   font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1220px;margin:0 auto;padding:0 30px 100px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 30px 100px}
 
 header{padding:66px 0 36px;border-bottom:1.5px solid var(--ink)}
 h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,7.2vw,76px);
    line-height:1.0;letter-spacing:-.008em;margin:0 0 18px}
 .sub{font-size:16.5px;line-height:1.6;max-width:720px;color:var(--ink-soft);margin:0}
 .navlinks{display:flex;flex-wrap:wrap;width:max-content;max-width:100%;margin-top:20px;
-  border:1.5px solid var(--ink);border-radius:8px;overflow:hidden;background:#fff}
+  border:var(--chrome-border);border-radius:var(--radius);overflow:hidden;background:#fff}
 .navlinks a{font:600 12px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ink);text-decoration:none;padding:13px 18px;border-right:1.5px solid var(--ink)}
+  color:var(--ink);text-decoration:none;padding:13px 18px;border-right:1.5px solid var(--ink);
+  min-height:44px;display:inline-flex;align-items:center;justify-content:center}
 .navlinks a:last-child{border-right:0}
 .navlinks a:hover{background:rgba(30,29,26,.06)}
 .navlinks a[aria-current="page"]{background:var(--ink);color:var(--page)}
@@ -54,23 +58,24 @@ h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,7.2
 
 .controls{position:sticky;top:0;z-index:30;background:var(--page);
   border-bottom:1px solid rgba(0,0,0,.13);padding:10px 0 14px;margin-bottom:40px}
-.controls .inner{max-width:1220px;margin:0 auto;padding:0 30px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.controls .inner{max-width:1280px;margin:0 auto;padding:0 30px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .barhead{justify-content:space-between}
 #panel{max-height:0;overflow:hidden;opacity:0;
   transition:max-height .34s cubic-bezier(.4,0,.2,1),opacity .22s,padding .34s}
-#panel.open{max-height:420px;opacity:1;padding-top:12px}
+#panel.open{max-height:2400px;opacity:1;padding-top:12px}
+.chrome-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 #gear{appearance:none;display:inline-flex;align-items:center;gap:8px;
-  border:1.5px solid var(--ink);background:transparent;color:var(--ink);
-  border-radius:999px;padding:8px 15px 8px 12px;cursor:pointer;
+  border:var(--chrome-border);background:transparent;color:var(--ink);
+  border-radius:var(--radius);padding:10px 15px 10px 12px;cursor:pointer;min-height:44px;
   font:600 10.5px/1 'Roboto Mono',monospace;letter-spacing:.11em;text-transform:uppercase}
 #gear:hover,#gear.open{background:var(--ink);color:var(--page)}
 #gear svg{width:14px;height:14px;flex:none;transition:transform .35s}
 #gear.open svg{transform:rotate(60deg)}
 .lbl{font:700 9.5px/1 'Roboto Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#8b8577}
-.toggle{display:flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden}
+.toggle{display:flex;border:var(--chrome-border);border-radius:var(--radius);overflow:hidden}
 .toggle button{appearance:none;border:0;background:transparent;cursor:pointer;
   font:500 10.5px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
-  padding:11px 15px;color:var(--ink)}
+  padding:12px 16px;color:var(--ink);min-height:44px}
 .toggle button.on{background:var(--ink);color:var(--page)}
 input.f,select.f,textarea.f{font:500 12.5px/1.4 Inter,sans-serif;padding:10px 12px;border:1.5px solid rgba(0,0,0,.25);
   border-radius:6px;background:#fff;color:var(--ink)}
@@ -85,20 +90,23 @@ textarea.f{min-height:64px;resize:vertical;width:100%}
   color:#7d2f1c;background:#F6DFD8;border:1px solid #E0B4A8;border-radius:6px;
   padding:8px 11px}
 .warn.show{display:flex}
-.xbtn{appearance:none;border:1.5px solid rgba(0,0,0,.28);background:#fff;color:var(--ink);
-  border-radius:6px;padding:8px 11px;cursor:pointer;
+.xbtn{appearance:none;border:1.5px solid var(--ink);background:#fff;color:var(--ink);
+  border-radius:var(--radius);padding:10px 13px;cursor:pointer;min-height:44px;
   font:500 10px/1 'Roboto Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
-.xbtn:hover{border-color:var(--ink);background:var(--ink);color:var(--page)}
+.xbtn:hover{background:rgba(30,29,26,.06)}
 .xbtn:disabled{opacity:.45;cursor:wait}
 .xbtn.primary{border-color:var(--ink);background:var(--ink);color:var(--page)}
+.xbtn.primary:hover{background:#000;color:var(--page)}
 .typenote{font:400 12px/1.45 Inter,sans-serif;color:#6e6858;font-style:italic}
 .typenote b{font-style:normal;font-weight:600;color:var(--ink)}
 .sl{display:flex;align-items:center;gap:8px}
-.sl input[type=range]{-webkit-appearance:none;appearance:none;width:110px;height:4px;border-radius:2px;
+.sl input[type=range]{-webkit-appearance:none;appearance:none;width:120px;height:6px;border-radius:999px;
   background:rgba(0,0,0,.2);outline:none;cursor:pointer}
-.sl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;
+.sl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;
   background:var(--ink);cursor:pointer;border:0}
-.sl output{font:500 11px/1 'Roboto Mono',monospace;color:#6e6858;min-width:48px;text-align:right}
+.sl input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;
+  background:var(--ink);cursor:pointer;border:0}
+.sl output{font:500 11px/1 'Roboto Mono',monospace;color:#6e6858;min-width:52px;text-align:right}
 
 h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(27px,3.7vw,41px);
    margin:78px 0 7px;letter-spacing:-.006em;scroll-margin-top:170px}
@@ -106,7 +114,8 @@ h2:first-of-type{margin-top:0}
 .secnote{font-size:15px;color:var(--ink-soft);max-width:760px;margin:0 0 32px;line-height:1.62}
 
 .drink-editor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0 0 18px}
-.drink-card{border:1.5px solid rgba(0,0,0,.14);border-radius:9px;padding:16px 16px 14px;background:#fbf9f5}
+.drink-card,#panel .inner{border:1.5px solid rgba(0,0,0,.14);border-radius:9px;padding:16px 16px 14px;background:#fff}
+#panel .inner{margin-top:8px}
 .drink-card .kicker{font:700 9.5px/1 'Roboto Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#8b8577;margin:0 0 12px}
 .drink-card label{display:block;font:700 9px/1 'Roboto Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#8b8577;margin:0 0 6px}
 .drink-card .row{display:grid;grid-template-columns:1.4fr .9fr;gap:10px;margin-bottom:10px}
@@ -118,8 +127,8 @@ h2:first-of-type{margin-top:0}
   .drink-card .row{grid-template-columns:1fr}
 }
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:44px 32px}
-.grid > div{content-visibility:auto;contain-intrinsic-size:auto 520px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:40px 32px}
+.grid > div{content-visibility:auto;contain-intrinsic-size:auto 640px}
 
 .frame{
   aspect-ratio:1545/2000;border-radius:2px;overflow:hidden;position:relative;display:flex;
@@ -128,6 +137,7 @@ h2:first-of-type{margin-top:0}
 }
 .sign{flex:1;position:relative;display:flex;flex-direction:column;padding:8% 8.5%;min-height:0;min-width:0;color:var(--ink);background:var(--bone)}
 .spacer{flex:1}
+.optical{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
 .meta{margin-top:15px}
 .meta h3{font:600 14.5px/1.3 Inter,sans-serif;margin:0 0 5px;letter-spacing:-.012em}
 .meta p{font-size:12.8px;line-height:1.58;color:#6e6858;margin:0}
@@ -149,120 +159,371 @@ h2:first-of-type{margin-top:0}
 .starbtn.on .star-outline{display:none}
 .starbtn.on .star-fill{display:block}
 .layout-card.is-fav .frame{outline:2px solid var(--ink);outline-offset:3px}
+.layout-card.is-pick .frame,.grid > div.is-pick .frame{outline:2px solid var(--ink);outline-offset:3px}
+.layout-card.is-pick .frame{box-shadow:0 1px 2px rgba(0,0,0,.10),0 16px 38px rgba(0,0,0,.18)}
 
 .nm{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk)}
 .acc{font-family:var(--accfont);font-style:italic}
 .k{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(3.05cqi * var(--labscale,1));letter-spacing:var(--dettrk);line-height:1.5;text-transform:uppercase}
-.det,.drink-ing{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.72cqi * var(--labscale,1));letter-spacing:var(--dettrk2);line-height:1.55;text-transform:uppercase}
-.drink-name{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);
-  font-size:calc(7.1cqi * var(--nmscale,1));line-height:1.04}
-.drink-tag{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.35cqi * var(--labscale,1));
-  letter-spacing:var(--dettrk);line-height:1.4;text-transform:uppercase}
+.det{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.72cqi * var(--labscale,1));letter-spacing:var(--dettrk2);line-height:1.55;text-transform:uppercase}
+.drink-name{font-family:var(--nmfont);font-weight:var(--nmwt);
+  letter-spacing:calc(var(--nmtrk) - .01em);
+  font-size:calc(7.1cqi * var(--nmscale,1));line-height:1.04;
+  text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:none}
+.drink-ing{font-family:var(--detfont);font-weight:var(--detwt);
+  font-size:calc(2.72cqi * var(--labscale,1));
+  letter-spacing:calc(var(--dettrk2) + .04em);line-height:1.55;text-transform:uppercase;
+  margin-top:.18em;max-width:42em}
+.accent-rule{background:var(--accent);height:var(--rulew);width:100%;flex:none}
+.name-rule{background:currentColor;height:var(--rulew);width:22%;flex:none;margin:.4em 0 .15em}
+.drink-tag{font-family:var(--detfont);font-weight:var(--detwt);
+  font-size:calc(2.35cqi * var(--labscale,1));
+  letter-spacing:var(--dettrk);line-height:1.4;text-transform:uppercase;
+  margin-top:.38em;padding:0;background:none;border:0;border-radius:0}
 .drink.no-tag .drink-tag{display:none}
-.rule{height:1.5px;background:currentColor;width:100%;flex:none}
-.hair{height:1px;background:currentColor;width:100%;flex:none}
-.tag-pill{display:inline-block;background:var(--accent);color:var(--ink);
-  font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.15cqi * var(--labscale,1));
-  letter-spacing:.14em;text-transform:uppercase;padding:.38em .7em;line-height:1}
-.agave{width:18%;flex:none;fill:currentColor}
+.rule,.hair,.spine-rule,.menu-rule,.horizon-rule{background:currentColor;flex:none}
+.rule,.hair,.menu-rule,.horizon-rule{height:var(--rulew);width:100%}
+.spine-rule{width:var(--rulew);align-self:stretch}
+.agave{width:22%;flex:none;fill:currentColor}
+.mustard-band{background:var(--accent);color:var(--ink);flex:none}
+.ink-band{background:var(--ink);color:var(--bone);flex:none}
+.jrow{display:flex;justify-content:space-between;width:100%;letter-spacing:0!important}
+svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
+.lock{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);line-height:.96}
+.plate{border:var(--rulew) solid currentColor}
 
-/* B1 ruled */
-[data-layout="ruled"]{padding:7.5% 8%}
-[data-layout="ruled"] .menu-head{border-bottom:1.5px solid currentColor;padding-bottom:4.2%;margin-bottom:2%}
-[data-layout="ruled"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
-[data-layout="ruled"] .drink{padding:3.2% 0;border-bottom:1px solid currentColor}
+/* B1 · S5 Ruled Editorial — even padding around one-weight rules */
+[data-layout="ruled"]{padding:8% 7.5% 7.5%}
+[data-layout="ruled"] .menu-head{border-bottom:var(--rulew) solid currentColor;padding-bottom:2.8%;margin:0}
+[data-layout="ruled"] .drink-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(min-content,1fr));min-height:0}
+[data-layout="ruled"] .drink{display:flex;flex-direction:column;justify-content:center;border-bottom:var(--rulew) solid currentColor;min-width:0;padding:2.6% 0}
 [data-layout="ruled"] .drink:last-child{border-bottom:0}
 [data-layout="ruled"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
-[data-layout="ruled"] .drink-tag{margin:.35em 0 .15em}
-[data-layout="ruled"] .drink-ing{margin-top:.45em}
+[data-layout="ruled"] .drink-tag{margin-top:.16em}
+[data-layout="ruled"] .drink-ing{margin-top:.16em}
+[data-layout="ruled"] .menu-foot{border-top:var(--rulew) solid currentColor;padding-top:2.8%;display:flex;justify-content:space-between;gap:8px}
 
-/* B2 display stack */
-[data-layout="stack"]{padding:7.5% 7%;text-align:center}
-[data-layout="stack"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="headerrule"]{padding:8% 7.5% 7.5%}
+[data-layout="headerrule"] .menu-head{padding-bottom:2.4%}
+[data-layout="headerrule"] .accent-rule{margin-bottom:4%}
+[data-layout="headerrule"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="headerrule"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
+
+/* B2 · S2 Display Stack — optically centred cluster, names at display size */
+[data-layout="stack"]{padding:8% 6.5%;text-align:center}
+[data-layout="stack"] .k{margin:0}
+[data-layout="stack"] .optical{flex:1;justify-content:center;padding:0}
+[data-layout="stack"] .drink-list{display:flex;flex-direction:column;gap:2.6cqi}
 [data-layout="stack"] .drink-name{font-size:calc(8.6cqi * var(--nmscale,1));line-height:.96}
-[data-layout="stack"] .drink-tag{margin:.4em 0 0}
-[data-layout="stack"] .drink-ing{margin-top:.55em;font-size:calc(2.45cqi * var(--labscale,1))}
+[data-layout="stack"] .drink-ing{margin:.16em auto 0;max-width:34em;font-size:calc(2.45cqi * var(--labscale,1))}
+[data-layout="stack"] .drink-tag{margin-top:.16em}
 
-/* B3 flush-left */
-[data-layout="flush"]{padding:8% 8.5%}
-[data-layout="flush"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:6% 0 2%}
+/* B3 · S1 Flush — left edge, agave stamp holding the bottom */
+[data-layout="flush"]{padding:7.5% 7%}
+[data-layout="flush"] .k{margin:0}
+[data-layout="flush"] .optical{flex:1;justify-content:center;padding:0}
+[data-layout="flush"] .drink-list{display:flex;flex-direction:column;gap:2.4cqi}
 [data-layout="flush"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
-[data-layout="flush"] .drink-tag{margin:.4em 0 0}
-[data-layout="flush"] .drink-ing{margin-top:.5em}
+[data-layout="flush"] .drink-ing{margin-top:.16em}
+[data-layout="flush"] .agave-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex:none;padding-top:0}
+[data-layout="flush"] .agave{width:28%}
 
-/* B4 agave */
-[data-layout="agave"]{padding:8% 8%}
-[data-layout="agave"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:5% 0 4%}
-[data-layout="agave"] .drink-name{font-size:calc(6.8cqi * var(--nmscale,1))}
-[data-layout="agave"] .drink-tag,[data-layout="agave"] .drink-ing{margin-top:.4em}
-[data-layout="agave"] .agave-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
-[data-layout="agave"] .agave{width:22%}
+[data-layout="flushrule"]{padding:7.5% 7%}
+[data-layout="flushrule"] .k{margin:0}
+[data-layout="flushrule"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="flushrule"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
+[data-layout="flushrule"] .name-rule{width:18%}
 
-/* B5 two-column */
-[data-layout="columns"]{padding:7.5% 7%}
-[data-layout="columns"] .cols{flex:1;display:grid;grid-template-columns:1.15fr .85fr;gap:6%;min-height:0;padding-top:5%}
+/* B4 · Two-column — mustard as the one rule */
+[data-layout="columns"]{padding:8% 7%}
+[data-layout="columns"] .cols{flex:1;display:grid;grid-template-columns:1.15fr .85fr;gap:0 6.5%;min-height:0;padding-top:5%}
 [data-layout="columns"] .col{display:flex;flex-direction:column;min-width:0}
-[data-layout="columns"] .col-side{padding-left:7%;border-left:2px solid var(--accent)}
-[data-layout="columns"] .col-label{margin-bottom:8%}
-[data-layout="columns"] .col-main .drink{margin-bottom:9%}
-[data-layout="columns"] .col-main .drink:last-child{margin-bottom:0}
-[data-layout="columns"] .drink-name{font-size:calc(5.4cqi * var(--nmscale,1))}
-[data-layout="columns"] .col-side .drink-name{font-size:calc(6.1cqi * var(--nmscale,1))}
-[data-layout="columns"] .drink-tag,[data-layout="columns"] .drink-ing{margin-top:.45em}
+[data-layout="columns"] .col-main{justify-content:space-between;padding:1% 0 2%}
+[data-layout="columns"] .col-side{padding-left:8%;border-left:var(--rulew) solid var(--accent);justify-content:center}
+[data-layout="columns"] .col-label{margin-bottom:6%}
+[data-layout="columns"] .col-main .drink-name,[data-layout="columns"] .col-side .drink-name{font-size:calc(5.8cqi * var(--nmscale,1))}
+[data-layout="columns"] .drink-ing{max-width:none}
 
-/* B6 ledger */
-[data-layout="ledger"]{padding:7% 7.5%}
-[data-layout="ledger"] .ledger-head{text-align:center;padding-bottom:4%;border-bottom:2px solid currentColor}
-[data-layout="ledger"] .drink-name{font-size:calc(5.8cqi * var(--nmscale,1))}
-[data-layout="ledger"] .ledger-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
-[data-layout="ledger"] .ledger-row{display:grid;grid-template-columns:auto 1fr;gap:4% 5%;align-items:baseline;padding:3.4% 0;border-bottom:1px solid currentColor}
+/* B5 · Ledger — mustard as the one block */
+[data-layout="ledger"]{padding:0}
+[data-layout="ledger"] .mustard-band{padding:6.6% 8% 5.6%;text-align:center}
+[data-layout="ledger"] .mustard-band .k{font-size:calc(2.2cqi * var(--labscale,1))}
+[data-layout="ledger"] .mustard-band .det{margin-top:2.2%}
+[data-layout="ledger"] .ledger-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(min-content,1fr));padding:1% 7.5% 6.5%;min-height:0}
+[data-layout="ledger"] .ledger-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.5% 4%;align-items:center;border-bottom:var(--rulew) solid currentColor;min-width:0;padding:1.8% 0}
 [data-layout="ledger"] .ledger-row:last-child{border-bottom:0}
-[data-layout="ledger"] .ledger-num{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);
-  font-size:calc(6.2cqi * var(--nmscale,1));line-height:1}
-[data-layout="ledger"] .drink-tag{display:inline-block;margin:.2em 0 0 .7em}
+[data-layout="ledger"] .ledger-num{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:calc(var(--nmtrk) - .01em);
+  font-size:calc(5.6cqi * var(--nmscale,1));line-height:.8}
+[data-layout="ledger"] .drink-name{font-size:calc(6.4cqi * var(--nmscale,1))}
+[data-layout="ledger"] .drink-tag{display:block;margin-top:.22em}
+[data-layout="ledger"] .ledger-row{padding:2.2% 0}
 
-/* B7 invitation */
-[data-layout="invite"]{padding:8.5% 8%;text-align:center}
-[data-layout="invite"] .invite-rule{width:28%;height:1.5px;background:currentColor;margin:5% auto 0}
-[data-layout="invite"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
-[data-layout="invite"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1));line-height:1}
-[data-layout="invite"] .drink-tag,[data-layout="invite"] .drink-ing{margin-top:.45em}
-[data-layout="invite"] .invite-foot{border-top:1.5px solid currentColor;padding-top:4.2%}
+[data-layout="ledgerplain"]{padding:0}
+[data-layout="ledgerplain"] .mustard-band{padding:6.6% 8% 5.6%;text-align:center}
+[data-layout="ledgerplain"] .ledger-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(min-content,1fr));padding:1% 7.5% 6.5%;min-height:0}
+[data-layout="ledgerplain"] .ledger-row{display:flex;align-items:center;border-bottom:var(--rulew) solid currentColor;min-width:0;padding:2.2% 0}
+[data-layout="ledgerplain"] .ledger-row:last-child{border-bottom:0}
+[data-layout="ledgerplain"] .drink-name{font-size:calc(6.8cqi * var(--nmscale,1))}
 
-/* B8 tag-as-rule */
-[data-layout="tags"]{padding:7.5% 8%}
-[data-layout="tags"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
-[data-layout="tags"] .drink-name{font-size:calc(6.8cqi * var(--nmscale,1))}
-[data-layout="tags"] .tag-rule{display:flex;align-items:center;gap:3.5%;margin:2.6% 0 2.2%}
-[data-layout="tags"] .tag-rule .hair{flex:1}
-[data-layout="tags"] .drink.no-tag .tag-rule{margin:3.2% 0}
-[data-layout="tags"] .drink.no-tag .tag-pill{display:none}
-
-/* B9 type-only */
-[data-layout="typeonly"]{padding:9% 9%}
-[data-layout="typeonly"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:8% 0 2%}
-[data-layout="typeonly"] .drink-name{font-size:calc(7.8cqi * var(--nmscale,1))}
-[data-layout="typeonly"] .drink-tag{margin-top:.45em}
-[data-layout="typeonly"] .drink-ing{margin-top:.55em}
-
-/* B10 spine */
-[data-layout="spine"]{flex-direction:row;padding:7.5% 6.5%;gap:5.5%}
-[data-layout="spine"] .spine{flex:none;display:flex;align-items:stretch;gap:10px}
-[data-layout="spine"] .spine-rule{width:1.5px;background:currentColor}
+/* B6 · Spine — rotated header, 1px rule */
+[data-layout="spine"]{flex-direction:row;padding:8% 6.5%;gap:2.2%}
+[data-layout="spine"] .spine{flex:none;display:flex;align-items:stretch;gap:6px}
 [data-layout="spine"] .spine-k{writing-mode:vertical-rl;transform:rotate(180deg);align-self:stretch;
-  font-size:calc(3.4cqi * var(--labscale,1));letter-spacing:.28em}
-[data-layout="spine"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:1% 0}
-[data-layout="spine"] .drink-name{font-size:calc(6.4cqi * var(--nmscale,1))}
-[data-layout="spine"] .drink-tag,[data-layout="spine"] .drink-ing{margin-top:.4em}
+  font-size:calc(2.45cqi * var(--labscale,1));letter-spacing:.32em}
+[data-layout="spine"] .optical{padding-bottom:1.6%;padding-top:.5%}
+[data-layout="spine"] .drink-list{display:flex;flex-direction:column;gap:3.6cqi}
+[data-layout="spine"] .drink-name{font-size:calc(7.2cqi * var(--nmscale,1))}
 
-/* B11 marks */
-[data-layout="marks"]{padding:9% 8.5%;text-align:center}
+[data-layout="spinecenter"]{flex-direction:row;padding:8% 6.5%;gap:2.2%}
+[data-layout="spinecenter"] .spine{flex:none;display:flex;align-items:stretch;gap:6px}
+[data-layout="spinecenter"] .spine-k{writing-mode:vertical-rl;transform:rotate(180deg);align-self:stretch;
+  font-size:calc(2.45cqi * var(--labscale,1));letter-spacing:.32em}
+[data-layout="spinecenter"] .optical{flex:1;justify-content:center;padding:0}
+[data-layout="spinecenter"] .drink-list{display:flex;flex-direction:column;justify-content:center;gap:3.6cqi}
+[data-layout="spinecenter"] .drink-name{font-size:calc(7.2cqi * var(--nmscale,1))}
+
+[data-layout="typeonly"]{padding:8.5% 8%;justify-content:space-evenly}
+[data-layout="typeonly"] .k{margin:0;padding:0}
+[data-layout="typeonly"] .drink-list{display:contents}
+[data-layout="typeonly"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1))}
+[data-layout="typeonly"] .drink-ing{margin-top:.16em}
+
+/* B7 · Tag column — mustard as the one label */
+[data-layout="tags"]{padding:8% 7% 7.5%}
+[data-layout="tags"] .drink-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(min-content,1fr));min-height:0;padding-top:2%}
+[data-layout="tags"] .drink{display:grid;grid-template-columns:24% minmax(0,1fr);gap:2% 4%;align-items:center;min-width:0}
+[data-layout="tags"] .drink-tag{display:block;margin:0;text-align:right;color:var(--accent);
+  font-size:calc(1.62cqi * var(--labscale,1));letter-spacing:.18em;line-height:1.4}
+[data-layout="tags"] .drink.no-tag .drink-tag{display:block;visibility:hidden}
+[data-layout="tags"] .drink-name{font-size:calc(7cqi * var(--nmscale,1))}
+
+[data-layout="marks"]{padding:10% 9%;text-align:center}
 [data-layout="marks"] .marks-frame{position:relative;flex:1;display:flex;flex-direction:column;min-height:0}
 [data-layout="marks"] .reg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-[data-layout="marks"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;padding:6% 2% 4%}
-[data-layout="marks"] .drink-name{font-size:calc(6.9cqi * var(--nmscale,1))}
-[data-layout="marks"] .drink-tag,[data-layout="marks"] .drink-ing{margin-top:.4em}
+[data-layout="marks"] .optical{padding:4% 2%}
+[data-layout="marks"] .drink-list{display:flex;flex-direction:column;gap:4.4cqi}
+[data-layout="marks"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
 
+[data-layout="diptych"]{padding:0}
+[data-layout="diptych"] .diptych-main{flex:1.55;padding:8% 8% 5%;display:flex;flex-direction:column;min-height:0}
+[data-layout="diptych"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="diptych"] .drink-name{font-size:calc(7.2cqi * var(--nmscale,1))}
+[data-layout="diptych"] .ink-band{padding:7% 8%;display:flex;flex-direction:column;justify-content:center;gap:10px}
+
+[data-layout="stagger"]{padding:8% 7.5%}
+[data-layout="stagger"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:5% 0 2%}
+[data-layout="stagger"] .drink:nth-child(even){text-align:right;align-self:flex-end;max-width:86%}
+[data-layout="stagger"] .drink:nth-child(odd){max-width:86%}
+[data-layout="stagger"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1))}
+[data-layout="stagger"] .drink:nth-child(even) .drink-ing{margin-left:auto}
+
+[data-layout="justify"]{padding:8% 7.5%}
+[data-layout="justify"] .jrow.k{border-bottom:var(--rulew) solid currentColor;padding-bottom:3.6%}
+[data-layout="justify"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="justify"] .drink-name{font-size:calc(7.2cqi * var(--nmscale,1))}
+[data-layout="justify"] .jrow.det{border-top:var(--rulew) solid currentColor;padding-top:3.6%}
+
+[data-layout="vertical"]{padding:8% 6.5%}
+[data-layout="vertical"] .drink-list{flex:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3%;padding:5% 0 2%;min-height:0}
+[data-layout="vertical"] .drink{display:flex;flex-direction:column;align-items:center;min-width:0}
+[data-layout="vertical"] .drink-name{writing-mode:vertical-rl;transform:rotate(180deg);font-size:calc(5.6cqi * var(--nmscale,1));flex:1;line-height:1}
+[data-layout="vertical"] .drink-tag{margin-top:0;margin-bottom:.5em;text-align:center}
+[data-layout="vertical"] .drink-ing{text-align:center;max-width:none;margin-top:.6em;font-size:calc(1.35cqi * var(--labscale,1))}
+
+[data-layout="overlap"]{padding:8% 7.5%}
+[data-layout="overlap"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="overlap"] .drink:nth-child(even){margin-left:16%}
+[data-layout="overlap"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1));line-height:.88}
+
+[data-layout="field"]{padding:9% 8.5%}
+[data-layout="field"] .optical{padding:10% 0 8%}
+[data-layout="field"] .drink-list{display:flex;flex-direction:column;gap:2.4cqi}
+[data-layout="field"] .drink-name{font-size:calc(7.2cqi * var(--nmscale,1))}
+[data-layout="field"] .field-foot{border-top:var(--rulew) solid currentColor;padding-top:3.4%}
+
+[data-layout="horizon"]{padding:0}
+[data-layout="horizon"] .horizon-top{flex:1.55;padding:8% 7.5% 3%;display:flex;flex-direction:column;min-height:0}
+[data-layout="horizon"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="horizon"] .drink-name{font-size:calc(7cqi * var(--nmscale,1))}
+[data-layout="horizon"] .horizon-foot{padding:5% 7.5% 7%;text-align:center}
+
+[data-layout="anchor"]{padding:8% 7%}
+[data-layout="anchor"] .optical{flex:1;justify-content:center}
+[data-layout="anchor"] .drink-list{display:flex;flex-direction:column;gap:2.4cqi}
+[data-layout="anchor"] .drink-name{font-size:calc(6.8cqi * var(--nmscale,1))}
+[data-layout="anchor"] .anchor-date{font-family:var(--nmfont);font-weight:var(--nmwt);
+  font-size:calc(9.2cqi * var(--nmscale,1));line-height:.85;letter-spacing:calc(var(--nmtrk) - .02em);
+  display:flex;justify-content:space-between;width:100%;margin-top:5%}
+
+[data-layout="cropped"]{padding:8% 0;overflow:hidden}
+[data-layout="cropped"] .k{padding:0 7.5%}
+[data-layout="cropped"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="cropped"] .drink-name{font-size:calc(9.2cqi * var(--nmscale,1));line-height:.86;white-space:nowrap}
+[data-layout="cropped"] .drink:nth-child(odd) .drink-name{margin-left:-5%}
+[data-layout="cropped"] .drink:nth-child(even) .drink-name{margin-right:-5%;text-align:right}
+[data-layout="cropped"] .drink-tag,[data-layout="cropped"] .drink-ing{padding:0 7.5%}
+[data-layout="cropped"] .drink:nth-child(even) .drink-ing{margin-left:auto;margin-right:7.5%;text-align:right}
+
+/* B20 · Specimen — agave as the stamp, drinks as captions */
+[data-layout="specimen"]{padding:7% 8% 6.5%;text-align:center}
+[data-layout="specimen"] .k{margin:0}
+[data-layout="specimen"] .specimen-mark{flex:none;display:flex;justify-content:center;padding:4% 0 5%}
+[data-layout="specimen"] .agave{width:46%}
+[data-layout="specimen"] .drink-list{display:flex;flex-direction:column;gap:2.1cqi}
+[data-layout="specimen"] .drink-name{font-size:calc(5.6cqi * var(--nmscale,1))}
+[data-layout="specimen"] .drink-ing{margin:.12em auto 0;max-width:36em;font-size:calc(2.15cqi * var(--labscale,1))}
+
+/* B21 · Stack Ruled — S8: centred stack, hairlines between */
+[data-layout="stackrule"]{padding:8% 7%;text-align:center}
+[data-layout="stackrule"] .k{margin:0;padding-bottom:3.2%;border-bottom:var(--rulew) solid currentColor}
+[data-layout="stackrule"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="stackrule"] .drink{padding:2.2% 0;border-bottom:var(--rulew) solid currentColor}
+[data-layout="stackrule"] .drink:last-child{border-bottom:0}
+[data-layout="stackrule"] .drink-name{font-size:calc(7.8cqi * var(--nmscale,1));line-height:.96}
+[data-layout="stackrule"] .drink-ing{margin:.16em auto 0;max-width:34em}
+
+/* B22 · Deep Overlap — S9: names cluster, recipes as a foot */
+[data-layout="deepoverlap"]{padding:8% 7.5%}
+[data-layout="deepoverlap"] .names{flex:1;display:flex;flex-direction:column;justify-content:center}
+[data-layout="deepoverlap"] .names .drink{margin-top:-.2em}
+[data-layout="deepoverlap"] .names .drink:nth-child(even){margin-left:22%}
+[data-layout="deepoverlap"] .names .drink-name{font-size:calc(8.8cqi * var(--nmscale,1));line-height:.82}
+[data-layout="deepoverlap"] .names .drink-tag,[data-layout="deepoverlap"] .names .drink-ing{display:none}
+[data-layout="deepoverlap"] .ings{border-top:var(--rulew) solid currentColor;padding-top:3.2%;display:flex;flex-direction:column;gap:1.05cqi}
+[data-layout="deepoverlap"] .ings .drink-name{display:none}
+[data-layout="deepoverlap"] .ings .drink-ing{margin:0;font-size:calc(2.15cqi * var(--labscale,1))}
+[data-layout="deepoverlap"] .ings .drink-tag{margin:0 .7em 0 0;display:inline}
+[data-layout="deepoverlap"] .ings .drink.no-tag .drink-tag{display:none}
+
+/* B23 · Rotated Pair — S10: names vertical, drinks in the channel */
+[data-layout="rotated"]{flex-direction:row;padding:7% 5.5%;gap:3.2%}
+[data-layout="rotated"] .rot-name{writing-mode:vertical-rl;transform:rotate(180deg);flex:none;
+  font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);
+  font-size:calc(6.4cqi * var(--nmscale,1));line-height:1}
+[data-layout="rotated"] .rot-name.a{align-self:flex-start}
+[data-layout="rotated"] .rot-name.s{align-self:flex-end}
+[data-layout="rotated"] .rot-mid{flex:1;display:flex;flex-direction:column;min-width:0;min-height:0}
+[data-layout="rotated"] .rot-mid .k{margin-bottom:3%}
+[data-layout="rotated"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="rotated"] .drink-name{font-size:calc(5.8cqi * var(--nmscale,1))}
+
+/* B24 · Suite Sibling — 01: vertical pair, drinks in the lower-right field */
+[data-layout="sibling"]{flex-direction:row;padding:7% 6%;gap:4%}
+[data-layout="sibling"] .sib-spine{writing-mode:vertical-rl;transform:rotate(180deg);flex:none;
+  font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);
+  font-size:calc(5.2cqi * var(--nmscale,1));line-height:1.05;padding-right:2%}
+[data-layout="sibling"] .sib-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;text-align:right;min-width:0}
+[data-layout="sibling"] .sib-body .k{margin-bottom:auto;text-align:right}
+[data-layout="sibling"] .drink-list{display:flex;flex-direction:column;gap:2.2cqi;padding-bottom:2%}
+[data-layout="sibling"] .drink-name{font-size:calc(5.6cqi * var(--nmscale,1))}
+[data-layout="sibling"] .drink-ing{margin-left:auto}
+
+/* B25 · Scattered — 03: four drinks, none sharing a baseline */
+[data-layout="scatter"]{padding:7.5% 7%}
+[data-layout="scatter"] .drink-list{flex:1;position:relative;min-height:0}
+[data-layout="scatter"] .drink{position:absolute;max-width:52%}
+[data-layout="scatter"] .drink:nth-child(1){top:6%;left:0}
+[data-layout="scatter"] .drink:nth-child(2){top:22%;right:0;text-align:right}
+[data-layout="scatter"] .drink:nth-child(3){bottom:26%;left:10%}
+[data-layout="scatter"] .drink:nth-child(4){bottom:2%;right:0;text-align:right}
+[data-layout="scatter"] .drink:nth-child(even) .drink-ing{margin-left:auto}
+[data-layout="scatter"] .drink-name{font-size:calc(6.2cqi * var(--nmscale,1))}
+
+/* B26 · Vertical Split — 15: bone / ink, two drinks a side */
+[data-layout="vsplit"]{padding:0}
+[data-layout="vsplit"] > .k{padding:6.5% 7% 2.8%}
+[data-layout="vsplit"] .vsplit-row{flex:1;display:flex;min-height:0}
+[data-layout="vsplit"] .vsplit-pane{flex:1;padding:5% 6.5% 8%;display:flex;flex-direction:column;justify-content:space-evenly;min-width:0}
+[data-layout="vsplit"] .drink-name{font-size:calc(5.4cqi * var(--nmscale,1))}
+
+/* B27 · Mustard Band — 17: colour block through the middle, not a header */
+[data-layout="mustardband"]{padding:0}
+[data-layout="mustardband"] > .k{padding:7% 7.5% 0}
+[data-layout="mustardband"] .band-drinks{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;padding:2.4% 7.5%}
+[data-layout="mustardband"] .mustard-band{padding:5.5% 7.5%;text-align:center}
+[data-layout="mustardband"] .mustard-band .lock{font-size:calc(8.2cqi * var(--nmscale,1))}
+[data-layout="mustardband"] .drink-name{font-size:calc(6.4cqi * var(--nmscale,1))}
+
+/* B28 · Diagonal Band — 20: mustard stripe, names riding it */
+[data-layout="diagband"]{padding:0;overflow:hidden}
+[data-layout="diagband"] .diag-band{position:absolute;left:-18%;top:36%;width:136%;height:26%;
+  transform:rotate(-8.2deg);transform-origin:center}
+[data-layout="diagband"] .diag-inner{position:relative;flex:1;display:flex;flex-direction:column;padding:8% 7.5%;min-height:0}
+[data-layout="diagband"] .diag-lock{padding:7% 0;transform:rotate(-8.2deg);transform-origin:left center}
+[data-layout="diagband"] .diag-lock .lock{font-size:calc(7.2cqi * var(--nmscale,1))}
+[data-layout="diagband"] .drink-list.top{flex:none}
+[data-layout="diagband"] .drink-list.bot{flex:none;margin-top:auto;text-align:right}
+[data-layout="diagband"] .drink-list.bot .drink-ing{margin-left:auto}
+[data-layout="diagband"] .drink-name{font-size:calc(5.8cqi * var(--nmscale,1))}
+[data-layout="diagband"] .drink-list.top .drink + .drink{margin-top:1.6cqi}
+[data-layout="diagband"] .drink-list.bot .drink + .drink{margin-top:1.6cqi}
+
+/* B29 · Quadrants — four cells, one drink each */
+[data-layout="quad"]{padding:0}
+[data-layout="quad"] > .k{padding:6.2% 6.5% 2.4%}
+[data-layout="quad"] .drink-list{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;min-height:0}
+[data-layout="quad"] .drink{padding:8% 7%;border-right:var(--rulew) solid currentColor;border-top:var(--rulew) solid currentColor;
+  min-width:0;display:flex;flex-direction:column;justify-content:center}
+[data-layout="quad"] .drink:nth-child(2n){border-right:0}
+[data-layout="quad"] .drink-name{font-size:calc(5.2cqi * var(--nmscale,1))}
+
+/* B30 · Inset Plate — one boxed field */
+[data-layout="inset"]{padding:6.5%}
+[data-layout="inset"] .plate{flex:1;display:flex;flex-direction:column;padding:6.5% 6%;min-height:0}
+[data-layout="inset"] .k{margin-bottom:4%}
+[data-layout="inset"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="inset"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
+
+/* B31 · Slash Date — 09 / 12 / 26 as the graphic */
+[data-layout="slashdate"]{flex-direction:row;padding:7.5% 6%;gap:5%}
+[data-layout="slashdate"] .slash-date{flex:none;width:30%;display:flex;flex-direction:column;justify-content:center;
+  font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);
+  font-size:calc(12cqi * var(--nmscale,1));line-height:.88}
+[data-layout="slashdate"] .slash-date .acc{font-size:.38em;line-height:1;margin:.1em 0}
+[data-layout="slashdate"] .slash-body{flex:1;display:flex;flex-direction:column;min-width:0}
+[data-layout="slashdate"] .slash-body .k{margin-bottom:auto}
+[data-layout="slashdate"] .drink-list{display:flex;flex-direction:column;gap:2.6cqi;padding-top:8%}
+[data-layout="slashdate"] .drink-name{font-size:calc(5.6cqi * var(--nmscale,1))}
+
+/* B32 · Underlined Ampersand — couple as the display, drinks as captions */
+[data-layout="ampersand"]{padding:7.5% 7%;text-align:center}
+[data-layout="ampersand"] .amp-lock{padding:5% 0 3%}
+[data-layout="ampersand"] .amp-lock .nm{font-family:var(--nmfont);font-weight:var(--nmwt);
+  font-size:calc(11.5cqi * var(--nmscale,1));line-height:.86;display:block}
+[data-layout="ampersand"] .amp-lock .amp{font-family:var(--accfont);font-style:italic;
+  font-size:calc(7cqi * var(--nmscale,1));line-height:1;display:inline-block;
+  border-bottom:var(--rulew) solid currentColor;padding:0 .12em .04em;margin:.08em 0}
+[data-layout="ampersand"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="ampersand"] .drink-name{font-size:calc(5.8cqi * var(--nmscale,1))}
+
+/* B33 · Initials — A + S as the lockup */
+[data-layout="initials"]{padding:7% 7.5%}
+[data-layout="initials"] .initials{flex:none;text-align:center;padding:3% 0 5%;
+  font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);
+  font-size:calc(22cqi * var(--nmscale,1));line-height:.78}
+[data-layout="initials"] .initials .acc{font-size:.42em;vertical-align:.12em}
+[data-layout="initials"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="initials"] .drink-name{font-size:calc(6.2cqi * var(--nmscale,1))}
+
+@media (max-width:720px){
+  .wrap{padding:0 16px 80px}
+  header{padding:36px 0 24px}
+  h1{font-size:clamp(34px,11vw,52px)}
+  .navlinks{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .navlinks a{border-right:0;border-bottom:1.5px solid var(--ink);padding:14px 8px;text-align:center}
+  .navlinks a:nth-child(odd){border-right:1.5px solid var(--ink)}
+  .navlinks a:nth-child(n+3){border-bottom:0}
+  .controls .inner{padding:0 16px}
+  .grid{grid-template-columns:1fr;gap:36px}
+  .sl{width:100%;max-width:420px}
+  .sl input[type=range]{width:100%;max-width:none;flex:1}
+  .sl input[type=range]::-webkit-slider-thumb{width:28px;height:28px}
+  .sl input[type=range]::-moz-range-thumb{width:28px;height:28px}
+  .xbtn,#gear,.toggle button{min-height:44px}
+  .chrome-actions{width:100%;justify-content:flex-start}
+  #export-pdf{flex:1;min-width:140px}
+  #summary{font-size:12px}
+}
 .notes{background:#fbf9f5;border:1.5px solid var(--ink);border-radius:9px;padding:34px 36px}
 .notes h4{font-family:'Instrument Serif',serif;font-weight:400;font-size:19px;margin:28px 0 11px}
 .notes h4:first-child{margin-top:0}
@@ -281,7 +542,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 
 @media print{
   header,.controls,.meta,.navlinks,footer,.notes,h2,.secnote,.suite,.warn,.starbtn,#gear,
-  .drink-editor,.editor-tools,.export-bar,#png-toast{
+  .drink-editor,.editor-tools,.export-bar,#png-toast,.chrome-actions{
     display:none !important}
   body{background:#fff}
   .wrap{max-width:none;padding:0;margin:0}
@@ -295,11 +556,12 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     box-shadow:none;border-radius:0}
 }
 </style>
+<link rel="stylesheet" href="assets/chrome.css">
 
 <div class="wrap">
 <header>
   <h1>Allison + Skylar<br>Bar Menu</h1>
-  <p class="sub">Same suite as the invite, the welcome sign, and the 5×7s — now a portrait bar card. Four drinks, no prices. Bone stock, Instrument Serif names, Roboto Mono ingredients. Star a layout, fix the copy if a recipe changes, then print or export a PNG.</p>
+  <p class="sub">Same suite as the invite, the welcome sign, and the 5×7s — now a portrait bar card. Four drinks, no prices. Pick a poster, then <b>Export PDF</b> for the bartender — one letter page, no chrome. Scrub names, details, and line weight. Star a shortlist if you want to compare.</p>
   <nav class="navlinks" aria-label="Primary">
     <a href="index.html">Welcome sign</a>
     <a href="plan.html">Seating</a>
@@ -324,7 +586,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
       <div class="det" style="font-size:10px;letter-spacing:.14em">SPICY OPTIONAL · MOCKTAIL</div>
     </div>
     <div class="suitecard"><b>Card</b>
-      <div style="font:500 13px/1.45 Inter,sans-serif;color:var(--ink-soft)">1545 × 2000 · ~3:4 · letter / 8.5 × 11</div>
+      <div style="font:500 13px/1.45 Inter,sans-serif;color:var(--ink-soft)">1545 × 2000 · 3:4 portrait · PDF is this card</div>
     </div>
   </div>
 </header>
@@ -333,6 +595,9 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 <div class="controls">
   <div class="inner barhead">
     <span id="summary"></span>
+    <div class="chrome-actions">
+      <button type="button" class="xbtn primary" id="export-pdf">Export PDF</button>
+      <span class="layout-saved" id="pdf-target">B2 · Display Stack</span>
     <button type="button" id="gear" class="open" aria-expanded="true" aria-controls="panel">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="3"></circle>
@@ -340,6 +605,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
       </svg>
       Type tools
     </button>
+    </div>
   </div>
   <div id="panel" class="open">
   <div class="inner">
@@ -379,9 +645,11 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   </div>
   <div class="inner" style="margin-top:11px">
     <span class="lbl">Names</span>
-    <div class="sl"><input type="range" id="sName" min="0.7" max="1.45" step="0.02" value="1"><output id="oName">1.00×</output></div>
+    <div class="sl"><input type="range" id="sName" min="0.7" max="1.45" step="0.02" value="0.76"><output id="oName">0.76×</output></div>
     <span class="lbl">Details</span>
-    <div class="sl"><input type="range" id="sLab" min="0.7" max="1.45" step="0.02" value="1"><output id="oLab">1.00×</output></div>
+    <div class="sl"><input type="range" id="sLab" min="0.7" max="1.45" step="0.02" value="0.90"><output id="oLab">0.90×</output></div>
+    <span class="lbl">Line weight</span>
+    <div class="sl"><input type="range" id="sRule" min="0.5" max="2.5" step="0.1" value="1"><output id="oRule">1.0px</output></div>
     <button type="button" class="xbtn" id="reset-type">Reset type</button>
     <span class="typenote" id="typenote"></span>
   </div>
@@ -406,8 +674,8 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   <div class="grid" id="favorites-grid" style="display:none"></div>
 </section>
 
-<h2>Eleven ways to set it</h2>
-<p class="secnote">Same four drinks, same faces as S1 / S2 / S5 / the ledger. No tropical leaves, no cream-and-purple cocktail bar. Bone is the match to the invite paper; mustard board is there if this sign stands next to the painted A-frame.</p>
+<h2>The posters</h2>
+<p class="secnote">Same four drinks, same faces as the welcome set. Each poster is a different composition — not a class-name swap. Mustard is used once per idea. Scrub names, details, and line weight; they apply to the whole set. Default is the 0.76 / 0.90 they already liked. Export PDF for the bartender.</p>
 
 <div class="grid" id="shortlist-grid" data-home-grid="shortlist">
 
@@ -436,15 +704,17 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
           <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
         </div>
       </div>
+      <div class="menu-foot det" data-fg><span>Allison <span class="acc">+</span> Skylar</span><span>09.12.2026</span></div>
     </div></div>
     <div class="meta"><h3>B1 · Ruled Editorial</h3>
-      <p>Hairline rules between drinks, welcome S5’s quiet ledger. Header as one mono line; names carry; ingredients stay small enough to keep the names large.</p>
+      <p>Welcome S5: one-weight hairlines, a four-row grid, names filling the cells. Even air around each rule. Ingredients stay a caption.</p>
       <span class="tag star">S5 sibling</span></div>
   </div>
 
   <div>
-    <div class="frame"><div class="sign" data-g data-layout="stack">
-      <div class="k" data-header data-fg>BAR MENU</div>
+    <div class="frame"><div class="sign" data-g data-layout="headerrule">
+      <div class="menu-head k" data-header data-fg>BAR MENU</div>
+      <div class="accent-rule"></div>
       <div class="drink-list">
         <div class="drink" data-drink="0">
           <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
@@ -468,14 +738,48 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
         </div>
       </div>
     </div></div>
+    <div class="meta"><h3>B1b · Header Rule</h3>
+      <p>Ruled’s child: one mustard hairline under the header, then type only. Same names, no row rules.</p>
+      <span class="tag">Mustard rule</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="stack">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="optical">
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+      </div>
+    </div></div>
     <div class="meta"><h3>B2 · Display Stack</h3>
-      <p>Names at maximum size, centred, ingredients in wide mono underneath. The S2 move: it should read from a few feet before anyone gets to the recipe.</p>
+      <p>The S2 move: names at display size, optically centred, equal air above and below the cluster. Ingredients in wide mono — read the name first, the recipe second.</p>
       <span class="tag star">S2 sibling</span></div>
   </div>
 
   <div>
     <div class="frame"><div class="sign" data-g data-layout="flush">
       <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="optical">
       <div class="drink-list">
         <div class="drink" data-drink="0">
           <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
@@ -498,36 +802,6 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
           <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
         </div>
       </div>
-    </div></div>
-    <div class="meta"><h3>B3 · Flush-left Suite</h3>
-      <p>S1 without the plant. Header, then four drinks stacked flush-left with air between — the same left edge as the welcome names.</p>
-      <span class="tag">S1 without agave</span></div>
-  </div>
-
-  <div>
-    <div class="frame"><div class="sign" data-g data-layout="agave">
-      <div class="k" data-header data-fg>BAR MENU</div>
-      <div class="drink-list">
-        <div class="drink" data-drink="0">
-          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
-          <div class="drink-tag" data-dtag data-fg></div>
-          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
-        </div>
-        <div class="drink" data-drink="1">
-          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
-          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
-          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
-        </div>
-        <div class="drink" data-drink="2">
-          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
-          <div class="drink-tag" data-dtag data-fg></div>
-          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
-        </div>
-        <div class="drink" data-drink="3">
-          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
-          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
-          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
-        </div>
       </div>
       <div class="agave-row">
         <svg class="agave" viewBox="0 0 100 100" fill="currentColor" data-fgs aria-hidden="true">
@@ -542,9 +816,75 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
         <div class="det" data-fg style="text-align:right">Ruth Bancroft Garden<br>Walnut Creek, CA</div>
       </div>
     </div></div>
-    <div class="meta"><h3>B4 · Agave Flush</h3>
-      <p>Flush-left drinks with the existing block-print agave, small, as a stamp — not a leaf frame. One flat shape, the same mark as welcome S1.</p>
-      <span class="tag">S1 with agave</span></div>
+    <div class="meta"><h3>B3 · Flush-left Suite</h3>
+      <p>Welcome S1: the same left edge as the names, drinks clustered tighter, block-print agave as a stamp — not a leaf frame — holding the bottom with the venue.</p>
+      <span class="tag star">S1 sibling</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="flushrule">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="name-rule" data-fg></div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="name-rule" data-fg></div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="name-rule" data-fg></div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="name-rule" data-fg></div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B3b · Flush Rules</h3>
+      <p>Flush-left with a short hairline under each name — same stroke as B1, not a second weight.</p>
+      <span class="tag">B3 child</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="typeonly">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B9 · Type Only</h3>
+      <p>No ornaments. Header-to-first-drink matches drink-to-drink. The stack is the layout.</p>
+      <span class="tag star">Type only</span></div>
   </div>
 
   <div>
@@ -578,16 +918,16 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
         </div>
       </div>
     </div></div>
-    <div class="meta"><h3>B5 · Two-column</h3>
-      <p>Three cocktails on the left; the mocktail called out on a mustard rule. Guests who aren’t drinking still get a full name, not a footnote.</p>
-      <span class="tag">Mocktail column</span></div>
+    <div class="meta"><h3>B4 · Two-column</h3>
+      <p>Three cocktails on the left; the mocktail called out on a mustard rule — the one rule. Guests who aren’t drinking still get a full name, not a footnote.</p>
+      <span class="tag">Mustard rule</span></div>
   </div>
 
   <div>
     <div class="frame"><div class="sign" data-g data-layout="ledger">
-      <div class="ledger-head">
-        <div class="k" data-header data-fg>BAR MENU</div>
-        <div class="det" data-fg style="margin-top:2.4%">Order of the bar</div>
+      <div class="mustard-band" data-band>
+        <div class="k" data-header>BAR MENU</div>
+        <div class="det" data-band-sub>Order of the bar</div>
       </div>
       <div class="ledger-list">
         <div class="ledger-row drink" data-drink="0">
@@ -624,104 +964,51 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
         </div>
       </div>
     </div></div>
-    <div class="meta"><h3>B6 · Ledger</h3>
-      <p>Welcome 07’s order-of-the-day, rewritten for the bar. Numbers are sequence, not prices. Hairlines, full height, read up close.</p>
-      <span class="tag">07 sibling</span></div>
+    <div class="meta"><h3>B5 · Ledger</h3>
+      <p>Welcome 07 rewritten for the bar. The mustard block is the header — the one block. Numbers are sequence, not prices. Hairlines match B1.</p>
+      <span class="tag">Mustard block</span></div>
   </div>
 
   <div>
-    <div class="frame"><div class="sign" data-g data-layout="invite">
-      <div class="k" data-header data-fg>BAR MENU</div>
-      <div class="invite-rule" data-fg></div>
-      <div class="drink-list">
-        <div class="drink" data-drink="0">
-          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
-          <div class="drink-tag" data-dtag data-fg></div>
-          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
-        </div>
-        <div class="drink" data-drink="1">
-          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
-          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
-          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
-        </div>
-        <div class="drink" data-drink="2">
-          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
-          <div class="drink-tag" data-dtag data-fg></div>
-          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
-        </div>
-        <div class="drink" data-drink="3">
-          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
-          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
-          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
-        </div>
+    <div class="frame"><div class="sign" data-g data-layout="ledgerplain">
+      <div class="mustard-band" data-band>
+        <div class="k" data-header>BAR MENU</div>
+        <div class="det" data-band-sub>Order of the bar</div>
       </div>
-      <div class="invite-foot det" data-fg>Allison <span class="acc">+</span> Skylar · 09.12.2026</div>
-    </div></div>
-    <div class="meta"><h3>B7 · Centered Invitation</h3>
-      <p>The invite’s empty field: a short centred rule under the header, drinks stacked in the middle, names and date holding the bottom.</p>
-      <span class="tag">Invite stack</span></div>
-  </div>
-
-  <div>
-    <div class="frame"><div class="sign" data-g data-layout="tags">
-      <div class="k" data-header data-fg>BAR MENU</div>
-      <div class="drink-list">
-        <div class="drink" data-drink="0">
-          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
-          <div class="tag-rule"><i class="hair" data-fg></i><span class="tag-pill" data-dtag></span><i class="hair" data-fg></i></div>
-          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+      <div class="ledger-list">
+        <div class="ledger-row drink" data-drink="0">
+          <div>
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
         </div>
-        <div class="drink" data-drink="1">
-          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
-          <div class="tag-rule"><i class="hair" data-fg></i><span class="tag-pill" data-dtag>Spicy Optional</span><i class="hair" data-fg></i></div>
-          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        <div class="ledger-row drink" data-drink="1">
+          <div>
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
         </div>
-        <div class="drink" data-drink="2">
-          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
-          <div class="tag-rule"><i class="hair" data-fg></i><span class="tag-pill" data-dtag></span><i class="hair" data-fg></i></div>
-          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        <div class="ledger-row drink" data-drink="2">
+          <div>
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
         </div>
-        <div class="drink" data-drink="3">
-          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
-          <div class="tag-rule"><i class="hair" data-fg></i><span class="tag-pill" data-dtag>Mocktail</span><i class="hair" data-fg></i></div>
-          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        <div class="ledger-row drink" data-drink="3">
+          <div>
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
         </div>
       </div>
     </div></div>
-    <div class="meta"><h3>B8 · Tag as Rule</h3>
-      <p>Spicy / Mocktail sit on the rule as solid mustard pills — the one allowed accent, never a third colour. Untagged drinks keep a quiet hairline.</p>
-      <span class="tag">Mustard accent</span></div>
-  </div>
-
-  <div>
-    <div class="frame"><div class="sign" data-g data-layout="typeonly">
-      <div class="k" data-header data-fg>BAR MENU</div>
-      <div class="drink-list">
-        <div class="drink" data-drink="0">
-          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
-          <div class="drink-tag" data-dtag data-fg></div>
-          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
-        </div>
-        <div class="drink" data-drink="1">
-          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
-          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
-          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
-        </div>
-        <div class="drink" data-drink="2">
-          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
-          <div class="drink-tag" data-dtag data-fg></div>
-          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
-        </div>
-        <div class="drink" data-drink="3">
-          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
-          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
-          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
-        </div>
-      </div>
-    </div></div>
-    <div class="meta"><h3>B9 · Type Only</h3>
-      <p>No ornaments, no rules, no plant. Header and four drinks with the air the mock tried to fake with leaves. Vinyl-safe: letterforms only.</p>
-      <span class="tag">No ornaments</span></div>
+    <div class="meta"><h3>B5b · Ledger, no numbers</h3>
+      <p>Same mustard header and full-width rules as the ledger, without 01–04 so the stroke stays even.</p>
+      <span class="tag">B5 child</span></div>
   </div>
 
   <div>
@@ -730,6 +1017,193 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
         <div class="k spine-k" data-header data-fg>BAR MENU</div>
         <div class="spine-rule" data-fg></div>
       </div>
+      <div class="optical">
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B6 · Spine Rule</h3>
+      <p>Welcome 04: a hairline and a rotated header, pulled closer to the names. Same stroke as B1.</p>
+      <span class="tag">Spine</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="spinecenter">
+      <div class="spine">
+        <div class="k spine-k" data-header data-fg>BAR MENU</div>
+        <div class="spine-rule" data-fg></div>
+      </div>
+      <div class="optical">
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B6b · Spine Centre</h3>
+      <p>Spine’s child: drinks sit on the vertical rule, optically centred in the remaining field.</p>
+      <span class="tag">B6 child</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="tags">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-tag tag-mark" data-dtag></div>
+          <div class="drink-body">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-tag tag-mark" data-dtag>Spicy Optional</div>
+          <div class="drink-body">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-tag tag-mark" data-dtag></div>
+          <div class="drink-body">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-tag tag-mark" data-dtag>Mocktail</div>
+          <div class="drink-body">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B7 · Tag Column</h3>
+      <p>Spicy / Mocktail hang in a left column as tracked mono — the suite’s labels, not badges. Mustard is the one tag colour. Untagged drinks keep the empty cell so the grid holds.</p>
+      <span class="tag">Mustard tag</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="marks">
+      <div class="marks-frame">
+        <svg class="reg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" data-fgs aria-hidden="true">
+          <g stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke">
+            <path d="M0 4 V-4 M-4 0 H4"/>
+            <path d="M100 4 V-4 M96 0 H104"/>
+            <path d="M0 104 V96 M-4 100 H4"/>
+            <path d="M100 104 V96 M96 100 H104"/>
+          </g>
+        </svg>
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="optical">
+        <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B9 · Registration Marks</h3>
+      <p>Type in the middle, printer’s crosshairs at the corners — welcome 02’s plus motif at mark scale, not a cocktail illustration.</p>
+      <span class="tag">Printer’s marks</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="diptych">
+      <div class="diptych-main">
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+      </div>
+      <div class="ink-band" data-ink-band>
+        <div class="k" data-header>BAR MENU</div>
+        <div class="det" data-band-sub>Ruth Bancroft Garden · 09.12.2026</div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B10 · Diptych</h3>
+      <p>Welcome 06: drinks on bone, details reversed out of a solid ink block. Reads at dusk. The block is ink, not mustard.</p>
+      <span class="tag">Ink block</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="stagger">
+      <div class="k" data-header data-fg>BAR MENU</div>
       <div class="drink-list">
         <div class="drink" data-drink="0">
           <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
@@ -753,22 +1227,392 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
         </div>
       </div>
     </div></div>
-    <div class="meta"><h3>B10 · Spine Rule</h3>
-      <p>A single hairline and a rotated header, like table A2 and welcome 04. The rule organises the drinks; nothing else is needed.</p>
-      <span class="tag">Spine</span></div>
+    <div class="meta"><h3>B12 · Stagger</h3>
+      <p>Left, right, left, right — the save-the-date’s diagonal energy without chopping a word in half.</p>
+      <span class="tag">Diagonal</span></div>
   </div>
 
   <div>
-    <div class="frame"><div class="sign" data-g data-layout="marks">
-      <div class="marks-frame">
-        <svg class="reg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" data-fgs aria-hidden="true">
-          <g stroke="currentColor" stroke-width="1.15" vector-effect="non-scaling-stroke">
-            <path d="M0 4 V-4 M-4 0 H4"/>
-            <path d="M100 4 V-4 M96 0 H104"/>
-            <path d="M0 104 V96 M-4 100 H4"/>
-            <path d="M100 104 V96 M96 100 H104"/>
-          </g>
+    <div class="frame"><div class="sign" data-g data-layout="justify">
+      <div class="jrow k" data-fg><span>BAR</span><span>MENU</span></div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+      <div class="jrow det" data-fg><span>Allison <span class="acc">+</span> Skylar</span><span>09.12.2026</span></div>
+    </div></div>
+    <div class="meta"><h3>B13 · Justified Block</h3>
+      <p>BAR and MENU pushed to both margins, the pair and date the same at the foot. Hairlines, then the four names.</p>
+      <span class="tag">Justified</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="vertical">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B14 · Vertical Names</h3>
+      <p>Four names on end, like the invite spine doubled. Ingredients wait at the foot of each column.</p>
+      <span class="tag">Rotated</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="overlap">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B15 · Overlap</h3>
+      <p>Welcome S3: even drinks tucked under the odds. The indent is the only ornament — vinyl-safe, same cut as the names.</p>
+      <span class="tag">S3 sibling</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="field">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="optical">
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+      </div>
+      <div class="field-foot det" data-fg>Allison <span class="acc">+</span> Skylar · 09.12.2026</div>
+    </div></div>
+    <div class="meta"><h3>B16 · Empty Field</h3>
+      <p>Invite field: drinks as a tight cluster in the middle. Air is the ornament. Pair and date hold the bottom on one hairline.</p>
+      <span class="tag">Field</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="horizon">
+      <div class="horizon-top">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+      <div class="horizon-rule" data-fg></div>
+      <div class="horizon-foot det" data-fg>Ruth Bancroft Garden · Walnut Creek · 09.12.2026</div>
+    </div></div>
+    <div class="meta"><h3>B17 · Horizon Split</h3>
+      <p>Drinks occupy the upper field. One hairline, then the venue — a split, not a caption under the last drink.</p>
+      <span class="tag">Horizon</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="anchor">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="optical">
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+      </div>
+      <div class="anchor-date" data-fg><span>0</span><span>9</span><span>.</span><span>1</span><span>2</span><span>.</span><span>2</span><span>6</span></div>
+    </div></div>
+    <div class="meta"><h3>B18 · Date as Anchor</h3>
+      <p>Welcome S7: the date takes the plant’s job — set large and justified across the foot, holding the panel down.</p>
+      <span class="tag">S7 sibling</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="cropped">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B19 · Bleed Crop</h3>
+      <p>Welcome 16: names run off the edges, left then right. Ingredients stay inside the margin. Vinyl-safe — still solid ink.</p>
+      <span class="tag">Cropped</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="specimen">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="specimen-mark">
+        <svg class="agave" viewBox="0 0 100 100" fill="currentColor" data-fgs aria-hidden="true">
+          <path d="M50 90C40.8 88.9 29.3 75.9 14 56C34.7 70.1 48.4 80.9 50 90Z"/>
+          <path d="M50 90C40.1 82.8 32.7 59.8 24 26C41.3 56.2 52.1 78.0 50 90Z"/>
+          <path d="M50 90C41.9 78.6 39.9 49.6 39 8C49.1 48.4 54.8 76.8 50 90Z"/>
+          <path d="M50 90C43 76.8 45 46 50 2C55 46 57 76.8 50 90Z"/>
+          <path d="M50 90C58.1 78.6 60.1 49.6 61 8C50.9 48.4 45.2 76.8 50 90Z"/>
+          <path d="M50 90C59.9 82.8 67.3 59.8 76 26C58.7 56.2 47.9 78.0 50 90Z"/>
+          <path d="M50 90C59.2 88.9 70.7 75.9 86 56C65.3 70.1 51.6 80.9 50 90Z"/>
         </svg>
+      </div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B20 · Specimen</h3>
+      <p>Welcome S6: the agave is the stamp — large, centred, one solid cut. Drinks sit under it as captions, not a second motif.</p>
+      <span class="tag">Agave stamp</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="stackrule">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B21 · Stack Ruled</h3>
+      <p>Welcome S8: the S2 stack, but with a hairline under the header and between drinks. Centred, not flush-left like B1.</p>
+      <span class="tag">S8 sibling</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="deepoverlap">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="names">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+        </div>
+      </div>
+      <div class="ings">
+        <div class="drink" data-drink="0">
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B22 · Deep Overlap</h3>
+      <p>Welcome S9: names packed tight and indented, recipes stripped to a mono foot. Not B15 with a wider margin.</p>
+      <span class="tag">S9 sibling</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="rotated">
+      <div class="rot-name a" data-fg>Allison</div>
+      <div class="rot-mid">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+      <div class="rot-name s" data-fg>Skylar</div>
+    </div></div>
+    <div class="meta"><h3>B23 · Rotated Pair</h3>
+      <p>Welcome S10: Allison up the left, Skylar down the right. Drinks take the channel between — not a spine rule, not vertical drink names.</p>
+      <span class="tag">S10 sibling</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="sibling">
+      <div class="sib-spine" data-fg>Allison <span class="acc">+</span> Skylar</div>
+      <div class="sib-body">
         <div class="k" data-header data-fg>BAR MENU</div>
         <div class="drink-list">
           <div class="drink" data-drink="0">
@@ -794,9 +1638,318 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
         </div>
       </div>
     </div></div>
-    <div class="meta"><h3>B11 · Registration Marks</h3>
-      <p>Type-only, bracketed by the same printer’s crosshairs as welcome 02. Four short strokes. The plus motif without turning into a cocktail illustration.</p>
-      <span class="tag">Printer’s marks</span></div>
+    <div class="meta"><h3>B24 · Suite Sibling</h3>
+      <p>Welcome 01: the pair rotated up the left edge, drinks pushed to the lower right, empty field in between. Same invite spine, not B6.</p>
+      <span class="tag">Invite sibling</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="scatter">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B25 · Scattered</h3>
+      <p>Welcome 03: four drinks, four corners, none sharing a baseline. The eye walks the panel instead of reading a list.</p>
+      <span class="tag">Scattered</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="vsplit">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="vsplit-row">
+        <div class="vsplit-pane">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+        </div>
+        <div class="vsplit-pane ink-band" data-ink-band>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag></div>
+            <div class="drink-ing" data-ding>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag>Mocktail</div>
+            <div class="drink-ing" data-ding>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B26 · Vertical Split</h3>
+      <p>Welcome 15: panel halved down the middle, two drinks on bone, two reversed out of ink. Not the horizontal diptych.</p>
+      <span class="tag">Ink split</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="mustardband">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="band-drinks">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+      </div>
+      <div class="mustard-band" data-band>
+        <div class="lock">Allison <span class="acc">&amp;</span> Skylar</div>
+        <div class="det" data-band-sub>09.12.26 · Ruth Bancroft Garden</div>
+      </div>
+      <div class="band-drinks">
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B27 · Mustard Band</h3>
+      <p>Welcome 17: a mustard field through the middle with the pair reversed out. Drinks above and below — not a ledger header.</p>
+      <span class="tag">Mustard band</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="diagband">
+      <div class="diag-band mustard-band" data-band></div>
+      <div class="diag-inner">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list top">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+        </div>
+        <div class="diag-lock">
+          <div class="lock" data-fg>Allison <span class="acc">+</span> Skylar</div>
+          <div class="det" data-fg>09.12.26</div>
+        </div>
+        <div class="drink-list bot">
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B28 · Diagonal Band</h3>
+      <p>Welcome 20: a mustard stripe on a shallow angle, the pair riding it. Two drinks above, two below. Motion, not furniture.</p>
+      <span class="tag">Diagonal</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="quad">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B29 · Quadrants</h3>
+      <p>Four cells, one drink each. Hairlines share the line-weight token. A grid, not a list — reads as a tray of cards.</p>
+      <span class="tag">Grid</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="inset">
+      <div class="plate">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B30 · Inset Plate</h3>
+      <p>One boxed field inset from the edges. The plate is the ornament — a single hairline rectangle, same stroke as B1.</p>
+      <span class="tag">Inset</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="slashdate">
+      <div class="slash-date" data-fg><span>09</span><span class="acc">/</span><span>12</span><span class="acc">/</span><span>26</span></div>
+      <div class="slash-body">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B31 · Slash Date</h3>
+      <p>09 / 12 / 26 stacked as the graphic, drinks in the remaining column. Different job than B18’s justified 09.12.26 foot.</p>
+      <span class="tag">Date graphic</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="ampersand">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="amp-lock" data-fg>
+        <span class="nm">Allison</span>
+        <span class="amp acc">&amp;</span>
+        <span class="nm">Skylar</span>
+      </div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B32 · Underlined Ampersand</h3>
+      <p>Welcome 09: the pair at display size, italic &amp; underlined. Drinks become the caption. The couple is the poster; the menu is the footnote.</p>
+      <span class="tag">Couple lockup</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="initials">
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="initials" data-fg>A <span class="acc">+</span> S</div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B33 · Initials</h3>
+      <p>A + S as the lockup — one mark, then the four drinks. Initials, not full names, not a date, not a plant.</p>
+      <span class="tag">Lockup</span></div>
   </div>
 
 </div>
@@ -808,13 +1961,14 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   <ul>
     <li><strong>Bone cardstock</strong> is the honest match to the invite and the 5×7s. If you can get close to <code>#E7E3DA</code>, use it.</li>
     <li><strong>Mustard board</strong> is a labeled option in Type tools — only if this sign stands next to the painted welcome A-frame and you want them to read as a pair. Default is bone.</li>
-    <li><strong>1545 × 2000, portrait</strong> — the mock’s aspect, almost exactly letter (8.5 × 11). Print this layout fills a portrait page; in the dialog: letter (or A4), no margins, scale 100%.</li>
+    <li><strong>Export PDF</strong> is the bartender file: <code>allison-skylar-bar-menu.pdf</code>, one page at the card’s 1545 × 2000 portrait — no nav, no tools, no browser chrome. Not stretched to a different paper.</li>
+    <li><strong>1545 × 2000, portrait</strong> — the mock’s 3:4. Print this layout uses the same aspect.</li>
   </ul>
   <h4>What ties this to the rest of the wedding</h4>
   <ul>
     <li><strong>Instrument Serif</strong> for drink names — the invite face, same as Allison / Skylar and “When we were.” Italic the ampersands.</li>
     <li><strong>Roboto Mono</strong> for the header, tags, and ingredients, tracked wide (<code>~0.13–0.2em</code>), all-caps like the rest of the suite.</li>
-    <li>Lettering is black <code>#1E1D1A</code>. Mustard is a tiny accent (a rule, a tag pill) — never a third loud colour, and never the cream-with-purple-green of the rejected mock.</li>
+    <li>Lettering is black <code>#1E1D1A</code>. Mustard is used once: a rule (two-column), a tag (tag column), or a block (ledger header) — never sprinkled, never a third loud colour, and never the cream-with-purple-green of the rejected mock.</li>
     <li>Solid ink only. No opacity, no leaf frames, no stacked brown “BAR MENU.”</li>
   </ul>
 </div>

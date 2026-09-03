@@ -14,7 +14,7 @@
   --ink:#1E1D1A;
   --ink-soft:#4A4842;
   --mustard:#BFA52B;
-  --page:#F2EFE8;
+  --page:#F5F2EA;
   --nmfont:var(--font-invite-serif);
   --nmwt:400;
   --nmtrk:-.006em;
@@ -67,6 +67,30 @@ h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,7.2
 .navlinks a:hover{background:rgba(30,29,26,.06)}
 .navlinks a[aria-current="page"]{background:var(--ink);color:var(--page)}
 .navlinks a[aria-current="page"]:hover{background:var(--ink);color:var(--page)}
+@media (max-width:720px){
+  .navlinks{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .navlinks a{border-right:0;border-bottom:1.5px solid var(--ink);padding:14px 8px;text-align:center;
+    min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .navlinks a:nth-child(odd){border-right:1.5px solid var(--ink)}
+  .navlinks a:nth-child(n+3){border-bottom:0}
+  .seat-subnav{max-width:none}
+}
+.seat-subnav{margin-top:16px;border:1.5px solid rgba(0,0,0,.14);border-radius:9px;
+  padding:16px 16px 14px;background:#fbf9f5;max-width:560px}
+.seat-subnav .kicker{font:700 9.5px/1 'Roboto Mono',monospace;letter-spacing:.14em;
+  text-transform:uppercase;color:#8b8577;margin:0 0 12px}
+.seat-subnav-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.seat-subnav-tabs a{display:inline-flex;align-items:center;justify-content:center;
+  min-height:44px;padding:10px 16px;border:1.5px solid var(--ink);border-radius:8px;
+  background:#fff;color:var(--ink);text-decoration:none;
+  font:600 11px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.seat-subnav-tabs a:hover{background:rgba(30,29,26,.06)}
+.seat-subnav-tabs a[aria-current="page"]{background:var(--ink);color:var(--page)}
+.seat-subnav-tabs a[aria-current="page"]:hover{background:var(--ink);color:var(--page)}
+.seat-subnav-tabs a.chart{flex:1 1 220px;min-height:52px;background:var(--ink);color:var(--page);
+  font-size:13px;letter-spacing:.1em}
+.seat-subnav-tabs a.chart:hover{background:#000;color:var(--page)}
+.seat-subnav-note{margin:12px 0 0;font:500 14px/1.5 Inter,sans-serif;color:var(--ink)}
 
 .suite{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:28px}
 .suitecard{border:1px solid var(--ui-border);border-radius:var(--ui-radius);
@@ -541,7 +565,7 @@ body.lb-open{overflow:hidden}
 
 @media print{
   .lightbox{display:none !important}
-  header,.controls,.meta,.navlinks,footer,.notes,h2,.secnote,.suite,.warn,.printbtn,.starbtn,#gear,.assign,.export-bar,#png-toast,.planner-tools,.agebar,.ui-arrange{
+  header,.controls,.meta,.navlinks,.seat-subnav,footer,.notes,h2,.secnote,.suite,.warn,.printbtn,.starbtn,#gear,.assign,.export-bar,#png-toast,.planner-tools,.agebar,.ui-arrange{
     display:none !important}
   body.print-planner header,.print-planner .controls,.print-planner .meta,.print-planner .navlinks,
   .print-planner footer,.print-planner .notes,.print-planner h2,.print-planner .secnote,.print-planner .suite,
@@ -563,6 +587,7 @@ body.lb-open{overflow:hidden}
     box-shadow:none;border-radius:0}
 }
 </style>
+<link rel="stylesheet" href="assets/chrome.css">
 
 <div class="wrap">
 <header>
@@ -574,6 +599,14 @@ body.lb-open{overflow:hidden}
     <a href="tables.html">Table numbers</a>
     <a href="bar.html">Bar menu</a>
   </nav>
+  <div class="seat-subnav">
+    <p class="kicker">Seating</p>
+    <nav class="seat-subnav-tabs" aria-label="Seating">
+      <a href="plan.html">Working room</a>
+      <a class="chart" href="seating.html" aria-current="page">Chart sign</a>
+    </nav>
+    <p class="seat-subnav-note">This is the 24×36 A–Z guest poster.</p>
+  </div>
   <div class="suite">
     <div class="suitecard"><b>The rule</b>
       <div style="font:400 13.5px/1.5 Inter,sans-serif;color:var(--ink-soft)">A–Z, one name per line, then the sign. Guests find themselves from the path without knowing the room first.</div>
