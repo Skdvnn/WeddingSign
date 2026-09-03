@@ -24,9 +24,12 @@
   --nmscale:.76;
   --labscale:.9;
   --rulew:1px;
+  --stackspace:1;
   --detwt:400;
   --dettrk:.2em;
   --dettrk2:.13em;
+  --stack-hang:calc(var(--dettrk) * -1 - .14em);
+  --stack-hang-ing:calc((var(--dettrk2) + .04em) * -1 - .14em);
   --radius:8px;
   --chrome-border:1px solid var(--ink);
 }
@@ -168,18 +171,21 @@ h2:first-of-type{margin-top:0}
 .det{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.72cqi * var(--labscale,1));letter-spacing:var(--dettrk2);line-height:1.55;text-transform:uppercase}
 .drink-name{font-family:var(--nmfont);font-weight:var(--nmwt);
   letter-spacing:calc(var(--nmtrk) - .01em);
-  font-size:calc(7.1cqi * var(--nmscale,1));line-height:1.04;
+  font-size:calc(7.1cqi * var(--nmscale,1));line-height:1.12;
+  padding-bottom:calc(.52em * var(--stackspace,1));
   text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:none}
 .drink-ing{font-family:var(--detfont);font-weight:var(--detwt);
   font-size:calc(2.72cqi * var(--labscale,1));
-  letter-spacing:calc(var(--dettrk2) + .04em);line-height:1.55;text-transform:uppercase;
-  margin-top:.18em;max-width:42em}
+  letter-spacing:calc(var(--dettrk2) + .04em);line-height:1.45;text-transform:uppercase;
+  margin-top:0;margin-left:var(--stack-hang-ing);max-width:42em}
 .accent-rule{background:var(--accent);height:var(--rulew);width:100%;flex:none}
-.name-rule{background:currentColor;height:var(--rulew);width:22%;flex:none;margin:.4em 0 .15em}
+.name-rule{background:currentColor;height:var(--rulew);width:22%;flex:none;
+  margin:calc(.32em * var(--stackspace,1)) 0 calc(.22em * var(--stackspace,1))}
 .drink-tag{font-family:var(--detfont);font-weight:var(--detwt);
   font-size:calc(2.35cqi * var(--labscale,1));
-  letter-spacing:var(--dettrk);line-height:1.4;text-transform:uppercase;
-  margin-top:.38em;padding:0;background:none;border:0;border-radius:0}
+  letter-spacing:var(--dettrk);line-height:1.15;text-transform:uppercase;
+  margin-top:0;margin-left:var(--stack-hang);
+  padding:0 0 calc(.72em * var(--stackspace,1));background:none;border:0;border-radius:0}
 .drink.no-tag .drink-tag{display:none}
 .rule,.hair,.spine-rule,.menu-rule,.horizon-rule{background:currentColor;flex:none}
 .rule,.hair,.menu-rule,.horizon-rule{height:var(--rulew);width:100%}
@@ -199,8 +205,6 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="ruled"] .drink{display:flex;flex-direction:column;justify-content:center;border-bottom:var(--rulew) solid currentColor;min-width:0;padding:2.6% 0}
 [data-layout="ruled"] .drink:last-child{border-bottom:0}
 [data-layout="ruled"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
-[data-layout="ruled"] .drink-tag{margin-top:.16em}
-[data-layout="ruled"] .drink-ing{margin-top:.16em}
 [data-layout="ruled"] .menu-foot{border-top:var(--rulew) solid currentColor;padding-top:2.8%;display:flex;justify-content:space-between;gap:8px}
 
 [data-layout="headerrule"]{padding:8% 7.5% 7.5%}
@@ -213,25 +217,24 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="stack"]{padding:8% 6.5%;text-align:center}
 [data-layout="stack"] .k{margin:0}
 [data-layout="stack"] .optical{flex:1;justify-content:center;padding:0}
-[data-layout="stack"] .drink-list{display:flex;flex-direction:column;gap:2.6cqi}
-[data-layout="stack"] .drink-name{font-size:calc(8.6cqi * var(--nmscale,1));line-height:.96}
-[data-layout="stack"] .drink-ing{margin:.16em auto 0;max-width:34em;font-size:calc(2.45cqi * var(--labscale,1))}
-[data-layout="stack"] .drink-tag{margin-top:.16em}
+[data-layout="stack"] .drink-list{display:flex;flex-direction:column;gap:calc(2.8cqi * var(--stackspace,1))}
+[data-layout="stack"] .drink-name{font-size:calc(8.6cqi * var(--nmscale,1));line-height:1.12}
+[data-layout="stack"] .drink-ing{margin-left:auto;margin-right:auto;max-width:34em;font-size:calc(2.45cqi * var(--labscale,1))}
+[data-layout="stack"] .drink-tag{margin-left:0}
 
 /* B3 · S1 Flush — left edge, agave stamp holding the bottom */
 [data-layout="flush"]{padding:7.5% 7%}
 [data-layout="flush"] .k{margin:0}
 [data-layout="flush"] .optical{flex:1;justify-content:center;padding:0}
-[data-layout="flush"] .drink-list{display:flex;flex-direction:column;gap:2.4cqi}
+[data-layout="flush"] .drink-list{display:flex;flex-direction:column;gap:calc(2.6cqi * var(--stackspace,1))}
 [data-layout="flush"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
-[data-layout="flush"] .drink-ing{margin-top:.16em}
 [data-layout="flush"] .agave-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex:none;padding-top:0}
 [data-layout="flush"] .agave{width:28%}
 
 [data-layout="flushrule"]{padding:7.5% 7%}
 [data-layout="flushrule"] .k{margin:0}
 [data-layout="flushrule"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
-[data-layout="flushrule"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
+[data-layout="flushrule"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1));padding-bottom:0}
 [data-layout="flushrule"] .name-rule{width:18%}
 
 /* B4 · Two-column — mustard as the one rule */
@@ -255,7 +258,7 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="ledger"] .ledger-num{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:calc(var(--nmtrk) - .01em);
   font-size:calc(5.6cqi * var(--nmscale,1));line-height:.8}
 [data-layout="ledger"] .drink-name{font-size:calc(6.4cqi * var(--nmscale,1))}
-[data-layout="ledger"] .drink-tag{display:block;margin-top:.22em}
+[data-layout="ledger"] .drink-tag{display:block}
 [data-layout="ledger"] .ledger-row{padding:2.2% 0}
 
 [data-layout="ledgerplain"]{padding:0}
@@ -271,7 +274,7 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="spine"] .spine-k{writing-mode:vertical-rl;transform:rotate(180deg);align-self:stretch;
   font-size:calc(2.45cqi * var(--labscale,1));letter-spacing:.32em}
 [data-layout="spine"] .optical{padding-bottom:1.6%;padding-top:.5%}
-[data-layout="spine"] .drink-list{display:flex;flex-direction:column;gap:3.6cqi}
+[data-layout="spine"] .drink-list{display:flex;flex-direction:column;gap:calc(3.6cqi * var(--stackspace,1))}
 [data-layout="spine"] .drink-name{font-size:calc(7.2cqi * var(--nmscale,1))}
 
 [data-layout="spinecenter"]{flex-direction:row;padding:8% 6.5%;gap:2.2%}
@@ -279,20 +282,19 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="spinecenter"] .spine-k{writing-mode:vertical-rl;transform:rotate(180deg);align-self:stretch;
   font-size:calc(2.45cqi * var(--labscale,1));letter-spacing:.32em}
 [data-layout="spinecenter"] .optical{flex:1;justify-content:center;padding:0}
-[data-layout="spinecenter"] .drink-list{display:flex;flex-direction:column;justify-content:center;gap:3.6cqi}
+[data-layout="spinecenter"] .drink-list{display:flex;flex-direction:column;justify-content:center;gap:calc(3.6cqi * var(--stackspace,1))}
 [data-layout="spinecenter"] .drink-name{font-size:calc(7.2cqi * var(--nmscale,1))}
 
 [data-layout="typeonly"]{padding:8.5% 8%;justify-content:space-evenly}
 [data-layout="typeonly"] .k{margin:0;padding:0}
 [data-layout="typeonly"] .drink-list{display:contents}
 [data-layout="typeonly"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1))}
-[data-layout="typeonly"] .drink-ing{margin-top:.16em}
 
 /* B7 · Tag column — mustard as the one label */
 [data-layout="tags"]{padding:8% 7% 7.5%}
 [data-layout="tags"] .drink-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(min-content,1fr));min-height:0;padding-top:2%}
 [data-layout="tags"] .drink{display:grid;grid-template-columns:24% minmax(0,1fr);gap:2% 4%;align-items:center;min-width:0}
-[data-layout="tags"] .drink-tag{display:block;margin:0;text-align:right;color:var(--accent);
+[data-layout="tags"] .drink-tag{display:block;margin:0;padding-bottom:0;text-align:right;color:var(--accent);
   font-size:calc(1.62cqi * var(--labscale,1));letter-spacing:.18em;line-height:1.4}
 [data-layout="tags"] .drink.no-tag .drink-tag{display:block;visibility:hidden}
 [data-layout="tags"] .drink-name{font-size:calc(7cqi * var(--nmscale,1))}
@@ -301,7 +303,8 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="marks"] .marks-frame{position:relative;flex:1;display:flex;flex-direction:column;min-height:0}
 [data-layout="marks"] .reg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 [data-layout="marks"] .optical{padding:4% 2%}
-[data-layout="marks"] .drink-list{display:flex;flex-direction:column;gap:4.4cqi}
+[data-layout="marks"] .drink-list{display:flex;flex-direction:column;gap:calc(4.4cqi * var(--stackspace,1))}
+[data-layout="marks"] .drink-tag,[data-layout="marks"] .drink-ing{margin-left:0}
 [data-layout="marks"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
 
 [data-layout="diptych"]{padding:0}
@@ -315,7 +318,8 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="stagger"] .drink:nth-child(even){text-align:right;align-self:flex-end;max-width:86%}
 [data-layout="stagger"] .drink:nth-child(odd){max-width:86%}
 [data-layout="stagger"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1))}
-[data-layout="stagger"] .drink:nth-child(even) .drink-ing{margin-left:auto}
+[data-layout="stagger"] .drink:nth-child(even) .drink-tag,
+[data-layout="stagger"] .drink:nth-child(even) .drink-ing{margin-left:0}
 
 [data-layout="justify"]{padding:8% 7.5%}
 [data-layout="justify"] .jrow.k{border-bottom:var(--rulew) solid currentColor;padding-bottom:3.6%}
@@ -326,9 +330,9 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="vertical"]{padding:8% 6.5%}
 [data-layout="vertical"] .drink-list{flex:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3%;padding:5% 0 2%;min-height:0}
 [data-layout="vertical"] .drink{display:flex;flex-direction:column;align-items:center;min-width:0}
-[data-layout="vertical"] .drink-name{writing-mode:vertical-rl;transform:rotate(180deg);font-size:calc(5.6cqi * var(--nmscale,1));flex:1;line-height:1}
-[data-layout="vertical"] .drink-tag{margin-top:0;margin-bottom:.5em;text-align:center}
-[data-layout="vertical"] .drink-ing{text-align:center;max-width:none;margin-top:.6em;font-size:calc(1.35cqi * var(--labscale,1))}
+[data-layout="vertical"] .drink-name{writing-mode:vertical-rl;transform:rotate(180deg);font-size:calc(5.6cqi * var(--nmscale,1));flex:1;line-height:1;padding-bottom:0}
+[data-layout="vertical"] .drink-tag{margin:0 0 calc(.5em * var(--stackspace,1));padding-bottom:0;text-align:center}
+[data-layout="vertical"] .drink-ing{text-align:center;max-width:none;margin-top:calc(.6em * var(--stackspace,1));margin-left:0;font-size:calc(1.35cqi * var(--labscale,1))}
 
 [data-layout="overlap"]{padding:8% 7.5%}
 [data-layout="overlap"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
@@ -337,7 +341,7 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 
 [data-layout="field"]{padding:9% 8.5%}
 [data-layout="field"] .optical{padding:10% 0 8%}
-[data-layout="field"] .drink-list{display:flex;flex-direction:column;gap:2.4cqi}
+[data-layout="field"] .drink-list{display:flex;flex-direction:column;gap:calc(2.6cqi * var(--stackspace,1))}
 [data-layout="field"] .drink-name{font-size:calc(7.2cqi * var(--nmscale,1))}
 [data-layout="field"] .field-foot{border-top:var(--rulew) solid currentColor;padding-top:3.4%}
 
@@ -349,7 +353,7 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 
 [data-layout="anchor"]{padding:8% 7%}
 [data-layout="anchor"] .optical{flex:1;justify-content:center}
-[data-layout="anchor"] .drink-list{display:flex;flex-direction:column;gap:2.4cqi}
+[data-layout="anchor"] .drink-list{display:flex;flex-direction:column;gap:calc(2.6cqi * var(--stackspace,1))}
 [data-layout="anchor"] .drink-name{font-size:calc(6.8cqi * var(--nmscale,1))}
 [data-layout="anchor"] .anchor-date{font-family:var(--nmfont);font-weight:var(--nmwt);
   font-size:calc(9.2cqi * var(--nmscale,1));line-height:.85;letter-spacing:calc(var(--nmtrk) - .02em);
@@ -362,16 +366,19 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="cropped"] .drink:nth-child(odd) .drink-name{margin-left:-5%}
 [data-layout="cropped"] .drink:nth-child(even) .drink-name{margin-right:-5%;text-align:right}
 [data-layout="cropped"] .drink-tag,[data-layout="cropped"] .drink-ing{padding:0 7.5%}
-[data-layout="cropped"] .drink:nth-child(even) .drink-ing{margin-left:auto;margin-right:7.5%;text-align:right}
+[data-layout="cropped"] .drink:nth-child(even) .drink-tag,
+[data-layout="cropped"] .drink:nth-child(even) .drink-ing{margin-left:0}
+[data-layout="cropped"] .drink:nth-child(even) .drink-ing{margin-right:7.5%;text-align:right}
 
 /* B20 · Specimen — agave as the stamp, drinks as captions */
 [data-layout="specimen"]{padding:7% 8% 6.5%;text-align:center}
 [data-layout="specimen"] .k{margin:0}
 [data-layout="specimen"] .specimen-mark{flex:none;display:flex;justify-content:center;padding:4% 0 5%}
 [data-layout="specimen"] .agave{width:46%}
-[data-layout="specimen"] .drink-list{display:flex;flex-direction:column;gap:2.1cqi}
+[data-layout="specimen"] .drink-list{display:flex;flex-direction:column;gap:calc(2.3cqi * var(--stackspace,1))}
 [data-layout="specimen"] .drink-name{font-size:calc(5.6cqi * var(--nmscale,1))}
-[data-layout="specimen"] .drink-ing{margin:.12em auto 0;max-width:36em;font-size:calc(2.15cqi * var(--labscale,1))}
+[data-layout="specimen"] .drink-tag{margin-left:0}
+[data-layout="specimen"] .drink-ing{margin-left:auto;margin-right:auto;max-width:36em;font-size:calc(2.15cqi * var(--labscale,1))}
 
 /* B21 · Stack Ruled — S8: centred stack, hairlines between */
 [data-layout="stackrule"]{padding:8% 7%;text-align:center}
@@ -379,20 +386,21 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="stackrule"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
 [data-layout="stackrule"] .drink{padding:2.2% 0;border-bottom:var(--rulew) solid currentColor}
 [data-layout="stackrule"] .drink:last-child{border-bottom:0}
-[data-layout="stackrule"] .drink-name{font-size:calc(7.8cqi * var(--nmscale,1));line-height:.96}
-[data-layout="stackrule"] .drink-ing{margin:.16em auto 0;max-width:34em}
+[data-layout="stackrule"] .drink-name{font-size:calc(7.8cqi * var(--nmscale,1));line-height:1.12}
+[data-layout="stackrule"] .drink-tag{margin-left:0}
+[data-layout="stackrule"] .drink-ing{margin-left:auto;margin-right:auto;max-width:34em}
 
 /* B22 · Deep Overlap — S9: names cluster, recipes as a foot */
 [data-layout="deepoverlap"]{padding:8% 7.5%}
 [data-layout="deepoverlap"] .names{flex:1;display:flex;flex-direction:column;justify-content:center}
 [data-layout="deepoverlap"] .names .drink{margin-top:-.2em}
 [data-layout="deepoverlap"] .names .drink:nth-child(even){margin-left:22%}
-[data-layout="deepoverlap"] .names .drink-name{font-size:calc(8.8cqi * var(--nmscale,1));line-height:.82}
+[data-layout="deepoverlap"] .names .drink-name{font-size:calc(8.8cqi * var(--nmscale,1));line-height:.82;padding-bottom:0}
 [data-layout="deepoverlap"] .names .drink-tag,[data-layout="deepoverlap"] .names .drink-ing{display:none}
-[data-layout="deepoverlap"] .ings{border-top:var(--rulew) solid currentColor;padding-top:3.2%;display:flex;flex-direction:column;gap:1.05cqi}
+[data-layout="deepoverlap"] .ings{border-top:var(--rulew) solid currentColor;padding-top:3.2%;display:flex;flex-direction:column;gap:calc(1.05cqi * var(--stackspace,1))}
 [data-layout="deepoverlap"] .ings .drink-name{display:none}
 [data-layout="deepoverlap"] .ings .drink-ing{margin:0;font-size:calc(2.15cqi * var(--labscale,1))}
-[data-layout="deepoverlap"] .ings .drink-tag{margin:0 .7em 0 0;display:inline}
+[data-layout="deepoverlap"] .ings .drink-tag{margin:0 .7em 0 0;padding-bottom:0;display:inline}
 [data-layout="deepoverlap"] .ings .drink.no-tag .drink-tag{display:none}
 
 /* B23 · Rotated Pair — S10: names vertical, drinks in the channel */
@@ -414,8 +422,9 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
   font-size:calc(5.2cqi * var(--nmscale,1));line-height:1.05;padding-right:2%}
 [data-layout="sibling"] .sib-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;text-align:right;min-width:0}
 [data-layout="sibling"] .sib-body .k{margin-bottom:auto;text-align:right}
-[data-layout="sibling"] .drink-list{display:flex;flex-direction:column;gap:2.2cqi;padding-bottom:2%}
+[data-layout="sibling"] .drink-list{display:flex;flex-direction:column;gap:calc(2.2cqi * var(--stackspace,1));padding-bottom:2%}
 [data-layout="sibling"] .drink-name{font-size:calc(5.6cqi * var(--nmscale,1))}
+[data-layout="sibling"] .drink-tag,[data-layout="sibling"] .drink-ing{margin-left:0}
 [data-layout="sibling"] .drink-ing{margin-left:auto}
 
 /* B25 · Scattered — 03: four drinks, none sharing a baseline */
@@ -426,6 +435,8 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="scatter"] .drink:nth-child(2){top:22%;right:0;text-align:right}
 [data-layout="scatter"] .drink:nth-child(3){bottom:26%;left:10%}
 [data-layout="scatter"] .drink:nth-child(4){bottom:2%;right:0;text-align:right}
+[data-layout="scatter"] .drink:nth-child(even) .drink-tag,
+[data-layout="scatter"] .drink:nth-child(even) .drink-ing{margin-left:0}
 [data-layout="scatter"] .drink:nth-child(even) .drink-ing{margin-left:auto}
 [data-layout="scatter"] .drink-name{font-size:calc(6.2cqi * var(--nmscale,1))}
 
@@ -453,10 +464,12 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="diagband"] .diag-lock .lock{font-size:calc(7.2cqi * var(--nmscale,1))}
 [data-layout="diagband"] .drink-list.top{flex:none}
 [data-layout="diagband"] .drink-list.bot{flex:none;margin-top:auto;text-align:right}
+[data-layout="diagband"] .drink-list.bot .drink-tag,
+[data-layout="diagband"] .drink-list.bot .drink-ing{margin-left:0}
 [data-layout="diagband"] .drink-list.bot .drink-ing{margin-left:auto}
 [data-layout="diagband"] .drink-name{font-size:calc(5.8cqi * var(--nmscale,1))}
-[data-layout="diagband"] .drink-list.top .drink + .drink{margin-top:1.6cqi}
-[data-layout="diagband"] .drink-list.bot .drink + .drink{margin-top:1.6cqi}
+[data-layout="diagband"] .drink-list.top .drink + .drink{margin-top:calc(1.6cqi * var(--stackspace,1))}
+[data-layout="diagband"] .drink-list.bot .drink + .drink{margin-top:calc(1.6cqi * var(--stackspace,1))}
 
 /* B29 · Quadrants — four cells, one drink each */
 [data-layout="quad"]{padding:0}
@@ -482,7 +495,7 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="slashdate"] .slash-date .acc{font-size:.38em;line-height:1;margin:.1em 0}
 [data-layout="slashdate"] .slash-body{flex:1;display:flex;flex-direction:column;min-width:0}
 [data-layout="slashdate"] .slash-body .k{margin-bottom:auto}
-[data-layout="slashdate"] .drink-list{display:flex;flex-direction:column;gap:2.6cqi;padding-top:8%}
+[data-layout="slashdate"] .drink-list{display:flex;flex-direction:column;gap:calc(2.6cqi * var(--stackspace,1));padding-top:8%}
 [data-layout="slashdate"] .drink-name{font-size:calc(5.6cqi * var(--nmscale,1))}
 
 /* B32 · Underlined Ampersand — couple as the display, drinks as captions */
@@ -561,7 +574,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 <div class="wrap">
 <header>
   <h1>Allison + Skylar<br>Bar Menu</h1>
-  <p class="sub">Same suite as the invite, the welcome sign, and the 5×7s — now a portrait bar card. Four drinks, no prices. Pick a poster, then <b>Export PDF</b> for the bartender — one letter page, no chrome. Scrub names, details, and line weight. Star a shortlist if you want to compare.</p>
+  <p class="sub">Same suite as the invite, the welcome sign, and the 5×7s — now a portrait bar card. Four drinks, no prices. Pick a poster, then <b>Export PDF</b> for the bartender — one letter page, no chrome. Scrub names, details, line weight, and spacing. Star a shortlist if you want to compare.</p>
   <nav class="navlinks" aria-label="Primary">
     <a href="index.html">Welcome sign</a>
     <a href="plan.html">Seating</a>
@@ -650,6 +663,8 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     <div class="sl"><input type="range" id="sLab" min="0.7" max="1.45" step="0.02" value="0.90"><output id="oLab">0.90×</output></div>
     <span class="lbl">Line weight</span>
     <div class="sl"><input type="range" id="sRule" min="0.5" max="2.5" step="0.1" value="1"><output id="oRule">1.0px</output></div>
+    <span class="lbl">Spacing</span>
+    <div class="sl"><input type="range" id="sStack" min="0.7" max="1.65" step="0.05" value="1"><output id="oStack">1.00×</output></div>
     <button type="button" class="xbtn" id="reset-type">Reset type</button>
     <span class="typenote" id="typenote"></span>
   </div>
@@ -675,7 +690,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 </section>
 
 <h2>The posters</h2>
-<p class="secnote">Same four drinks, same faces as the welcome set. Each poster is a different composition — not a class-name swap. Mustard is used once per idea. Scrub names, details, and line weight; they apply to the whole set. Default is the 0.76 / 0.90 they already liked. Export PDF for the bartender.</p>
+<p class="secnote">Same four drinks, same faces as the welcome set. Each poster is a different composition — not a class-name swap. Mustard is used once per idea. Scrub names, details, line weight, and spacing; they apply to the whole set. Default is the 0.76 / 0.90 they already liked, spacing at 1.00. Export PDF for the bartender.</p>
 
 <div class="grid" id="shortlist-grid" data-home-grid="shortlist">
 
