@@ -334,7 +334,9 @@
       s.id = 'print-size';
       document.head.appendChild(s);
     }
-    s.textContent = '@page { size: letter portrait; margin: 0; }';
+    var pageInW = 8.5;
+    var pageInH = pageInW * PNG_H / PNG_W;
+    s.textContent = '@page { size: ' + pageInW + 'in ' + pageInH + 'in; margin: 0; }';
     var done = function () {
       document.body.classList.remove('print-card');
       frame.classList.remove('print-me');
@@ -443,13 +445,13 @@
     captureFrame(frame)
       .then(function (canvas) { return loadJsPdf().then(function (JsPDF) { return { canvas: canvas, JsPDF: JsPDF }; }); })
       .then(function (pack) {
-        var pdf = new pack.JsPDF({ orientation: 'portrait', unit: 'pt', format: 'letter', compress: true });
-        var pageW = pdf.internal.pageSize.getWidth();
-        var pageH = pdf.internal.pageSize.getHeight();
+        var pageW = 612;
+        var pageH = pageW * PNG_H / PNG_W;
+        var pdf = new pack.JsPDF({ orientation: 'portrait', unit: 'pt', format: [pageW, pageH], compress: true });
         var img = pack.canvas.toDataURL('image/jpeg', 0.93);
         pdf.addImage(img, 'JPEG', 0, 0, pageW, pageH);
         pdf.save(PDF_NAME);
-        toast('PDF saved · letter portrait · ' + PDF_NAME);
+        toast('PDF saved · 1545 × 2000 · ' + PDF_NAME);
       })
       .catch(function () {
         toast('PDF failed — Print this layout → Save as PDF.');

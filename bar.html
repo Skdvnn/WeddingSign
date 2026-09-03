@@ -33,7 +33,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--page);color:var(--ink);
   font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1220px;margin:0 auto;padding:0 30px 100px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 30px 100px}
 
 header{padding:66px 0 36px;border-bottom:1.5px solid var(--ink)}
 h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,7.2vw,76px);
@@ -58,7 +58,7 @@ h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,7.2
 
 .controls{position:sticky;top:0;z-index:30;background:var(--page);
   border-bottom:1px solid rgba(0,0,0,.13);padding:10px 0 14px;margin-bottom:40px}
-.controls .inner{max-width:1220px;margin:0 auto;padding:0 30px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.controls .inner{max-width:1280px;margin:0 auto;padding:0 30px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .barhead{justify-content:space-between}
 #panel{max-height:0;overflow:hidden;opacity:0;
   transition:max-height .34s cubic-bezier(.4,0,.2,1),opacity .22s,padding .34s}
@@ -123,8 +123,8 @@ h2:first-of-type{margin-top:0}
   .drink-card .row{grid-template-columns:1fr}
 }
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:48px 28px}
-.grid > div{content-visibility:auto;contain-intrinsic-size:auto 560px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:40px 32px}
+.grid > div{content-visibility:auto;contain-intrinsic-size:auto 640px}
 
 .frame{
   aspect-ratio:1545/2000;border-radius:2px;overflow:hidden;position:relative;display:flex;
@@ -160,21 +160,21 @@ h2:first-of-type{margin-top:0}
 
 .nm{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk)}
 .acc{font-family:var(--accfont);font-style:italic}
-.k{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.28cqi * var(--labscale,1));letter-spacing:var(--dettrk);line-height:1.7;text-transform:uppercase}
-.det{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.05cqi * var(--labscale,1));letter-spacing:var(--dettrk2);line-height:1.9;text-transform:uppercase}
+.k{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(3.05cqi * var(--labscale,1));letter-spacing:var(--dettrk);line-height:1.5;text-transform:uppercase}
+.det{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.72cqi * var(--labscale,1));letter-spacing:var(--dettrk2);line-height:1.55;text-transform:uppercase}
 .drink-name{font-family:var(--nmfont);font-weight:var(--nmwt);
   letter-spacing:calc(var(--nmtrk) - .01em);
-  font-size:calc(8.2cqi * var(--nmscale,1));line-height:.9;
+  font-size:calc(7.1cqi * var(--nmscale,1));line-height:1.04;
   text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:none}
 .drink-ing{font-family:var(--detfont);font-weight:var(--detwt);
-  font-size:calc(2.05cqi * var(--labscale,1));
-  letter-spacing:calc(var(--dettrk2) + .04em);line-height:1.65;text-transform:uppercase;
-  margin-top:.26em;max-width:42em}
+  font-size:calc(2.72cqi * var(--labscale,1));
+  letter-spacing:calc(var(--dettrk2) + .04em);line-height:1.55;text-transform:uppercase;
+  margin-top:.35em;max-width:42em}
 .accent-rule{background:var(--accent);height:var(--rulew);width:100%;flex:none}
 .name-rule{background:currentColor;height:var(--rulew);width:22%;flex:none;margin:.4em 0 .15em}
 .drink-tag{font-family:var(--detfont);font-weight:var(--detwt);
-  font-size:calc(1.88cqi * var(--labscale,1));
-  letter-spacing:var(--dettrk);line-height:1.55;text-transform:uppercase;
+  font-size:calc(2.35cqi * var(--labscale,1));
+  letter-spacing:var(--dettrk);line-height:1.4;text-transform:uppercase;
   margin-top:.38em;padding:0;background:none;border:0;border-radius:0}
 .drink.no-tag .drink-tag{display:none}
 .rule,.hair,.spine-rule,.menu-rule,.horizon-rule{background:currentColor;flex:none}
@@ -192,7 +192,7 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="ruled"] .drink-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(min-content,1fr));min-height:0}
 [data-layout="ruled"] .drink{display:flex;flex-direction:column;justify-content:center;border-bottom:var(--rulew) solid currentColor;min-width:0;padding:2.8% 0}
 [data-layout="ruled"] .drink:last-child{border-bottom:0}
-[data-layout="ruled"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
+[data-layout="ruled"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
 [data-layout="ruled"] .drink-ing{margin-top:.22em}
 [data-layout="ruled"] .menu-foot{border-top:var(--rulew) solid currentColor;padding-top:2.8%;display:flex;justify-content:space-between;gap:8px}
 
@@ -200,14 +200,14 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="headerrule"] .menu-head{padding-bottom:2.4%}
 [data-layout="headerrule"] .accent-rule{margin-bottom:4%}
 [data-layout="headerrule"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
-[data-layout="headerrule"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
+[data-layout="headerrule"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
 
 /* B2 · S2 Display Stack — optically centred cluster, names at display size */
 [data-layout="stack"]{padding:8.5% 6.5% 8%;text-align:center}
 [data-layout="stack"] .optical{padding-bottom:2.4%}
 [data-layout="stack"] .drink-list{display:flex;flex-direction:column;gap:4cqi}
-[data-layout="stack"] .drink-name{font-size:calc(8.8cqi * var(--nmscale,1));line-height:.9}
-[data-layout="stack"] .drink-ing{margin-left:auto;margin-right:auto;max-width:34em}
+[data-layout="stack"] .drink-name{font-size:calc(8.6cqi * var(--nmscale,1));line-height:.96}
+[data-layout="stack"] .drink-ing{margin-left:auto;margin-right:auto;max-width:34em;font-size:calc(2.45cqi * var(--labscale,1))}
 [data-layout="stack"] .drink-tag{margin-top:.28em}
 
 /* B3 · S1 Flush — left edge, agave stamp holding the bottom */
@@ -215,14 +215,14 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="flush"] .k{margin-bottom:2.2%}
 [data-layout="flush"] .optical{padding-bottom:0}
 [data-layout="flush"] .drink-list{display:flex;flex-direction:column;gap:3.4cqi}
-[data-layout="flush"] .drink-name{font-size:calc(7.8cqi * var(--nmscale,1))}
+[data-layout="flush"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
 [data-layout="flush"] .agave-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex:none;padding-top:3%}
 [data-layout="flush"] .agave{width:22%}
 
 [data-layout="flushrule"]{padding:7.5% 7% 7%}
 [data-layout="flushrule"] .k{margin-bottom:2.2%}
 [data-layout="flushrule"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
-[data-layout="flushrule"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1))}
+[data-layout="flushrule"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
 [data-layout="flushrule"] .name-rule{width:18%}
 
 /* B4 · Two-column — mustard as the one rule */
@@ -421,7 +421,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
       <div class="det" style="font-size:10px;letter-spacing:.14em">SPICY OPTIONAL · MOCKTAIL</div>
     </div>
     <div class="suitecard"><b>Card</b>
-      <div style="font:500 13px/1.45 Inter,sans-serif;color:var(--ink-soft)">1545 × 2000 · ~3:4 · letter / 8.5 × 11</div>
+      <div style="font:500 13px/1.45 Inter,sans-serif;color:var(--ink-soft)">1545 × 2000 · 3:4 portrait · PDF is this card</div>
     </div>
   </div>
 </header>
@@ -1278,8 +1278,8 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   <ul>
     <li><strong>Bone cardstock</strong> is the honest match to the invite and the 5×7s. If you can get close to <code>#E7E3DA</code>, use it.</li>
     <li><strong>Mustard board</strong> is a labeled option in Type tools — only if this sign stands next to the painted welcome A-frame and you want them to read as a pair. Default is bone.</li>
-    <li><strong>Export PDF</strong> is the bartender file: <code>allison-skylar-bar-menu.pdf</code>, one letter page, the selected poster only — no nav, no tools, no browser chrome. Same 1545 × 2000 aspect as the card.</li>
-    <li><strong>1545 × 2000, portrait</strong> — almost exactly letter (8.5 × 11). Print this layout also fills a portrait page if you want a paper proof.</li>
+    <li><strong>Export PDF</strong> is the bartender file: <code>allison-skylar-bar-menu.pdf</code>, one page at the card’s 1545 × 2000 portrait — no nav, no tools, no browser chrome. Not stretched to a different paper.</li>
+    <li><strong>1545 × 2000, portrait</strong> — the mock’s 3:4. Print this layout uses the same aspect.</li>
   </ul>
   <h4>What ties this to the rest of the wedding</h4>
   <ul>
