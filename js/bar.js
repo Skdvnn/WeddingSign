@@ -142,7 +142,10 @@
       el.style.background = gh;
       el.style.color = fg;
     });
-    document.querySelectorAll('[data-fg]').forEach(function (el) { el.style.color = fg; });
+    document.querySelectorAll('[data-fg]').forEach(function (el) {
+      if (el.closest('[data-ink-band], [data-band]')) return;
+      el.style.color = fg;
+    });
     document.querySelectorAll('[data-fgs]').forEach(function (el) { el.style.color = fg; });
     document.querySelectorAll('[data-band]').forEach(function (el) {
       el.style.background = accent;
@@ -495,7 +498,7 @@
     var out = [];
     out.push('<rect width="' + PNG_W + '" height="' + PNG_H + '" fill="' + gh + '"/>');
 
-    frame.querySelectorAll('.mustard-band, [data-ink-band]').forEach(function (el) {
+    frame.querySelectorAll('.mustard-band, [data-band], [data-ink-band]').forEach(function (el) {
       var r = el.getBoundingClientRect();
       if (r.width < 0.5 || r.height < 0.5) return;
       var fill = rgbToHex(getComputedStyle(el).backgroundColor) || (ground === 'mustard' ? T.ink.hex : '#BFA52B');
@@ -530,7 +533,29 @@
       );
     });
 
-    frame.querySelectorAll('[data-header], [data-band-sub], .drink-name, .drink-tag, .drink-ing, .ledger-num, .col-label, .menu-foot, .field-foot, .horizon-foot, .anchor-date, .jrow').forEach(function (el) {
+    frame.querySelectorAll('.plate, [data-layout="stackrule"] .drink, [data-layout="stackrule"] .k, [data-layout="quad"] .drink').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      var cs = getComputedStyle(el);
+      if (r.width < 0.5 || r.height < 0.5) return;
+      var sides = [
+        [cs.borderTopWidth, cs.borderTopColor, 0, 0, r.width, parsePx(cs.borderTopWidth)],
+        [cs.borderRightWidth, cs.borderRightColor, r.width - parsePx(cs.borderRightWidth), 0, parsePx(cs.borderRightWidth), r.height],
+        [cs.borderBottomWidth, cs.borderBottomColor, 0, r.height - parsePx(cs.borderBottomWidth), r.width, parsePx(cs.borderBottomWidth)],
+        [cs.borderLeftWidth, cs.borderLeftColor, 0, 0, parsePx(cs.borderLeftWidth), r.height]
+      ];
+      sides.forEach(function (s) {
+        var bw = parsePx(s[0]);
+        if (bw < 0.5) return;
+        var fill = rgbToHex(s[1]) || fg;
+        out.push(
+          '<rect x="' + ((r.left - root.left + s[2]) * sx).toFixed(1) + '" y="' + ((r.top - root.top + s[3]) * sy).toFixed(1) +
+          '" width="' + Math.max(1, s[4] * sx).toFixed(1) + '" height="' + Math.max(1, s[5] * sy).toFixed(1) +
+          '" fill="' + fill + '"/>'
+        );
+      });
+    });
+
+    frame.querySelectorAll('[data-header], [data-band-sub], .drink-name, .drink-tag, .drink-ing, .ledger-num, .col-label, .menu-foot, .field-foot, .horizon-foot, .anchor-date, .jrow, .lock, .slash-date, .initials, .amp-lock, .sib-spine, .rot-name').forEach(function (el) {
       var cs = getComputedStyle(el);
       if (cs.display === 'none' || cs.visibility === 'hidden' || el.hidden) return;
       var text = (el.innerText || el.textContent || '').replace(/\s+\n/g, '\n').replace(/\n\s+/g, '\n').trim();
