@@ -24,10 +24,14 @@ header{padding:56px 0 28px;border-bottom:1.5px solid var(--ink)}
 h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,6.4vw,68px);
    line-height:1.0;letter-spacing:-.008em;margin:0 0 16px}
 .sub{font-size:16.5px;line-height:1.6;max-width:720px;color:var(--ink-soft);margin:0}
-.navlinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+.navlinks{display:flex;flex-wrap:wrap;width:max-content;max-width:100%;margin-top:20px;
+  border:1.5px solid var(--ink);border-radius:8px;overflow:hidden;background:#fff}
 .navlinks a{font:600 12px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ink);text-decoration:none;border-bottom:1.5px solid rgba(0,0,0,.25);padding-bottom:2px}
-.navlinks a:hover{border-color:var(--ink)}
+  color:var(--ink);text-decoration:none;padding:13px 18px;border-right:1.5px solid var(--ink)}
+.navlinks a:last-child{border-right:0}
+.navlinks a:hover{background:rgba(30,29,26,.06)}
+.navlinks a[aria-current="page"]{background:var(--ink);color:var(--page)}
+.navlinks a[aria-current="page"]:hover{background:var(--ink);color:var(--page)}
 a{color:#7d4a1e}
 
 .xbtn{appearance:none;border:1.5px solid rgba(0,0,0,.28);background:#fff;color:var(--ink);
@@ -134,13 +138,13 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 <header>
   <p class="kicker" style="font:700 10px/1 'Roboto Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#8b8577;margin:0 0 12px">Just for us</p>
   <h1>Our seating</h1>
-  <p class="sub">The working room — not the guest poster. Three long tables, fifteen signs. Couples sit across from each other. You two sit together on this side, in the middle, with closest family. The printed chart is A–Z, one name per line.</p>
-  <div class="navlinks">
-    <a href="seating.html">Guest posters</a>
+  <p class="sub">The working room — not the guest poster. Three long tables, fifteen signs. Couples sit across from each other. You two sit together on this side, in the middle, with closest family. The <a href="seating.html">printed chart</a> is A–Z, one name per line.</p>
+  <nav class="navlinks" aria-label="Primary">
+    <a href="index.html">Welcome sign</a>
+    <a href="plan.html" aria-current="page">Seating</a>
     <a href="tables.html">Table numbers</a>
     <a href="bar.html">Bar menu</a>
-    <a href="index.html">Welcome sign</a>
-  </div>
+  </nav>
 </header>
 
 <section class="assign" id="assign">
