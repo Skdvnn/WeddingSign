@@ -595,7 +595,7 @@ body.lb-open{overflow:hidden}
   <p class="sub">Same suite as the invite, S2, and the 5×7s. Guests find themselves <b>A–Z</b>, one name per line, then the sign number. The room is still three long tables and fifteen 5×7s — that’s what 04 means. Lay people out in <a href="plan.html">Our seating</a>, then star a chart and print 24×36.</p>
   <nav class="navlinks" aria-label="Primary">
     <a href="index.html">Welcome sign</a>
-    <a href="plan.html" aria-current="page">Seating</a>
+    <a href="seating.html" aria-current="page">Seating</a>
     <a href="tables.html">Table numbers</a>
     <a href="bar.html">Bar menu</a>
   </nav>
@@ -603,7 +603,7 @@ body.lb-open{overflow:hidden}
     <p class="kicker">Seating</p>
     <nav class="seat-subnav-tabs" aria-label="Seating">
       <a href="plan.html">Working room</a>
-      <a class="chart" href="seating.html" aria-current="page">Chart sign</a>
+      <a class="chart" href="seating.html#charts" aria-current="page">Chart sign</a>
     </nav>
     <p class="seat-subnav-note">This is the 24×36 A–Z guest poster.</p>
   </div>
@@ -743,46 +743,7 @@ body.lb-open{overflow:hidden}
 
 <div class="wrap">
 
-<section class="assign" id="assign">
-  <div class="planner-top">
-    <div>
-      <p class="kicker">Just for us</p>
-      <h3>The room</h3>
-      <p class="subline">The working room — each person is their own chip. A couple is two chips stacked, the same way they sit across the table. Drop either name on a chair and the partner takes the seat opposite. You two stay on the same side. <a href="plan.html">Open the full planner →</a></p>
-    </div>
-    <div class="planner-stats" id="planner-stats"></div>
-  </div>
-  <div class="planner-tools">
-    <input class="f" id="planner-q" type="search" placeholder="Find a name" autocomplete="off">
-    <button type="button" class="xbtn" id="refill">Reset placeholders</button>
-    <button type="button" class="xbtn" id="clear-room">Clear the room</button>
-    <button type="button" class="xbtn" id="print-room">Print our room</button>
-    <span class="hint" id="rsvpnote">Loading the list…</span>
-  </div>
-  <div class="planner-tools planner-layouts">
-    <button type="button" class="xbtn" id="save-layout">Save layout</button>
-    <select class="f" id="layout-pick" aria-label="Saved layouts"></select>
-    <button type="button" class="xbtn" id="load-layout">Load</button>
-    <button type="button" class="xbtn" id="delete-layout">Delete</button>
-    <button type="button" class="xbtn" id="download-layout">Download JSON</button>
-    <button type="button" class="xbtn" id="import-layout-btn">Open JSON</button>
-    <input id="import-layout" type="file" accept="application/json" hidden>
-    <span class="layout-saved" id="layout-saved">Saves as you work</span>
-  </div>
-  <div>
-    <h4>Not seated · <span id="unassigned-count">0</span></h4>
-    <div class="chips-g" id="unassigned"></div>
-  </div>
-  <div class="agebar" id="agebar" hidden></div>
-  <div id="assigned-tables"></div>
-</section>
-
-<section id="favorites-section">
-  <h2 id="favorites-heading">Favorites</h2>
-  <p class="secnote" id="favorites-empty">Star a chart and it moves here. Print or PNG from the shortlist.</p>
-  <div class="grid" id="favorites-grid" style="display:none"></div>
-</section>
-
+<section id="charts">
 <h2>The charts</h2>
 <p class="secnote">Every chart is A–Z, one name per line. Then the age. Click a poster to open it larger. Letters are a reserved margin or a section header. Some keep a hairline under every row.</p>
 
@@ -901,6 +862,13 @@ body.lb-open{overflow:hidden}
   </div>
 
 </div>
+</section>
+
+<section id="favorites-section">
+  <h2 id="favorites-heading">Favorites</h2>
+  <p class="secnote" id="favorites-empty">Star a chart and it moves here. Print or PNG from the shortlist.</p>
+  <div class="grid" id="favorites-grid" style="display:none"></div>
+</section>
 
 <h2>Printing them</h2>
 <div class="notes">
