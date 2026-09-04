@@ -237,6 +237,8 @@
     r.setProperty('--dettrk', d.t1);
     r.setProperty('--dettrk2', d.t2);
     r.setProperty('--labscale', String(sLab ? parseFloat(sLab.value) : 0.9));
+    var grotesque = { roboto: 1, robotocondensed: 1, robotomono: 1, helveticablack: 1 };
+    r.setProperty('--cap-inset', grotesque[nfEl.value] ? '1.6cqi' : '0px');
     applyRule();
     applyStack();
     var oName = document.getElementById('oName');
