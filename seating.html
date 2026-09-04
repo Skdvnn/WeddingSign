@@ -652,6 +652,19 @@ body.lb-open{overflow:hidden}
               <button type="button" data-tc="mustard">Mustard</button>
             </div>
           </div>
+          <div class="ui-field ui-span-2 mix-row" id="mustard-mix">
+            <span>Mustard</span>
+            <input type="color" class="mix-wheel" id="mustard-wheel" value="#9A9322" aria-label="Mustard colour">
+            <input class="f mix-hex" id="mustard-hex" value="#9A9322" spellcheck="false" maxlength="7" aria-label="Mustard hex">
+            <div class="mix-chips" id="mustard-presets"></div>
+            <span class="lbl">Hue</span>
+            <div class="sl"><input type="range" id="mustard-hue" min="36" max="68" step="1" value="57"><output id="mustard-hue-out">olive</output></div>
+            <span class="lbl">Sat</span>
+            <div class="sl"><input type="range" id="mustard-sat" min="20" max="80" step="1" value="64"><output id="mustard-sat-out">64%</output></div>
+            <span class="lbl">Light</span>
+            <div class="sl"><input type="range" id="mustard-lit" min="22" max="58" step="1" value="37"><output id="mustard-lit-out">37%</output></div>
+            <p class="mix-note">Same print mix as the bar card. <b>Curry</b> is the one that won’t come out lemon. This only recolors the posters — not who sits where.</p>
+          </div>
           <div class="ui-field">
             <span>Name</span>
             <select class="f" id="nf">
@@ -912,5 +925,6 @@ body.lb-open{overflow:hidden}
 </div>
 
 <script src="js/fonts.js"></script>
-<script src="js/seating.js?v=seats12"></script>
+<script src="js/mustard.js"></script>
+<script src="js/seating.js?v=seats13"></script>
 <script src="js/favorites.js"></script>

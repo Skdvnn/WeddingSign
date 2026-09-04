@@ -8,6 +8,7 @@
 
   var KEY = 'wedding-mustard-v1';
   var SCREEN = '#BFA52B';
+  var CURRY = '#9A9322';
   var PRESETS = [
     { id: 'screen', hex: '#BFA52B', label: 'Screen', hint: 'napkin / A-frame' },
     { id: 'curry', hex: '#9A9322', label: 'Curry', hint: 'try this print' },
@@ -15,7 +16,7 @@
     { id: 'ochre', hex: '#8A7418', label: 'Ochre', hint: 'deeper dirt' }
   ];
 
-  var hex = SCREEN;
+  var hex = CURRY;
   var listeners = [];
   var uiBound = false;
 
@@ -212,6 +213,7 @@
   load();
   w.WeddingMustard = {
     SCREEN: SCREEN,
+    CURRY: CURRY,
     PRESETS: PRESETS,
     get: get,
     set: set,
