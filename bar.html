@@ -203,14 +203,17 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 .plate{border:var(--rulew) solid currentColor}
 
 /* B1 · S5 Ruled Editorial — even padding around one-weight rules */
-[data-layout="ruled"]{padding:8% 7.5% 7.5%}
+[data-layout="ruled"]{padding:8cqi 7.5cqi 7.5cqi;align-items:stretch}
+[data-layout="ruled"] .menu-head,
+[data-layout="ruled"] .drink-list,
+[data-layout="ruled"] .menu-foot{width:100%;max-width:100%;min-width:0;align-self:stretch;box-sizing:border-box}
 [data-layout="ruled"] .menu-head{border-bottom:var(--rulew) solid currentColor;padding-bottom:2.8%;margin:0}
-[data-layout="ruled"] .drink-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(min-content,1fr));min-height:0}
-[data-layout="ruled"] .drink{display:flex;flex-direction:column;justify-content:center;border-bottom:var(--rulew) solid currentColor;min-width:0;padding:2.6% 0}
+[data-layout="ruled"] .drink-list{flex:1;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(4,minmax(min-content,1fr));min-height:0}
+[data-layout="ruled"] .drink{display:flex;flex-direction:column;justify-content:center;border-bottom:var(--rulew) solid currentColor;width:100%;min-width:0;padding:2.6% 0}
 [data-layout="ruled"] .drink:last-child{border-bottom:0}
 [data-layout="ruled"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
 [data-layout="ruled"] .drink-ing,[data-layout="ruled"] .drink-tag{margin-left:0;padding-left:var(--cap-inset)}
-[data-layout="ruled"] .menu-foot{border-top:var(--rulew) solid currentColor;padding-top:2.8%;padding-left:var(--cap-inset);display:flex;justify-content:space-between;gap:8px}
+[data-layout="ruled"] .menu-foot{border-top:var(--rulew) solid currentColor;padding-top:2.8%;padding-left:0;display:flex;justify-content:space-between;gap:8px}
 
 [data-layout="headerrule"]{padding:8% 7.5% 7.5%}
 [data-layout="headerrule"] .menu-head{padding-bottom:2.4%}
@@ -2026,5 +2029,5 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 </div>
 
 <script src="js/fonts.js"></script>
-<script src="js/bar.js?v=hdr4"></script>
+<script src="js/bar.js?v=hdr5"></script>
 <script src="js/favorites.js"></script>
