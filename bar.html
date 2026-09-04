@@ -19,6 +19,9 @@
   --nmfont:var(--font-invite-serif);
   --accfont:var(--font-invite-serif);
   --detfont:var(--font-invite-mono);
+  --hdrfont:var(--font-invite-mono);
+  --hdrwt:400;
+  --hdrtrk:.2em;
   --nmwt:400;
   --nmtrk:-.006em;
   --nmscale:.76;
@@ -167,7 +170,7 @@ h2:first-of-type{margin-top:0}
 
 .nm{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk)}
 .acc{font-family:var(--accfont);font-style:italic}
-.k{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(3.05cqi * var(--labscale,1));letter-spacing:var(--dettrk);line-height:1.5;text-transform:uppercase}
+.k{font-family:var(--hdrfont,var(--detfont));font-weight:var(--hdrwt,var(--detwt));font-size:calc(3.05cqi * var(--labscale,1));letter-spacing:var(--hdrtrk,var(--dettrk));line-height:1.5;text-transform:uppercase}
 .det{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.72cqi * var(--labscale,1));letter-spacing:var(--dettrk2);line-height:1.55;text-transform:uppercase}
 .drink-name{font-family:var(--nmfont);font-weight:var(--nmwt);
   letter-spacing:calc(var(--nmtrk) - .01em);
@@ -637,11 +640,30 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   <div class="inner" style="margin-top:11px">
     <span class="lbl">Header</span>
     <input class="f" id="header" value="BAR MENU" style="width:140px">
+    <span class="lbl">Header face</span>
+    <select class="f" id="hf">
+      <optgroup label="Roboto">
+        <option value="robotomono" selected>Roboto Mono (invite)</option>
+        <option value="roboto">Roboto</option>
+        <option value="robotocondensed">Roboto Condensed</option>
+        <option value="robotoflex">Roboto Flex</option>
+        <option value="robotoserif">Roboto Serif</option>
+      </optgroup>
+      <optgroup label="Your suite">
+        <option value="helveticathin">Helvetica Neue Thin (STD)</option>
+        <option value="instrument">Instrument Serif, letterspaced</option>
+      </optgroup>
+    </select>
     <span class="lbl">Name face</span>
     <select class="f" id="nf">
       <optgroup label="Your suite">
         <option value="instrument" selected>Instrument Serif (invite)</option>
         <option value="helveticablack">Helvetica Neue Black (STD)</option>
+      </optgroup>
+      <optgroup label="Roboto">
+        <option value="roboto">Roboto</option>
+        <option value="robotocondensed">Roboto Condensed</option>
+        <option value="robotomono">Roboto Mono</option>
       </optgroup>
       <option value="playfair">Playfair Display</option>
       <option value="bodoni">Bodoni Moda</option>
@@ -650,7 +672,11 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     </select>
     <span class="lbl">Detail face</span>
     <select class="f" id="df">
-      <option value="robotomono" selected>Roboto Mono (invite)</option>
+      <optgroup label="Roboto">
+        <option value="robotomono" selected>Roboto Mono (invite)</option>
+        <option value="roboto">Roboto</option>
+        <option value="robotocondensed">Roboto Condensed</option>
+      </optgroup>
       <option value="helveticathin">Helvetica Neue Thin (STD)</option>
       <option value="serifcaps">Serif, letterspaced</option>
       <option value="inter">Inter</option>
@@ -1995,5 +2021,5 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 </div>
 
 <script src="js/fonts.js"></script>
-<script src="js/bar.js"></script>
+<script src="js/bar.js?v=hdr1"></script>
 <script src="js/favorites.js"></script>

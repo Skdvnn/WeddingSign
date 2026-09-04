@@ -26,7 +26,11 @@
     spacemono: 'Space+Mono:wght@400',
     plexmono: 'IBM+Plex+Mono:wght@400',
     inter: 'Inter:wght@500',
-    serifcaps: 'EB+Garamond:wght@500'
+    serifcaps: 'EB+Garamond:wght@500',
+    roboto: 'Roboto:ital,wght@0,400;0,500;0,700;1,400',
+    robotocondensed: 'Roboto+Condensed:ital,wght@0,400;0,500;0,700;1,400',
+    robotoflex: 'Roboto+Flex:opsz,wght@8..144,400..700',
+    robotoserif: 'Roboto+Serif:ital,opsz,wdth,wght@0,8..144,100,400..700;1,8..144,100,400'
   };
 
   function ensure(key) {

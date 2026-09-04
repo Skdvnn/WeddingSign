@@ -29,13 +29,27 @@
     playfair: { f: "'Playfair Display',serif", wt: 500, trk: '-.014em', s: 0.92, acc: "'Playfair Display',serif", n: 'Rounder neighbour to Instrument.' },
     bodoni: { f: "'Bodoni Moda',serif", wt: 500, trk: '-.008em', s: 0.94, acc: "'Bodoni Moda',serif", n: 'Higher contrast — dressier, thinner hairlines.' },
     dmserif: { f: "'DM Serif Display',serif", wt: 400, trk: '-.018em', s: 0.92, acc: "'DM Serif Display',serif", n: 'Same silhouette as Instrument, thicker hairlines.' },
-    ebgaramond: { f: "'EB Garamond',serif", wt: 500, trk: '-.004em', s: 0.98, acc: "'EB Garamond',serif", n: 'Bookish old-style. Quiet, formal.' }
+    ebgaramond: { f: "'EB Garamond',serif", wt: 500, trk: '-.004em', s: 0.98, acc: "'EB Garamond',serif", n: 'Bookish old-style. Quiet, formal.' },
+    roboto: { f: "'Roboto',sans-serif", wt: 500, trk: '-.02em', s: 0.9, acc: "'Roboto',sans-serif", n: 'Roboto at display size.' },
+    robotocondensed: { f: "'Roboto Condensed',sans-serif", wt: 500, trk: '-.012em', s: 0.94, acc: "'Roboto Condensed',sans-serif", n: 'Roboto Condensed — tighter names.' },
+    robotomono: { f: 'var(--font-invite-mono)', wt: 500, trk: '-.02em', s: 0.86, acc: 'var(--font-invite-mono)', n: 'Roboto Mono at display size.' }
+  };
+  var HF = {
+    robotomono: { f: 'var(--font-invite-mono)', wt: 400, t1: '.2em', n: 'invite mono' },
+    roboto: { f: "'Roboto',sans-serif", wt: 500, t1: '.18em', n: 'Roboto' },
+    robotocondensed: { f: "'Roboto Condensed',sans-serif", wt: 500, t1: '.16em', n: 'Roboto Condensed' },
+    robotoflex: { f: "'Roboto Flex',sans-serif", wt: 500, t1: '.16em', n: 'Roboto Flex' },
+    robotoserif: { f: "'Roboto Serif',serif", wt: 500, t1: '.16em', n: 'Roboto Serif' },
+    helveticathin: { f: 'var(--font-std-thin)', wt: 100, t1: '.08em', n: 'STD footer' },
+    instrument: { f: 'var(--font-invite-serif)', wt: 400, t1: '.22em', n: 'Instrument, letterspaced' }
   };
   var DF = {
     robotomono: { f: 'var(--font-invite-mono)', wt: 400, t1: '.2em', t2: '.13em', n: 'invite details' },
     helveticathin: { f: 'var(--font-std-thin)', wt: 100, t1: '.08em', t2: '.06em', n: 'STD footer' },
     serifcaps: { f: 'var(--font-invite-serif)', wt: 400, t1: '.22em', t2: '.16em', n: 'serif, letterspaced' },
-    inter: { f: 'Inter,sans-serif', wt: 500, t1: '.18em', t2: '.12em', n: 'neutral grotesque' }
+    inter: { f: 'Inter,sans-serif', wt: 500, t1: '.18em', t2: '.12em', n: 'neutral grotesque' },
+    roboto: { f: "'Roboto',sans-serif", wt: 500, t1: '.18em', t2: '.12em', n: 'Roboto' },
+    robotocondensed: { f: "'Roboto Condensed',sans-serif", wt: 500, t1: '.16em', t2: '.1em', n: 'Roboto Condensed' }
   };
 
   var drinks = DEFAULT_DRINKS.map(cloneDrink);
@@ -90,8 +104,10 @@
       if (data.ground && G[data.ground]) ground = data.ground;
       if (data.text && T[data.text]) text = data.text;
       var nf = document.getElementById('nf');
+      var hf = document.getElementById('hf');
       var df = document.getElementById('df');
       if (nf && data.nf && NF[data.nf]) nf.value = data.nf;
+      if (hf && data.hf && HF[data.hf]) hf.value = data.hf;
       if (df && data.df && DF[data.df]) df.value = data.df;
       var sName = document.getElementById('sName');
       var sLab = document.getElementById('sLab');
@@ -107,6 +123,7 @@
 
   function persist() {
     var nf = document.getElementById('nf');
+    var hf = document.getElementById('hf');
     var df = document.getElementById('df');
     var sName = document.getElementById('sName');
     var sLab = document.getElementById('sLab');
@@ -118,6 +135,7 @@
       ground: ground,
       text: text,
       nf: nf ? nf.value : 'instrument',
+      hf: hf ? hf.value : 'robotomono',
       df: df ? df.value : 'robotomono',
       nmscale: sName ? parseFloat(sName.value) : 0.76,
       labscale: sLab ? parseFloat(sLab.value) : 0.9,
@@ -192,15 +210,18 @@
 
   function applyType() {
     var nfEl = document.getElementById('nf');
+    var hfEl = document.getElementById('hf');
     var dfEl = document.getElementById('df');
     var sName = document.getElementById('sName');
     var sLab = document.getElementById('sLab');
     if (!nfEl || !dfEl) return;
     if (window.WeddingFonts) {
       window.WeddingFonts.ensure(nfEl.value);
+      if (hfEl) window.WeddingFonts.ensure(hfEl.value);
       window.WeddingFonts.ensure(dfEl.value);
     }
     var n = NF[nfEl.value] || NF.instrument;
+    var h = (hfEl && HF[hfEl.value]) || HF.robotomono;
     var d = DF[dfEl.value] || DF.robotomono;
     var r = document.documentElement.style;
     r.setProperty('--nmfont', n.f);
@@ -208,6 +229,9 @@
     r.setProperty('--nmwt', String(n.wt));
     r.setProperty('--nmtrk', n.trk);
     r.setProperty('--nmscale', String((sName ? parseFloat(sName.value) : 1) * n.s));
+    r.setProperty('--hdrfont', h.f);
+    r.setProperty('--hdrwt', String(h.wt));
+    r.setProperty('--hdrtrk', h.t1);
     r.setProperty('--detfont', d.f);
     r.setProperty('--detwt', String(d.wt));
     r.setProperty('--dettrk', d.t1);
@@ -220,7 +244,7 @@
     if (oName && sName) oName.textContent = parseFloat(sName.value).toFixed(2) + '×';
     if (oLab && sLab) oLab.textContent = parseFloat(sLab.value).toFixed(2) + '×';
     var note = document.getElementById('typenote');
-    if (note) note.innerHTML = '<b>' + n.n + '</b> Details: ' + d.n + '.';
+    if (note) note.innerHTML = '<b>' + n.n + '</b> Header: ' + h.n + '. Details: ' + d.n + '.';
     summarise();
   }
 
@@ -741,10 +765,12 @@
 
   function resetType() {
     var nf = document.getElementById('nf');
+    var hf = document.getElementById('hf');
     var df = document.getElementById('df');
     var sName = document.getElementById('sName');
     var sLab = document.getElementById('sLab');
     if (nf) nf.value = 'instrument';
+    if (hf) hf.value = 'robotomono';
     if (df) df.value = 'robotomono';
     if (sName) sName.value = '0.76';
     if (sLab) sLab.value = '0.90';
@@ -798,7 +824,7 @@
       persist();
     });
   });
-  ['nf', 'df'].forEach(function (id) {
+  ['nf', 'hf', 'df'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('change', function () { applyType(); persist(); });
   });
