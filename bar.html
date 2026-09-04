@@ -33,6 +33,7 @@
   --dettrk2:.13em;
   --stack-hang:0px;
   --stack-hang-ing:0px;
+  --cap-inset:2.8cqi;
   --radius:8px;
   --chrome-border:1px solid var(--ink);
 }
@@ -208,15 +209,15 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="ruled"] .drink{display:flex;flex-direction:column;justify-content:center;border-bottom:var(--rulew) solid currentColor;min-width:0;padding:2.6% 0}
 [data-layout="ruled"] .drink:last-child{border-bottom:0}
 [data-layout="ruled"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
-[data-layout="ruled"] .drink-ing,[data-layout="ruled"] .drink-tag{margin-left:0}
-[data-layout="ruled"] .menu-foot{border-top:var(--rulew) solid currentColor;padding-top:2.8%;display:flex;justify-content:space-between;gap:8px}
+[data-layout="ruled"] .drink-ing,[data-layout="ruled"] .drink-tag{margin-left:0;padding-left:var(--cap-inset)}
+[data-layout="ruled"] .menu-foot{border-top:var(--rulew) solid currentColor;padding-top:2.8%;padding-left:var(--cap-inset);display:flex;justify-content:space-between;gap:8px}
 
 [data-layout="headerrule"]{padding:8% 7.5% 7.5%}
 [data-layout="headerrule"] .menu-head{padding-bottom:2.4%}
 [data-layout="headerrule"] .accent-rule{margin-bottom:4%}
 [data-layout="headerrule"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
 [data-layout="headerrule"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
-[data-layout="headerrule"] .drink-ing,[data-layout="headerrule"] .drink-tag{margin-left:0}
+[data-layout="headerrule"] .drink-ing,[data-layout="headerrule"] .drink-tag{margin-left:0;padding-left:var(--cap-inset)}
 
 /* B2 · S2 Display Stack — optically centred cluster, names at display size */
 [data-layout="stack"]{padding:8% 6.5%;text-align:center}
@@ -233,7 +234,7 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="flush"] .optical{flex:1;justify-content:center;padding:0}
 [data-layout="flush"] .drink-list{display:flex;flex-direction:column;gap:calc(2.6cqi * var(--stackspace,1))}
 [data-layout="flush"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
-[data-layout="flush"] .drink-ing,[data-layout="flush"] .drink-tag{margin-left:0}
+[data-layout="flush"] .drink-ing,[data-layout="flush"] .drink-tag{margin-left:0;padding-left:var(--cap-inset)}
 [data-layout="flush"] .agave-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex:none;padding-top:0}
 [data-layout="flush"] .agave{width:28%}
 
@@ -241,7 +242,7 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="flushrule"] .k{margin:0}
 [data-layout="flushrule"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
 [data-layout="flushrule"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1));padding-bottom:0}
-[data-layout="flushrule"] .drink-ing,[data-layout="flushrule"] .drink-tag{margin-left:0}
+[data-layout="flushrule"] .drink-ing,[data-layout="flushrule"] .drink-tag{margin-left:0;padding-left:var(--cap-inset)}
 [data-layout="flushrule"] .name-rule{width:18%}
 
 /* B4 · Two-column — mustard as the one rule */
@@ -2025,5 +2026,5 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 </div>
 
 <script src="js/fonts.js"></script>
-<script src="js/bar.js?v=hdr2"></script>
+<script src="js/bar.js?v=hdr3"></script>
 <script src="js/favorites.js"></script>
