@@ -55,7 +55,14 @@
     return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
   }
 
+  function mustardHex() {
+    return (window.WeddingMustard && window.WeddingMustard.get()) || G.mustard.hex;
+  }
+
   function applyColor() {
+    var mix = mustardHex();
+    G.mustard.hex = mix;
+    T.mustard.hex = mix;
     var gh = G[ground].hex, fg = T[text].hex;
     document.querySelectorAll('[data-g]').forEach(function (el) {
       el.style.background = gh;
@@ -69,7 +76,7 @@
     document.querySelectorAll('[data-overlay]').forEach(function (el) {
       el.style.color = gh;
     });
-    var band = ground === 'mustard' ? '#1E1D1A' : (ground === 'ink' ? '#E7E3DA' : '#BFA52B');
+    var band = ground === 'mustard' ? '#1E1D1A' : (ground === 'ink' ? '#E7E3DA' : mix);
     var onBand = ratio(band, '#F4F1EA') > ratio(band, '#1E1D1A') ? '#F4F1EA' : '#1E1D1A';
     document.querySelectorAll('[data-band]').forEach(function (el) {
       el.style.background = band;
@@ -939,6 +946,10 @@
   }
 
   markUpper();
+  if (window.WeddingMustard) {
+    window.WeddingMustard.bind();
+    window.WeddingMustard.onChange(function () { applyColor(); });
+  }
   applyType();
   applyColor();
   applyNumber();

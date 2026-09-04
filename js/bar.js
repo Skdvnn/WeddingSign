@@ -155,9 +155,15 @@
     if (saved) saved.textContent = 'Saves as you type';
   }
 
+  function mustardHex() {
+    return (window.WeddingMustard && window.WeddingMustard.get()) || G.mustard.hex;
+  }
+
   function applyColor() {
+    var mix = mustardHex();
+    G.mustard.hex = mix;
     var gh = G[ground].hex, fg = T[text].hex;
-    var accent = ground === 'mustard' ? T.ink.hex : '#BFA52B';
+    var accent = ground === 'mustard' ? T.ink.hex : mix;
     var bandFg = ground === 'mustard' ? G.bone.hex : T.ink.hex;
     document.documentElement.style.setProperty('--accent', accent);
     document.querySelectorAll('[data-g]').forEach(function (el) {
@@ -541,7 +547,7 @@
     frame.querySelectorAll('.mustard-band, [data-band], [data-ink-band]').forEach(function (el) {
       var r = el.getBoundingClientRect();
       if (r.width < 0.5 || r.height < 0.5) return;
-      var fill = rgbToHex(getComputedStyle(el).backgroundColor) || (ground === 'mustard' ? T.ink.hex : '#BFA52B');
+      var fill = rgbToHex(getComputedStyle(el).backgroundColor) || (ground === 'mustard' ? T.ink.hex : mustardHex());
       out.push(
         '<rect x="' + ((r.left - root.left) * sx).toFixed(1) + '" y="' + ((r.top - root.top) * sy).toFixed(1) +
         '" width="' + (r.width * sx).toFixed(1) + '" height="' + (r.height * sy).toFixed(1) +
@@ -565,7 +571,7 @@
       var cs = getComputedStyle(el);
       var bw = parsePx(cs.borderLeftWidth);
       if (bw < 0.5 || r.height < 0.5) return;
-      var fill = rgbToHex(cs.borderLeftColor) || (ground === 'mustard' ? T.ink.hex : '#BFA52B');
+      var fill = rgbToHex(cs.borderLeftColor) || (ground === 'mustard' ? T.ink.hex : mustardHex());
       out.push(
         '<rect x="' + ((r.left - root.left) * sx).toFixed(1) + '" y="' + ((r.top - root.top) * sy).toFixed(1) +
         '" width="' + Math.max(2, bw * sx).toFixed(1) + '" height="' + (r.height * sy).toFixed(1) +
@@ -787,6 +793,10 @@
   loadState();
   renderEditor();
   syncToggles();
+  if (window.WeddingMustard) {
+    window.WeddingMustard.bind();
+    window.WeddingMustard.onChange(function () { applyColor(); });
+  }
   applyType();
   paintDrinks();
   wireEditor();

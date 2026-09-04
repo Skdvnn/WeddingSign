@@ -645,6 +645,19 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     </div>
     <div class="warn" id="warn"><b>Low contrast</b><span id="warntxt"></span></div>
   </div>
+  <div class="inner mix-row" style="margin-top:11px" id="mustard-mix">
+    <span class="lbl">Mustard</span>
+    <input type="color" class="mix-wheel" id="mustard-wheel" value="#BFA52B" aria-label="Mustard colour">
+    <input class="f mix-hex" id="mustard-hex" value="#BFA52B" spellcheck="false" maxlength="7" aria-label="Mustard hex">
+    <div class="mix-chips" id="mustard-presets"></div>
+    <span class="lbl">Hue</span>
+    <div class="sl"><input type="range" id="mustard-hue" min="36" max="68" step="1" value="49"><output id="mustard-hue-out">gold</output></div>
+    <span class="lbl">Sat</span>
+    <div class="sl"><input type="range" id="mustard-sat" min="20" max="80" step="1" value="63"><output id="mustard-sat-out">63%</output></div>
+    <span class="lbl">Light</span>
+    <div class="sl"><input type="range" id="mustard-lit" min="22" max="58" step="1" value="46"><output id="mustard-lit-out">46%</output></div>
+    <p class="mix-note">Screen mustard is the napkin / painted board — printers turn it lemon. <b>Curry</b> is the reprint: same family, more olive. Table cards share this mix. Keep seating and 5×7s on bone unless you want the curry to shout.</p>
+  </div>
   <div class="inner" style="margin-top:11px">
     <span class="lbl">Header</span>
     <input class="f" id="header" value="BAR MENU" style="width:140px">
@@ -2010,6 +2023,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   <ul>
     <li><strong>Bone cardstock</strong> is the honest match to the invite and the 5×7s. If you can get close to <code>#E7E3DA</code>, use it.</li>
     <li><strong>Mustard board</strong> is a labeled option in Type tools — only if this sign stands next to the painted welcome A-frame and you want them to read as a pair. Default is bone.</li>
+    <li><strong>Mustard mix</strong> in Type tools: <code>#BFA52B</code> is the napkin / painted board and prints lemon on paper. Use <b>Curry</b> (<code>#9A9322</code>) for the next bar print. If that’s still school-bus, nudge Hue toward olive or try Dijon. Table cards should stay on bone; if a 5×7 is mustard, use the same Curry mix — don’t reprint Screen.</li>
     <li><strong>Export PDF</strong> is the bartender file: <code>allison-skylar-bar-menu.pdf</code>, one page at the card’s 1545 × 2000 portrait — no nav, no tools, no browser chrome. Not stretched to a different paper.</li>
     <li><strong>1545 × 2000, portrait</strong> — the mock’s 3:4. Print this layout uses the same aspect.</li>
   </ul>
@@ -2029,5 +2043,6 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 </div>
 
 <script src="js/fonts.js"></script>
-<script src="js/bar.js?v=hdr5"></script>
+<script src="js/mustard.js"></script>
+<script src="js/bar.js?v=hdr6"></script>
 <script src="js/favorites.js"></script>

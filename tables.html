@@ -296,6 +296,19 @@ a{color:#7d4a1e}
     </div>
     <div class="warn" id="warn"><b>Low contrast</b><span id="warntxt"></span></div>
   </div>
+  <div class="inner mix-row" style="margin-top:11px" id="mustard-mix">
+    <span class="lbl">Mustard</span>
+    <input type="color" class="mix-wheel" id="mustard-wheel" value="#BFA52B" aria-label="Mustard colour">
+    <input class="f mix-hex" id="mustard-hex" value="#BFA52B" spellcheck="false" maxlength="7" aria-label="Mustard hex">
+    <div class="mix-chips" id="mustard-presets"></div>
+    <span class="lbl">Hue</span>
+    <div class="sl"><input type="range" id="mustard-hue" min="36" max="68" step="1" value="49"><output id="mustard-hue-out">gold</output></div>
+    <span class="lbl">Sat</span>
+    <div class="sl"><input type="range" id="mustard-sat" min="20" max="80" step="1" value="63"><output id="mustard-sat-out">63%</output></div>
+    <span class="lbl">Light</span>
+    <div class="sl"><input type="range" id="mustard-lit" min="22" max="58" step="1" value="46"><output id="mustard-lit-out">46%</output></div>
+    <p class="mix-note">Same mix as the bar card. Prefer <b>bone</b> stock for the 5×7s — mustard on a table next to napkins will look yellower than cloth unless you print <b>Curry</b>.</p>
+  </div>
   <div class="inner" style="margin-top:11px">
     <span class="lbl">Table</span>
     <input class="f" id="tnum" type="number" min="1" max="20" value="4" style="width:64px">
@@ -671,5 +684,6 @@ a{color:#7d4a1e}
 </div>
 
 <script src="js/fonts.js"></script>
-<script src="js/tables.js"></script>
+<script src="js/mustard.js"></script>
+<script src="js/tables.js?v=mix1"></script>
 <script src="js/favorites.js"></script>

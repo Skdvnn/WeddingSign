@@ -1700,13 +1700,16 @@
   }
 
   function applyColor() {
+    var mix = (window.WeddingMustard && window.WeddingMustard.get()) || G.mustard.hex;
+    G.mustard.hex = mix;
+    T.mustard.hex = mix;
     var gh = G[ground].hex, fg = T[text].hex;
     document.querySelectorAll('[data-g]').forEach(function (el) {
       el.style.background = gh;
       el.style.color = fg;
     });
     document.querySelectorAll('[data-fg]').forEach(function (el) { el.style.color = fg; });
-    var band = ground === 'mustard' ? '#1E1D1A' : (ground === 'ink' ? '#E7E3DA' : '#BFA52B');
+    var band = ground === 'mustard' ? '#1E1D1A' : (ground === 'ink' ? '#E7E3DA' : mix);
     var onBand = ratio(band, '#F4F1EA') > ratio(band, '#1E1D1A') ? '#F4F1EA' : '#1E1D1A';
     document.querySelectorAll('[data-band]').forEach(function (el) {
       el.style.background = band;
