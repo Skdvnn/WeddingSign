@@ -171,7 +171,7 @@ h2:first-of-type{margin-top:0}
 
 .nm{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk)}
 .acc{font-family:var(--accfont);font-style:italic}
-.k{font-family:var(--hdrfont,var(--detfont));font-weight:var(--hdrwt,var(--detwt));font-size:calc(3.05cqi * var(--labscale,1));letter-spacing:var(--hdrtrk,var(--dettrk));line-height:1.5;text-transform:uppercase}
+.k{font-family:var(--hdrfont);font-weight:var(--hdrwt);font-size:calc(3.05cqi * var(--labscale,1));letter-spacing:var(--hdrtrk);line-height:1.5;text-transform:uppercase}
 .det{font-family:var(--detfont);font-weight:var(--detwt);font-size:calc(2.72cqi * var(--labscale,1));letter-spacing:var(--dettrk2);line-height:1.55;text-transform:uppercase}
 .drink-name{font-family:var(--nmfont);font-weight:var(--nmwt);
   letter-spacing:calc(var(--nmtrk) - .01em);
@@ -605,6 +605,9 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     <div class="suitecard"><b>Instrument Serif</b>
       <div style="font-family:var(--font-invite-serif);font-size:28px;line-height:1.05">Lychee Mojito</div>
     </div>
+    <div class="suitecard"><b>Roboto</b>
+      <div style="font-family:var(--font-roboto);font-weight:500;font-size:26px;line-height:1.05;letter-spacing:-.02em">Lychee Mojito</div>
+    </div>
     <div class="suitecard"><b>Roboto Mono</b>
       <div class="det" style="font-size:10px;letter-spacing:.14em">RUM, LIME, LYCHEE MINT SYRUP</div>
       <div class="det" style="font-size:10px;letter-spacing:.14em">SPICY OPTIONAL · MOCKTAIL</div>
@@ -661,28 +664,28 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   <div class="inner" style="margin-top:11px">
     <span class="lbl">Header</span>
     <input class="f" id="header" value="BAR MENU" style="width:140px">
-    <span class="lbl">Header face</span>
-    <select class="f" id="hf">
-      <optgroup label="Roboto">
+    <span class="lbl">Bar header</span>
+    <select class="f" id="hf" aria-label="Bar header typeface">
+      <optgroup label="Your suite">
         <option value="robotomono" selected>Roboto Mono (invite)</option>
         <option value="roboto">Roboto</option>
+        <option value="helveticathin">Helvetica Neue Thin (STD)</option>
+        <option value="instrument">Instrument Serif, letterspaced</option>
+      </optgroup>
+      <optgroup label="Roboto family">
         <option value="robotocondensed">Roboto Condensed</option>
         <option value="robotoflex">Roboto Flex</option>
         <option value="robotoserif">Roboto Serif</option>
       </optgroup>
-      <optgroup label="Your suite">
-        <option value="helveticathin">Helvetica Neue Thin (STD)</option>
-        <option value="instrument">Instrument Serif, letterspaced</option>
-      </optgroup>
     </select>
-    <span class="lbl">Name face</span>
-    <select class="f" id="nf">
+    <span class="lbl">Drink names</span>
+    <select class="f" id="nf" aria-label="Drink name typeface">
       <optgroup label="Your suite">
         <option value="instrument" selected>Instrument Serif (invite)</option>
+        <option value="roboto">Roboto</option>
         <option value="helveticablack">Helvetica Neue Black (STD)</option>
       </optgroup>
-      <optgroup label="Roboto">
-        <option value="roboto">Roboto</option>
+      <optgroup label="Roboto family">
         <option value="robotocondensed">Roboto Condensed</option>
         <option value="robotomono">Roboto Mono</option>
       </optgroup>
@@ -691,9 +694,9 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
       <option value="dmserif">DM Serif Display</option>
       <option value="ebgaramond">EB Garamond</option>
     </select>
-    <span class="lbl">Detail face</span>
-    <select class="f" id="df">
-      <optgroup label="Roboto">
+    <span class="lbl">Details</span>
+    <select class="f" id="df" aria-label="Ingredient and tag typeface">
+      <optgroup label="Your suite">
         <option value="robotomono" selected>Roboto Mono (invite)</option>
         <option value="roboto">Roboto</option>
         <option value="robotocondensed">Roboto Condensed</option>
@@ -2029,8 +2032,8 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   </ul>
   <h4>What ties this to the rest of the wedding</h4>
   <ul>
-    <li><strong>Instrument Serif</strong> for drink names — the invite face, same as Allison / Skylar and “When we were.” Italic the ampersands.</li>
-    <li><strong>Roboto Mono</strong> for the header, tags, and ingredients, tracked wide (<code>~0.13–0.2em</code>), all-caps like the rest of the suite.</li>
+    <li><strong>Instrument Serif</strong> is the default drink-name face — the invite face, same as Allison / Skylar and “When we were.” Italic the ampersands. <b>Type tools → Drink names → Roboto</b> switches the four names to the suite Roboto (not Mono).</li>
+    <li><strong>Roboto Mono</strong> is the default for the header, tags, and ingredients, tracked wide (<code>~0.13–0.2em</code>), all-caps like the rest of the suite. <b>Type tools → Bar header → Roboto</b> sets <code>BAR MENU</code> to the same Roboto as the names.</li>
     <li>Lettering is black <code>#1E1D1A</code>. Mustard is used once: a rule (two-column), a tag (tag column), or a block (ledger header) — never sprinkled, never a third loud colour, and never the cream-with-purple-green of the rejected mock.</li>
     <li>Solid ink only. No opacity, no leaf frames, no stacked brown “BAR MENU.”</li>
   </ul>
@@ -2044,5 +2047,5 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 
 <script src="js/fonts.js"></script>
 <script src="js/mustard.js"></script>
-<script src="js/bar.js?v=hdr6"></script>
+<script src="js/bar.js?v=hdr7"></script>
 <script src="js/favorites.js"></script>

@@ -30,13 +30,13 @@
     bodoni: { f: "'Bodoni Moda',serif", wt: 500, trk: '-.008em', s: 0.94, acc: "'Bodoni Moda',serif", n: 'Higher contrast — dressier, thinner hairlines.' },
     dmserif: { f: "'DM Serif Display',serif", wt: 400, trk: '-.018em', s: 0.92, acc: "'DM Serif Display',serif", n: 'Same silhouette as Instrument, thicker hairlines.' },
     ebgaramond: { f: "'EB Garamond',serif", wt: 500, trk: '-.004em', s: 0.98, acc: "'EB Garamond',serif", n: 'Bookish old-style. Quiet, formal.' },
-    roboto: { f: "'Roboto',sans-serif", wt: 500, trk: '-.02em', s: 0.9, acc: "'Roboto',sans-serif", n: 'Roboto at display size.' },
+    roboto: { f: 'var(--font-roboto)', wt: 500, trk: '-.02em', s: 0.9, acc: 'var(--font-roboto)', n: 'Roboto at display size.' },
     robotocondensed: { f: "'Roboto Condensed',sans-serif", wt: 500, trk: '-.012em', s: 0.94, acc: "'Roboto Condensed',sans-serif", n: 'Roboto Condensed — tighter names.' },
     robotomono: { f: 'var(--font-invite-mono)', wt: 500, trk: '-.02em', s: 0.86, acc: 'var(--font-invite-mono)', n: 'Roboto Mono at display size.' }
   };
   var HF = {
     robotomono: { f: 'var(--font-invite-mono)', wt: 400, t1: '.2em', n: 'invite mono' },
-    roboto: { f: "'Roboto',sans-serif", wt: 500, t1: '.18em', n: 'Roboto' },
+    roboto: { f: 'var(--font-roboto)', wt: 500, t1: '.18em', n: 'Roboto' },
     robotocondensed: { f: "'Roboto Condensed',sans-serif", wt: 500, t1: '.16em', n: 'Roboto Condensed' },
     robotoflex: { f: "'Roboto Flex',sans-serif", wt: 500, t1: '.16em', n: 'Roboto Flex' },
     robotoserif: { f: "'Roboto Serif',serif", wt: 500, t1: '.16em', n: 'Roboto Serif' },
@@ -48,7 +48,7 @@
     helveticathin: { f: 'var(--font-std-thin)', wt: 100, t1: '.08em', t2: '.06em', n: 'STD footer' },
     serifcaps: { f: 'var(--font-invite-serif)', wt: 400, t1: '.22em', t2: '.16em', n: 'serif, letterspaced' },
     inter: { f: 'Inter,sans-serif', wt: 500, t1: '.18em', t2: '.12em', n: 'neutral grotesque' },
-    roboto: { f: "'Roboto',sans-serif", wt: 500, t1: '.18em', t2: '.12em', n: 'Roboto' },
+    roboto: { f: 'var(--font-roboto)', wt: 500, t1: '.18em', t2: '.12em', n: 'Roboto' },
     robotocondensed: { f: "'Roboto Condensed',sans-serif", wt: 500, t1: '.16em', t2: '.1em', n: 'Roboto Condensed' }
   };
 
@@ -838,7 +838,10 @@
   });
   ['nf', 'hf', 'df'].forEach(function (id) {
     var el = document.getElementById(id);
-    if (el) el.addEventListener('change', function () { applyType(); persist(); });
+    if (!el) return;
+    function onFace() { applyType(); persist(); }
+    el.addEventListener('change', onFace);
+    el.addEventListener('input', onFace);
   });
   ['sName', 'sLab'].forEach(function (id) {
     var el = document.getElementById(id);
