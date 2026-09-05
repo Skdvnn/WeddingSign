@@ -256,6 +256,7 @@ textarea.f{min-height:140px;height:auto;padding:10px 11px;resize:vertical}
 h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(27px,3.7vw,41px);
    margin:72px 0 8px;letter-spacing:-.006em;scroll-margin-top:170px}
 h2:first-of-type{margin-top:0}
+#charts,#favorites-section{scroll-margin-top:170px}
 .secnote{font-size:14.5px;color:var(--ink-soft);max-width:620px;margin:0 0 28px;line-height:1.6}
 
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 40px}
@@ -750,6 +751,12 @@ body.lb-open{overflow:hidden}
 <div class="wrap">
 
 <section id="charts">
+<section id="favorites-section">
+  <h2 id="favorites-heading">Favorites</h2>
+  <p class="secnote" id="favorites-empty">Star a chart and it moves here, above the rest. Print or PNG from this shortlist.</p>
+  <div class="grid" id="favorites-grid" style="display:none"></div>
+</section>
+
 <h2>The charts</h2>
 <p class="secnote">Every chart is A–Z, one name per line. Then the age. Click a poster to open it larger. Letters are a reserved margin or a section header. Some keep a hairline under every row.</p>
 
@@ -868,12 +875,6 @@ body.lb-open{overflow:hidden}
   </div>
 
 </div>
-</section>
-
-<section id="favorites-section">
-  <h2 id="favorites-heading">Favorites</h2>
-  <p class="secnote" id="favorites-empty">Star a chart and it moves here. Print or PNG from the shortlist.</p>
-  <div class="grid" id="favorites-grid" style="display:none"></div>
 </section>
 
 <h2>Printing them</h2>
