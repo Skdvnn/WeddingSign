@@ -39,6 +39,30 @@
   font-display: swap;
 }
 
+/* Roboto — Apache 2.0, same family as the invite mono. Ships here so bar
+   name / header picks do not depend on Google Fonts loading. */
+@font-face {
+  font-family: 'Roboto';
+  src: url('./Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('./Roboto-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('./Roboto-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Helvetica Neue LT Std — installed desktop fonts only */
 @font-face {
   font-family: 'Helvetica Neue LT Std';
@@ -94,6 +118,7 @@
 :root {
   --font-invite-serif: 'Instrument Serif', 'Times New Roman', serif;
   --font-invite-mono: 'Roboto Mono', ui-monospace, monospace;
+  --font-roboto: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-std-black: 'Helvetica Neue LT Std', 'Helvetica Neue', 'Archivo Black', Impact, sans-serif;
   --font-std-thin: 'Helvetica Neue LT Std', 'Helvetica Neue', Inter, Helvetica, Arial, sans-serif;
 }
