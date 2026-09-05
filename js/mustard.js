@@ -1,22 +1,25 @@
 /**
  * Shared mustard mix for printed pieces.
  * Screen #BFA52B matches the napkin / painted A-frame and prints lemon.
- * Curry / Dijon / Ochre are print-first: more olive, less school-bus yellow.
+ * Print #C5BA2D is the mustard-board fill from the bar menu PDF.
+ * Curry / Dijon / Ochre stay as compare chips: more olive, less school-bus yellow.
  */
 (function (w) {
   'use strict';
 
   var KEY = 'wedding-mustard-v1';
   var SCREEN = '#BFA52B';
+  var PRINT = '#C5BA2D';
   var CURRY = '#9A9322';
   var PRESETS = [
     { id: 'screen', hex: '#BFA52B', label: 'Screen', hint: 'napkin / A-frame' },
-    { id: 'curry', hex: '#9A9322', label: 'Curry', hint: 'try this print' },
+    { id: 'print', hex: '#C5BA2D', label: 'Print', hint: 'bar menu PDF' },
+    { id: 'curry', hex: '#9A9322', label: 'Curry', hint: 'olive reprint' },
     { id: 'dijon', hex: '#B08A1C', label: 'Dijon', hint: 'browner' },
     { id: 'ochre', hex: '#8A7418', label: 'Ochre', hint: 'deeper dirt' }
   ];
 
-  var hex = CURRY;
+  var hex = PRINT;
   var listeners = [];
   var uiBound = false;
 
@@ -155,7 +158,7 @@
     if (!host || host.getAttribute('data-ready')) return;
     host.setAttribute('data-ready', '1');
     host.innerHTML = PRESETS.map(function (p) {
-      var rec = p.id === 'curry' ? ' <em>try this</em>' : '';
+      var rec = p.id === 'print' ? ' <em>try this</em>' : '';
       return '<button type="button" class="mix-chip" data-mix="' + p.id + '" title="' + p.hint + '">' +
         '<i style="background:' + p.hex + '"></i>' + p.label + rec + '</button>';
     }).join('');
@@ -213,6 +216,7 @@
   load();
   w.WeddingMustard = {
     SCREEN: SCREEN,
+    PRINT: PRINT,
     CURRY: CURRY,
     PRESETS: PRESETS,
     get: get,
