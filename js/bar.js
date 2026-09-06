@@ -364,6 +364,13 @@
     document.querySelectorAll('[data-pouring-line]').forEach(function (el) {
       el.textContent = pouringNames().join('  ·  ');
     });
+    document.querySelectorAll('[data-pouring-verse]').forEach(function (el) {
+      var kind = el.getAttribute('data-pouring-verse');
+      var list = kind === 'wine' ? wine : beer;
+      el.textContent = list.map(function (d) { return d.name; }).filter(function (n) {
+        return n && n.trim();
+      }).join('  ·  ');
+    });
     document.querySelectorAll('.pouring-toggle button').forEach(function (b) {
       var on = b.getAttribute('data-pour') === (alsoPouring ? 'on' : 'off');
       b.classList.toggle('on', on);
@@ -688,7 +695,7 @@
       });
     });
 
-    frame.querySelectorAll('[data-header], [data-band-sub], [data-pouring-kicker], [data-pouring-line], [data-pouring], .drink-name, .drink-tag, .drink-ing, .ledger-num, .col-label, .pouring-kicker, .pouring-col-label, .pouring-name, .pouring-line, .menu-foot, .field-foot, .horizon-foot, .anchor-date, .jrow, .lock, .slash-date, .initials, .amp-lock, .sib-spine, .rot-name').forEach(function (el) {
+    frame.querySelectorAll('[data-header], [data-band-sub], [data-pouring-kicker], [data-pouring-line], [data-pouring-verse], [data-pouring], .drink-name, .drink-tag, .drink-ing, .ledger-num, .col-label, .pouring-kicker, .pouring-col-label, .pouring-name, .pouring-line, .pouring-verse-line, .menu-foot, .field-foot, .horizon-foot, .anchor-date, .jrow, .lock, .slash-date, .initials, .amp-lock, .sib-spine, .rot-name').forEach(function (el) {
       var cs = getComputedStyle(el);
       if (cs.display === 'none' || cs.visibility === 'hidden' || el.hidden) return;
       var text = (el.innerText || el.textContent || '').replace(/\s+\n/g, '\n').replace(/\n\s+/g, '\n').trim();

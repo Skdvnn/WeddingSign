@@ -649,6 +649,144 @@ html.hide-pouring [data-layout="poursplit"] .drink-name{font-size:calc(7.2cqi * 
 [data-layout="pourline"] .pouring-line{font-size:calc(4.15cqi * var(--nmscale,1))}
 html.hide-pouring [data-layout="pourline"] .drink-name{font-size:calc(6.8cqi * var(--nmscale,1))}
 
+/* B38 · Centered Type — B9 rhythm, optical centre, same hairline chapter */
+[data-layout="typecenter"]{padding:8% 8% 6.6%;text-align:center;justify-content:stretch}
+[data-layout="typecenter"] .type-cluster{
+  display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0}
+[data-layout="typecenter"] .k{margin:0;padding:0}
+[data-layout="typecenter"] .drink-list{display:contents}
+[data-layout="typecenter"] .drink-name{
+  font-size:calc(6.3cqi * var(--nmscale,1));
+  padding-bottom:calc(.4em * var(--stackspace,1))}
+[data-layout="typecenter"] .drink-ing{margin-left:auto;margin-right:auto;max-width:34em}
+[data-layout="typecenter"] .drink-tag{margin-left:0}
+[data-layout="typecenter"] .pouring-band{padding-top:3.2%;text-align:center}
+[data-layout="typecenter"] .pouring-band .hair{margin:0 0 2.6%}
+[data-layout="typecenter"] .pouring-kicker{margin:0 0 2.2%}
+[data-layout="typecenter"] .pouring-cols{text-align:left;max-width:90%;margin:0 auto}
+[data-layout="typecenter"] .pouring-name{font-size:calc(4.7cqi * var(--nmscale,1))}
+html.hide-pouring [data-layout="typecenter"]{justify-content:space-evenly;padding:8.5% 8%;text-align:center}
+html.hide-pouring [data-layout="typecenter"] .type-cluster{display:contents}
+html.hide-pouring [data-layout="typecenter"] .drink-name{font-size:calc(7.4cqi * var(--nmscale,1))}
+
+/* B39 · Tight Verse — denser heroes, bottles as a two-line stanza */
+[data-layout="typeverse"]{padding:7.4% 8% 6%;justify-content:stretch}
+[data-layout="typeverse"] .type-cluster{
+  display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0}
+[data-layout="typeverse"] .k{margin:0;padding:0}
+[data-layout="typeverse"] .drink-list{display:contents}
+[data-layout="typeverse"] .drink-name{
+  font-size:calc(6.05cqi * var(--nmscale,1));
+  padding-bottom:calc(.26em * var(--stackspace,1))}
+[data-layout="typeverse"] .drink-ing{font-size:calc(2.42cqi * var(--labscale,1))}
+[data-layout="typeverse"] .pouring-band{padding-top:2.8%}
+[data-layout="typeverse"] .pouring-band .hair{margin:0 0 2.4%}
+[data-layout="typeverse"] .pouring-kicker{margin:0 0 1.6%}
+[data-layout="typeverse"] .pouring-verse{display:flex;flex-direction:column;gap:.42em}
+[data-layout="typeverse"] .pouring-verse-line{
+  font-family:var(--nmfont);font-weight:var(--nmwt);
+  letter-spacing:calc(var(--nmtrk) - .008em);
+  font-size:calc(4.45cqi * var(--nmscale,1));line-height:1.22;text-wrap:balance}
+html.hide-pouring [data-layout="typeverse"]{justify-content:space-evenly;padding:8.2% 8%}
+html.hide-pouring [data-layout="typeverse"] .type-cluster{display:contents}
+html.hide-pouring [data-layout="typeverse"] .drink-name{
+  font-size:calc(7.2cqi * var(--nmscale,1));
+  padding-bottom:calc(.48em * var(--stackspace,1))}
+
+/* B40 · Bottle Ledger — B9 stack, one quiet line of names */
+[data-layout="typeledger"]{padding:8% 8% 6.4%;justify-content:stretch}
+[data-layout="typeledger"] .type-cluster{
+  display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0}
+[data-layout="typeledger"] .k{margin:0;padding:0}
+[data-layout="typeledger"] .drink-list{display:contents}
+[data-layout="typeledger"] .drink-name{
+  font-size:calc(6.35cqi * var(--nmscale,1));
+  padding-bottom:calc(.4em * var(--stackspace,1))}
+[data-layout="typeledger"] .pouring-band{padding-top:3.2%}
+[data-layout="typeledger"] .pouring-band .hair{margin:0 0 2.6%}
+[data-layout="typeledger"] .pouring-kicker{margin:0 0 1.8%}
+[data-layout="typeledger"] .pouring-line{font-size:calc(3.85cqi * var(--nmscale,1));line-height:1.35}
+html.hide-pouring [data-layout="typeledger"]{justify-content:space-evenly;padding:8.5% 8%}
+html.hide-pouring [data-layout="typeledger"] .type-cluster{display:contents}
+html.hide-pouring [data-layout="typeledger"] .drink-name{font-size:calc(7.5cqi * var(--nmscale,1))}
+
+/* B41 · Loose Type — more air between heroes, same chapter */
+[data-layout="typeloose"]{padding:9.2% 9% 7.2%;justify-content:stretch}
+[data-layout="typeloose"] .type-cluster{
+  display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0}
+[data-layout="typeloose"] .k{margin:0;padding:0}
+[data-layout="typeloose"] .drink-list{display:contents}
+[data-layout="typeloose"] .drink-name{
+  font-size:calc(6.15cqi * var(--nmscale,1));
+  padding-bottom:calc(.58em * var(--stackspace,1))}
+[data-layout="typeloose"] .pouring-band{padding-top:2.6%}
+[data-layout="typeloose"] .pouring-band .hair{margin:0 0 2.8%}
+[data-layout="typeloose"] .pouring-kicker{margin:0 0 2.4%}
+[data-layout="typeloose"] .pouring-name{font-size:calc(4.8cqi * var(--nmscale,1))}
+html.hide-pouring [data-layout="typeloose"]{justify-content:space-evenly;padding:10% 9.2%}
+html.hide-pouring [data-layout="typeloose"] .type-cluster{display:contents}
+html.hide-pouring [data-layout="typeloose"] .drink-name{
+  font-size:calc(7.15cqi * var(--nmscale,1));
+  padding-bottom:calc(.7em * var(--stackspace,1))}
+
+/* B42 · Double Plate — two concentric hairline rectangles */
+[data-layout="platedouble"]{padding:4.8%}
+[data-layout="platedouble"] .plate{flex:1;display:flex;flex-direction:column;padding:2.15%;min-height:0}
+[data-layout="platedouble"] .plate-inner{flex:1;display:flex;flex-direction:column;padding:5.2% 5%;min-height:0}
+[data-layout="platedouble"] .k{margin:0 0 3%}
+[data-layout="platedouble"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="platedouble"] .drink-name{font-size:calc(6.05cqi * var(--nmscale,1))}
+[data-layout="platedouble"] .pouring-band{padding-top:2.6%}
+[data-layout="platedouble"] .pouring-band .hair{margin:0 0 2.4%}
+[data-layout="platedouble"] .pouring-kicker{margin:0 0 2%}
+[data-layout="platedouble"] .pouring-name{font-size:calc(4.45cqi * var(--nmscale,1))}
+html.hide-pouring [data-layout="platedouble"] .drink-name{font-size:calc(6.55cqi * var(--nmscale,1))}
+html.hide-pouring [data-layout="platedouble"] .k{margin-bottom:4%}
+
+/* B43 · Cap Rules — top and bottom hairlines only, sides open */
+[data-layout="platecaps"]{padding:7.6% 8% 6.8%}
+[data-layout="platecaps"] .plate{
+  flex:1;display:flex;flex-direction:column;min-height:0;
+  border-left:0;border-right:0;padding:5.2% 0 4.2%}
+[data-layout="platecaps"] .k{margin:0 0 3.2%}
+[data-layout="platecaps"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="platecaps"] .drink-name{font-size:calc(6.2cqi * var(--nmscale,1))}
+[data-layout="platecaps"] .pouring-band{padding-top:2.8%}
+[data-layout="platecaps"] .pouring-band .hair{margin:0 0 2.4%}
+[data-layout="platecaps"] .pouring-kicker{margin:0 0 2.1%}
+[data-layout="platecaps"] .pouring-name{font-size:calc(4.7cqi * var(--nmscale,1))}
+html.hide-pouring [data-layout="platecaps"]{padding:8.2% 8%}
+html.hide-pouring [data-layout="platecaps"] .plate{padding:6.2% 0}
+html.hide-pouring [data-layout="platecaps"] .drink-name{font-size:calc(6.7cqi * var(--nmscale,1))}
+
+/* B44 · Cocktail Plate — plate holds heroes; bottles sit in the margin */
+[data-layout="platehero"]{padding:5.6% 6.2% 5.2%;gap:3.2%;justify-content:stretch}
+[data-layout="platehero"] .plate{flex:1;display:flex;flex-direction:column;padding:5.8% 5.6% 5.2%;min-height:0}
+[data-layout="platehero"] .k{margin:0 0 2.8%}
+[data-layout="platehero"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="platehero"] .drink-name{font-size:calc(6.15cqi * var(--nmscale,1))}
+[data-layout="platehero"] .pouring-band{padding:0 1.2% 0}
+[data-layout="platehero"] .pouring-kicker{margin:0 0 1.8%}
+[data-layout="platehero"] .pouring-name{font-size:calc(4.55cqi * var(--nmscale,1))}
+html.hide-pouring [data-layout="platehero"]{padding:6.5%;gap:0}
+html.hide-pouring [data-layout="platehero"] .plate{padding:6.5% 6%}
+html.hide-pouring [data-layout="platehero"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
+html.hide-pouring [data-layout="platehero"] .k{margin-bottom:4%}
+
+/* B45 · Split Plates — heroes in the upper plate, bottles in a lower inset */
+[data-layout="platesplit"]{padding:5.4% 6%;gap:3%;justify-content:stretch}
+[data-layout="platesplit"] .plate-hero{flex:1.75;display:flex;flex-direction:column;padding:5.6% 5.4% 4.8%;min-height:0}
+[data-layout="platesplit"] .plate-hero .k{margin:0 0 2.4%}
+[data-layout="platesplit"] .plate-hero .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="platesplit"] .plate-hero .drink-name{font-size:calc(6.05cqi * var(--nmscale,1))}
+[data-layout="platesplit"] .plate-pour{flex:none;padding:4% 5.4% 4.2%}
+[data-layout="platesplit"] .plate-pour .pouring-kicker{margin:0 0 1.8%}
+[data-layout="platesplit"] .plate-pour .pouring-name{font-size:calc(4.55cqi * var(--nmscale,1));padding-bottom:.2em}
+html.hide-pouring [data-layout="platesplit"]{padding:6.5%;gap:0}
+html.hide-pouring [data-layout="platesplit"] .plate-hero{flex:1;padding:6.5% 6%}
+html.hide-pouring [data-layout="platesplit"] .plate-hero .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
+html.hide-pouring [data-layout="platesplit"] .plate-hero .k{margin-bottom:4%}
+
 @media (max-width:720px){
   .wrap{padding:0 16px 80px}
   header{padding:36px 0 24px}
@@ -879,8 +1017,388 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   <div class="grid" id="favorites-grid" style="display:none"></div>
 </section>
 
+<h2>Cousins of B9 &amp; B30</h2>
+<p class="secnote">B9 and B30 are the layouts that still hold when Also pouring is on — four cocktail heroes, one hairline, then a readable Beer | Wine chapter. These eight assume that chapter is part of the composition. Type-only or one inset plate. No stagger, no diagonal, no mustard block (invisible on mustard board). Toggle off and the heroes still sit.</p>
+
+<div class="grid" id="cousin-grid" data-home-grid="cousins">
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="typecenter" data-pouring-own>
+      <div class="type-cluster">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+      <div class="pouring-band" data-pouring-band="cols">
+        <div class="hair" data-fg></div>
+        <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
+        <div class="pouring-cols">
+          <div class="pouring-col">
+            <div class="pouring-col-label" data-fg>Beer</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+          </div>
+          <div class="pouring-col">
+            <div class="pouring-col-label" data-fg>Wine</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="0" data-fg>Alamos Malbec</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="1" data-fg>Broc Cellars Love White</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B38 · Centered Type</h3>
+      <p>B9’s even header-to-drink rhythm, optically centred. One hairline, then two Beer | Wine columns that stay readable — not a centred poem of bottles.</p>
+      <span class="tag">Type only</span><span class="tag">B9 cousin</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="typeverse" data-pouring-own>
+      <div class="type-cluster">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+      <div class="pouring-band" data-pouring-band="verse">
+        <div class="hair" data-fg></div>
+        <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
+        <div class="pouring-verse">
+          <div class="pouring-verse-line" data-pouring-verse="beer" data-fg>Fort Point Kölsch  ·  Sapporo</div>
+          <div class="pouring-verse-line" data-pouring-verse="wine" data-fg>Alamos Malbec  ·  Broc Cellars Love White</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B39 · Tight Verse</h3>
+      <p>Tighter name-to-ingredient stack. After the hairline, beer and wine become a quiet third verse — two lines, no column labels.</p>
+      <span class="tag">Type only</span><span class="tag">Verse</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="typeledger" data-pouring-own>
+      <div class="type-cluster">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+      <div class="pouring-band" data-pouring-band="line">
+        <div class="hair" data-fg></div>
+        <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
+        <div class="pouring-line" data-pouring-line data-fg>Fort Point Kölsch  ·  Sapporo  ·  Alamos Malbec  ·  Broc Cellars Love White</div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B40 · Bottle Ledger</h3>
+      <p>Same flush type-only stack as B9. The chapter is one editorial line of bottle names — a ledger, not a second menu.</p>
+      <span class="tag">Type only</span><span class="tag">Ledger</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="typeloose" data-pouring-own>
+      <div class="type-cluster">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+      <div class="pouring-band" data-pouring-band="cols">
+        <div class="hair" data-fg></div>
+        <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
+        <div class="pouring-cols">
+          <div class="pouring-col">
+            <div class="pouring-col-label" data-fg>Beer</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+          </div>
+          <div class="pouring-col">
+            <div class="pouring-col-label" data-fg>Wine</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="0" data-fg>Alamos Malbec</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="1" data-fg>Broc Cellars Love White</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B41 · Loose Type</h3>
+      <p>More margin, more air between drinks. The Beer | Wine chapter still sits on a full-width hairline — the board can breathe and the bottles stay.</p>
+      <span class="tag">Type only</span><span class="tag">Open</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="platedouble" data-pouring-own>
+      <div class="plate">
+        <div class="plate plate-inner">
+          <div class="k" data-header data-fg>BAR MENU</div>
+          <div class="drink-list">
+            <div class="drink" data-drink="0">
+              <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+              <div class="drink-tag" data-dtag data-fg></div>
+              <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+            </div>
+            <div class="drink" data-drink="1">
+              <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+              <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+              <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+            </div>
+            <div class="drink" data-drink="2">
+              <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+              <div class="drink-tag" data-dtag data-fg></div>
+              <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+            </div>
+            <div class="drink" data-drink="3">
+              <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+              <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+              <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+            </div>
+          </div>
+          <div class="pouring-band" data-pouring-band="cols">
+            <div class="hair" data-fg></div>
+            <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
+            <div class="pouring-cols">
+              <div class="pouring-col">
+                <div class="pouring-col-label" data-fg>Beer</div>
+                <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
+                <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+              </div>
+              <div class="pouring-col">
+                <div class="pouring-col-label" data-fg>Wine</div>
+                <div class="pouring-name" data-pouring="wine" data-pi="0" data-fg>Alamos Malbec</div>
+                <div class="pouring-name" data-pouring="wine" data-pi="1" data-fg>Broc Cellars Love White</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B42 · Double Plate</h3>
+      <p>B30’s inset, twice — two concentric hairline rectangles, same stroke. The stack and Beer | Wine chapter live inside the inner plate.</p>
+      <span class="tag">Inset</span><span class="tag">B30 cousin</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="platecaps" data-pouring-own>
+      <div class="plate">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+        <div class="pouring-band" data-pouring-band="cols">
+          <div class="hair" data-fg></div>
+          <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
+          <div class="pouring-cols">
+            <div class="pouring-col">
+              <div class="pouring-col-label" data-fg>Beer</div>
+              <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
+              <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+            </div>
+            <div class="pouring-col">
+              <div class="pouring-col-label" data-fg>Wine</div>
+              <div class="pouring-name" data-pouring="wine" data-pi="0" data-fg>Alamos Malbec</div>
+              <div class="pouring-name" data-pouring="wine" data-pi="1" data-fg>Broc Cellars Love White</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B43 · Cap Rules</h3>
+      <p>B30 with the sides opened — only a top and bottom hairline. The field is a letterhead, then the same bottle chapter.</p>
+      <span class="tag">Inset</span><span class="tag">Open sides</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="platehero" data-pouring-own>
+      <div class="plate">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+      <div class="pouring-band" data-pouring-band="cols">
+        <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
+        <div class="pouring-cols">
+          <div class="pouring-col">
+            <div class="pouring-col-label" data-fg>Beer</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+          </div>
+          <div class="pouring-col">
+            <div class="pouring-col-label" data-fg>Wine</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="0" data-fg>Alamos Malbec</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="1" data-fg>Broc Cellars Love White</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B44 · Cocktail Plate</h3>
+      <p>The plate wraps the four heroes only. Bottles sit in the mustard margin below — the plate edge is the chapter rule. Off, it becomes B30.</p>
+      <span class="tag">Inset</span><span class="tag">Heroes only</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="platesplit" data-pouring-own>
+      <div class="plate plate-hero">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+      <div class="plate plate-pour" data-pouring-band="cols">
+        <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
+        <div class="pouring-cols">
+          <div class="pouring-col">
+            <div class="pouring-col-label" data-fg>Beer</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+          </div>
+          <div class="pouring-col">
+            <div class="pouring-col-label" data-fg>Wine</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="0" data-fg>Alamos Malbec</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="1" data-fg>Broc Cellars Love White</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B45 · Split Plates</h3>
+      <p>Two inset fields with mustard showing between. Cocktails keep the upper plate; bottles get their own lower band. Off, one plate fills the board.</p>
+      <span class="tag">Inset</span><span class="tag">Split</span></div>
+  </div>
+
+</div>
+
 <h2>Also pouring · explorations</h2>
-<p class="secnote">Layouts designed around both lists — cocktails as the field, bottles as a rail, a split pane, or a hairline of names. Compare these with B9 and B12 (and the rest) once the toggle is on.</p>
+<p class="secnote">Earlier experiments — stack footer, mustard rail, split pane, names-only line. Compare with the B9 / B30 cousins above; those assume the beer/wine chapter instead of a mustard block.</p>
 
 <div class="grid" id="pouring-grid" data-home-grid="pouring">
 
@@ -2358,7 +2876,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     <li><strong>Roboto Mono</strong> is the default for the header, tags, and ingredients, tracked wide (<code>~0.13–0.2em</code>), all-caps like the rest of the suite. <b>Type tools → Bar header → Roboto</b> sets <code>BAR MENU</code> to the same Roboto as the names.</li>
     <li>Lettering is black <code>#1E1D1A</code>. Mustard is used once: a rule (two-column), a tag (tag column), or a block (ledger header) — never sprinkled, never a third loud colour, and never the cream-with-purple-green of the rejected mock.</li>
     <li>Solid ink only. No opacity, no leaf frames, no stacked brown “BAR MENU.”</li>
-    <li><strong>Also pouring</strong> is a sticky toggle — on by default, saved in this browser. Beer and wine stay a secondary chapter (or rail / split pane on B34–B37), never a fifth cocktail card. Heroes scale back a hair when the band is on so the board still balances. PDF / PNG / SVG / print include the band when the toggle is on.</li>
+    <li><strong>Also pouring</strong> is a sticky toggle — on by default, saved in this browser. Beer and wine stay a secondary chapter, never a fifth cocktail card. B9 and B30 are the DNA: hairline, then Beer | Wine. B38–B45 are cousins of that (centered / verse / ledger / loose type, double plate, cap rules, cocktail-only plate, split plates). B34–B37 keep the earlier rail / pane experiments. Heroes scale back a hair when the band is on. PDF / PNG / SVG / print include the band when the toggle is on.</li>
   </ul>
 </div>
 
@@ -2370,5 +2888,5 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 
 <script src="js/fonts.js"></script>
 <script src="js/mustard.js"></script>
-<script src="js/bar.js?v=pour2"></script>
+<script src="js/bar.js?v=pour3"></script>
 <script src="js/favorites.js"></script>
