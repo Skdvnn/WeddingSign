@@ -30,7 +30,7 @@ Open `plan.html` to lay people on the three longs — drag parties, same last na
 
 ## Bar menu
 
-Open `bar.html` for the portrait bar card (1545 × 2000, ~3:4 / letter). Same suite as the welcome sign and table cards: Instrument Serif names, Roboto Mono ingredients, bone stock. Four signature cocktails stay the poster; beer (Fort Point Kölsch, Sapporo Lager) and wine (Alamos Malbec, Broc Cellars Love White) sit as a designed **Also pouring** chapter — hairline, Beer | Wine columns, readable names. Sticky toggle shows or hides that band on every layout (saved in this browser). B9 (type only) and B30 (inset plate) are the pair that hold with the band on; B38–B45 are cousins of that stack. B34–B37 keep the earlier rail / pane experiments. Edit cocktail and bottle copy, star a shortlist, print a layout, or export PNG / SVG / PDF.
+Open `bar.html` for the portrait bar card (1545 × 2000, ~3:4 / letter). Same suite as the welcome sign and table cards: Instrument Serif names, Roboto Mono ingredients, bone stock. Four signature cocktails stay the poster; beer (Fort Point Kölsch, Sapporo Lager) and wine (Alamos Malbec Red, Broc Cellars 'Love' White blend) sit as a designed **Also pouring** chapter — hairline, Beer | Wine columns, readable names. Sticky toggle shows or hides that band on every layout (saved in this browser). B9 (type only) and B30 (inset plate) are the pair that hold with the band on; B38–B45 are cousins of that stack. B34–B37 keep the earlier rail / pane experiments. Edit cocktail and bottle copy, star a shortlist, print a layout, or export PNG / SVG / PDF.
 
 ## SVG export
 
