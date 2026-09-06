@@ -19,8 +19,10 @@
   var LAST_SAVED_ID = 'keep:Last saved';
   var FRIDAY_ID = 'keep:Friday night';
   var FRIDAY_KEY = 'wedding-seating-friday-v1';
-  var SEED_REV = 'friday-2134-lock';
+  var SEED_REV = 'luis-unseated-lock';
   var SEED_REV_KEY = 'wedding-seating-seed-rev-v1';
+  // Guest ids are the assign/place keys. Filling in a last name later must
+  // only change first/last/name (and maybe partyLabel) — never remint id.
   var HEAD_SLOTS = [
     ['arthur-dann', 7, 3],
     ['rainya-dann', 7, 4],
@@ -28,7 +30,6 @@
     ['allison-fong', 8, 3],
     ['simon-fong', 8, 4],
     ['yan-zhen-li', 8, 5],
-    ['jeffrey-dann', 7, 0],
     ['christopher-hobbs', 7, 1],
     ['cindy', 7, 2],
     ['bruno-lopez', 8, 1],
@@ -553,10 +554,23 @@
     return found;
   }
 
+  function firstFreeSeat(n, skip) {
+    var i;
+    for (i = 0; i < SIGN_CAP; i++) {
+      if (i === skip) continue;
+      if (!whoAt(n, i)) return i;
+    }
+    return -1;
+  }
+
   function fillSeats(n, prefer) {
     var taken = {};
     var locked = {};
     (prefer || []).forEach(function (id) { locked[id] = true; });
+    guests.forEach(function (g) {
+      if (assign[g.id] !== n) return;
+      if (seatOf(g.id) >= 0) locked[g.id] = true;
+    });
     var need = [];
     function claim(g) {
       var s = seatOf(g.id);
@@ -573,7 +587,7 @@
     });
     guests.forEach(function (g) {
       if (assign[g.id] !== n || locked[g.id]) return;
-      if (!claim(g)) need.push(g);
+      need.push(g);
     });
     var next = 0;
     need.forEach(function (g) {
@@ -1111,26 +1125,28 @@
       if (!n) {
         delete assign[g.id];
         delete place[g.id];
-      } else assign[g.id] = n;
+      } else if (!assign[g.id]) assign[g.id] = n;
     });
-    if (n) arrangeFacing(n);
+    if (n) {
+      partyMembers(pid).forEach(function (g) {
+        if (assign[g.id] !== n || seatOf(g.id) >= 0) return;
+        var dest = firstFreeSeat(n, -1);
+        if (dest >= 0) place[g.id] = dest;
+        else delete place[g.id];
+      });
+    }
     saveAssign();
     renderAssign();
     renderAllSoon();
   }
 
   function seatWithKin(pid, n) {
-    clearWiped();
-    var p = uniqueParties().filter(function (x) { return x.id === pid; })[0];
-    if (!p || !n) {
+    var lead = partyMembers(pid)[0];
+    if (!lead || !n) {
       setParty(pid, n);
       return;
     }
-    packParties(kinOf(p), n);
-    selectedTable = n;
-    saveAssign();
-    renderAssign();
-    renderAllSoon();
+    seatFromPool(pid, lead.id, n, -1);
   }
 
   function placeMembers(members, n, start) {
@@ -1155,37 +1171,31 @@
   }
 
   function seatPartyAt(pid, n, start, leadId) {
-    clearWiped();
-    var p = uniqueParties().filter(function (x) { return x.id === pid; })[0];
-    if (!p || !n) {
+    var lead = leadId || (partyMembers(pid)[0] && partyMembers(pid)[0].id);
+    if (!lead || !n) {
       setParty(pid, n);
       return;
     }
-    var members = p.members.slice();
-    if (leadId) {
-      members.sort(function (a, b) {
-        if (a.id === leadId) return -1;
-        if (b.id === leadId) return 1;
-        return 0;
-      });
-    }
-    if (members.some(isHost)) {
-      members.forEach(function (g) { assign[g.id] = n; });
-      placeMembers(members, n, start);
-      var hostLock = {};
-      members.forEach(function (g) { hostLock[g.id] = true; });
-      arrangeFacing(n, hostLock);
-      selectedTable = n;
-      saveAssign();
-      renderAssign();
-      renderAllSoon();
+    seatFromPool(pid, lead, n, start);
+  }
+
+  function seatFromPool(pid, leadId, n, s) {
+    clearWiped();
+    if (!n) {
+      setParty(pid, 0);
       return;
     }
-    packParties(kinOf(p), n);
-    placeMembers(members, n, start);
-    var lock = {};
-    members.forEach(function (g) { lock[g.id] = true; });
-    arrangeFacing(n, lock);
+    applyMove(leadId, n, s);
+    var leadS = seatOf(leadId);
+    partyMembers(pid).forEach(function (g) {
+      if (g.id === leadId || assign[g.id]) return;
+      var prefer = leadS >= 0 ? across(leadS) : -1;
+      var dest = (prefer >= 0 && !whoAt(n, prefer)) ? prefer : firstFreeSeat(n, -1);
+      assign[g.id] = n;
+      if (dest >= 0) place[g.id] = dest;
+      else delete place[g.id];
+    });
+    selectedTable = n;
     saveAssign();
     renderAssign();
     renderAllSoon();
@@ -1206,20 +1216,17 @@
     renderAllSoon();
   }
 
-  function moveGuest(id, n, s) {
-    clearWiped();
+  function applyMove(id, n, s) {
     var g = guests.filter(function (x) { return x.id === id; })[0];
     if (!g) return;
     if (!n) {
       delete assign[id];
       delete place[id];
-      saveAssign();
-      renderAssign();
-      renderAllSoon();
       return;
     }
     var prevN = assign[id];
     var prevS = seatOf(id);
+    if (prevN && prevN !== n) delete place[id];
     var occ = (s >= 0) ? whoAt(n, s) : null;
     assign[id] = n;
     if (occ && occ.id !== id) {
@@ -1227,18 +1234,22 @@
         assign[occ.id] = prevN;
         place[occ.id] = prevS;
       } else {
-        var bump = -1;
-        for (var i = 0; i < SIGN_CAP; i++) {
-          if (i !== s && !whoAt(n, i)) { bump = i; break; }
-        }
+        var bump = firstFreeSeat(n, s);
         if (bump >= 0) place[occ.id] = bump;
         else delete place[occ.id];
       }
     }
     if (s >= 0) place[id] = s;
-    else fillSeats(n);
-    if (prevN && prevN !== n) fillSeats(prevN);
-    fillSeats(n);
+    else {
+      var free = firstFreeSeat(n, -1);
+      if (free >= 0) place[id] = free;
+      else delete place[id];
+    }
+  }
+
+  function moveGuest(id, n, s) {
+    clearWiped();
+    applyMove(id, n, s);
     saveAssign();
     renderAssign();
     renderAllSoon();
@@ -1342,12 +1353,12 @@
           if (hit.s >= 0 && hit.n) moveGuest(gid, hit.n, hit.s);
           else if (hit.n) moveGuest(gid, hit.n, -1);
           else if (hit.pool) moveGuest(gid, 0, -1);
-        } else if (hit.s >= 0 && hit.n) seatPartyAt(pid, hit.n, hit.s, gid);
-        else if (hit.n) seatWithKin(pid, hit.n);
+        } else if (hit.s >= 0 && hit.n) seatFromPool(pid, gid, hit.n, hit.s);
+        else if (hit.n) seatFromPool(pid, gid, hit.n, -1);
         return;
       }
       if (wasSeated) moveGuest(gid, 0, -1);
-      else seatWithKin(pid, selectedTable);
+      else seatFromPool(pid, gid, selectedTable, -1);
     });
     b.addEventListener('click', function (e) { e.stopPropagation(); });
     b.addEventListener('pointercancel', endDrag);

@@ -1,7 +1,7 @@
 {
   "source": "data/rsvp-export.xlsx",
   "attending": 86,
-  "parties": 47,
+  "parties": 48,
   "guests": [
     {
       "id": "hayley-adams",
@@ -145,16 +145,16 @@
       "name": "Arthur Dann",
       "diet": "",
       "party": "p10",
-      "partyLabel": "Arthur & Jeffrey Dann"
+      "partyLabel": "Arthur Dann"
     },
     {
-      "id": "jeffrey-dann",
-      "first": "Jeffrey",
-      "last": "Dann",
-      "name": "Jeffrey Dann",
+      "id": "luis",
+      "first": "Luis",
+      "last": "",
+      "name": "Luis",
       "diet": "",
-      "party": "p10",
-      "partyLabel": "Arthur & Jeffrey Dann"
+      "party": "p48",
+      "partyLabel": "Luis"
     },
     {
       "id": "nikki-denamur",
