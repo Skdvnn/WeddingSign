@@ -931,7 +931,7 @@
       }
       var variant = POUR_LINE[layout] ? 'line' : 'cols';
       var band = document.createElement('div');
-      band.className = 'pouring-band pouring-' + variant;
+      band.className = 'pouring-band pouring-is-' + variant;
       band.setAttribute('data-pouring-band', variant);
       if (layout === 'stagger') band.classList.add('pouring-echo');
       band.innerHTML = pouringBandHTML(variant);

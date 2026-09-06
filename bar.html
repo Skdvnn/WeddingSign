@@ -206,8 +206,10 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 .plate{border:var(--rulew) solid currentColor}
 
 /* Also pouring — secondary beer/wine chapter. Names only; not cocktail peers. */
-.pouring-band{flex:none;width:100%;min-width:0;padding-top:2.8%}
-.pouring-band .hair{margin:0 0 2.6%}
+.pouring-band{
+  display:flex;flex-direction:column;align-items:stretch;
+  flex:none;width:100%;min-width:0;padding-top:2.8%}
+.pouring-band .hair,.pouring-band .accent-rule{width:100%;align-self:stretch;margin:0 0 2.6%}
 .pouring-kicker{
   font-family:var(--hdrfont);font-weight:var(--hdrwt);
   font-size:calc(2.28cqi * var(--labscale,1));letter-spacing:var(--hdrtrk);
@@ -393,10 +395,9 @@ html:not(.hide-pouring) [data-layout="stagger"] .drink-name{
 html:not(.hide-pouring) [data-layout="stagger"] .pouring-band{padding-top:3.6%}
 html:not(.hide-pouring) [data-layout="stagger"] .pouring-band .hair{margin:0 0 2.8%}
 html:not(.hide-pouring) [data-layout="stagger"] .pouring-kicker{margin:0 0 2.2%}
-html:not(.hide-pouring) [data-layout="stagger"] .pouring-cols{
-  display:flex;justify-content:space-between;align-items:flex-start;gap:7%}
-html:not(.hide-pouring) [data-layout="stagger"] .pouring-col{flex:0 1 46%;min-width:0}
-html:not(.hide-pouring) [data-layout="stagger"] .pouring-col:last-child{text-align:right}
+html:not(.hide-pouring) [data-layout="stagger"] .pouring-band .pouring-cols{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.2% 10%}
+html:not(.hide-pouring) [data-layout="stagger"] .pouring-band .pouring-col:last-child{text-align:right}
 html:not(.hide-pouring) [data-layout="stagger"] .pouring-name{font-size:calc(4.9cqi * var(--nmscale,1))}
 
 [data-layout="justify"]{padding:8% 7.5%}
