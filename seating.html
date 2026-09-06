@@ -328,7 +328,8 @@ body.arranging .sign{user-select:none}
 .spine{flex:none;display:flex;align-items:stretch}
 .vert-slot{display:flex;flex-direction:column;flex:none;align-self:stretch}
 .vert{writing-mode:vertical-rl;--dx:0cqi;--dy:0cqi;
-  transform:translate(var(--dx),var(--dy)) rotate(180deg);font-size:2.1cqi;letter-spacing:.16em;
+  transform:translate(var(--dx),var(--dy)) rotate(180deg);
+  font-size:calc(2.1 * var(--export-cqi, 1cqi));letter-spacing:.16em;
   flex:none}
 /* html2canvas crushes writing-mode:vertical-* + rotate; export uses a horizontal run. */
 .vert.vert-capture,.vert.vert-capture.piece{
@@ -489,7 +490,7 @@ html.is-lead-mid .alpha.leaders .leader{align-self:flex-start;margin:.72cqi .22e
 .alpha.tuck .alpha-row{display:flex;justify-content:flex-start;align-items:baseline;gap:.45em}
 .alpha.tuck .alpha-row .tg{flex:0 1 auto;width:auto;max-width:calc(100% - 2.8em)}
 .alpha.tuck .alpha-row .tnum{flex:none;text-align:left;min-width:0}
-.row-sign .vert{font-size:1.7cqi;letter-spacing:.22em;opacity:.7}
+.row-sign .vert{font-size:calc(1.7 * var(--export-cqi, 1cqi));letter-spacing:.22em;opacity:.7}
 .row-sign .spine{gap:2.6cqi;padding-right:.4cqi}
 .row-sign .alpha.tuck.soft .alpha-letter{font-size:calc(1.5cqi * var(--nmscale,1));opacity:.38;
   margin:1.05em 0 .26em}
@@ -506,7 +507,7 @@ html.is-lead-mid .alpha.leaders .leader{align-self:flex-start;margin:.72cqi .22e
 .sign.spine-lead .vert-slot{display:flex;flex-direction:column;justify-content:flex-start;
   align-self:stretch;flex:none}
 .sign.spine-lead.spine-top .vert-slot{justify-content:flex-start}
-.sign.spine-lead .vert{font-size:2.15cqi;letter-spacing:.24em;opacity:.82;
+.sign.spine-lead .vert{font-size:calc(2.15 * var(--export-cqi, 1cqi));letter-spacing:.24em;opacity:.82;
   flex:none;width:auto;height:auto;max-height:none}
 .sign.spine-lead .spine-main{padding-left:4.2cqi}
 .sign.spine-lead .alpha.gutter{gap:0 5.2cqi}
@@ -933,5 +934,5 @@ body.lb-open{overflow:hidden}
 
 <script src="js/fonts.js"></script>
 <script src="js/mustard.js"></script>
-<script src="js/seating.js?v=seats19"></script>
+<script src="js/seating.js?v=seats20"></script>
 <script src="js/favorites.js"></script>

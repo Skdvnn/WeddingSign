@@ -2535,27 +2535,103 @@
   // html2canvas 1.4 drops letter-spacing on writing-mode:vertical-* + rotate(),
   // so the spine title crushes. Swap to a horizontal run rotated −90° (same
   // read as vertical-rl + rotate(180deg): first glyph at the bottom).
-  // Size from font metrics — the live box height is already collapsed.
-  function flattenVertElement(el) {
-    if (!el || el.classList.contains('vert-capture')) return;
-    var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+  //
+  // writing-mode:vertical-rl also freezes cqi on a resized clone: guest names
+  // recompute against the 1500px Walgreens frame, but .vert can keep the
+  // on-screen card's used font-size. Force spine type from THIS clone's
+  // container (same 1cqi = width/100 as names) before painting the run.
+  function closestFrame(el) {
+    if (!el) return null;
+    if (el.classList && el.classList.contains('frame')) return el;
+    return el.closest ? el.closest('.frame') : null;
+  }
+
+  function spineFace(el) {
+    var sign = el && el.closest ? el.closest('.sign') : null;
+    if (sign && sign.classList.contains('spine-lead')) {
+      return { fontCqi: 2.15, nameCqi: 1.52, trackEm: 0.24 };
+    }
+    if (sign && sign.classList.contains('row-sign')) {
+      if (sign.querySelector('.alpha.tuck')) {
+        return { fontCqi: 1.7, nameCqi: 1.48, trackEm: 0.22 };
+      }
+      return { fontCqi: 1.7, nameCqi: 1.52, trackEm: 0.22 };
+    }
+    return { fontCqi: 2.1, nameCqi: 1.5, trackEm: 0.16 };
+  }
+
+  function lockExportCqi(root, fallbackW) {
+    var frames = [];
+    if (root && root.classList && root.classList.contains('frame')) frames.push(root);
+    if (root && root.querySelectorAll) {
+      Array.from(root.querySelectorAll('.frame')).forEach(function (f) {
+        if (frames.indexOf(f) < 0) frames.push(f);
+      });
+    }
+    frames.forEach(function (frame) {
+      var w = frame.clientWidth || frame.offsetWidth || parseCssPx(frame.style.width) || fallbackW || 0;
+      if (w > 0) frame.style.setProperty('--export-cqi', (w / 100) + 'px');
+    });
+    return frames[0] || null;
+  }
+
+  function exportCqiPx(el, fallbackW) {
+    var face = spineFace(el);
+    var sign = el && el.closest ? el.closest('.sign') : null;
+    var name = sign && sign.querySelector('.alpha-row .tg');
+    var namePx = name ? parseCssPx(getComputedStyle(name).fontSize) : 0;
+    if (namePx > 1 && face.nameCqi > 0) return namePx / face.nameCqi;
+    var frame = closestFrame(el);
+    var w = 0;
+    if (frame) w = frame.clientWidth || frame.offsetWidth || parseCssPx(frame.style.width);
+    if (w < 8) w = fallbackW || 0;
+    return w > 0 ? w / 100 : 0;
+  }
+
+  function resetVertElement(el) {
+    var run = el.querySelector('.vert-run');
+    var text = ((run || el).textContent || '').replace(/\s+/g, ' ').trim();
+    el.classList.remove('vert-capture');
+    el.textContent = text;
+    el.style.writingMode = '';
+    el.style.textOrientation = '';
+    el.style.transform = '';
+    el.style.whiteSpace = '';
+    el.style.fontSize = '';
+    el.style.letterSpacing = '';
+    el.style.width = '';
+    el.style.height = '';
+    el.style.position = '';
+    return text;
+  }
+
+  function flattenVertElement(el, fallbackW) {
+    if (!el) return;
+    var text = resetVertElement(el);
     if (!text) return;
+
+    var face = spineFace(el);
+    var unit = exportCqiPx(el, fallbackW);
+    var fontSize = unit > 0 ? unit * face.fontCqi : 0;
 
     // vertical-rl freezes cqi on a resized clone (names update, the rail does not).
     el.style.writingMode = 'horizontal-tb';
     el.style.textOrientation = 'mixed';
     el.style.transform = 'none';
     el.style.whiteSpace = 'nowrap';
+    if (fontSize > 0) {
+      el.style.fontSize = fontSize + 'px';
+      el.style.letterSpacing = face.trackEm + 'em';
+    }
     void el.offsetWidth;
 
     var cs = getComputedStyle(el);
-    var fontSize = parseCssPx(cs.fontSize);
-    var tracking = cs.letterSpacing === 'normal' ? 0 : parseCssPx(cs.letterSpacing);
-    var font = cs.font;
-    if (!font || font === 'inherit') {
-      font = [cs.fontStyle, cs.fontWeight, cs.fontSize, cs.fontFamily]
-        .filter(Boolean).join(' ');
-    }
+    var used = parseCssPx(cs.fontSize);
+    if (fontSize < 1) fontSize = used;
+    var tracking = cs.letterSpacing === 'normal' ? fontSize * face.trackEm
+      : parseCssPx(cs.letterSpacing);
+    var font = [cs.fontStyle, cs.fontWeight, fontSize + 'px', cs.fontFamily]
+      .filter(Boolean).join(' ');
 
     var probe = document.createElement('canvas').getContext('2d');
     probe.font = font;
@@ -2587,20 +2663,36 @@
     el.appendChild(inner);
   }
 
-  function flattenVertForCapture(root) {
-    Array.from((root || document).querySelectorAll('.vert')).forEach(flattenVertElement);
+  function flattenVertForCapture(root, fallbackW) {
+    lockExportCqi(root, fallbackW);
+    Array.from((root || document).querySelectorAll('.vert')).forEach(function (el) {
+      flattenVertElement(el, fallbackW);
+    });
   }
 
-  function captureOpts(extra) {
+  function whenLaidOut(el) {
+    return new Promise(function (resolve) {
+      void (el && el.offsetWidth);
+      requestAnimationFrame(function () {
+        void (el && el.offsetWidth);
+        requestAnimationFrame(resolve);
+      });
+    });
+  }
+
+  function captureOpts(extra, exportW) {
     extra = extra || {};
     extra.onclone = function (doc, el) {
-      flattenVertForCapture(el || doc);
+      flattenVertForCapture(el || doc, exportW);
     };
     return extra;
   }
 
   window.WeddingSeatingExport = {
-    flattenVertForCapture: flattenVertForCapture
+    flattenVertForCapture: flattenVertForCapture,
+    exportCqiPx: exportCqiPx,
+    lockExportCqi: lockExportCqi,
+    spineFace: spineFace
   };
 
   function exportFigma(card, frame, btn) {
@@ -2617,12 +2709,14 @@
     clone.style.aspectRatio = 'auto';
     clone.style.boxShadow = 'none';
     clone.style.borderRadius = '0';
+    if (FIGMA_W > 0) clone.style.setProperty('--export-cqi', (FIGMA_W / 100) + 'px');
     host.appendChild(clone);
     document.body.appendChild(host);
-    document.fonts.ready.then(function () {
-      flattenVertForCapture(clone);
-      return loadHtml2Canvas();
-    })
+    document.fonts.ready.then(function () { return whenLaidOut(clone); })
+      .then(function () {
+        flattenVertForCapture(clone, FIGMA_W);
+        return loadHtml2Canvas();
+      })
       .then(function (h2c) {
         return h2c(clone, captureOpts({
           width: FIGMA_W,
@@ -2631,7 +2725,7 @@
           backgroundColor: null,
           useCORS: true,
           logging: false
-        }));
+        }, FIGMA_W));
       })
       .then(function (canvas) {
         var a = document.createElement('a');
@@ -2662,6 +2756,7 @@
     clone.style.boxShadow = 'none';
     clone.style.borderRadius = '0';
     clone.style.background = G[ground].hex;
+    if (w > 0) clone.style.setProperty('--export-cqi', (w / 100) + 'px');
     host.appendChild(clone);
     document.body.appendChild(host);
     return { host: host, clone: clone };
@@ -2690,10 +2785,11 @@
     btn.textContent = 'Making JPEG…';
     var packed = cloneFrame(frame, WAG_W, WAG_H);
     function render(scale) {
-      return document.fonts.ready.then(function () {
-        flattenVertForCapture(packed.clone);
-        return loadHtml2Canvas();
-      }).then(function (h2c) {
+      return document.fonts.ready.then(function () { return whenLaidOut(packed.clone); })
+        .then(function () {
+          flattenVertForCapture(packed.clone, WAG_W);
+          return loadHtml2Canvas();
+        }).then(function (h2c) {
           return h2c(packed.clone, captureOpts({
             width: WAG_W,
             height: WAG_H,
@@ -2701,7 +2797,7 @@
             backgroundColor: G[ground].hex,
             useCORS: true,
             logging: false
-          }));
+          }, WAG_W));
         });
     }
     render(3)
