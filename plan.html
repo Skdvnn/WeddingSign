@@ -114,6 +114,7 @@ input.f{font:500 12.5px/1.4 Inter,sans-serif;padding:10px 12px;border:1.5px soli
 .along-head h4{margin:0}
 .along-head span{font:500 11px/1 'Roboto Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8b8577}
 .planner-longs{display:flex;flex-direction:column;gap:26px;margin-top:22px}
+.room-unseated{margin-top:4px}
 .planner-plank{display:grid;grid-template-columns:repeat(5,1fr);border:1.5px solid var(--ink);background:#fff;align-items:stretch;overflow:visible}
 .psign{border:0;border-radius:0;border-right:1px solid rgba(0,0,0,.12);min-height:0;
   padding:12px 12px 14px;cursor:pointer;background:#fff;overflow:visible}
@@ -141,11 +142,67 @@ input.f{font:500 12.5px/1.4 Inter,sans-serif;padding:10px 12px;border:1.5px soli
 footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   font-size:12.5px;color:#8b8577;line-height:1.7}
 
+#png-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(12px);
+  background:var(--ink);color:var(--page);padding:11px 16px;border-radius:8px;
+  font:500 13px/1.3 Inter,sans-serif;opacity:0;pointer-events:none;z-index:100;
+  transition:opacity .2s,transform .2s}
+#png-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Off-screen US Letter sheet for the working-room PNG (8.5 × 11 in @ 100 css px/in). */
+.letter-stage{
+  width:850px;height:1100px;background:var(--page);color:var(--ink);
+  padding:36px 40px 32px;overflow:hidden;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-font-smoothing:antialiased}
+.letter-stage .letter-sheet{height:100%;display:flex;flex-direction:column;min-height:0}
+.letter-stage .letter-kicker{font:700 9px/1 'Roboto Mono',monospace;letter-spacing:.14em;
+  text-transform:uppercase;color:#8b8577;margin:0 0 10px}
+.letter-stage .planner-top{display:flex;justify-content:space-between;align-items:flex-end;
+  gap:12px;margin-bottom:10px;flex-wrap:nowrap}
+.letter-stage .planner-top h3{font-family:'Instrument Serif',serif;font-weight:400;
+  font-size:30px;line-height:1;letter-spacing:-.008em;margin:0}
+.letter-stage .subline{display:none !important}
+.letter-stage .planner-stats{font:500 12px/1.3 Inter,sans-serif;color:#6e6858;white-space:nowrap}
+.letter-stage .planner-stats b{font-weight:600;color:var(--ink)}
+.letter-stage .room-unseated{margin:0 0 14px}
+.letter-stage .room-unseated h4,.letter-stage h4,.letter-stage .along-head h4{
+  font:700 9px/1 'Roboto Mono',monospace;letter-spacing:.14em;text-transform:uppercase;
+  color:#8b8577;margin:0 0 6px}
+.letter-stage .along-head{display:flex;justify-content:space-between;align-items:baseline;
+  gap:12px;margin-bottom:6px}
+.letter-stage .along-head h4{margin:0}
+.letter-stage .along-head span{font:500 10px/1 'Roboto Mono',monospace;letter-spacing:.08em;
+  text-transform:uppercase;color:#8b8577}
+.letter-stage #unassigned,.letter-stage .chips-g{min-height:40px;padding:8px 10px;
+  border:1.5px dashed rgba(0,0,0,.22);border-radius:8px;background:#fff}
+.letter-stage .planner-longs{flex:1;display:flex;flex-direction:column;gap:16px;margin:0;min-height:0}
+.letter-stage .along{flex:1;display:flex;flex-direction:column;min-height:0}
+.letter-stage .planner-plank{flex:1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+  border:1.5px solid var(--ink);background:#fff;align-items:stretch;overflow:hidden;min-height:0}
+.letter-stage .psign{padding:10px 8px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.letter-stage .psign-top{margin-bottom:6px}
+.letter-stage .psign-num{font-size:24px}
+.letter-stage .psign-move{display:none !important}
+.letter-stage .seatmap{flex:1;display:flex;flex-direction:column;gap:5px;min-height:0}
+.letter-stage .seat-row{flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;min-height:0}
+.letter-stage .seat-board{height:6px;flex:none}
+.letter-stage .chair{min-height:0;height:100%;font-size:13px;line-height:1.15;padding:5px 3px}
+.letter-stage .gchip{font-size:12px;padding:6px 9px}
+
 @media print{
-  header .navlinks,.seat-subnav,footer,.planner-tools{display:none !important}
+  @page{size:letter portrait;margin:.4in}
+  header,.navlinks,.seat-subnav,footer,.planner-tools,.subline,#png-toast,.psign-move{
+    display:none !important}
   body{background:#fff}
-  .wrap{max-width:none;padding:16px}
-  .psign{min-height:0;break-inside:avoid}
+  .wrap{max-width:none;padding:0;margin:0}
+  .assign{margin:0}
+  .planner-top{margin-bottom:8px}
+  .planner-top h3{font-size:28px}
+  .planner-longs{gap:16px;margin-top:14px}
+  .planner-plank{grid-template-columns:repeat(5,minmax(0,1fr)) !important}
+  .psign{min-height:0;break-inside:avoid;padding:10px 8px}
+  .psign-num{font-size:22px}
+  .chair{min-height:32px;font-size:12px}
   .chair.empty{border-style:dashed}
   .chair.filled{border-style:solid}
 }
@@ -185,7 +242,6 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     <input class="f" id="planner-q" type="search" placeholder="Find a name" autocomplete="off">
     <button type="button" class="xbtn" id="refill">Reset placeholders</button>
     <button type="button" class="xbtn" id="clear-room">Clear the room</button>
-    <button type="button" class="xbtn" id="print-room">Print our room</button>
   </div>
   <div class="planner-tools planner-layouts">
     <button type="button" class="xbtn" id="save-layout">Save layout</button>
@@ -195,9 +251,11 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     <button type="button" class="xbtn" id="download-layout">Download JSON</button>
     <button type="button" class="xbtn" id="import-layout-btn">Open JSON</button>
     <input id="import-layout" type="file" accept="application/json" hidden>
+    <button type="button" class="xbtn" id="export-letter">Export letter PNG</button>
+    <button type="button" class="xbtn" id="print-room">Print letter</button>
     <span class="layout-saved" id="layout-saved">Saves as you work</span>
   </div>
-  <div>
+  <div class="room-unseated">
     <h4>Not seated · <span id="unassigned-count">0</span></h4>
     <div class="chips-g" id="unassigned"></div>
   </div>
@@ -211,4 +269,4 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 
 <script src="js/fonts.js"></script>
 <script src="js/mustard.js"></script>
-<script src="js/seating.js?v=seats20"></script>
+<script src="js/seating.js?v=seats21"></script>

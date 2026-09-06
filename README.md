@@ -26,7 +26,7 @@ Name / detail face pickers include the suite fonts (Instrument Serif, Roboto Mon
 
 Open `tables.html` for 5 × 7 in “When we were [age]” cards. Twenty layouts: the six sketches you made, then translations of the invite / save-the-date / welcome sign, then further experiments. Upload childhood photos, star a shortlist, print a card at actual size.
 
-Open `plan.html` to lay people on the three longs — drag parties, same last names recruit, print the working room. Open `seating.html` for the guest poster: <b>A–Z by last name</b>, sign number on the right. The 5×7 number is still the age. Attending only (83); one name per line, A–Z. Star one, then **JPEG for Walgreens** (20 × 30 at ~225 dpi) for the photo lab, or **PNG for Figma** at 1440 × 2160 for mocks.
+Open `plan.html` to lay people on the three longs — drag parties, same last names recruit, print the working room. **Export letter PNG** saves `seating-plan-letter.png` (8.5 × 11 in at ~300 dpi) of Not seated + Long tables 1–3 — the staff sheet, not the guest poster. **Print letter** hides the save bar and nav for a one-page browser print / Save as PDF. Open `seating.html` for the guest poster: <b>A–Z by last name</b>, sign number on the right. The 5×7 number is still the age. Attending only (83); one name per line, A–Z. Star one, then **JPEG for Walgreens** (20 × 30 at ~225 dpi) for the photo lab, or **PNG for Figma** at 1440 × 2160 for mocks.
 
 ## Bar menu
 
