@@ -2518,6 +2518,91 @@
       .slice(0, 48) || 'seating';
   }
 
+  function parseCssPx(v) {
+    var n = parseFloat(v);
+    return isNaN(n) ? 0 : n;
+  }
+
+  function measureTracked(ctx, text, tracking) {
+    var w = 0;
+    for (var i = 0; i < text.length; i++) {
+      w += ctx.measureText(text.charAt(i)).width;
+      if (i < text.length - 1) w += tracking;
+    }
+    return w;
+  }
+
+  // html2canvas 1.4 stacks glyphs when writing-mode:vertical-* is combined
+  // with rotate(). Paint the spine title as a bitmap so JPEG/PNG match preview.
+  function rasterizeVert(el, scale) {
+    if (el.classList.contains('vert-capture')) return Promise.resolve();
+    var cs = getComputedStyle(el);
+    var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    var boxW = el.offsetWidth;
+    var boxH = el.offsetHeight;
+    if (!text || boxW < 1 || boxH < 1) return Promise.resolve();
+
+    var tracking = cs.letterSpacing === 'normal' ? 0 : parseCssPx(cs.letterSpacing);
+    var font = cs.font;
+    if (!font || font === 'inherit') {
+      font = [cs.fontStyle, cs.fontWeight, cs.fontSize, cs.fontFamily]
+        .filter(Boolean).join(' ');
+    }
+
+    var probe = document.createElement('canvas').getContext('2d');
+    probe.font = font;
+    var run = measureTracked(probe, text, tracking);
+
+    var s = Math.max(1, scale || 2);
+    var canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.round(boxW * s));
+    canvas.height = Math.max(1, Math.round(boxH * s));
+    var ctx = canvas.getContext('2d');
+    ctx.scale(s, s);
+    ctx.font = font;
+    ctx.fillStyle = cs.color;
+    ctx.globalAlpha = parseFloat(cs.opacity) || 1;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+
+    // vertical-rl + rotate(180deg): first glyph at the bottom, run goes up.
+    ctx.translate(boxW / 2, boxH);
+    ctx.rotate(-Math.PI / 2);
+    var x = run > boxH ? (boxH - run) / 2 : 0;
+    for (var j = 0; j < text.length; j++) {
+      var ch = text.charAt(j);
+      ctx.fillText(ch, x, 0);
+      x += probe.measureText(ch).width + tracking;
+    }
+
+    return new Promise(function (resolve) {
+      var img = new Image();
+      img.alt = text;
+      img.width = boxW;
+      img.height = boxH;
+      img.style.width = boxW + 'px';
+      img.style.height = boxH + 'px';
+      img.onload = function () {
+        el.classList.add('vert-capture');
+        el.textContent = '';
+        el.style.width = boxW + 'px';
+        el.style.height = boxH + 'px';
+        el.appendChild(img);
+        resolve();
+      };
+      img.onerror = function () { resolve(); };
+      img.src = canvas.toDataURL('image/png');
+    });
+  }
+
+  function flattenVertForCapture(root, scale) {
+    return Promise.all(
+      Array.from(root.querySelectorAll('.vert')).map(function (el) {
+        return rasterizeVert(el, scale);
+      })
+    );
+  }
+
   function exportFigma(card, frame, btn) {
     var label = btn.textContent;
     btn.disabled = true;
@@ -2534,7 +2619,8 @@
     clone.style.borderRadius = '0';
     host.appendChild(clone);
     document.body.appendChild(host);
-    document.fonts.ready.then(function () { return loadHtml2Canvas(); })
+    document.fonts.ready.then(function () { return flattenVertForCapture(clone, 2); })
+      .then(function () { return loadHtml2Canvas(); })
       .then(function (h2c) {
         return h2c(clone, {
           width: FIGMA_W,
@@ -2602,7 +2688,9 @@
     btn.textContent = 'Making JPEG…';
     var packed = cloneFrame(frame, WAG_W, WAG_H);
     function render(scale) {
-      return document.fonts.ready.then(function () { return loadHtml2Canvas(); })
+      return document.fonts.ready.then(function () {
+        return flattenVertForCapture(packed.clone, scale);
+      }).then(function () { return loadHtml2Canvas(); })
         .then(function (h2c) {
           return h2c(packed.clone, {
             width: WAG_W,
