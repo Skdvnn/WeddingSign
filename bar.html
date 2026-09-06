@@ -205,39 +205,45 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 .lock{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);line-height:.96}
 .plate{border:var(--rulew) solid currentColor}
 
-/* Also pouring — secondary beer/wine band. Names only; not cocktail peers. */
-.pouring-band{flex:none;width:100%;min-width:0}
-.pouring-band .hair{margin:0 0 2%}
+/* Also pouring — secondary beer/wine chapter. Names only; not cocktail peers. */
+.pouring-band{flex:none;width:100%;min-width:0;padding-top:2.8%}
+.pouring-band .hair{margin:0 0 2.6%}
 .pouring-kicker{
   font-family:var(--hdrfont);font-weight:var(--hdrwt);
-  font-size:calc(2.05cqi * var(--labscale,1));letter-spacing:var(--hdrtrk);
-  line-height:1.3;text-transform:uppercase;margin:0 0 1.5%}
-.pouring-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2% 6%;align-items:start}
+  font-size:calc(2.28cqi * var(--labscale,1));letter-spacing:var(--hdrtrk);
+  line-height:1.3;text-transform:uppercase;margin:0 0 2.1%}
+.pouring-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.4% 8%;align-items:start}
 .pouring-col-label{
   font-family:var(--detfont);font-weight:var(--detwt);
-  font-size:calc(1.72cqi * var(--labscale,1));letter-spacing:var(--dettrk);
-  line-height:1.2;text-transform:uppercase;margin:0 0 .55em}
+  font-size:calc(1.95cqi * var(--labscale,1));letter-spacing:var(--dettrk);
+  line-height:1.2;text-transform:uppercase;margin:0 0 .7em}
 .pouring-name{
   font-family:var(--nmfont);font-weight:var(--nmwt);
   letter-spacing:calc(var(--nmtrk) - .01em);
-  font-size:calc(3.2cqi * var(--nmscale,1));line-height:1.18;
-  padding-bottom:.22em;text-wrap:balance;overflow-wrap:anywhere}
+  font-size:calc(4.7cqi * var(--nmscale,1));line-height:1.16;
+  padding-bottom:.28em;text-wrap:balance;overflow-wrap:anywhere}
+.pouring-name:last-child{padding-bottom:0}
 .pouring-line{
   font-family:var(--nmfont);font-weight:var(--nmwt);
   letter-spacing:calc(var(--nmtrk) - .006em);
-  font-size:calc(2.85cqi * var(--nmscale,1));line-height:1.35;text-wrap:balance}
+  font-size:calc(3.65cqi * var(--nmscale,1));line-height:1.32;text-wrap:balance}
 .pouring-chrome{display:inline-flex;align-items:center;gap:8px}
 html.hide-pouring [data-pouring-band]{display:none !important}
 html:not(.hide-pouring) [data-layout="ruled"] .drink-list{grid-template-rows:repeat(4,minmax(min-content,1fr))}
+html:not(.hide-pouring) [data-layout="ruled"] .drink-name{font-size:calc(5.85cqi * var(--nmscale,1))}
 html:not(.hide-pouring) [data-layout="ledger"] .ledger-list,
-html:not(.hide-pouring) [data-layout="ledgerplain"] .ledger-list{padding-bottom:2.2%}
-html:not(.hide-pouring) [data-layout="cropped"] .pouring-band{padding:0 7.5%}
-html:not(.hide-pouring) [data-layout="columns"] .pouring-band{padding-top:3%}
+html:not(.hide-pouring) [data-layout="ledgerplain"] .ledger-list{padding-bottom:1.4%}
+html:not(.hide-pouring) [data-layout="cropped"] .pouring-band{padding:2.2% 7.5% 0}
+html:not(.hide-pouring) [data-layout="columns"] .pouring-band{padding-top:3.4%}
 html:not(.hide-pouring) [data-layout="stack"] .pouring-band,
-html:not(.hide-pouring) [data-layout="stackrule"] .pouring-band{text-align:left}
+html:not(.hide-pouring) [data-layout="stackrule"] .pouring-band{text-align:left;padding-top:3.2%}
 html:not(.hide-pouring) [data-layout="stack"] .pouring-kicker,
 html:not(.hide-pouring) [data-layout="stackrule"] .pouring-kicker,
 html:not(.hide-pouring) [data-layout="specimen"] .pouring-kicker{text-align:center}
+html:not(.hide-pouring) [data-layout="stack"] .drink-name{font-size:calc(7.35cqi * var(--nmscale,1))}
+html:not(.hide-pouring) [data-layout="stackrule"] .drink-name{font-size:calc(6.7cqi * var(--nmscale,1))}
+html:not(.hide-pouring) [data-layout="flush"] .drink-name{font-size:calc(6.45cqi * var(--nmscale,1))}
+html:not(.hide-pouring) [data-layout="overlap"] .drink-name{font-size:calc(6.5cqi * var(--nmscale,1))}
 
 /* B1 · S5 Ruled Editorial — even padding around one-weight rules */
 [data-layout="ruled"]{padding:8cqi 7.5cqi 7.5cqi;align-items:stretch}
@@ -338,11 +344,16 @@ html:not(.hide-pouring) [data-layout="specimen"] .pouring-kicker{text-align:cent
 [data-layout="typeonly"] .k{margin:0;padding:0}
 [data-layout="typeonly"] .drink-list{display:contents}
 [data-layout="typeonly"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1))}
-html:not(.hide-pouring) [data-layout="typeonly"]{justify-content:stretch}
+html:not(.hide-pouring) [data-layout="typeonly"]{justify-content:stretch;padding:8% 8% 6.6%}
 html:not(.hide-pouring) [data-layout="typeonly"] .type-cluster{
   display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0}
-html:not(.hide-pouring) [data-layout="typeonly"] .pouring-band{padding-top:.4%}
-html:not(.hide-pouring) [data-layout="typeonly"] .pouring-name{font-size:calc(3.05cqi * var(--nmscale,1))}
+html:not(.hide-pouring) [data-layout="typeonly"] .drink-name{
+  font-size:calc(6.4cqi * var(--nmscale,1));
+  padding-bottom:calc(.4em * var(--stackspace,1))}
+html:not(.hide-pouring) [data-layout="typeonly"] .pouring-band{padding-top:3.4%}
+html:not(.hide-pouring) [data-layout="typeonly"] .pouring-band .hair{margin:0 0 2.8%}
+html:not(.hide-pouring) [data-layout="typeonly"] .pouring-kicker{margin:0 0 2.4%}
+html:not(.hide-pouring) [data-layout="typeonly"] .pouring-name{font-size:calc(4.9cqi * var(--nmscale,1))}
 
 /* B7 · Tag column — mustard as the one label */
 [data-layout="tags"]{padding:8% 7% 7.5%}
@@ -374,9 +385,19 @@ html:not(.hide-pouring) [data-layout="typeonly"] .pouring-name{font-size:calc(3.
 [data-layout="stagger"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1))}
 [data-layout="stagger"] .drink:nth-child(even) .drink-tag,
 [data-layout="stagger"] .drink:nth-child(even) .drink-ing{margin-left:0}
-html:not(.hide-pouring) [data-layout="stagger"] .drink-list{padding:3.2% 0 1.4%}
-html:not(.hide-pouring) [data-layout="stagger"] .pouring-band{padding-top:.6%}
+html:not(.hide-pouring) [data-layout="stagger"]{padding:7.6% 7.5% 6.4%}
+html:not(.hide-pouring) [data-layout="stagger"] .drink-list{padding:2.6% 0 0}
+html:not(.hide-pouring) [data-layout="stagger"] .drink-name{
+  font-size:calc(6.4cqi * var(--nmscale,1));
+  padding-bottom:calc(.4em * var(--stackspace,1))}
+html:not(.hide-pouring) [data-layout="stagger"] .pouring-band{padding-top:3.6%}
+html:not(.hide-pouring) [data-layout="stagger"] .pouring-band .hair{margin:0 0 2.8%}
+html:not(.hide-pouring) [data-layout="stagger"] .pouring-kicker{margin:0 0 2.2%}
+html:not(.hide-pouring) [data-layout="stagger"] .pouring-cols{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:7%}
+html:not(.hide-pouring) [data-layout="stagger"] .pouring-col{flex:0 1 46%;min-width:0}
 html:not(.hide-pouring) [data-layout="stagger"] .pouring-col:last-child{text-align:right}
+html:not(.hide-pouring) [data-layout="stagger"] .pouring-name{font-size:calc(4.9cqi * var(--nmscale,1))}
 
 [data-layout="justify"]{padding:8% 7.5%}
 [data-layout="justify"] .jrow.k{border-bottom:var(--rulew) solid currentColor;padding-bottom:3.6%}
@@ -583,9 +604,10 @@ html:not(.hide-pouring) [data-layout="stagger"] .pouring-col:last-child{text-ali
 [data-layout="pourstack"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1));line-height:1.12}
 [data-layout="pourstack"] .drink-tag{margin-left:0;padding-bottom:calc(.4em * var(--stackspace,1))}
 [data-layout="pourstack"] .drink-ing{margin-left:auto;margin-right:auto;max-width:34em;font-size:calc(2.15cqi * var(--labscale,1))}
-[data-layout="pourstack"] .pouring-band{padding-top:2.6%;text-align:left}
-[data-layout="pourstack"] .pouring-kicker{text-align:center}
-[data-layout="pourstack"] .accent-rule{width:16%;margin:0 auto 2%}
+[data-layout="pourstack"] .pouring-band{padding-top:3.4%;text-align:left}
+[data-layout="pourstack"] .pouring-kicker{text-align:center;margin-bottom:2.4%}
+[data-layout="pourstack"] .accent-rule{width:16%;margin:0 auto 2.4%}
+[data-layout="pourstack"] .pouring-name{font-size:calc(4.85cqi * var(--nmscale,1))}
 html.hide-pouring [data-layout="pourstack"] .drink-name{font-size:calc(8cqi * var(--nmscale,1))}
 
 /* B35 · Bottle Rail — cocktails in the field, mustard rail of names */
@@ -595,10 +617,10 @@ html.hide-pouring [data-layout="pourstack"] .drink-name{font-size:calc(8cqi * va
 [data-layout="pourrail"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
 [data-layout="pourrail"] .drink-name{font-size:calc(5.8cqi * var(--nmscale,1))}
 [data-layout="pourrail"] .pour-rail{flex:none;width:30%;padding:8% 4.2%;display:flex;flex-direction:column;justify-content:center;min-width:0}
-[data-layout="pourrail"] .pour-rail .pouring-kicker{margin-bottom:8%}
-[data-layout="pourrail"] .pour-rail .pouring-col-label{margin:1.15em 0 .45em}
+[data-layout="pourrail"] .pour-rail .pouring-kicker{margin-bottom:10%}
+[data-layout="pourrail"] .pour-rail .pouring-col-label{margin:1.25em 0 .5em}
 [data-layout="pourrail"] .pour-rail .pouring-col-label:first-of-type{margin-top:0}
-[data-layout="pourrail"] .pour-rail .pouring-name{font-size:calc(3.55cqi * var(--nmscale,1));padding-bottom:.42em}
+[data-layout="pourrail"] .pour-rail .pouring-name{font-size:calc(4.15cqi * var(--nmscale,1));padding-bottom:.48em}
 html.hide-pouring [data-layout="pourrail"] .pour-main{padding:8% 8%}
 html.hide-pouring [data-layout="pourrail"] .drink-name{font-size:calc(7cqi * var(--nmscale,1))}
 
@@ -607,9 +629,9 @@ html.hide-pouring [data-layout="pourrail"] .drink-name{font-size:calc(7cqi * var
 [data-layout="poursplit"] .pour-main{flex:1.7;padding:7.2% 7.2% 3.5%;display:flex;flex-direction:column;min-height:0}
 [data-layout="poursplit"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
 [data-layout="poursplit"] .drink-name{font-size:calc(6.2cqi * var(--nmscale,1))}
-[data-layout="poursplit"] .pour-pane{flex:none;padding:4.8% 7.2% 5.4%}
-[data-layout="poursplit"] .pour-pane .pouring-kicker{margin-bottom:2.4%}
-[data-layout="poursplit"] .pour-pane .pouring-name{font-size:calc(3.9cqi * var(--nmscale,1));padding-bottom:.18em}
+[data-layout="poursplit"] .pour-pane{flex:none;padding:5.4% 7.2% 5.8%}
+[data-layout="poursplit"] .pour-pane .pouring-kicker{margin-bottom:2.8%}
+[data-layout="poursplit"] .pour-pane .pouring-name{font-size:calc(5.05cqi * var(--nmscale,1));padding-bottom:.22em}
 html.hide-pouring [data-layout="poursplit"] .pour-main{flex:1;padding:8% 8%}
 html.hide-pouring [data-layout="poursplit"] .drink-name{font-size:calc(7.2cqi * var(--nmscale,1))}
 
@@ -621,8 +643,9 @@ html.hide-pouring [data-layout="poursplit"] .drink-name{font-size:calc(7.2cqi * 
 [data-layout="pourline"] .drink:last-child{border-bottom:0}
 [data-layout="pourline"] .drink-name{font-size:calc(6.2cqi * var(--nmscale,1))}
 [data-layout="pourline"] .drink-ing,[data-layout="pourline"] .drink-tag{margin-left:0;padding-left:var(--cap-inset)}
-[data-layout="pourline"] .pouring-band{padding-top:3.2%}
-[data-layout="pourline"] .accent-rule{margin-bottom:1.8%}
+[data-layout="pourline"] .pouring-band{padding-top:3.8%}
+[data-layout="pourline"] .accent-rule{margin-bottom:2.2%}
+[data-layout="pourline"] .pouring-line{font-size:calc(4.15cqi * var(--nmscale,1))}
 html.hide-pouring [data-layout="pourline"] .drink-name{font-size:calc(6.8cqi * var(--nmscale,1))}
 
 @media (max-width:720px){
@@ -682,7 +705,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 <div class="wrap">
 <header>
   <h1>Allison + Skylar<br>Bar Menu</h1>
-  <p class="sub">Same suite as the invite, the welcome sign, and the 5×7s — now a portrait bar card. Four signature cocktails stay the poster; beer and wine sit as a secondary <b>Also pouring</b> list. Toggle that band on every layout, then <b>Export PDF</b> for the bartender — one letter page, no chrome.</p>
+  <p class="sub">Same suite as the invite, the welcome sign, and the 5×7s — now a portrait bar card. Four signature cocktails stay the poster; beer and wine sit as a designed <b>Also pouring</b> chapter. Toggle that band on every layout, then <b>Export PDF</b> for the bartender — one letter page, no chrome.</p>
   <nav class="navlinks" aria-label="Primary">
     <a href="index.html">Welcome sign</a>
     <a href="plan.html">Seating</a>
@@ -1038,7 +1061,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 </div>
 
 <h2>The posters</h2>
-<p class="secnote">Same four cocktails, same faces as the welcome set. Each poster is a different composition — not a class-name swap. With <b>Also pouring</b> on, a compact beer/wine band lands on every layout. Mustard is used once per idea. Export PDF for the bartender.</p>
+<p class="secnote">Same four cocktails, same faces as the welcome set. Each poster is a different composition — not a class-name swap. With <b>Also pouring</b> on, a Beer | Wine chapter (hairline, readable names) lands on every layout. Mustard is used once per idea. Export PDF for the bartender.</p>
 
 <div class="grid" id="shortlist-grid" data-home-grid="shortlist">
 
@@ -1246,7 +1269,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
       </div>
     </div></div>
     <div class="meta"><h3>B9 · Type Only</h3>
-      <p>No ornaments. Header-to-first-drink matches drink-to-drink. The stack is the layout.</p>
+      <p>No ornaments. Header-to-first-drink matches drink-to-drink. With Also pouring on: one hairline, then two quiet Beer | Wine columns at readable size.</p>
       <span class="tag star">Type only</span></div>
   </div>
 
@@ -1591,7 +1614,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
       </div>
     </div></div>
     <div class="meta"><h3>B12 · Stagger</h3>
-      <p>Left, right, left, right — the save-the-date’s diagonal energy without chopping a word in half.</p>
+      <p>Left, right, left, right — the save-the-date’s diagonal energy without chopping a word in half. Also pouring echoes that L / R split: beer left, wine right.</p>
       <span class="tag">Diagonal</span></div>
   </div>
 
@@ -2334,7 +2357,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     <li><strong>Roboto Mono</strong> is the default for the header, tags, and ingredients, tracked wide (<code>~0.13–0.2em</code>), all-caps like the rest of the suite. <b>Type tools → Bar header → Roboto</b> sets <code>BAR MENU</code> to the same Roboto as the names.</li>
     <li>Lettering is black <code>#1E1D1A</code>. Mustard is used once: a rule (two-column), a tag (tag column), or a block (ledger header) — never sprinkled, never a third loud colour, and never the cream-with-purple-green of the rejected mock.</li>
     <li>Solid ink only. No opacity, no leaf frames, no stacked brown “BAR MENU.”</li>
-    <li><strong>Also pouring</strong> is a sticky toggle — on by default, saved in this browser. Beer and wine stay a secondary band (or rail / split pane on B34–B37), never a fifth cocktail card. PDF / PNG / SVG / print include the band when the toggle is on.</li>
+    <li><strong>Also pouring</strong> is a sticky toggle — on by default, saved in this browser. Beer and wine stay a secondary chapter (or rail / split pane on B34–B37), never a fifth cocktail card. Heroes scale back a hair when the band is on so the board still balances. PDF / PNG / SVG / print include the band when the toggle is on.</li>
   </ul>
 </div>
 
@@ -2346,5 +2369,5 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 
 <script src="js/fonts.js"></script>
 <script src="js/mustard.js"></script>
-<script src="js/bar.js?v=pour1"></script>
+<script src="js/bar.js?v=pour2"></script>
 <script src="js/favorites.js"></script>
