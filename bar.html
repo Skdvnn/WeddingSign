@@ -382,7 +382,7 @@ html:not(.hide-pouring) [data-layout="typeonly"] .pouring-name{font-size:calc(4.
 [data-layout="diptych"] .ink-band{padding:7% 8%;display:flex;flex-direction:column;justify-content:center;gap:10px}
 
 [data-layout="stagger"]{padding:8% 7.5%}
-[data-layout="stagger"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:calc(2.6cqi * (var(--drinkgap,1) - 1));padding:5% 0 2%}
+[data-layout="stagger"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:5% 0 2%}
 [data-layout="stagger"] .drink:nth-child(even){text-align:right;align-self:flex-end;max-width:86%}
 [data-layout="stagger"] .drink:nth-child(odd){max-width:86%}
 [data-layout="stagger"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1))}
@@ -564,7 +564,8 @@ html:not(.hide-pouring) [data-layout="stagger"] .pouring-name{font-size:calc(4.9
 [data-layout="inset"]{padding:6.5%}
 [data-layout="inset"] .plate{flex:1;display:flex;flex-direction:column;padding:6.5% 6%;min-height:0}
 [data-layout="inset"] .k{margin-bottom:4%}
-[data-layout="inset"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;gap:calc(6cqi * (var(--drinkgap,1) - 1))}
+[data-layout="inset"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="inset"] .drink + .drink{margin-top:calc(6cqi * (var(--drinkgap,1) - 1))}
 [data-layout="inset"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
 
 /* B31 · Slash Date — 09 / 12 / 26 as the graphic */
