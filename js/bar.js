@@ -20,7 +20,7 @@
   ];
   var DEFAULT_WINE = [
     { name: 'Alamos Malbec Red' },
-    { name: "Broc Cellars 'Love' White blend" }
+    { name: "Broc Cellars 'Love' White Blend" }
   ];
 
   var G = {
@@ -90,7 +90,9 @@
 
   function migrateWineName(name) {
     if (name === 'Alamos Malbec') return 'Alamos Malbec Red';
-    if (name === 'Broc Cellars Love White') return "Broc Cellars 'Love' White blend";
+    if (name === 'Broc Cellars Love White' || name === "Broc Cellars 'Love' White blend") {
+      return "Broc Cellars 'Love' White Blend";
+    }
     return name;
   }
 
