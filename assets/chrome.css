@@ -40,6 +40,7 @@ header{border-bottom:var(--chrome-hair)}
 .drink-card,#panel .inner{padding:16px 16px 14px}
 .seat-subnav{margin-top:16px;padding:16px 16px 14px;max-width:560px}
 .drink-editor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.pouring-chrome{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}
 @media (max-width:720px){
   .drink-editor{grid-template-columns:1fr}
   .seat-subnav{max-width:none}

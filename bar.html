@@ -121,6 +121,9 @@ h2:first-of-type{margin-top:0}
 .secnote{font-size:15px;color:var(--ink-soft);max-width:760px;margin:0 0 32px;line-height:1.62}
 
 .drink-editor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0 0 18px}
+.pouring-editor input.f{margin-bottom:12px;width:100%}
+.pouring-editor input.f:last-child{margin-bottom:0}
+#pouring-heading{margin-top:48px}
 .drink-card,#panel .inner{border:1.5px solid rgba(0,0,0,.14);border-radius:9px;padding:16px 16px 14px;background:#fff}
 #panel .inner{margin-top:8px}
 .drink-card .kicker{font:700 9.5px/1 'Roboto Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#8b8577;margin:0 0 12px}
@@ -201,6 +204,40 @@ h2:first-of-type{margin-top:0}
 svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 .lock{font-family:var(--nmfont);font-weight:var(--nmwt);letter-spacing:var(--nmtrk);line-height:.96}
 .plate{border:var(--rulew) solid currentColor}
+
+/* Also pouring — secondary beer/wine band. Names only; not cocktail peers. */
+.pouring-band{flex:none;width:100%;min-width:0}
+.pouring-band .hair{margin:0 0 2%}
+.pouring-kicker{
+  font-family:var(--hdrfont);font-weight:var(--hdrwt);
+  font-size:calc(2.05cqi * var(--labscale,1));letter-spacing:var(--hdrtrk);
+  line-height:1.3;text-transform:uppercase;margin:0 0 1.5%}
+.pouring-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2% 6%;align-items:start}
+.pouring-col-label{
+  font-family:var(--detfont);font-weight:var(--detwt);
+  font-size:calc(1.72cqi * var(--labscale,1));letter-spacing:var(--dettrk);
+  line-height:1.2;text-transform:uppercase;margin:0 0 .55em}
+.pouring-name{
+  font-family:var(--nmfont);font-weight:var(--nmwt);
+  letter-spacing:calc(var(--nmtrk) - .01em);
+  font-size:calc(3.2cqi * var(--nmscale,1));line-height:1.18;
+  padding-bottom:.22em;text-wrap:balance;overflow-wrap:anywhere}
+.pouring-line{
+  font-family:var(--nmfont);font-weight:var(--nmwt);
+  letter-spacing:calc(var(--nmtrk) - .006em);
+  font-size:calc(2.85cqi * var(--nmscale,1));line-height:1.35;text-wrap:balance}
+.pouring-chrome{display:inline-flex;align-items:center;gap:8px}
+html.hide-pouring [data-pouring-band]{display:none !important}
+html:not(.hide-pouring) [data-layout="ruled"] .drink-list{grid-template-rows:repeat(4,minmax(min-content,1fr))}
+html:not(.hide-pouring) [data-layout="ledger"] .ledger-list,
+html:not(.hide-pouring) [data-layout="ledgerplain"] .ledger-list{padding-bottom:2.2%}
+html:not(.hide-pouring) [data-layout="cropped"] .pouring-band{padding:0 7.5%}
+html:not(.hide-pouring) [data-layout="columns"] .pouring-band{padding-top:3%}
+html:not(.hide-pouring) [data-layout="stack"] .pouring-band,
+html:not(.hide-pouring) [data-layout="stackrule"] .pouring-band{text-align:left}
+html:not(.hide-pouring) [data-layout="stack"] .pouring-kicker,
+html:not(.hide-pouring) [data-layout="stackrule"] .pouring-kicker,
+html:not(.hide-pouring) [data-layout="specimen"] .pouring-kicker{text-align:center}
 
 /* B1 · S5 Ruled Editorial — even padding around one-weight rules */
 [data-layout="ruled"]{padding:8cqi 7.5cqi 7.5cqi;align-items:stretch}
@@ -297,9 +334,15 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="spinecenter"] .drink-name{font-size:calc(7.2cqi * var(--nmscale,1))}
 
 [data-layout="typeonly"]{padding:8.5% 8%;justify-content:space-evenly}
+[data-layout="typeonly"] .type-cluster{display:contents}
 [data-layout="typeonly"] .k{margin:0;padding:0}
 [data-layout="typeonly"] .drink-list{display:contents}
 [data-layout="typeonly"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1))}
+html:not(.hide-pouring) [data-layout="typeonly"]{justify-content:stretch}
+html:not(.hide-pouring) [data-layout="typeonly"] .type-cluster{
+  display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0}
+html:not(.hide-pouring) [data-layout="typeonly"] .pouring-band{padding-top:.4%}
+html:not(.hide-pouring) [data-layout="typeonly"] .pouring-name{font-size:calc(3.05cqi * var(--nmscale,1))}
 
 /* B7 · Tag column — mustard as the one label */
 [data-layout="tags"]{padding:8% 7% 7.5%}
@@ -331,6 +374,9 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="stagger"] .drink-name{font-size:calc(7.6cqi * var(--nmscale,1))}
 [data-layout="stagger"] .drink:nth-child(even) .drink-tag,
 [data-layout="stagger"] .drink:nth-child(even) .drink-ing{margin-left:0}
+html:not(.hide-pouring) [data-layout="stagger"] .drink-list{padding:3.2% 0 1.4%}
+html:not(.hide-pouring) [data-layout="stagger"] .pouring-band{padding-top:.6%}
+html:not(.hide-pouring) [data-layout="stagger"] .pouring-col:last-child{text-align:right}
 
 [data-layout="justify"]{padding:8% 7.5%}
 [data-layout="justify"] .jrow.k{border-bottom:var(--rulew) solid currentColor;padding-bottom:3.6%}
@@ -529,6 +575,56 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
 [data-layout="initials"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
 [data-layout="initials"] .drink-name{font-size:calc(6.2cqi * var(--nmscale,1))}
 
+/* B34 · Pouring Stack — designed around cocktails + two-col bottle footer */
+[data-layout="pourstack"]{padding:7.2% 7% 5.8%;text-align:center}
+[data-layout="pourstack"] .k{margin:0}
+[data-layout="pourstack"] .optical{flex:1;justify-content:center;padding:0}
+[data-layout="pourstack"] .drink-list{display:flex;flex-direction:column;gap:calc(1.9cqi * var(--stackspace,1))}
+[data-layout="pourstack"] .drink-name{font-size:calc(6.6cqi * var(--nmscale,1));line-height:1.12}
+[data-layout="pourstack"] .drink-tag{margin-left:0;padding-bottom:calc(.4em * var(--stackspace,1))}
+[data-layout="pourstack"] .drink-ing{margin-left:auto;margin-right:auto;max-width:34em;font-size:calc(2.15cqi * var(--labscale,1))}
+[data-layout="pourstack"] .pouring-band{padding-top:2.6%;text-align:left}
+[data-layout="pourstack"] .pouring-kicker{text-align:center}
+[data-layout="pourstack"] .accent-rule{width:16%;margin:0 auto 2%}
+html.hide-pouring [data-layout="pourstack"] .drink-name{font-size:calc(8cqi * var(--nmscale,1))}
+
+/* B35 · Bottle Rail — cocktails in the field, mustard rail of names */
+[data-layout="pourrail"]{flex-direction:row;padding:0}
+[data-layout="pourrail"] .pour-main{flex:1;padding:7.2% 6%;display:flex;flex-direction:column;min-width:0;min-height:0}
+[data-layout="pourrail"] .pour-main .k{margin-bottom:1%}
+[data-layout="pourrail"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="pourrail"] .drink-name{font-size:calc(5.8cqi * var(--nmscale,1))}
+[data-layout="pourrail"] .pour-rail{flex:none;width:30%;padding:8% 4.2%;display:flex;flex-direction:column;justify-content:center;min-width:0}
+[data-layout="pourrail"] .pour-rail .pouring-kicker{margin-bottom:8%}
+[data-layout="pourrail"] .pour-rail .pouring-col-label{margin:1.15em 0 .45em}
+[data-layout="pourrail"] .pour-rail .pouring-col-label:first-of-type{margin-top:0}
+[data-layout="pourrail"] .pour-rail .pouring-name{font-size:calc(3.55cqi * var(--nmscale,1));padding-bottom:.42em}
+html.hide-pouring [data-layout="pourrail"] .pour-main{padding:8% 8%}
+html.hide-pouring [data-layout="pourrail"] .drink-name{font-size:calc(7cqi * var(--nmscale,1))}
+
+/* B36 · Pouring Split — cocktails above, mustard ledger pane below */
+[data-layout="poursplit"]{padding:0}
+[data-layout="poursplit"] .pour-main{flex:1.7;padding:7.2% 7.2% 3.5%;display:flex;flex-direction:column;min-height:0}
+[data-layout="poursplit"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="poursplit"] .drink-name{font-size:calc(6.2cqi * var(--nmscale,1))}
+[data-layout="poursplit"] .pour-pane{flex:none;padding:4.8% 7.2% 5.4%}
+[data-layout="poursplit"] .pour-pane .pouring-kicker{margin-bottom:2.4%}
+[data-layout="poursplit"] .pour-pane .pouring-name{font-size:calc(3.9cqi * var(--nmscale,1));padding-bottom:.18em}
+html.hide-pouring [data-layout="poursplit"] .pour-main{flex:1;padding:8% 8%}
+html.hide-pouring [data-layout="poursplit"] .drink-name{font-size:calc(7.2cqi * var(--nmscale,1))}
+
+/* B37 · Pouring Line — ruled cocktails, mustard hairline, names only */
+[data-layout="pourline"]{padding:8% 7.5% 6.2%;align-items:stretch}
+[data-layout="pourline"] .k{margin:0 0 1.5%}
+[data-layout="pourline"] .drink-list{flex:1;display:grid;grid-template-rows:repeat(4,minmax(min-content,1fr));min-height:0}
+[data-layout="pourline"] .drink{display:flex;flex-direction:column;justify-content:center;border-bottom:var(--rulew) solid currentColor;padding:2.2% 0;min-width:0}
+[data-layout="pourline"] .drink:last-child{border-bottom:0}
+[data-layout="pourline"] .drink-name{font-size:calc(6.2cqi * var(--nmscale,1))}
+[data-layout="pourline"] .drink-ing,[data-layout="pourline"] .drink-tag{margin-left:0;padding-left:var(--cap-inset)}
+[data-layout="pourline"] .pouring-band{padding-top:3.2%}
+[data-layout="pourline"] .accent-rule{margin-bottom:1.8%}
+html.hide-pouring [data-layout="pourline"] .drink-name{font-size:calc(6.8cqi * var(--nmscale,1))}
+
 @media (max-width:720px){
   .wrap{padding:0 16px 80px}
   header{padding:36px 0 24px}
@@ -545,6 +641,7 @@ svg.reg [stroke]{stroke-width:var(--rulew);vector-effect:non-scaling-stroke}
   .sl input[type=range]::-moz-range-thumb{width:28px;height:28px}
   .xbtn,#gear,.toggle button{min-height:44px}
   .chrome-actions{width:100%;justify-content:flex-start}
+  .pouring-chrome{width:100%}
   #export-pdf{flex:1;min-width:140px}
   #summary{font-size:12px}
 }
@@ -566,7 +663,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 
 @media print{
   header,.controls,.meta,.navlinks,footer,.notes,h2,.secnote,.suite,.warn,.starbtn,#gear,
-  .drink-editor,.editor-tools,.export-bar,#png-toast,.chrome-actions{
+  .drink-editor,.pouring-editor,.editor-tools,.export-bar,#png-toast,.chrome-actions{
     display:none !important}
   body{background:#fff}
   .wrap{max-width:none;padding:0;margin:0}
@@ -585,7 +682,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 <div class="wrap">
 <header>
   <h1>Allison + Skylar<br>Bar Menu</h1>
-  <p class="sub">Same suite as the invite, the welcome sign, and the 5×7s — now a portrait bar card. Four drinks, no prices. Pick a poster, then <b>Export PDF</b> for the bartender — one letter page, no chrome. Scrub names, details, line weight, and spacing. Star a shortlist if you want to compare.</p>
+  <p class="sub">Same suite as the invite, the welcome sign, and the 5×7s — now a portrait bar card. Four signature cocktails stay the poster; beer and wine sit as a secondary <b>Also pouring</b> list. Toggle that band on every layout, then <b>Export PDF</b> for the bartender — one letter page, no chrome.</p>
   <nav class="navlinks" aria-label="Primary">
     <a href="index.html">Welcome sign</a>
     <a href="plan.html">Seating</a>
@@ -623,6 +720,13 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   <div class="inner barhead">
     <span id="summary"></span>
     <div class="chrome-actions">
+      <div class="pouring-chrome">
+        <span class="lbl">Also pouring</span>
+        <div class="toggle pouring-toggle" role="group" aria-label="Show beer and wine on posters">
+          <button type="button" data-pour="on" class="on">On</button>
+          <button type="button" data-pour="off">Off</button>
+        </div>
+      </div>
       <button type="button" class="xbtn primary" id="export-pdf">Export PDF</button>
       <span class="layout-saved" id="pdf-target">B2 · Display Stack</span>
     <button type="button" id="gear" class="open" aria-expanded="true" aria-controls="panel">
@@ -725,12 +829,24 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 
 <section id="list-section">
   <h2>The list</h2>
-  <p class="secnote">The four drinks from the mock, nothing added. Edit a name, tag, or line of ingredients if the recipe changes. Saved in this browser, the same way the seating room remembers chairs.</p>
+  <p class="secnote">The four signature cocktails stay the heroes. Beer and wine are a secondary “Also pouring” list — names only, no recipes. Edit either; saved in this browser. The sticky <b>Also pouring</b> toggle shows or hides the band on every poster.</p>
   <div class="editor-tools">
     <button type="button" class="xbtn" id="reset-drinks">Reset copy</button>
     <span class="layout-saved" id="list-saved">Saves as you type</span>
   </div>
   <div class="drink-editor" id="drink-fields"></div>
+  <h2 id="pouring-heading">Also pouring</h2>
+  <p class="secnote">Fort Point Kölsch (KSA) and Sapporo; Alamos Malbec and Broc Cellars Love White. Names only — not a fifth and sixth cocktail card.</p>
+  <div class="editor-tools">
+    <span class="lbl">Band</span>
+    <div class="toggle pouring-toggle" role="group" aria-label="Show beer and wine on posters">
+      <button type="button" data-pour="on" class="on">On</button>
+      <button type="button" data-pour="off">Off</button>
+    </div>
+    <label class="lbl" for="pouring-label">Label</label>
+    <input class="f" id="pouring-label" value="Also pouring" style="width:160px">
+  </div>
+  <div class="drink-editor pouring-editor" id="pouring-fields"></div>
 </section>
 
 <section id="favorites-section">
@@ -739,8 +855,190 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   <div class="grid" id="favorites-grid" style="display:none"></div>
 </section>
 
+<h2>Also pouring · explorations</h2>
+<p class="secnote">Layouts designed around both lists — cocktails as the field, bottles as a rail, a split pane, or a hairline of names. Compare these with B9 and B12 (and the rest) once the toggle is on.</p>
+
+<div class="grid" id="pouring-grid" data-home-grid="pouring">
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="pourstack" data-pouring-own>
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="optical">
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+      </div>
+      <div class="pouring-band" data-pouring-band="cols">
+        <div class="accent-rule"></div>
+        <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
+        <div class="pouring-cols">
+          <div class="pouring-col">
+            <div class="pouring-col-label" data-fg>Beer</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+          </div>
+          <div class="pouring-col">
+            <div class="pouring-col-label" data-fg>Wine</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="0" data-fg>Alamos Malbec</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="1" data-fg>Broc Cellars Love White</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B34 · Pouring Stack</h3>
+      <p>Display stack of the four cocktails, then a mustard hairline and a Beer | Wine footer. Designed with the band, not bolted on.</p>
+      <span class="tag">Also pouring</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="pourrail" data-pouring-own>
+      <div class="pour-main">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+      <div class="pour-rail" data-pouring-band data-band>
+        <div class="pouring-kicker" data-pouring-kicker>Also pouring</div>
+        <div class="pouring-col-label">Beer</div>
+        <div class="pouring-name" data-pouring="beer" data-pi="0">Fort Point Kölsch</div>
+        <div class="pouring-name" data-pouring="beer" data-pi="1">Sapporo</div>
+        <div class="pouring-col-label">Wine</div>
+        <div class="pouring-name" data-pouring="wine" data-pi="0">Alamos Malbec</div>
+        <div class="pouring-name" data-pouring="wine" data-pi="1">Broc Cellars Love White</div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B35 · Bottle Rail</h3>
+      <p>Cocktails keep the field. A mustard side rail holds beer and wine — names only, one mustard use.</p>
+      <span class="tag">Mustard rail</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="poursplit" data-pouring-own>
+      <div class="pour-main">
+        <div class="k" data-header data-fg>BAR MENU</div>
+        <div class="drink-list">
+          <div class="drink" data-drink="0">
+            <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+          <div class="drink" data-drink="1">
+            <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+            <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+            <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+          </div>
+          <div class="drink" data-drink="2">
+            <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+            <div class="drink-tag" data-dtag data-fg></div>
+            <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+          </div>
+          <div class="drink" data-drink="3">
+            <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+            <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+            <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+          </div>
+        </div>
+      </div>
+      <div class="pour-pane mustard-band" data-pouring-band data-band>
+        <div class="pouring-kicker" data-pouring-kicker>Also pouring</div>
+        <div class="pouring-cols">
+          <div class="pouring-col">
+            <div class="pouring-col-label">Beer</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="0">Fort Point Kölsch</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1">Sapporo</div>
+          </div>
+          <div class="pouring-col">
+            <div class="pouring-col-label">Wine</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="0">Alamos Malbec</div>
+            <div class="pouring-name" data-pouring="wine" data-pi="1">Broc Cellars Love White</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B36 · Pouring Split</h3>
+      <p>Cocktails above; a mustard ledger pane below. The split is the layout — bottles are not a sixth cocktail.</p>
+      <span class="tag">Mustard pane</span></div>
+  </div>
+
+  <div>
+    <div class="frame"><div class="sign" data-g data-layout="pourline" data-pouring-own>
+      <div class="k" data-header data-fg>BAR MENU</div>
+      <div class="drink-list">
+        <div class="drink" data-drink="0">
+          <div class="drink-name" data-dname data-fg>Lychee Mojito</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Rum, Lime, Lychee Mint Syrup <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+        <div class="drink" data-drink="1">
+          <div class="drink-name" data-dname data-fg>Passion Fruit Margarita</div>
+          <div class="drink-tag" data-dtag data-fg>Spicy Optional</div>
+          <div class="drink-ing" data-ding data-fg>Tequila, Lime Juice, Passion Fruit Syrup <span class="acc">&amp;</span> Orange Bitters</div>
+        </div>
+        <div class="drink" data-drink="2">
+          <div class="drink-name" data-dname data-fg>Lemongrass Coconut Sake</div>
+          <div class="drink-tag" data-dtag data-fg></div>
+          <div class="drink-ing" data-ding data-fg>Sake, Coconut Milk <span class="acc">&amp;</span> Lemongrass Cordial with Fee Foam</div>
+        </div>
+        <div class="drink" data-drink="3">
+          <div class="drink-name" data-dname data-fg>Cucumber Elderflower Spritz</div>
+          <div class="drink-tag" data-dtag data-fg>Mocktail</div>
+          <div class="drink-ing" data-ding data-fg>Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger <span class="acc">&amp;</span> Club Soda</div>
+        </div>
+      </div>
+      <div class="pouring-band" data-pouring-band="line">
+        <div class="accent-rule"></div>
+        <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
+        <div class="pouring-line" data-pouring-line data-fg>Fort Point Kölsch  ·  Sapporo  ·  Alamos Malbec  ·  Broc Cellars Love White</div>
+      </div>
+    </div></div>
+    <div class="meta"><h3>B37 · Pouring Line</h3>
+      <p>Ruled four-row cocktails, then one mustard hairline and the bottle names. Quiet enough for B9 energy.</p>
+      <span class="tag">Names only</span></div>
+  </div>
+
+</div>
+
 <h2>The posters</h2>
-<p class="secnote">Same four drinks, same faces as the welcome set. Each poster is a different composition — not a class-name swap. Mustard is used once per idea. Scrub names, details, line weight, and spacing; they apply to the whole set. Default is the 0.76 / 0.90 they already liked, spacing at 1.00. Export PDF for the bartender.</p>
+<p class="secnote">Same four cocktails, same faces as the welcome set. Each poster is a different composition — not a class-name swap. With <b>Also pouring</b> on, a compact beer/wine band lands on every layout. Mustard is used once per idea. Export PDF for the bartender.</p>
 
 <div class="grid" id="shortlist-grid" data-home-grid="shortlist">
 
@@ -2036,16 +2334,17 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     <li><strong>Roboto Mono</strong> is the default for the header, tags, and ingredients, tracked wide (<code>~0.13–0.2em</code>), all-caps like the rest of the suite. <b>Type tools → Bar header → Roboto</b> sets <code>BAR MENU</code> to the same Roboto as the names.</li>
     <li>Lettering is black <code>#1E1D1A</code>. Mustard is used once: a rule (two-column), a tag (tag column), or a block (ledger header) — never sprinkled, never a third loud colour, and never the cream-with-purple-green of the rejected mock.</li>
     <li>Solid ink only. No opacity, no leaf frames, no stacked brown “BAR MENU.”</li>
+    <li><strong>Also pouring</strong> is a sticky toggle — on by default, saved in this browser. Beer and wine stay a secondary band (or rail / split pane on B34–B37), never a fifth cocktail card. PDF / PNG / SVG / print include the band when the toggle is on.</li>
   </ul>
 </div>
 
 <footer>
-  Bar menu · four drinks · no prices · Instrument Serif + Roboto Mono from the invite.<br>
+  Bar menu · four cocktails · beer + wine as Also pouring · no prices · Instrument Serif + Roboto Mono from the invite.<br>
   1545 × 2000 portrait · bone stock · same suite as the welcome sign and the 5×7s.
 </footer>
 </div>
 
 <script src="js/fonts.js"></script>
 <script src="js/mustard.js"></script>
-<script src="js/bar.js?v=hdr7"></script>
+<script src="js/bar.js?v=pour1"></script>
 <script src="js/favorites.js"></script>
