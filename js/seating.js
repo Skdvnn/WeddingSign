@@ -2532,16 +2532,24 @@
     return w;
   }
 
-  // html2canvas 1.4 stacks glyphs when writing-mode:vertical-* is combined
-  // with rotate(). Paint the spine title as a bitmap so JPEG/PNG match preview.
-  function rasterizeVert(el, scale) {
-    if (el.classList.contains('vert-capture')) return Promise.resolve();
-    var cs = getComputedStyle(el);
+  // html2canvas 1.4 drops letter-spacing on writing-mode:vertical-* + rotate(),
+  // so the spine title crushes. Swap to a horizontal run rotated −90° (same
+  // read as vertical-rl + rotate(180deg): first glyph at the bottom).
+  // Size from font metrics — the live box height is already collapsed.
+  function flattenVertElement(el) {
+    if (!el || el.classList.contains('vert-capture')) return;
     var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
-    var boxW = el.offsetWidth;
-    var boxH = el.offsetHeight;
-    if (!text || boxW < 1 || boxH < 1) return Promise.resolve();
+    if (!text) return;
 
+    // vertical-rl freezes cqi on a resized clone (names update, the rail does not).
+    el.style.writingMode = 'horizontal-tb';
+    el.style.textOrientation = 'mixed';
+    el.style.transform = 'none';
+    el.style.whiteSpace = 'nowrap';
+    void el.offsetWidth;
+
+    var cs = getComputedStyle(el);
+    var fontSize = parseCssPx(cs.fontSize);
     var tracking = cs.letterSpacing === 'normal' ? 0 : parseCssPx(cs.letterSpacing);
     var font = cs.font;
     if (!font || font === 'inherit') {
@@ -2551,57 +2559,49 @@
 
     var probe = document.createElement('canvas').getContext('2d');
     probe.font = font;
-    var run = measureTracked(probe, text, tracking);
+    var run = Math.max(el.offsetWidth, measureTracked(probe, text, tracking), fontSize);
+    var thickness = Math.max(el.offsetHeight, Math.ceil(fontSize * 1.15), 1);
 
-    var s = Math.max(1, scale || 2);
-    var canvas = document.createElement('canvas');
-    canvas.width = Math.max(1, Math.round(boxW * s));
-    canvas.height = Math.max(1, Math.round(boxH * s));
-    var ctx = canvas.getContext('2d');
-    ctx.scale(s, s);
-    ctx.font = font;
-    ctx.fillStyle = cs.color;
-    ctx.globalAlpha = parseFloat(cs.opacity) || 1;
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'middle';
+    var inner = document.createElement('span');
+    inner.className = 'vert-run';
+    inner.textContent = text;
+    inner.style.cssText = [
+      'position:absolute',
+      'left:' + thickness + 'px',
+      'bottom:0',
+      'white-space:nowrap',
+      'line-height:1',
+      'transform:rotate(-90deg)',
+      'transform-origin:left bottom',
+      'letter-spacing:' + tracking + 'px',
+      'font:' + font,
+      'color:' + cs.color,
+      'opacity:' + (cs.opacity || '1')
+    ].join(';');
 
-    // vertical-rl + rotate(180deg): first glyph at the bottom, run goes up.
-    ctx.translate(boxW / 2, boxH);
-    ctx.rotate(-Math.PI / 2);
-    var x = run > boxH ? (boxH - run) / 2 : 0;
-    for (var j = 0; j < text.length; j++) {
-      var ch = text.charAt(j);
-      ctx.fillText(ch, x, 0);
-      x += probe.measureText(ch).width + tracking;
-    }
-
-    return new Promise(function (resolve) {
-      var img = new Image();
-      img.alt = text;
-      img.width = boxW;
-      img.height = boxH;
-      img.style.width = boxW + 'px';
-      img.style.height = boxH + 'px';
-      img.onload = function () {
-        el.classList.add('vert-capture');
-        el.textContent = '';
-        el.style.width = boxW + 'px';
-        el.style.height = boxH + 'px';
-        el.appendChild(img);
-        resolve();
-      };
-      img.onerror = function () { resolve(); };
-      img.src = canvas.toDataURL('image/png');
-    });
+    el.classList.add('vert-capture');
+    el.textContent = '';
+    el.style.width = thickness + 'px';
+    el.style.height = Math.round(run) + 'px';
+    el.style.position = 'relative';
+    el.appendChild(inner);
   }
 
-  function flattenVertForCapture(root, scale) {
-    return Promise.all(
-      Array.from(root.querySelectorAll('.vert')).map(function (el) {
-        return rasterizeVert(el, scale);
-      })
-    );
+  function flattenVertForCapture(root) {
+    Array.from((root || document).querySelectorAll('.vert')).forEach(flattenVertElement);
   }
+
+  function captureOpts(extra) {
+    extra = extra || {};
+    extra.onclone = function (doc, el) {
+      flattenVertForCapture(el || doc);
+    };
+    return extra;
+  }
+
+  window.WeddingSeatingExport = {
+    flattenVertForCapture: flattenVertForCapture
+  };
 
   function exportFigma(card, frame, btn) {
     var label = btn.textContent;
@@ -2619,17 +2619,19 @@
     clone.style.borderRadius = '0';
     host.appendChild(clone);
     document.body.appendChild(host);
-    document.fonts.ready.then(function () { return flattenVertForCapture(clone, 2); })
-      .then(function () { return loadHtml2Canvas(); })
+    document.fonts.ready.then(function () {
+      flattenVertForCapture(clone);
+      return loadHtml2Canvas();
+    })
       .then(function (h2c) {
-        return h2c(clone, {
+        return h2c(clone, captureOpts({
           width: FIGMA_W,
           height: FIGMA_H,
           scale: 2,
           backgroundColor: null,
           useCORS: true,
           logging: false
-        });
+        }));
       })
       .then(function (canvas) {
         var a = document.createElement('a');
@@ -2689,17 +2691,17 @@
     var packed = cloneFrame(frame, WAG_W, WAG_H);
     function render(scale) {
       return document.fonts.ready.then(function () {
-        return flattenVertForCapture(packed.clone, scale);
-      }).then(function () { return loadHtml2Canvas(); })
-        .then(function (h2c) {
-          return h2c(packed.clone, {
+        flattenVertForCapture(packed.clone);
+        return loadHtml2Canvas();
+      }).then(function (h2c) {
+          return h2c(packed.clone, captureOpts({
             width: WAG_W,
             height: WAG_H,
             scale: scale,
             backgroundColor: G[ground].hex,
             useCORS: true,
             logging: false
-          });
+          }));
         });
     }
     render(3)

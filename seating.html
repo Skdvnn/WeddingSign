@@ -330,12 +330,12 @@ body.arranging .sign{user-select:none}
 .vert{writing-mode:vertical-rl;--dx:0cqi;--dy:0cqi;
   transform:translate(var(--dx),var(--dy)) rotate(180deg);font-size:2.1cqi;letter-spacing:.16em;
   flex:none}
-/* html2canvas crushes writing-mode:vertical-* + rotate; export swaps in a bitmap. */
+/* html2canvas crushes writing-mode:vertical-* + rotate; export uses a horizontal run. */
 .vert.vert-capture,.vert.vert-capture.piece{
   writing-mode:horizontal-tb;text-orientation:mixed;
   transform:translate(var(--dx),var(--dy)) scale(var(--pscale,1));
   letter-spacing:0;line-height:0;opacity:1;overflow:visible}
-.vert.vert-capture img{display:block;width:100%;height:100%;max-width:none}
+.vert.vert-capture .vert-run{display:block;white-space:nowrap;line-height:1}
 .spine-main{flex:1;display:flex;flex-direction:column;min-width:0;min-height:0;gap:2%}
 .spine-main .pair{flex:none}
 .spine-main .room{flex:1}
