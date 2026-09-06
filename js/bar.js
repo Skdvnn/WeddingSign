@@ -19,8 +19,8 @@
     { name: 'Sapporo Lager' }
   ];
   var DEFAULT_WINE = [
-    { name: 'Alamos Malbec' },
-    { name: 'Broc Cellars Love White' }
+    { name: 'Alamos Malbec Red' },
+    { name: "Broc Cellars 'Love' White Blend" }
   ];
 
   var G = {
@@ -88,6 +88,14 @@
     return name === 'Sapporo' ? 'Sapporo Lager' : name;
   }
 
+  function migrateWineName(name) {
+    if (name === 'Alamos Malbec') return 'Alamos Malbec Red';
+    if (name === 'Broc Cellars Love White' || name === "Broc Cellars 'Love' White blend") {
+      return "Broc Cellars 'Love' White Blend";
+    }
+    return name;
+  }
+
   function mergePouring(defaults, incoming) {
     return defaults.map(function (fallback, i) {
       var next = (incoming && incoming[i]) || {};
@@ -100,6 +108,19 @@
     list.forEach(function (item) {
       if (!item) return;
       var next = migrateSapporoName(item.name);
+      if (next !== item.name) {
+        item.name = next;
+        changed = true;
+      }
+    });
+    return changed;
+  }
+
+  function migrateLegacyWine(list) {
+    var changed = false;
+    list.forEach(function (item) {
+      if (!item) return;
+      var next = migrateWineName(item.name);
       if (next !== item.name) {
         item.name = next;
         changed = true;
@@ -145,6 +166,7 @@
       if (Array.isArray(data.beer) && data.beer.length) beer = mergePouring(DEFAULT_BEER, data.beer);
       if (Array.isArray(data.wine) && data.wine.length) wine = mergePouring(DEFAULT_WINE, data.wine);
       if (migrateLegacySapporo(beer)) scheduleSave();
+      if (migrateLegacyWine(wine)) scheduleSave();
       if (typeof data.pouringLabel === 'string' && data.pouringLabel.trim()) pouringLabel = data.pouringLabel;
       if (typeof data.alsoPouring === 'boolean') alsoPouring = data.alsoPouring;
       if (typeof data.showPouringKicker === 'boolean') showPouringKicker = data.showPouringKicker;
