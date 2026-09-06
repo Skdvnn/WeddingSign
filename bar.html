@@ -792,6 +792,9 @@ html.hide-pouring [data-layout="platehero"] .k{margin-bottom:4%}
 [data-layout="platesplit"] .plate-pour{flex:none;padding:4% 5.4% 4.2%}
 [data-layout="platesplit"] .plate-pour .pouring-kicker{margin:0 0 1.8%}
 [data-layout="platesplit"] .plate-pour .pouring-name{font-size:calc(4.55cqi * var(--nmscale,1));padding-bottom:.2em}
+/* B45: hide the Also pouring kicker unless the user turns the label on. */
+html:not(.show-pouring-kicker) [data-layout="platesplit"] .pouring-kicker{display:none}
+html:not(.show-pouring-kicker) [data-layout="platesplit"] .plate-pour{padding-top:4.6%}
 html.hide-pouring [data-layout="platesplit"]{padding:6.5%;gap:0}
 html.hide-pouring [data-layout="platesplit"] .plate-hero{flex:1;padding:6.5% 6%}
 html.hide-pouring [data-layout="platesplit"] .plate-hero .drink-name{font-size:calc(6.6cqi * var(--nmscale,1))}
@@ -991,6 +994,11 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     <div class="sl"><input type="range" id="sRule" min="0.5" max="2.5" step="0.1" value="1"><output id="oRule">1.0px</output></div>
     <span class="lbl">Drink gap</span>
     <div class="sl"><input type="range" id="sDrinkGap" min="0.7" max="1.65" step="0.05" value="1" aria-label="Space between drinks"><output id="oDrinkGap">1.00×</output></div>
+    <span class="lbl">Show “Also pouring” label</span>
+    <div class="toggle kicker-toggle" role="group" aria-label="Show Also pouring heading on Split Plates">
+      <button type="button" data-kicker="on">On</button>
+      <button type="button" data-kicker="off" class="on">Off</button>
+    </div>
     <button type="button" class="xbtn" id="reset-type">Reset type</button>
     <span class="typenote" id="typenote"></span>
   </div>
@@ -1008,7 +1016,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
   </div>
   <div class="drink-editor" id="drink-fields"></div>
   <h2 id="pouring-heading">Also pouring</h2>
-  <p class="secnote">Fort Point Kölsch (KSA) and Sapporo; Alamos Malbec and Broc Cellars Love White. Names only — not a fifth and sixth cocktail card.</p>
+  <p class="secnote">Fort Point Kölsch (KSA) and Sapporo Lager; Alamos Malbec and Broc Cellars Love White. Names only — not a fifth and sixth cocktail card. Split Plates (B45) hides the “Also pouring” heading by default — turn <b>Show “Also pouring” label</b> on if you want it back. Other layouts keep the heading.</p>
   <div class="editor-tools">
     <span class="lbl">Band</span>
     <div class="toggle pouring-toggle" role="group" aria-label="Show beer and wine on posters">
@@ -1017,6 +1025,11 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     </div>
     <label class="lbl" for="pouring-label">Label</label>
     <input class="f" id="pouring-label" value="Also pouring" style="width:160px">
+    <span class="lbl">Show label</span>
+    <div class="toggle kicker-toggle" role="group" aria-label="Show Also pouring heading on Split Plates">
+      <button type="button" data-kicker="on">On</button>
+      <button type="button" data-kicker="off" class="on">Off</button>
+    </div>
   </div>
   <div class="drink-editor pouring-editor" id="pouring-fields"></div>
 </section>
@@ -1066,7 +1079,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
           <div class="pouring-col">
             <div class="pouring-col-label" data-fg>Beer</div>
             <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
-            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo Lager</div>
           </div>
           <div class="pouring-col">
             <div class="pouring-col-label" data-fg>Wine</div>
@@ -1112,7 +1125,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
         <div class="hair" data-fg></div>
         <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
         <div class="pouring-verse">
-          <div class="pouring-verse-line" data-pouring-verse="beer" data-fg>Fort Point Kölsch  ·  Sapporo</div>
+          <div class="pouring-verse-line" data-pouring-verse="beer" data-fg>Fort Point Kölsch  ·  Sapporo Lager</div>
           <div class="pouring-verse-line" data-pouring-verse="wine" data-fg>Alamos Malbec  ·  Broc Cellars Love White</div>
         </div>
       </div>
@@ -1152,7 +1165,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
       <div class="pouring-band" data-pouring-band="line">
         <div class="hair" data-fg></div>
         <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
-        <div class="pouring-line" data-pouring-line data-fg>Fort Point Kölsch  ·  Sapporo  ·  Alamos Malbec  ·  Broc Cellars Love White</div>
+        <div class="pouring-line" data-pouring-line data-fg>Fort Point Kölsch  ·  Sapporo Lager  ·  Alamos Malbec  ·  Broc Cellars Love White</div>
       </div>
     </div></div>
     <div class="meta"><h3>B40 · Bottle Ledger</h3>
@@ -1194,7 +1207,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
           <div class="pouring-col">
             <div class="pouring-col-label" data-fg>Beer</div>
             <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
-            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo Lager</div>
           </div>
           <div class="pouring-col">
             <div class="pouring-col-label" data-fg>Wine</div>
@@ -1243,7 +1256,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
               <div class="pouring-col">
                 <div class="pouring-col-label" data-fg>Beer</div>
                 <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
-                <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+                <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo Lager</div>
               </div>
               <div class="pouring-col">
                 <div class="pouring-col-label" data-fg>Wine</div>
@@ -1293,7 +1306,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
             <div class="pouring-col">
               <div class="pouring-col-label" data-fg>Beer</div>
               <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
-              <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+              <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo Lager</div>
             </div>
             <div class="pouring-col">
               <div class="pouring-col-label" data-fg>Wine</div>
@@ -1342,7 +1355,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
           <div class="pouring-col">
             <div class="pouring-col-label" data-fg>Beer</div>
             <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
-            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo Lager</div>
           </div>
           <div class="pouring-col">
             <div class="pouring-col-label" data-fg>Wine</div>
@@ -1390,7 +1403,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
           <div class="pouring-col">
             <div class="pouring-col-label" data-fg>Beer</div>
             <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
-            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo Lager</div>
           </div>
           <div class="pouring-col">
             <div class="pouring-col-label" data-fg>Wine</div>
@@ -1401,7 +1414,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
       </div>
     </div></div>
     <div class="meta"><h3>B45 · Split Plates</h3>
-      <p>Two inset fields with mustard showing between. Cocktails keep the upper plate; bottles get their own lower band. Off, one plate fills the board.</p>
+      <p>Two inset fields with mustard showing between. Cocktails keep the upper plate; bottles get their own lower band — Beer | Wine, no “Also pouring” heading unless you turn the label on. Off, one plate fills the board.</p>
       <span class="tag">Inset</span><span class="tag">Split</span></div>
   </div>
 
@@ -1446,7 +1459,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
           <div class="pouring-col">
             <div class="pouring-col-label" data-fg>Beer</div>
             <div class="pouring-name" data-pouring="beer" data-pi="0" data-fg>Fort Point Kölsch</div>
-            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1" data-fg>Sapporo Lager</div>
           </div>
           <div class="pouring-col">
             <div class="pouring-col-label" data-fg>Wine</div>
@@ -1492,7 +1505,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
         <div class="pouring-kicker" data-pouring-kicker>Also pouring</div>
         <div class="pouring-col-label">Beer</div>
         <div class="pouring-name" data-pouring="beer" data-pi="0">Fort Point Kölsch</div>
-        <div class="pouring-name" data-pouring="beer" data-pi="1">Sapporo</div>
+        <div class="pouring-name" data-pouring="beer" data-pi="1">Sapporo Lager</div>
         <div class="pouring-col-label">Wine</div>
         <div class="pouring-name" data-pouring="wine" data-pi="0">Alamos Malbec</div>
         <div class="pouring-name" data-pouring="wine" data-pi="1">Broc Cellars Love White</div>
@@ -1536,7 +1549,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
           <div class="pouring-col">
             <div class="pouring-col-label">Beer</div>
             <div class="pouring-name" data-pouring="beer" data-pi="0">Fort Point Kölsch</div>
-            <div class="pouring-name" data-pouring="beer" data-pi="1">Sapporo</div>
+            <div class="pouring-name" data-pouring="beer" data-pi="1">Sapporo Lager</div>
           </div>
           <div class="pouring-col">
             <div class="pouring-col-label">Wine</div>
@@ -1579,7 +1592,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
       <div class="pouring-band" data-pouring-band="line">
         <div class="accent-rule"></div>
         <div class="pouring-kicker" data-pouring-kicker data-fg>Also pouring</div>
-        <div class="pouring-line" data-pouring-line data-fg>Fort Point Kölsch  ·  Sapporo  ·  Alamos Malbec  ·  Broc Cellars Love White</div>
+        <div class="pouring-line" data-pouring-line data-fg>Fort Point Kölsch  ·  Sapporo Lager  ·  Alamos Malbec  ·  Broc Cellars Love White</div>
       </div>
     </div></div>
     <div class="meta"><h3>B37 · Pouring Line</h3>
@@ -2886,7 +2899,7 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
     <li><strong>Roboto Mono</strong> is the default for the header, tags, and ingredients, tracked wide (<code>~0.13–0.2em</code>), all-caps like the rest of the suite. <b>Type tools → Bar header → Roboto</b> sets <code>BAR MENU</code> to the same Roboto as the names.</li>
     <li>Lettering is black <code>#1E1D1A</code>. Mustard is used once: a rule (two-column), a tag (tag column), or a block (ledger header) — never sprinkled, never a third loud colour, and never the cream-with-purple-green of the rejected mock.</li>
     <li>Solid ink only. No opacity, no leaf frames, no stacked brown “BAR MENU.”</li>
-    <li><strong>Also pouring</strong> is a sticky toggle — on by default, saved in this browser. Beer and wine stay a secondary chapter, never a fifth cocktail card. B9 and B30 are the DNA: hairline, then Beer | Wine. B38–B45 are cousins of that (centered / verse / ledger / loose type, double plate, cap rules, cocktail-only plate, split plates). B34–B37 keep the earlier rail / pane experiments. Heroes scale back a hair when the band is on. PDF / PNG / SVG / print include the band when the toggle is on.</li>
+    <li><strong>Also pouring</strong> is a sticky toggle — on by default, saved in this browser. Beer and wine stay a secondary chapter, never a fifth cocktail card. B9 and B30 are the DNA: hairline, then Beer | Wine. B38–B45 are cousins of that (centered / verse / ledger / loose type, double plate, cap rules, cocktail-only plate, split plates). B45 hides the “Also pouring” heading by default (Beer | Wine only); Type tools / Also pouring has <b>Show “Also pouring” label</b> to bring it back. Other layouts keep the heading. B34–B37 keep the earlier rail / pane experiments. Heroes scale back a hair when the band is on. PDF / PNG / SVG / print include the band when the toggle is on.</li>
   </ul>
 </div>
 
@@ -2898,5 +2911,5 @@ footer{margin-top:58px;padding-top:22px;border-top:1px solid rgba(0,0,0,.15);
 
 <script src="js/fonts.js"></script>
 <script src="js/mustard.js"></script>
-<script src="js/bar.js?v=pour4"></script>
+<script src="js/bar.js?v=pour5"></script>
 <script src="js/favorites.js"></script>
