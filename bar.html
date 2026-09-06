@@ -657,9 +657,10 @@ html.hide-pouring [data-layout="pourline"] .drink-name{font-size:calc(6.8cqi * v
   display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0}
 [data-layout="typecenter"] .k{margin:0;padding:0}
 [data-layout="typecenter"] .drink-list{display:contents}
+[data-layout="typecenter"] .drink + .drink{margin-top:calc(6cqi * (var(--drinkgap,1) - 1))}
 [data-layout="typecenter"] .drink-name{
   font-size:calc(6.3cqi * var(--nmscale,1));
-  padding-bottom:calc(.4em * var(--stackspace,1))}
+  padding-bottom:.4em}
 [data-layout="typecenter"] .drink-ing{margin-left:auto;margin-right:auto;max-width:34em}
 [data-layout="typecenter"] .drink-tag{margin-left:0}
 [data-layout="typecenter"] .pouring-band{padding-top:3.2%;text-align:center}
@@ -677,9 +678,10 @@ html.hide-pouring [data-layout="typecenter"] .drink-name{font-size:calc(7.4cqi *
   display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0}
 [data-layout="typeverse"] .k{margin:0;padding:0}
 [data-layout="typeverse"] .drink-list{display:contents}
+[data-layout="typeverse"] .drink + .drink{margin-top:calc(6cqi * (var(--drinkgap,1) - 1))}
 [data-layout="typeverse"] .drink-name{
   font-size:calc(6.05cqi * var(--nmscale,1));
-  padding-bottom:calc(.26em * var(--stackspace,1))}
+  padding-bottom:.26em}
 [data-layout="typeverse"] .drink-ing{font-size:calc(2.42cqi * var(--labscale,1))}
 [data-layout="typeverse"] .pouring-band{padding-top:2.8%}
 [data-layout="typeverse"] .pouring-band .hair{margin:0 0 2.4%}
@@ -693,7 +695,7 @@ html.hide-pouring [data-layout="typeverse"]{justify-content:space-evenly;padding
 html.hide-pouring [data-layout="typeverse"] .type-cluster{display:contents}
 html.hide-pouring [data-layout="typeverse"] .drink-name{
   font-size:calc(7.2cqi * var(--nmscale,1));
-  padding-bottom:calc(.48em * var(--stackspace,1))}
+  padding-bottom:.48em}
 
 /* B40 · Bottle Ledger — B9 stack, one quiet line of names */
 [data-layout="typeledger"]{padding:8% 8% 6.4%;justify-content:stretch}
@@ -701,9 +703,10 @@ html.hide-pouring [data-layout="typeverse"] .drink-name{
   display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0}
 [data-layout="typeledger"] .k{margin:0;padding:0}
 [data-layout="typeledger"] .drink-list{display:contents}
+[data-layout="typeledger"] .drink + .drink{margin-top:calc(6cqi * (var(--drinkgap,1) - 1))}
 [data-layout="typeledger"] .drink-name{
   font-size:calc(6.35cqi * var(--nmscale,1));
-  padding-bottom:calc(.4em * var(--stackspace,1))}
+  padding-bottom:.4em}
 [data-layout="typeledger"] .pouring-band{padding-top:3.2%}
 [data-layout="typeledger"] .pouring-band .hair{margin:0 0 2.6%}
 [data-layout="typeledger"] .pouring-kicker{margin:0 0 1.8%}
@@ -718,9 +721,10 @@ html.hide-pouring [data-layout="typeledger"] .drink-name{font-size:calc(7.5cqi *
   display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0}
 [data-layout="typeloose"] .k{margin:0;padding:0}
 [data-layout="typeloose"] .drink-list{display:contents}
+[data-layout="typeloose"] .drink + .drink{margin-top:calc(6cqi * (var(--drinkgap,1) - 1))}
 [data-layout="typeloose"] .drink-name{
   font-size:calc(6.15cqi * var(--nmscale,1));
-  padding-bottom:calc(.58em * var(--stackspace,1))}
+  padding-bottom:.58em}
 [data-layout="typeloose"] .pouring-band{padding-top:2.6%}
 [data-layout="typeloose"] .pouring-band .hair{margin:0 0 2.8%}
 [data-layout="typeloose"] .pouring-kicker{margin:0 0 2.4%}
@@ -729,7 +733,7 @@ html.hide-pouring [data-layout="typeloose"]{justify-content:space-evenly;padding
 html.hide-pouring [data-layout="typeloose"] .type-cluster{display:contents}
 html.hide-pouring [data-layout="typeloose"] .drink-name{
   font-size:calc(7.15cqi * var(--nmscale,1));
-  padding-bottom:calc(.7em * var(--stackspace,1))}
+  padding-bottom:.7em}
 
 /* B42 · Double Plate — two concentric hairline rectangles */
 [data-layout="platedouble"]{padding:4.8%}
@@ -737,6 +741,7 @@ html.hide-pouring [data-layout="typeloose"] .drink-name{
 [data-layout="platedouble"] .plate-inner{flex:1;display:flex;flex-direction:column;padding:5.2% 5%;min-height:0}
 [data-layout="platedouble"] .k{margin:0 0 3%}
 [data-layout="platedouble"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="platedouble"] .drink + .drink{margin-top:calc(6cqi * (var(--drinkgap,1) - 1))}
 [data-layout="platedouble"] .drink-name{font-size:calc(6.05cqi * var(--nmscale,1))}
 [data-layout="platedouble"] .pouring-band{padding-top:2.6%}
 [data-layout="platedouble"] .pouring-band .hair{margin:0 0 2.4%}
@@ -752,6 +757,7 @@ html.hide-pouring [data-layout="platedouble"] .k{margin-bottom:4%}
   border-left:0;border-right:0;padding:5.2% 0 4.2%}
 [data-layout="platecaps"] .k{margin:0 0 3.2%}
 [data-layout="platecaps"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="platecaps"] .drink + .drink{margin-top:calc(6cqi * (var(--drinkgap,1) - 1))}
 [data-layout="platecaps"] .drink-name{font-size:calc(6.2cqi * var(--nmscale,1))}
 [data-layout="platecaps"] .pouring-band{padding-top:2.8%}
 [data-layout="platecaps"] .pouring-band .hair{margin:0 0 2.4%}
@@ -766,6 +772,7 @@ html.hide-pouring [data-layout="platecaps"] .drink-name{font-size:calc(6.7cqi * 
 [data-layout="platehero"] .plate{flex:1;display:flex;flex-direction:column;padding:5.8% 5.6% 5.2%;min-height:0}
 [data-layout="platehero"] .k{margin:0 0 2.8%}
 [data-layout="platehero"] .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="platehero"] .drink + .drink{margin-top:calc(6cqi * (var(--drinkgap,1) - 1))}
 [data-layout="platehero"] .drink-name{font-size:calc(6.15cqi * var(--nmscale,1))}
 [data-layout="platehero"] .pouring-band{padding:0 1.2% 0}
 [data-layout="platehero"] .pouring-kicker{margin:0 0 1.8%}
@@ -780,6 +787,7 @@ html.hide-pouring [data-layout="platehero"] .k{margin-bottom:4%}
 [data-layout="platesplit"] .plate-hero{flex:1.75;display:flex;flex-direction:column;padding:5.6% 5.4% 4.8%;min-height:0}
 [data-layout="platesplit"] .plate-hero .k{margin:0 0 2.4%}
 [data-layout="platesplit"] .plate-hero .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+[data-layout="platesplit"] .drink + .drink{margin-top:calc(6cqi * (var(--drinkgap,1) - 1))}
 [data-layout="platesplit"] .plate-hero .drink-name{font-size:calc(6.05cqi * var(--nmscale,1))}
 [data-layout="platesplit"] .plate-pour{flex:none;padding:4% 5.4% 4.2%}
 [data-layout="platesplit"] .plate-pour .pouring-kicker{margin:0 0 1.8%}
