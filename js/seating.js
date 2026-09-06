@@ -78,7 +78,7 @@
 
   var ground = 'bone';
   var text = 'ink';
-  var paper = '24x36';
+  var paper = '20x30';
   var rule = 0.65;
   var ruleStyle = 'solid';
   var spineStyle = 'solid';
@@ -2447,7 +2447,7 @@
       '<span class="ui-pill"><b>' + ruleLabel(rule) + '</b> ' + ruleStyle +
       (spineStyle !== 'solid' ? ' · spine ' + spineStyle : '') +
       (leadSit !== 'bot' ? ' · sit ' + (leadSit === 'mid' ? 'center' : 'top') : '') + '</span>' +
-      '<span class="ui-pill">24 × 36</span>';
+      '<span class="ui-pill">20 × 30</span>';
   }
 
   function printCard(frame) {
@@ -2462,7 +2462,7 @@
       s.id = 'print-size';
       document.head.appendChild(s);
     }
-    s.textContent = '@page { size: 24in 36in; margin: 0; }';
+    s.textContent = '@page { size: 20in 30in; margin: 0; }';
     var done = function () {
       document.body.classList.remove('print-card');
       frame.classList.remove('print-me');
@@ -2474,10 +2474,10 @@
     setTimeout(done, 1200);
   }
 
-  var FIGMA_W = 864;
-  var FIGMA_H = 1296;
-  var WAG_W = 1800;
-  var WAG_H = 2700;
+  var FIGMA_W = 720;
+  var FIGMA_H = 1080;
+  var WAG_W = 1500;
+  var WAG_H = 2250;
   var h2cPromise = null;
 
   function loadHtml2Canvas() {
@@ -2547,10 +2547,10 @@
       })
       .then(function (canvas) {
         var a = document.createElement('a');
-        a.download = figmaName(card) + '-24x36-1728x2592.png';
+        a.download = figmaName(card) + '-20x30-1440x2160.png';
         a.href = canvas.toDataURL('image/png');
         a.click();
-        toast('PNG saved · drop into a 1728 × 2592 Figma frame (24 × 36 in).');
+        toast('PNG saved · drop into a 1440 × 2160 Figma frame (20 × 30 in).');
       })
       .catch(function () {
         toast('PNG failed — use Print chart → Save as PDF instead.');
@@ -2618,8 +2618,8 @@
       .catch(function () { return render(2); })
       .then(function (canvas) { return canvasJpeg(canvas, 0.92); })
       .then(function (blob) {
-        downloadBlob(blob, figmaName(card) + '-walgreens-24x36.jpg');
-        toast('JPEG saved · 24×36 for Walgreens. Upload as a Poster, full resolution, don’t crop.');
+        downloadBlob(blob, figmaName(card) + '-walgreens-20x30.jpg');
+        toast('JPEG saved · 20×30 for Walgreens. Upload as a Poster, full resolution, don’t crop.');
       })
       .catch(function () {
         toast('JPEG failed — try Chrome, close other tabs, then hit the button again.');
@@ -2750,7 +2750,7 @@
       var print = document.createElement('button');
       print.type = 'button';
       print.className = 'xbtn printbtn';
-      print.textContent = 'Print 24×36';
+      print.textContent = 'Print 20×30';
       print.addEventListener('click', function () { printCard(frame); });
       var png = document.createElement('button');
       png.type = 'button';
