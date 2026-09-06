@@ -2779,6 +2779,121 @@
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
   }
 
+  var LETTER_W = 850;
+  var LETTER_H = 1100;
+  var LETTER_PNG = 'seating-plan-letter.png';
+
+  function canvasPng(canvas) {
+    return new Promise(function (resolve, reject) {
+      canvas.toBlob(function (blob) {
+        if (!blob) reject(new Error('Could not make PNG'));
+        else resolve(blob);
+      }, 'image/png');
+    });
+  }
+
+  function buildLetterSheet() {
+    var sheet = document.createElement('div');
+    sheet.className = 'letter-sheet';
+    var kicker = document.createElement('p');
+    kicker.className = 'letter-kicker';
+    kicker.textContent = 'Allison + Skylar · Working room';
+    sheet.appendChild(kicker);
+    var top = document.querySelector('#assign .planner-top');
+    if (top) {
+      var topClone = top.cloneNode(true);
+      var sub = topClone.querySelector('.subline');
+      if (sub) sub.remove();
+      sheet.appendChild(topClone);
+    }
+    var unseated = document.querySelector('#assign .room-unseated');
+    if (unseated) sheet.appendChild(unseated.cloneNode(true));
+    var tables = document.getElementById('assigned-tables');
+    if (tables) sheet.appendChild(tables.cloneNode(true));
+    Array.from(sheet.querySelectorAll('.miss')).forEach(function (el) {
+      el.classList.remove('miss');
+    });
+    Array.from(sheet.querySelectorAll('.psign-move, [title]')).forEach(function (el) {
+      el.removeAttribute('title');
+    });
+    return sheet;
+  }
+
+  function printLetter() {
+    document.body.classList.add('print-planner');
+    var s = document.getElementById('print-size');
+    if (!s) {
+      s = document.createElement('style');
+      s.id = 'print-size';
+      document.head.appendChild(s);
+    }
+    s.textContent = '@page { size: letter portrait; margin: 0.4in; }';
+    var done = function () {
+      document.body.classList.remove('print-planner');
+      s.textContent = '';
+      window.removeEventListener('afterprint', done);
+    };
+    window.addEventListener('afterprint', done);
+    window.print();
+    setTimeout(done, 1400);
+  }
+
+  function exportLetterPng(btn) {
+    var assignEl = document.getElementById('assign');
+    var tables = document.getElementById('assigned-tables');
+    if (!assignEl || !tables) {
+      toast('Open the working room to export a letter sheet.');
+      return;
+    }
+    var label = btn ? btn.textContent : '';
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Making PNG…';
+    }
+    var host = document.createElement('div');
+    host.setAttribute('data-export-ignore', '');
+    host.className = 'letter-stage';
+    host.style.cssText = 'position:fixed;left:-12000px;top:0;width:' + LETTER_W + 'px;height:' + LETTER_H + 'px;z-index:-1;';
+    var sheet = buildLetterSheet();
+    host.appendChild(sheet);
+    document.body.appendChild(host);
+    function render(scale) {
+      return document.fonts.ready.then(function () { return whenLaidOut(sheet); })
+        .then(function () { return loadHtml2Canvas(); })
+        .then(function (h2c) {
+          return h2c(host, {
+            width: LETTER_W,
+            height: LETTER_H,
+            scale: scale,
+            backgroundColor: '#F5F2EA',
+            useCORS: true,
+            logging: false
+          });
+        });
+    }
+    var pixels = '2550 × 3300';
+    render(3)
+      .catch(function () { return render(2); })
+      .then(function (canvas) {
+        pixels = canvas.width + ' × ' + canvas.height;
+        return canvasPng(canvas);
+      })
+      .then(function (blob) {
+        downloadBlob(blob, LETTER_PNG);
+        toast('Letter PNG saved · ' + pixels + ' · ' + LETTER_PNG);
+      })
+      .catch(function () {
+        toast('PNG failed — try Print letter → Save as PDF.');
+      })
+      .then(function () {
+        host.remove();
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = label;
+        }
+      });
+  }
+
   function exportWalgreens(card, frame, btn) {
     var label = btn.textContent;
     btn.disabled = true;
@@ -3056,16 +3171,11 @@
   }
   var printRoom = document.getElementById('print-room');
   if (printRoom) {
-    printRoom.addEventListener('click', function () {
-      document.body.classList.add('print-planner');
-      var done = function () {
-        document.body.classList.remove('print-planner');
-        window.removeEventListener('afterprint', done);
-      };
-      window.addEventListener('afterprint', done);
-      window.print();
-      setTimeout(done, 1200);
-    });
+    printRoom.addEventListener('click', printLetter);
+  }
+  var exportLetter = document.getElementById('export-letter');
+  if (exportLetter) {
+    exportLetter.addEventListener('click', function () { exportLetterPng(exportLetter); });
   }
   var find = document.getElementById('planner-q');
   if (find) find.addEventListener('input', filterChips);
