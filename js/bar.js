@@ -14,6 +14,14 @@
     { name: 'Lemongrass Coconut Sake', tag: '', ingredients: 'Sake, Coconut Milk & Lemongrass Cordial with Fee Foam' },
     { name: 'Cucumber Elderflower Spritz', tag: 'Mocktail', ingredients: 'Cucumber Juice, Lemon Juice, Elderflower Syrup, Dash Of Ginger & Club Soda' }
   ];
+  var DEFAULT_BEER = [
+    { name: 'Fort Point Kölsch' },
+    { name: 'Sapporo' }
+  ];
+  var DEFAULT_WINE = [
+    { name: 'Alamos Malbec' },
+    { name: 'Broc Cellars Love White' }
+  ];
 
   var G = {
     bone: { hex: '#E7E3DA', name: 'bone' },
@@ -53,7 +61,11 @@
   };
 
   var drinks = DEFAULT_DRINKS.map(cloneDrink);
+  var beer = DEFAULT_BEER.map(clonePouring);
+  var wine = DEFAULT_WINE.map(clonePouring);
   var header = 'BAR MENU';
+  var pouringLabel = 'Also pouring';
+  var alsoPouring = true;
   var ground = 'bone';
   var text = 'ink';
   var picked = 'stack';
@@ -64,6 +76,17 @@
 
   function cloneDrink(d) {
     return { name: d.name || '', tag: d.tag || '', ingredients: d.ingredients || '' };
+  }
+
+  function clonePouring(d) {
+    return { name: d.name || '' };
+  }
+
+  function mergePouring(defaults, incoming) {
+    return defaults.map(function (fallback, i) {
+      var next = (incoming && incoming[i]) || {};
+      return { name: typeof next.name === 'string' ? next.name : fallback.name };
+    });
   }
 
   function lum(hex) {
@@ -100,6 +123,10 @@
           };
         });
       }
+      if (Array.isArray(data.beer) && data.beer.length) beer = mergePouring(DEFAULT_BEER, data.beer);
+      if (Array.isArray(data.wine) && data.wine.length) wine = mergePouring(DEFAULT_WINE, data.wine);
+      if (typeof data.pouringLabel === 'string' && data.pouringLabel.trim()) pouringLabel = data.pouringLabel;
+      if (typeof data.alsoPouring === 'boolean') alsoPouring = data.alsoPouring;
       if (typeof data.header === 'string' && data.header.trim()) header = data.header;
       if (data.ground && G[data.ground]) ground = data.ground;
       if (data.text && T[data.text]) text = data.text;
@@ -132,6 +159,10 @@
     var payload = {
       header: header,
       drinks: drinks.map(cloneDrink),
+      beer: beer.map(clonePouring),
+      wine: wine.map(clonePouring),
+      pouringLabel: pouringLabel,
+      alsoPouring: alsoPouring,
       ground: ground,
       text: text,
       nf: nf ? nf.value : 'instrument',
@@ -307,7 +338,38 @@
       });
       if (ingEl) ingEl.innerHTML = withAmp(d.ingredients);
     });
+    paintPouring();
     applyColor();
+  }
+
+  function pouringNames() {
+    return beer.concat(wine).map(function (d) { return d.name; }).filter(function (n) {
+      return n && n.trim();
+    });
+  }
+
+  function paintPouring() {
+    document.documentElement.classList.toggle('hide-pouring', !alsoPouring);
+    document.querySelectorAll('[data-pouring]').forEach(function (el) {
+      var kind = el.getAttribute('data-pouring');
+      var i = parseInt(el.getAttribute('data-pi'), 10);
+      var list = kind === 'wine' ? wine : beer;
+      var d = list[i];
+      if (!d) return;
+      el.innerHTML = withAmp(d.name);
+    });
+    document.querySelectorAll('[data-pouring-kicker]').forEach(function (el) {
+      el.textContent = pouringLabel;
+    });
+    document.querySelectorAll('[data-pouring-line]').forEach(function (el) {
+      el.textContent = pouringNames().join('  ·  ');
+    });
+    document.querySelectorAll('.pouring-toggle button').forEach(function (b) {
+      var on = b.getAttribute('data-pour') === (alsoPouring ? 'on' : 'off');
+      b.classList.toggle('on', on);
+    });
+    var labelEl = document.getElementById('pouring-label');
+    if (labelEl && labelEl.value !== pouringLabel) labelEl.value = pouringLabel;
   }
 
   function renderEditor() {
@@ -331,6 +393,31 @@
       card.querySelector('[data-field="name"]').value = d.name;
       card.querySelector('[data-field="tag"]').value = d.tag;
       card.querySelector('[data-field="ingredients"]').value = d.ingredients;
+    });
+    renderPouringEditor();
+  }
+
+  function renderPouringEditor() {
+    var host = document.getElementById('pouring-fields');
+    if (!host) return;
+    host.innerHTML = '';
+    [
+      { key: 'beer', title: 'Beer', list: beer },
+      { key: 'wine', title: 'Wine', list: wine }
+    ].forEach(function (group) {
+      var card = document.createElement('div');
+      card.className = 'drink-card';
+      var rows = group.list.map(function (d, i) {
+        return (
+          '<label for="p-' + group.key + '-' + i + '">' + group.title + ' ' + (i + 1) + '</label>' +
+          '<input class="f" id="p-' + group.key + '-' + i + '" data-pour-field="' + group.key + '" data-i="' + i + '" value="">'
+        );
+      }).join('');
+      card.innerHTML = '<p class="kicker">' + group.title + ' · names only</p>' + rows;
+      host.appendChild(card);
+      group.list.forEach(function (d, i) {
+        card.querySelector('[data-pour-field="' + group.key + '"][data-i="' + i + '"]').value = d.name;
+      });
     });
   }
 
@@ -601,7 +688,7 @@
       });
     });
 
-    frame.querySelectorAll('[data-header], [data-band-sub], .drink-name, .drink-tag, .drink-ing, .ledger-num, .col-label, .menu-foot, .field-foot, .horizon-foot, .anchor-date, .jrow, .lock, .slash-date, .initials, .amp-lock, .sib-spine, .rot-name').forEach(function (el) {
+    frame.querySelectorAll('[data-header], [data-band-sub], [data-pouring-kicker], [data-pouring-line], [data-pouring], .drink-name, .drink-tag, .drink-ing, .ledger-num, .col-label, .pouring-kicker, .pouring-col-label, .pouring-name, .pouring-line, .menu-foot, .field-foot, .horizon-foot, .anchor-date, .jrow, .lock, .slash-date, .initials, .amp-lock, .sib-spine, .rot-name').forEach(function (el) {
       var cs = getComputedStyle(el);
       if (cs.display === 'none' || cs.visibility === 'hidden' || el.hidden) return;
       var text = (el.innerText || el.textContent || '').replace(/\s+\n/g, '\n').replace(/\n\s+/g, '\n').trim();
@@ -748,24 +835,136 @@
 
   function wireEditor() {
     var host = document.getElementById('drink-fields');
-    if (!host) return;
-    host.addEventListener('input', function (e) {
-      var el = e.target.closest('[data-field]');
-      if (!el) return;
-      var i = parseInt(el.getAttribute('data-i'), 10);
-      var field = el.getAttribute('data-field');
-      if (!drinks[i] || !field) return;
-      drinks[i][field] = el.value;
-      paintDrinks();
-      scheduleSave();
+    if (host) {
+      host.addEventListener('input', function (e) {
+        var el = e.target.closest('[data-field]');
+        if (!el) return;
+        var i = parseInt(el.getAttribute('data-i'), 10);
+        var field = el.getAttribute('data-field');
+        if (!drinks[i] || !field) return;
+        drinks[i][field] = el.value;
+        paintDrinks();
+        scheduleSave();
+      });
+    }
+    var pouringHost = document.getElementById('pouring-fields');
+    if (pouringHost) {
+      pouringHost.addEventListener('input', function (e) {
+        var el = e.target.closest('[data-pour-field]');
+        if (!el) return;
+        var i = parseInt(el.getAttribute('data-i'), 10);
+        var kind = el.getAttribute('data-pour-field');
+        var list = kind === 'wine' ? wine : beer;
+        if (!list[i]) return;
+        list[i].name = el.value;
+        paintDrinks();
+        scheduleSave();
+      });
+    }
+    var labelEl = document.getElementById('pouring-label');
+    if (labelEl) {
+      labelEl.addEventListener('input', function () {
+        pouringLabel = labelEl.value || 'Also pouring';
+        paintDrinks();
+        scheduleSave();
+      });
+    }
+    document.querySelectorAll('.pouring-toggle button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        alsoPouring = b.getAttribute('data-pour') !== 'off';
+        paintDrinks();
+        persist();
+      });
+    });
+  }
+
+  var POUR_HOST = {
+    spine: '.optical',
+    spinecenter: '.optical',
+    rotated: '.rot-mid',
+    sibling: '.sib-body',
+    slashdate: '.slash-body',
+    diptych: '.diptych-main',
+    marks: '.marks-frame',
+    diagband: '.diag-inner',
+    inset: '.plate',
+    horizon: '.horizon-top'
+  };
+  var POUR_LINE = {
+    vertical: 1, cropped: 1, quad: 1, scatter: 1, diagband: 1,
+    vsplit: 1, mustardband: 1, rotated: 1, sibling: 1, slashdate: 1,
+    marks: 1, ampersand: 1, initials: 1, deepoverlap: 1, specimen: 1
+  };
+
+  function pouringBandHTML(variant) {
+    if (variant === 'line') {
+      return '<div class="hair" data-fg></div>' +
+        '<div class="pouring-kicker" data-pouring-kicker data-fg></div>' +
+        '<div class="pouring-line" data-pouring-line data-fg></div>';
+    }
+    return '<div class="hair" data-fg></div>' +
+      '<div class="pouring-kicker" data-pouring-kicker data-fg></div>' +
+      '<div class="pouring-cols">' +
+        '<div class="pouring-col">' +
+          '<div class="pouring-col-label" data-fg>Beer</div>' +
+          '<div class="pouring-name" data-pouring="beer" data-pi="0" data-fg></div>' +
+          '<div class="pouring-name" data-pouring="beer" data-pi="1" data-fg></div>' +
+        '</div>' +
+        '<div class="pouring-col">' +
+          '<div class="pouring-col-label" data-fg>Wine</div>' +
+          '<div class="pouring-name" data-pouring="wine" data-pi="0" data-fg></div>' +
+          '<div class="pouring-name" data-pouring="wine" data-pi="1" data-fg></div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function ensurePouringBands() {
+    document.querySelectorAll('.sign[data-layout]').forEach(function (sign) {
+      if (sign.hasAttribute('data-pouring-own')) return;
+      if (sign.querySelector('[data-pouring-band]')) return;
+      var layout = sign.getAttribute('data-layout');
+      if (layout === 'typeonly' && !sign.querySelector('.type-cluster')) {
+        var cluster = document.createElement('div');
+        cluster.className = 'type-cluster';
+        while (sign.firstChild) cluster.appendChild(sign.firstChild);
+        sign.appendChild(cluster);
+      }
+      var variant = POUR_LINE[layout] ? 'line' : 'cols';
+      var band = document.createElement('div');
+      band.className = 'pouring-band pouring-' + variant;
+      band.setAttribute('data-pouring-band', variant);
+      band.innerHTML = pouringBandHTML(variant);
+      var host = sign;
+      if (POUR_HOST[layout]) {
+        var found = sign.querySelector(POUR_HOST[layout]);
+        if (found) host = found;
+      }
+      var before = null;
+      Array.prototype.forEach.call(host.children, function (child) {
+        if (before || !child.classList) return;
+        if (child.classList.contains('menu-foot') || child.classList.contains('field-foot') ||
+            child.classList.contains('horizon-foot') || child.classList.contains('agave-row') ||
+            child.classList.contains('anchor-date') ||
+            (child.classList.contains('jrow') && child.classList.contains('det'))) {
+          before = child;
+        }
+      });
+      if (before) host.insertBefore(band, before);
+      else host.appendChild(band);
     });
   }
 
   function resetDrinks() {
     drinks = DEFAULT_DRINKS.map(cloneDrink);
+    beer = DEFAULT_BEER.map(clonePouring);
+    wine = DEFAULT_WINE.map(clonePouring);
     header = 'BAR MENU';
+    pouringLabel = 'Also pouring';
+    alsoPouring = true;
     var h = document.getElementById('header');
     if (h) h.value = header;
+    var labelEl = document.getElementById('pouring-label');
+    if (labelEl) labelEl.value = pouringLabel;
     renderEditor();
     paintDrinks();
     persist();
@@ -791,6 +990,7 @@
   }
 
   loadState();
+  ensurePouringBands();
   renderEditor();
   syncToggles();
   if (window.WeddingMustard) {

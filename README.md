@@ -30,7 +30,7 @@ Open `plan.html` to lay people on the three longs — drag parties, same last na
 
 ## Bar menu
 
-Open `bar.html` for the four-drink portrait card (1545 × 2000, ~3:4 / letter). Same suite as the welcome sign and table cards: Instrument Serif names, Roboto Mono ingredients, bone stock. Eleven layouts in the S1 / S2 / S5 / ledger family. Edit drink copy (saved in this browser), star a shortlist, print a layout, or export PNG / SVG.
+Open `bar.html` for the portrait bar card (1545 × 2000, ~3:4 / letter). Same suite as the welcome sign and table cards: Instrument Serif names, Roboto Mono ingredients, bone stock. Four signature cocktails stay the poster; beer (Fort Point Kölsch, Sapporo) and wine (Alamos Malbec, Broc Cellars Love White) sit as a secondary **Also pouring** list. Sticky toggle shows or hides that band on every layout (saved in this browser). B34–B37 explore a stack footer, mustard rail, split pane, and names-only line. Edit cocktail and bottle copy, star a shortlist, print a layout, or export PNG / SVG / PDF.
 
 ## SVG export
 
